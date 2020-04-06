@@ -1,0 +1,689 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Dual Event Generator Support</title>
+    <meta name="generator" content="amaya 8.5, see
+      http://www.w3.org/Amaya/">
+  </head>
+  <body>
+    <h1>Introduction</h1>
+    This support module and soft IOC provide ASYN drivers to control and
+    acquire data from the ALS dual event generator.<span
+      style="font-weight: bold;"></span>&nbsp; The module consists of C
+    source, a database, and engineering screens.&nbsp; The dual event
+    generator provides timing and RF siganls for each ALS frequency
+    domain.<br>
+    <p></p>
+    <h1>Database Development</h1>
+    <p>The example application distributed with this support module
+      comes with a database containing all the following records and EDM
+      screens to display them.&nbsp; All record names begin with the
+      macros <span style="font-family: monospace;">$(P)$(R)</span>.&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+      Only the portion of the record name following these macros is
+      shown in the following tables </p>
+    <h2>Sequence Waveform Records<br>
+    </h2>
+    These records set the pattern and timing of event codes to be
+    emitted when an event sequence is initiated.&nbsp; Set FTVL="LONG",
+    NELM="4096", DTYP="asynInt32ArrayOut", INP="@asyn($(PORT) <span
+      style="font-style: italic;">xxx</span>)", where <span
+      style="font-style: italic;"></span> $(PORT) expands to the port
+    name in the eventGeneratorConfigure command and <span
+      style="font-style: italic;">xxx</span> is the numeric value&nbsp;
+    shown in the following table.<br>
+    <br>
+    The entries in these records are delay:event pairs.&nbsp; The first
+    value in each pair is the number of event generator transmitter
+    clocks (~8 ns each) to delay before emitting the event code
+    specified by the second value in the pair.&nbsp; A delay value of 0
+    will result in event codes being emitted in adjacent event code
+    slots.<br>
+    <br>
+    <table style=" text-align: left; margin-left: auto; margin-right:
+      auto; width: 90%; height: 78px;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">Name</span><br>
+          </td>
+          <th style="text-align: center;"> ASYN<br>
+            Subaddress<br>
+          </th>
+          <th style="text-align: center;">Description<br>
+          </th>
+        </tr>
+        <tr>
+          <td style="text-align: center;" align="center">E1:SEQ0<br>
+          </td>
+          <td style="text-align: center;" align="center">0x3000<br>
+          </td>
+          <td style="text-align: left;" valign="middle" align="left">Event
+
+
+
+
+
+            generator 1, sequence 0.&nbsp; This is the default injector
+            sequence.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" align="center">E1:SEQ1</td>
+          <td style="text-align: center;" align="center">0x3001</td>
+          <td style="text-align: left;" valign="middle" align="left">Event
+
+
+
+
+
+            generator 1 sequence 1.&nbsp; This is the alternate injector
+            sequence which is automatically disabled after being
+            emitted.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">E2:SEQ0</td>
+          <td valign="top" align="center">0x3002<br>
+          </td>
+          <td valign="middle" align="left">Event generator 2, sequence
+            0.&nbsp; This is the sequence used for AR/SR swapout.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">E2:SEQ1</td>
+          <td valign="top" align="center">0x3003<br>
+          </td>
+          <td valign="middle" align="left">Event generator 2, sequence
+            1.&nbsp; This sequence is not normally used.<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    The FPGA internal memory blocks used to hold the sequences are
+    limited to 28 bits of delay value, so delays greater than or equal
+    to 2<sup>28</sup> cycles (about 2.1 seconds) consume multiple FPGA
+    memory values and thus reduce the number of delay:event pairs that
+    can be stored.<br>
+    <br>
+    <h2>Control Records<br>
+    </h2>
+    Set DTYP=asynInt32 and OUT="@asyn($(PORT) <span style="font-style:
+      italic;">xxx</span>)", where <span style="font-style: italic;"></span>
+    $(PORT) expands to the port name in the eventGeneratorConfigure
+    command and <span style="font-style: italic;">xxx</span> is a
+    numeric value as described in the following table.<br>
+    <br>
+    <table style=" text-align: left; margin-left: auto; margin-right:
+      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">Name</span><br>
+          </td>
+          <th style="text-align: center;">ASYN<br>
+            Subaddress<br>
+          </th>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">Reco</span><span style="font-weight: bold;">rd</span><span
+              style="font-weight: bold;"><br>
+            </span><span style="font-weight: bold;">Type</span><br>
+          </td>
+          <th style="vertical-align: middle; text-align: center;">Description<br>
+          </th>
+        </tr>
+        <tr>
+          <td style="text-align: center;" valign="middle" align="center">clrPowerup_<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">0x1000<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">longout<br>
+          </td>
+          <td style="text-align: left;" valign="middle" align="left">Part
+
+
+
+
+
+            of the update on reconnect mechanism.&nbsp; Clears the FPGA
+            'power up' status.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" valign="middle" align="center">softTrigger</td>
+          <td style="text-align: center;" valign="middle" align="center">0x1001<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">longout<br>
+          </td>
+          <td style="text-align: left;" valign="middle" align="left">Generate
+
+
+
+
+
+            waveform recorder software trigger when processed.&nbsp;
+            Value written is unimportant. </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">INJ:singleShot<br>
+          </td>
+          <td valign="middle" align="center">0x1003<br>
+          </td>
+          <td valign="middle" align="center">longout<br>
+          </td>
+          <td valign="middle" align="left">Generate an injection cycle
+            request when processed.&nbsp; Value written is
+            unimportant.&nbsp; Effective only when repetitive injection
+            cycle requests (see below) are disabled.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" valign="middle" align="center">reboot<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">0x1F00<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">longout<br>
+          </td>
+          <td style="text-align: left;" valign="middle" align="left">Writing,
+
+
+
+
+
+            in order, 1, 100, 10000, forces an FPGA reset.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" valign="middle" align="center">INJ:injCycleEnable<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">0x1F01<br>
+          </td>
+          <td style="text-align: center;" valign="middle" align="center">bo<br>
+          </td>
+          <td style="vertical-align: middle; text-align: left;"
+            valign="middle" align="left">Enable/Disable (1/0) injection
+            cycle start requests.&nbsp; These requests initiate event
+            generator 1 sequence 1 if enabled, otherwise event generator
+            1 sequence 0 if enabled, otherwise they are ignored.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">INJ:injCycleEnable</td>
+          <td valign="middle" align="center">0x1F02</td>
+          <td valign="middle" align="center">ao<br>
+          </td>
+          <td valign="middle" align="left">Set interval, in seconds,
+            between injector cycle start requests.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">swapoutTrigger<br>
+          </td>
+          <td valign="middle" align="center">0x1F03<br>
+          </td>
+          <td valign="middle" align="center">longout<br>
+          </td>
+          <td valign="middle" align="left">Generate a swapout cycle
+            start request.&nbsp; These requests initiate event generator
+            2 sequence 1 if enabled, otherwise event generator 2
+            sequence 0 if enabled, otherwise they are ignored.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2>Hardware Triggers</h2>
+    <p>These records set the event code to be emitted when a hardware
+      trigger input is asserted.&nbsp; Record name "E<i>e</i>:HW:<i>c</i>"
+      (<i>e</i>=1/2, <i>c</i>=1..4), DTYP=asynInt32 and
+      OUT="@asyn($(PORT) 0x12<i>xy</i><span style="font-style: italic;"></span>)",
+
+
+
+
+
+      where <span style="font-style: italic;"></span> $(PORT) expands
+      to the port name in the eventGeneratorConfigure command and <span
+        style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3.</p>
+    <h2>Software Triggers</h2>
+    <p>Each software trigger is controller by two longout records.&nbsp;
+      The first, with name "E<i>e</i>:SW:<i>c</i>" (<i>e</i>=1/2, <i>c</i>=1..4),
+
+
+
+
+      <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3,
+      sets the event code to be emitted.&nbsp; The second, with name "E<i>e</i>:SW:<i>c</i>:trig"
+
+
+
+
+      (<i>e</i>=1/2, <i>c</i>=1..4), DTYP=asynInt32 and
+      OUT="@asyn($(PORT) 0x1100", where <span style="font-style:
+        italic;"></span> $(PORT) expands to the port name in the
+      eventGeneratorConfigure command and <span style="font-style:
+        italic;">x</span> =1/2, <i>y</i>=0..3, causes that event code
+      held in the corresponding "E<i>e</i>:SW:<i>c</i>:trig" to be
+      emitted when processed. </p>
+    <h2>System Monitor Input Records<br>
+    </h2>
+    Set SCAN="I/O Intr", DTYP=asynInt32 and INP="@asyn($(PORT) <i>xxx</i>)",
+
+
+
+
+
+
+
+
+
+
+    where <span style="font-style: italic;"></span> $(PORT) expands to
+    the port name in the eventGeneratorConfigure command and <span
+      style="font-style: italic;">xxx</span> is a numeric value&nbsp; as
+    described in the following table.<span style="font-style: italic;"></span>&nbsp;
+
+
+
+
+
+
+
+
+
+
+    Records are processed by $(P)$(R)sysmonTrig_ processing.&nbsp; All
+    temperatures are in degrees Celsius.<br>
+    <span style="font-weight: bold;"></span><br>
+    <table style=" text-align: left; margin-left: auto; margin-right:
+      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">Name</span><br>
+          </td>
+          <th style="text-align: center;">ASYN<br>
+            Subaddress<br>
+          </th>
+          <td style="vertical-align: middle; text-align: center;"><span
+              style="font-weight: bold;">Record</span><span
+              style="font-weight: bold;"><br>
+            </span><span style="font-weight: bold;">Type</span><br>
+          </td>
+          <th style="vertical-align: middle; text-align: center;">Description<br>
+          </th>
+        </tr>
+        <tr>
+          <td style="text-align: center;">FPGA:temp </td>
+          <td style="text-align: center;">0x2101<br>
+          </td>
+          <td style="text-align: center;">ai<br>
+          </td>
+          <td style="text-align: left;">FPGA internal temperature.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">FPGA:VccINT:V </td>
+          <td style="text-align: center;">0x2201<br>
+          </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">FPGA VccINT supply voltage. </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">FPGA:VccAUX:V </td>
+          <td style="text-align: center;">0x2102</td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">FPGA VccAUX supply voltage.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">FPGA:VccBRAM:V</td>
+          <td style="text-align: center;">0x2202 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">FPGA VccBRAM supply voltage.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:SFP:temp<br>
+          </td>
+          <td style="text-align: center;">0x2303 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 SFP
+            temperature.<span style="font-style: italic;"></span><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:SFP:Vcc</td>
+          <td style="text-align: center;">0x2203</td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 SFP supply
+            voltage.<span style="font-style: italic;"></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:SFP:txPower</td>
+          <td style="text-align: center;">0x2104</td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 SFP
+            transmitted power.<span style="font-style: italic;"></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:SFP:temp</td>
+          <td style="text-align: center;">0x2305</td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 SFP
+            temperature.<span style="font-style: italic;"></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:SFP:Vcc</td>
+          <td style="text-align: center;">0x2205 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 SFP supply
+            voltage.<span style="font-style: italic;"></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:SFP:txPower</td>
+          <td style="text-align: center;">0x2106 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 SFP
+            transmitted power.<span style="font-style: italic;"></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:refCoinc</td>
+          <td style="text-align: center;">0x2307 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 reference
+            clock coincidence alignment point.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:refJitter</td>
+          <td style="text-align: center;">0x2207</td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 reference
+            clock jitter measurement<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:txCoinc</td>
+          <td style="text-align: center;">0x2308 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 transmitter
+            clock coincidence alignment point.</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:txJitter</td>
+          <td style="text-align: center;">0x2208 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 transmitter
+            clock jitter.</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E1:frequency</td>
+          <td style="text-align: center;">0x2009 </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 1 reference
+            clock frequency.<span style="font-style: italic;"></span><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:refCoinc</td>
+          <td style="text-align: center;">0x230A </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 reference
+            clock coincidence alignment point.</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:refJitter</td>
+          <td style="text-align: center;">0x220A </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 reference
+            clock jitter measurement </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:txCoinc</td>
+          <td style="text-align: center;">0x230B </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 transmitter
+            clock coincidence alignment point.</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:txJitter </td>
+          <td style="text-align: center;">0x220B </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 transmitter
+            clock jitter. </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">E2:frequency</td>
+          <td style="text-align: center;">0x200C </td>
+          <td style="text-align: center;">ai</td>
+          <td style="text-align: left;">Event generator 2 reference
+            clock frequency.<span style="font-style: italic;"></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">INJ:injCycleStatus</td>
+          <td style="text-align: center;">0x210D </td>
+          <td style="text-align: center;">longin</td>
+          <td style="text-align: left;">Injection cycle start requests
+            enabled/disabled (1/0).<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">TOD:PPSvalid<br>
+          </td>
+          <td valign="middle" align="center">0x220E<br>
+          </td>
+          <td valign="middle" align="center">bi<br>
+          </td>
+          <td valign="middle" align="left">Is hardware pulse per second
+            signal present?<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2>Sequencer Status Input Record<br>
+    </h2>
+    This mbbiDirector record, "$(P)$(R)SEQ:status", should be configured
+    with SCAN=".1 second", DTYP=asynInt32 and INP="@asyn($(PORT)
+    0x0010)", where <span style="font-style: italic;"></span> $(PORT)
+    expands to the port name in the eventGeneratorConfigure command.<span
+      style="font-style: italic;"></span>&nbsp; The scan rate is high
+    since the values present in this record are critical for the timing
+    of injector cycles.&nbsp; The individual bits in this record are
+    described in the following table.<br>
+    <br>
+    <table style=" text-align: left; margin-left: auto; margin-right:
+      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: center;" valign="middle" align="center"><span
+              style="font-weight: bold;">Bit</span><br>
+          </td>
+          <th style="vertical-align: middle; text-align: center;">Description<br>
+          </th>
+        </tr>
+        <tr>
+          <td style="text-align: center;" valign="middle" align="center">B0</td>
+          <td style="text-align: left;" valign="middle" align="left">Set
+            when event generator 1, sequence 0 (the default sequence),
+            is enabled.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: middle; text-align: center;"
+            valign="middle" align="center">B1</td>
+          <td style="text-align: left;" valign="middle" align="left">Set
+            when event generator 1, sequence 1, is enabled.&nbsp; This
+            sequence is automatically disabled after it has been
+            emitted.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">B2<br>
+          </td>
+          <td valign="middle" align="left">The currently active, or most
+            recently completed, event generator 1 sequence.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">B3<br>
+          </td>
+          <td valign="middle" align="left">Set when event generator 1 is
+            emitting a sequence.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">B4<br>
+          </td>
+          <td valign="middle" align="left">Set when event generator 2,
+            sequence 0, is enabled.</td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">B5<br>
+          </td>
+          <td valign="middle" align="left">Set when event generator 2,
+            sequence 1, is enabled.&nbsp; This sequence is automatically
+            disabled after it has been emitted.&nbsp; This sequence is
+            not used during normal operation.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">B6<br>
+          </td>
+          <td valign="middle" align="left">The currently active, or most
+            recently completed, event generator 2 sequence.&nbsp; Never
+            set during normal operation since only sequence 0 is used.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">B7<br>
+          </td>
+          <td valign="middle" align="left">Set when event generator 2 is
+            emitting a sequence.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2>String Input Records</h2>
+    <p>Processed on IOC startup and FPGA reconnect.<br>
+    </p>
+    <table style=" text-align: left; margin-left: auto; margin-right:
+      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">Name</span><br>
+          </td>
+          <th style="text-align: center;">DTYP<br>
+          </th>
+          <th style="vertical-align: middle; text-align: center;">Description<br>
+          </th>
+        </tr>
+        <tr>
+          <td style="text-align: center;">firmwareBuildDate</td>
+          <td style="text-align: center;">asynOctetRead </td>
+          <td style="text-align: left;">Date on which the firmware was
+            built.&nbsp; INP="@asyn($(PORT) 0x0000)".<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: middle; text-align: center;">softwareBuildDate</td>
+          <td style="text-align: center;">asynOctetRead</td>
+          <td style="text-align: left;">Date on which the software was
+            built.&nbsp; INP="@asyn($(PORT) 0x0001)".</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2>Communication Statistics Longin Records</h2>
+    &nbsp;Set DTYP=asynInt32 and INP="@asyn($(PORT) <span
+      style="font-style: italic;">xxx</span>)", where <span
+      style="font-style: italic;"></span> $(PORT) expands to the port
+    name in the eventGeneratorConfigure command and <span
+      style="font-style: italic;">xxx</span> is a numeric value as
+    described in the following table.<br>
+    &nbsp; <br>
+    <table style=" text-align: left; margin-left: auto; margin-right:
+      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">Name</span><br>
+          </td>
+          <th style="text-align: center;">ASYN<br>
+            Subaddress<br>
+          </th>
+          <th style="vertical-align: middle; text-align: center;">Description<br>
+          </th>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">Cmd<i>x</i>RetryCount<br>
+          </td>
+          <td style="text-align: center;">0xF00<i>x</i><br>
+          </td>
+          <td valign="middle">Number of commands sent to the FPGA that
+            were acknowledged after <i>x</i> retries, where <i>x</i>
+            ranges from 0 to 4, inclusive.&nbsp; Typically configured
+            with SCAN="10 second". </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;"><span style="font-style:
+              italic;"><span style="font-style: italic;"></span></span>CmdFailedCount<span
+              style="font-style: italic;"></span><br>
+          </td>
+          <td style="text-align: center;">0xF005<span style="font-style:
+              italic;"></span><br>
+          </td>
+          <td style="text-align: left;">Number of commands sent to the
+            FPGA that were never acknowledged.&nbsp; Typically
+            configured with SCAN="10 second". </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2><a name="reconnect"></a>FPGA update on reconnect<br>
+    </h2>
+    The IOC attempts to automatically restore FPGA settings following an
+    FPGA restart.&nbsp; This is achieved through a calcout record
+    ($(P)$(R)reconnChk_) that monitors the STAT field of a
+    periodically-scanned readback record ($(P)$(R)sysmonTrig_) and
+    causes a number of event and fanout records<span style="font-style:
+      italic;"> </span>to process when that status returns to 0 or when
+    the FPGA 'power up' condition is detected.&nbsp; The fanout records
+    in turn cause the various input and output records to process and
+    read from or send their values to the FPGA.<br>
+    <br>
+    <h2>IOC Startup Script</h2>
+    Communication with a dual event generator IOC is configured at IOC
+    startup with theT eventGeneratorConfigure command.&nbsp; Arguments
+    must appear in the order shown below.<br>
+    <ol>
+      <li>The ASYN port name.&nbsp; The value is arbitrary, but the
+        dbLoadRecords command which loads the database described above
+        must specify the same value.<br>
+      </li>
+      <li>The IPv4 address of the dual event generator FPGA.</li>
+      <li>The priority at which the port threads will run.&nbsp; A value
+        of 0 results in the default medium priority.</li>
+    </ol>
+    <p><br>
+    </p>
+    <br>
+    <br>
+    <h2></h2>
+    <p> </p>
+  </body>
+</html>

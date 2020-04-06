@@ -1,0 +1,95 @@
+file "perFPGA.template"
+{ pattern
+{ P,     R,       PORT           }
+  { "\$(P)", "\$(R)", "\$(PORT)" }
+}
+
+file "perBuildDate.template"
+{ pattern
+{       P,       R,       PORT,            NAME,        A }
+  { "\$(P)", "\$(R)", "\$(PORT)",  "firmwareBuildDate", 0 }
+  { "\$(P)", "\$(R)", "\$(PORT)",  "softwareBuildDate", 1 }
+}
+
+file "perSoftwareTrigger.template"
+{ pattern
+  {    P,      R,      PORT,   E, T,    A    }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 1   0x1100 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 2   0x1100 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 3   0x1100 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 4   0x1100 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 1   0x1101 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 2   0x1101 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 3   0x1101 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 4   0x1101 }
+}
+
+file "perHardwareTrigger.template"
+{ pattern
+  {    P,      R,      PORT,   E, T,    A    }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 1   0x1200 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 2   0x1201 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 3   0x1202 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 4   0x1203 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 1   0x1210 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 2   0x1211 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 3   0x1212 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 4   0x1213 }
+}
+
+file "perSequence.template"
+{ pattern
+  {    P,      R,      PORT,   E, S,   A    }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 0, 00 }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 1, 01 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 0, 10 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 1, 11 }
+}
+
+file "perGenericLO.template"
+{ pattern
+{     P     R,    PORT,             NAME,      A,             DESC }
+ { \$(P),\$(R),\$(PORT),   "clrPowerup_", 0x1000, "Clear FPGA power-up status" }
+ { \$(P),\$(R),\$(PORT),      "fetchTOD", 0x1002, "Resynchronize with NTP server" }
+ { \$(P),\$(R),\$(PORT),"INJ:singleShot", 0x1003, "Manually trigger an injection cycle" }
+ { \$(P),\$(R),\$(PORT),   "FPGA:reboot", 0x1F00, "Write 1, 100, 10000 to force reboot" }
+ { \$(P),\$(R),\$(PORT),"swapoutTrigger", 0x1F03, "Trigger swapout cycle with given offset" }
+}
+
+file "perSysmonAI.template"
+{ pattern
+{     P     R,    PORT,             NAME,      A,        EGU,             ESLO,   EOFF, PREC, LOPR,  HOPR,   LOLO,    LOW,   HIGH,   HIHI,  LLSV,   LSV,   HSV,  HHSV,       DESC }
+ { \$(P),\$(R),\$(PORT),     "FPGA:temp", 0x2101,"degrees C",7.690083168046e-3,-273.15,    3,    0,   100,      5,     10,     65,     75, MAJOR, MINOR, MINOR, MAJOR, "FPGA internal temperature" }
+ { \$(P),\$(R),\$(PORT), "FPGA:VccINT:V", 0x2201,      "V",        45.77636e-6,      0,    4,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccINT voltage" }
+ { \$(P),\$(R),\$(PORT), "FPGA:VccAUX:V", 0x2102,      "V",        45.77636e-6,      0,    4,    0,     5,   1.70,   1.75,   1.85,   1.90, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccAUX voltage" }
+ { \$(P),\$(R),\$(PORT),"FPGA:VccBRAM:V", 0x2202,      "V",        45.77636e-6,      0,    4,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA Vcc BRAM voltage" }
+ { \$(P),\$(R),\$(PORT),   "E1:SFP:temp", 0x2303,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP temperature" }
+ { \$(P),\$(R),\$(PORT),    "E1:SFP:Vcc", 0x2203,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP supply voltage" }
+ { \$(P),\$(R),\$(PORT),"E1:SFP:txPower", 0x2104,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP transmitter power" }
+ { \$(P),\$(R),\$(PORT),   "E2:SFP:temp", 0x2305,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP temperature" }
+ { \$(P),\$(R),\$(PORT),    "E2:SFP:Vcc", 0x2205,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP supply voltage" }
+ { \$(P),\$(R),\$(PORT),"E2:SFP:txPower", 0x2106,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP transmitter power" }
+ { \$(P),\$(R),\$(PORT),   "E1:refCoinc", 0x2307, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 refClk" }
+ { \$(P),\$(R),\$(PORT),  "E1:refJitter", 0x2207,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E1:txCoinc", 0x2308, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 txClk" }
+ { \$(P),\$(R),\$(PORT),   "E1:txJitter", 0x2208,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 txClk" }
+ { \$(P),\$(R),\$(PORT),  "E1:frequency", 0x2009,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
+ { \$(P),\$(R),\$(PORT),   "E2:refCoinc", 0x230A, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),  "E2:refJitter", 0x220A,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E2:txCoinc", 0x230B, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 txClk" }
+ { \$(P),\$(R),\$(PORT),   "E2:txJitter", 0x220B,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 txClk" }
+ { \$(P),\$(R),\$(PORT),  "E2:frequency", 0x200C,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
+}
+
+file "perSysmonLI.template"
+{ pattern
+{     P     R,    PORT,          NAME,             A,               DESC }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x210D, "Injection sequence request status" }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign", 0x220D, "Injection sequence alignment status" }
+}
+
+file "perSysmonBI.template"
+{ pattern
+{     P     R,    PORT,          NAME,          A,       ZNAM,      ONAM,       ZSV,        OSV,         DESC }
+ { \$(P),\$(R),\$(PORT), "TOD:PPSvalid",   0x220E,  "Invalid",   "Valid",   "MAJOR", "NO_ALARM", "Is PPS signal valid" }
+}

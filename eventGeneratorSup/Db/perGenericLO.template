@@ -1,0 +1,5 @@
+record(longout, "$(P)$(R)$(NAME)") {
+    field(DESC, "$(DESC)")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT), $(A), 0)")
+}

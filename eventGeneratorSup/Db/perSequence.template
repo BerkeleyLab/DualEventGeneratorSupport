@@ -1,0 +1,14 @@
+record (waveform, "$(P)$(R)E$(E):SEQ$(S)") {
+    field(DESC, "Generator $(E) sequence $(S) gap:event pairs")
+    field(DTYP, "asynInt32ArrayOut")
+    field(INP,  "@asyn($(PORT), 0x30$(A), 1)")
+    field(NELM, "4096")
+    field(FTVL, "LONG")
+}
+record (bo, "$(P)$(R)E$(E):SEQ$(S):enable") {
+    field(DESC, "Generator $(E) sequence $(S) enable/disable")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT), 0x13$(A), 1)")
+    field(ZNAM, "Disable")
+    field(ONAM, "Enable")
+}
