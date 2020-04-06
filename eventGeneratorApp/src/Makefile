@@ -27,12 +27,14 @@ eventGenerator_LIBS += eventGeneratorSup
 eventGenerator_LIBS += asyn
 eventGenerator_LIBS += autosave
 eventGenerator_LIBS += iocExit
+eventGenerator_LIBS += seq
 
 # eventGenerator_registerRecordDeviceDriver.cpp derives from eventGenerator.dbd
 eventGenerator_SRCS += eventGenerator_registerRecordDeviceDriver.cpp
 
 # Additional code
 eventGenerator_SRCS += shadowEVG.st
+eventGenerator_DBD += shadowEVG.dbd
 
 # Build the main IOC entry point on workstation OSs.
 eventGenerator_SRCS_DEFAULT += eventGeneratorMain.cpp

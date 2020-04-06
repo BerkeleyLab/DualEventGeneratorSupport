@@ -1,0 +1,4 @@
+record(stringin, "$(P)$(R)shadowEVG:msg") {
+}
+record(longout, "$(P)$(R)shadowEVG:diag") {
+}

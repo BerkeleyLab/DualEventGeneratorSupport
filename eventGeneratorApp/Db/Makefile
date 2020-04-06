@@ -10,6 +10,7 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
+DB += shadowEVG.db
 DB_INSTALLS += $(ASYN)/db/asynRecord.db
 DB_INSTALLS += $(AUTOSAVE)/asApp/Db/save_restoreStatus.db
 DB_INSTALLS += $(IOCEXIT)/db/iocExit.db

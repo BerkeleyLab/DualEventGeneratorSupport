@@ -29,6 +29,7 @@ asynSetTraceMask("EVG01_CMD",-1,0x1)
 ###############################################################################
 # Load record instances
 dbLoadRecords("db/eventGenerator.db","P=$(P),R=$(R),PORT=EVG01")
+dbLoadRecords("db/shadowEVG.db","P=$(P),R=$(R)")
 
 ##############################################################################
 # Load additional records
