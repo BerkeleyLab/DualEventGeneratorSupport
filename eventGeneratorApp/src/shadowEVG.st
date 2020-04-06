@@ -12,6 +12,7 @@ option +s; /* Safe mode */
 
 #define SEQUENCE_CAPACITY       2048
 #define EVENT_CODE_TERMINATOR   127
+#define EVENT_CODE_FINAL        100
 
 /* Reduce latency by keeping new sequence size to a reasonble value */
 #define NEW_SEQUENCE_SIZE 100
@@ -102,7 +103,12 @@ ss shadow {
                     for (i = 0 ; (i < limit) && (j < NEW_SEQUENCE_SIZE) ; i++) {
                         int thisTimestamp = oldTimestamps[i];
                         int thisEventCode = oldEventCodes[i];
-                        newSequence[j++] = thisTimestamp - previousTimestamp - 1;
+                        int gap = thisTimestamp - previousTimestamp - 1;
+                        if (thisEventCode == EVENT_CODE_FINAL) {
+                            gap = 0;
+                            thisEventCode = EVENT_CODE_TERMINATOR;
+                        }
+                        newSequence[j++] = gap;
                         newSequence[j++] = thisEventCode;
                         previousTimestamp = thisTimestamp;
                         if (debugLevel > 0) {
