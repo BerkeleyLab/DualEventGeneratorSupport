@@ -9,6 +9,7 @@ option +s; /* Safe mode */
 %%#include <math.h>
 #define UPDATE_STATUS(...) snprintf(statusMsg, sizeof statusMsg, __VA_ARGS__), \
                            pvPut(statusMsg)
+#define DIAGNOSTIC(...) if (debugLevel > 0) printf(__VA_ARGS__)
 
 #define SEQUENCE_CAPACITY       2048
 #define EVENT_CODE_TERMINATOR   127
@@ -134,9 +135,7 @@ ss shadow {
                     UPDATE_STATUS("No room for event!");
                     state idle;
                 }
-                if (debugLevel > 0) {
-                    printf("%d(%d) %d\n", thisTimestamp, gap, thisEventCode);
-                }
+                DIAGNOSTIC("%d(%d) %d\n", thisTimestamp, gap, thisEventCode);
                 newSequence[j++] = gap;
                 newSequence[j++] = thisEventCode;
                 previousTimestamp = thisTimestamp;
@@ -157,16 +156,12 @@ ss shadow {
             newSequenceEnable = 1;
             pvPut(newSequenceEnable, SYNC);
             efSet(enableSoftTrigger);
-            if (debugLevel > 0) {
-                printf("Updated\n");
-            }
+            DIAGNOSTIC("Updated\n");
         }
         when (efTest(oldTimestampsUpdated) || efTest(oldEventCodesUpdated)) {
         } state updateSequenceInfo
         when (delay(1.4)) {
-            if (debugLevel > 0) {
-                printf("No new sequence.\n");
-            }
+            DIAGNOSTIC("No new sequence.\n");
         } state idle
     }
 }
@@ -187,9 +182,7 @@ ss trigger {
         when (oldEnableRB) {
             if (efTestAndClear(enableSoftTrigger)) {
                 pvPut(newSingleShot, SYNC);
-                if (debugLevel > 0) {
-                    printf("Triggered\n");
-                }
+                DIAGNOSTIC("Triggered\n");
             }
             else {
                 missedTriggerCount++;
