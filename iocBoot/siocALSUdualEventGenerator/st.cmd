@@ -63,5 +63,11 @@ epicsEnvShow >"/vxboot/PVenv/$(IOC).softioc"
 
 ###############################################################################
 # Start shadowing old event generator
+
+dbpf "$(P)$(R)shadowEVG:diag" 1
+dbpf "$(P)$(R)E1:SEQ0.SIMM" YES
+dbpf "$(P)$(R)E1:SEQ0:enable.SIMM" YES
+dbpf "$(P)$(R)INJ:singleShot.SIMM" YES
+
 seq shadowEVG "P=$(P),R=$(R),SYS=$(OLD_EVG_SYS),T=$(OLD_EVG_T)"
 
