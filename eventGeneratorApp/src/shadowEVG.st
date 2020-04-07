@@ -26,8 +26,9 @@ int oldEventCodes[SEQUENCE_CAPACITY];
 assign oldEventCodes to "{SYS}:EVG1-SoftSeq:0:EvtCode-SP";
 monitor oldEventCodes;
 
-int oldEnableCmd;
-assign oldEnableCmd to "{SYS}:EVG1-SoftSeq:0:Enable-Cmd";
+int oldEnableRB;
+assign oldEnableRB to "{SYS}:EVG1-SoftSeq:0:Enable-RB";
+monitor oldEnableRB;
 
 /*
  * Detect updates
@@ -80,6 +81,13 @@ ss shadow {
     state idle {
         when (efTestAndClear(oldTimestampsUpdated)
            || efTestAndClear(oldEventCodesUpdated)) { } state validateSequence
+        when (delay(1.2)) {
+            newSequenceEnable = 0;
+            pvPut(newSequenceEnable, SYNC);
+            if (debugLevel > 0) {
+                printf("Timed out waiting for new sequence.\n");
+            }
+        } state idle
     }
 
     /* Update FPGA when time stamps and event codes are consistent */
@@ -120,7 +128,8 @@ ss shadow {
                                 printf("DONE AFTER %d %d\n", i, j);
                             }
                             pvPut(newSequence, SYNC);
-                            state awaitTrigger;
+                            newSequenceEnable = 1;
+                            pvPut(newSequenceEnable, SYNC);
                         }
                     }
                     UPDATE_STATUS("No terminating event!");
@@ -132,33 +141,23 @@ ss shadow {
             }
         } state idle
     }
+}
+
+ss trigger {
+    /*
+     * Wait for current sequence finish
+     */
+    state awaitCompletion {
+        when (!oldEnableRB) {
+        } state awaitTrigger
+    }
 
     /*
      * Wait for new sequence to be triggered.
-     * It would be more efficient to monitor "{SYS}:EVG1-SoftSeq:0:Enable-Cmd"
-     * but that record  does not post monitors each time it processes since
-     * its value does not change.  So we have to poll.  :-(
      */
     state awaitTrigger {
-        struct epicsTimeStamp whenEntered;
-        entry {
-            epicsTimeGetCurrent(&whenEntered);
-        }
-        when (delay(0.04)) {
-            struct epicsTimeStamp whenEnabled, now;
-            double d;
-            whenEnabled = pvTimeStamp(oldEnableCmd);
-            epicsTimeGetCurrent(&now);
-            d = epicsTimeDiffInSeconds(&now, &whenEntered);
-            if (d > 1.4) {
-                UPDATE_STATUS("Commit with no subsequent trigger!");
-                state idle;
-            }
-            d = epicsTimeDiffInSeconds(&now, &whenEnabled);
-            if (d <= 0.0) {
-                pvPut(newSingleShot, SYNC);
-                state idle;
-            }
+        when (oldEnableRB) {
+            pvPut(newSingleShot, SYNC);
         } state awaitTrigger
     }
 }
