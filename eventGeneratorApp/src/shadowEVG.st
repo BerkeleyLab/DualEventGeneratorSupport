@@ -57,6 +57,9 @@ assign statusMsg to "{P}{R}shadowEVG:msg";
 int debugLevel;
 assign debugLevel "{P}{R}shadowEVG:diag";
 monitor debugLevel;
+int inhibitedTriggerCount;
+assign inhibitedTriggerCount to  "{P}{R}shadowEVG:inhibitedTriggers";
+evflag enableSoftTrigger;
 
 ss shadow {
     state awaitingConnections {
@@ -89,6 +92,7 @@ ss shadow {
     /* Wait for new sequence */
     state idle {
         entry {
+            efClear(enableSoftTrigger);
             newSequenceEnable = 0;
             pvPut(newSequenceEnable, SYNC);
         }
@@ -151,6 +155,7 @@ ss shadow {
             pvPut(newSequence, SYNC);
             newSequenceEnable = 1;
             pvPut(newSequenceEnable, SYNC);
+            efSet(enableSoftTrigger);
             if (debugLevel > 0) {
                 printf("Updated\n");
             }
@@ -179,7 +184,13 @@ ss trigger {
      */
     state awaitTrigger {
         when (oldEnableRB) {
-            pvPut(newSingleShot, SYNC);
+            if (efTestAndClear(enableSoftTrigger)) {
+                pvPut(newSingleShot, SYNC);
+            }
+            else {
+                inhibitedTriggerCount++;
+                pvPut(inhibitedTriggerCount);
+            }
         } state awaitTrigger
     }
 }
