@@ -64,11 +64,10 @@ ss shadow {
         entry {
             UPDATE_STATUS("Started");
         }
-        when (pvConnectCount() == pvAssignCount()) { } state idle
+        when (pvConnectCount() == pvAssignCount()) {
+        } state starting
         when (delay(5)) {
             if (i == 0) {
-printf("=========================RB:%d\n", pvConnected(oldEnableRB));
-printf("=========================DIAG:%d\n", pvConnected(debugLevel));
                 UPDATE_STATUS("Waiting for %d of %d PVs to connect.",
                            pvAssignCount() - pvConnectCount(), pvAssignCount());
                 i = 5;
@@ -79,42 +78,36 @@ printf("=========================DIAG:%d\n", pvConnected(debugLevel));
         } state awaitingConnections
     }
 
+    /* Wait for first sequence update to finish */
+    state starting {
+        when (efTest(oldTimestampsUpdated) && efTest(oldEventCodesUpdated)) {
+            efClear(oldTimestampsUpdated);
+            efClear(oldEventCodesUpdated);
+        } state idle
+    }
+
     /* Wait for new sequence */
     state idle {
         entry {
             newSequenceEnable = 0;
             pvPut(newSequenceEnable, SYNC);
         }
-        when (efTestAndClear(oldTimestampsUpdated)
-           || efTestAndClear(oldEventCodesUpdated)) { } state updateSequenceInfo
+        when (efTest(oldTimestampsUpdated) || efTest(oldEventCodesUpdated)) {
+        } state updateSequenceInfo
     }
 
     /* Timestamps or event codes have changed */
     state updateSequenceInfo {
-        when (efTestAndClear(oldTimestampsUpdated)
-           || efTestAndClear(oldEventCodesUpdated)) {
-            struct epicsTimeStamp tsTime = pvTimeStamp(oldTimestamps);
-            struct epicsTimeStamp evTime = pvTimeStamp(oldEventCodes);
-            struct epicsTimeStamp now;
-            epicsTimeGetCurrent(&now);
-            if (pvCount(oldTimestamps) == pvCount(oldEventCodes)) {
-                double d1 = fabs(epicsTimeDiffInSeconds(&tsTime, &evTime));
-                double d2 = fabs(epicsTimeDiffInSeconds(&now, &evTime));
-                if (debugLevel > 0) {
-                    printf("Stale:%g mismatched:%g\n", d2, d1);
-                }
-                if ((d1 < 0.4) && (d2 < 0.5)) { state convertSequence; }
-            }
-            else {
-                UPDATE_STATUS("Timestamp(%d)/eventCode(%d) pvCount mismatch!",
-                                pvCount(oldTimestamps), pvCount(oldEventCodes));
-            }
-        } state updateSequenceInfo
-        when (delay(1.0)) {
+        when (efTest(oldTimestampsUpdated) && efTest(oldEventCodesUpdated)) {
+            efClear(oldTimestampsUpdated);
+            efClear(oldEventCodesUpdated);
+        } state convertSequence
+        when (delay(0.3)) {
             UPDATE_STATUS("Partial sequence update!\n");
         } state idle
     }
 
+    /* Timestamps and event codes have changed */
     state convertSequence {
         when (TRUE) {
             int i, j = 0, limit;
@@ -162,8 +155,8 @@ printf("=========================DIAG:%d\n", pvConnected(debugLevel));
                 printf("Updated\n");
             }
         }
-        when (efTestAndClear(oldTimestampsUpdated)
-           || efTestAndClear(oldEventCodesUpdated)) { } state updateSequenceInfo
+        when (efTest(oldTimestampsUpdated) || efTest(oldEventCodesUpdated)) {
+        } state updateSequenceInfo
         when (delay(1.4)) {
             if (debugLevel > 0) {
                 printf("No new sequence.\n");
