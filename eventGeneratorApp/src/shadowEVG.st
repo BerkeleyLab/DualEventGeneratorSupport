@@ -187,6 +187,9 @@ ss trigger {
         when (oldEnableRB) {
             if (efTestAndClear(enableSoftTrigger)) {
                 pvPut(newSingleShot, SYNC);
+                if (debugLevel > 0) {
+                    printf("Triggered\n");
+                }
             }
             else {
                 inhibitedTriggerCount++;
