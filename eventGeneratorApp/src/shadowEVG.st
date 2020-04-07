@@ -1,7 +1,7 @@
 /*
  * Shadow the existing MRF-based event generator
  */
-program shadowEVG("SYS=LI11,T=,P=EVG:,R=")
+program shadowEVG("SYS=LI11,T=,P=EVG,R=:")
 
 option -c; /* No wait for connections */
 option +s; /* Safe mode */
@@ -57,8 +57,8 @@ assign statusMsg to "{P}{R}shadowEVG:msg";
 int debugLevel;
 assign debugLevel "{P}{R}shadowEVG:diag";
 monitor debugLevel;
-int inhibitedTriggerCount;
-assign inhibitedTriggerCount to  "{P}{R}shadowEVG:inhibitedTriggers";
+int missedTriggerCount;
+assign missedTriggerCount to "{P}{R}shadowEVG:missedTriggers";
 evflag enableSoftTrigger;
 
 ss shadow {
@@ -192,8 +192,8 @@ ss trigger {
                 }
             }
             else {
-                inhibitedTriggerCount++;
-                pvPut(inhibitedTriggerCount);
+                missedTriggerCount++;
+                pvPut(missedTriggerCount);
             }
         } state awaitCompletion
     }

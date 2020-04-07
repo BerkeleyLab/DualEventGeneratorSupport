@@ -4,6 +4,6 @@ record(stringin, "$(P)$(R)shadowEVG:msg") {
 record(longout, "$(P)$(R)shadowEVG:diag") {
     field(DESC, "Sequence diagnostic level")
 }
-record(longin, "$(P)$(R)shadowEVG:missedTriggers"; {
+record(longin, "$(P)$(R)shadowEVG:missedTriggers") {
     field(DESC, "Number of triggers missed")
 }
