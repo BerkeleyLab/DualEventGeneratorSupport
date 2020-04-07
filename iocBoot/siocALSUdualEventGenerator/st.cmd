@@ -7,6 +7,7 @@ epicsEnvSet "R" "$(R=:)"
 epicsEnvSet "EVG_ADDRESS" "$(EVG_ADDRESS=192.168.1.129)"
 epicsEnvSet "OLD_EVG_SYS" "$(OLD_EVG_SYS=LI11)"
 epicsEnvSet "OLD_EVG_T" "$(OLD_EVG_T=)"
+epicsEnvSet "FPGA_SIMM_DISABLE" "$(FPGA_SIMM_DISABLE=#)"
 < envPaths
 epicsEnvSet "EPICS_CA_MAX_ARRAY_BYTES" "150000"
 epicsEnvSet "IOCSH_PS1" "$(IOC)> "
@@ -62,14 +63,10 @@ dbl >"/vxboot/PVnames/$(IOC)"
 epicsEnvShow >"/vxboot/PVenv/$(IOC).softioc"
 
 ###############################################################################
+# Put FPGA I/O records into simulation mode?
+$(FPGA_SIMM_DISABLE) <st.simm
+
+###############################################################################
 # Start shadowing old event generator
-
-dbpf "$(P)$(R)shadowEVG:diag" 1
-dbpf "$(P)$(R)E1:SEQ0.SIMM" YES
-dbpf "$(P)$(R)E1:SEQ0:enable.SIMM" YES
-dbpf "$(P)$(R)INJ:singleShot.SIMM" YES
-dbpf "$(P)$(R)sysmonTrig_.SIMM" YES
-dbpf "$(P)$(R)SEQ:status.SIMM" YES
-
 seq shadowEVG "P=$(P),R=$(R),SYS=$(OLD_EVG_SYS),T=$(OLD_EVG_T)"
 
