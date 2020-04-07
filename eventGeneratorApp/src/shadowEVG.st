@@ -148,6 +148,7 @@ ss shadow {
         } state idle
     }
 
+    /* Valid sequence received */
     state haveSequence {
         entry {
             newSequenceEnable = 0;
@@ -191,6 +192,6 @@ ss trigger {
                 inhibitedTriggerCount++;
                 pvPut(inhibitedTriggerCount);
             }
-        } state awaitTrigger
+        } state awaitCompletion
     }
 }
