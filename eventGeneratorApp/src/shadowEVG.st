@@ -67,6 +67,8 @@ ss shadow {
         when (pvConnectCount() == pvAssignCount()) { } state idle
         when (delay(5)) {
             if (i == 0) {
+printf("=========================RB:%d\n", pvConnected(oldEnableRB));
+printf("=========================DIAG:%d\n", pvConnected(debugLevel));
                 UPDATE_STATUS("Waiting for %d of %d PVs to connect.",
                            pvAssignCount() - pvConnectCount(), pvAssignCount());
                 i = 5;
@@ -79,20 +81,18 @@ ss shadow {
 
     /* Wait for new sequence */
     state idle {
-        when (efTestAndClear(oldTimestampsUpdated)
-           || efTestAndClear(oldEventCodesUpdated)) { } state validateSequence
-        when (delay(1.2)) {
+        entry {
             newSequenceEnable = 0;
             pvPut(newSequenceEnable, SYNC);
-            if (debugLevel > 0) {
-                printf("Timed out waiting for new sequence.\n");
-            }
-        } state idle
+        }
+        when (efTestAndClear(oldTimestampsUpdated)
+           || efTestAndClear(oldEventCodesUpdated)) { } state updateSequenceInfo
     }
 
-    /* Update FPGA when time stamps and event codes are consistent */
-    state validateSequence {
-        when (TRUE) {
+    /* Timestamps or event codes have changed */
+    state updateSequenceInfo {
+        when (efTestAndClear(oldTimestampsUpdated)
+           || efTestAndClear(oldEventCodesUpdated)) {
             struct epicsTimeStamp tsTime = pvTimeStamp(oldTimestamps);
             struct epicsTimeStamp evTime = pvTimeStamp(oldEventCodes);
             struct epicsTimeStamp now;
@@ -103,41 +103,70 @@ ss shadow {
                 if (debugLevel > 0) {
                     printf("Stale:%g mismatched:%g\n", d2, d1);
                 }
-                if ((d1 < 0.4) && (d2 < 0.5)) {
-                    int i, j = 0, limit;
-                    uint32_t previousTimestamp = -1;
-                    limit = pvCount(oldTimestamps); 
-                    if (limit > SEQUENCE_CAPACITY) limit = SEQUENCE_CAPACITY;
-                    for (i = 0 ; (i < limit) && (j < NEW_SEQUENCE_SIZE) ; i++) {
-                        int thisTimestamp = oldTimestamps[i];
-                        int thisEventCode = oldEventCodes[i];
-                        int gap = thisTimestamp - previousTimestamp - 1;
-                        if (thisEventCode == EVENT_CODE_FINAL) {
-                            gap = 0;
-                            thisEventCode = EVENT_CODE_TERMINATOR;
-                        }
-                        newSequence[j++] = gap;
-                        newSequence[j++] = thisEventCode;
-                        previousTimestamp = thisTimestamp;
-                        if (debugLevel > 0) {
-                            printf("%d: %d %d  (%d)\n", i, thisTimestamp,
-                                               thisEventCode, newSequence[j-2]);
-                        }
-                        if (thisEventCode == EVENT_CODE_TERMINATOR) {
-                            if (debugLevel > 0) {
-                                printf("DONE AFTER %d %d\n", i, j);
-                            }
-                            pvPut(newSequence, SYNC);
-                            newSequenceEnable = 1;
-                            pvPut(newSequenceEnable, SYNC);
-                        }
-                    }
-                    UPDATE_STATUS("No terminating event!");
-                }
+                if ((d1 < 0.4) && (d2 < 0.5)) { state convertSequence; }
             }
             else {
                 UPDATE_STATUS("Timestamp(%d)/eventCode(%d) pvCount mismatch!",
                                 pvCount(oldTimestamps), pvCount(oldEventCodes));
+            }
+        } state updateSequenceInfo
+        when (delay(1.0)) {
+            UPDATE_STATUS("Partial sequence update!\n");
+        } state idle
+    }
+
+    state convertSequence {
+        when (TRUE) {
+            int i, j = 0, limit;
+            uint32_t previousTimestamp = -1;
+            limit = pvCount(oldTimestamps); 
+            if (limit > SEQUENCE_CAPACITY) limit = SEQUENCE_CAPACITY;
+            for (i = 0 ; i < limit ; i++) {
+                int thisTimestamp = oldTimestamps[i];
+                int thisEventCode = oldEventCodes[i];
+                int gap = thisTimestamp - previousTimestamp - 1;
+                /*
+                 * No need to pad sequence to the full injection
+                 * interval, so bail out when that code is seen
+                 */
+                if (thisEventCode == EVENT_CODE_FINAL) {
+                    gap = 0;
+                    thisEventCode = EVENT_CODE_TERMINATOR;
+                }
+                if (j >= (NEW_SEQUENCE_SIZE - 1)) {
+                    UPDATE_STATUS("No room for event!");
+                    state idle;
+                }
+                if (debugLevel > 0) {
+                    printf("%d(%d) %d\n", thisTimestamp, gap, thisEventCode);
+                }
+                newSequence[j++] = gap;
+                newSequence[j++] = thisEventCode;
+                previousTimestamp = thisTimestamp;
+                if (thisEventCode == EVENT_CODE_TERMINATOR) {
+                    state haveSequence;
+                }
+            }
+            UPDATE_STATUS("No terminating event!");
+        } state idle
+    }
+
+    state haveSequence {
+        entry {
+            newSequenceEnable = 0;
+            pvPut(newSequenceEnable, SYNC);
+            pvPut(newSequence, SYNC);
+            newSequenceEnable = 1;
+            pvPut(newSequenceEnable, SYNC);
+            if (debugLevel > 0) {
+                printf("Updated\n");
+            }
+        }
+        when (efTestAndClear(oldTimestampsUpdated)
+           || efTestAndClear(oldEventCodesUpdated)) { } state updateSequenceInfo
+        when (delay(1.4)) {
+            if (debugLevel > 0) {
+                printf("No new sequence.\n");
             }
         } state idle
     }
