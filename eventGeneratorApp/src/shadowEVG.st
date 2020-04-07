@@ -34,8 +34,9 @@ monitor oldEnableRB;
 /*
  * Detect updates
  * It might seem more reasonable for the main state set to monitor
- * "{SYS}:EVG1-SoftSeq:0:Commit-Cmd" but that record  does not post
- * monitors each time it processes since its value does not change.
+ * "{SYS}:EVG1-SoftSeq:0:Commit-Cmd" to indicate when to push the
+ * sequence to the FPGA, but that record  does not post monitors
+ * each time it processes since its value does not change.
  */
 evflag oldTimestampsUpdated;
 sync oldTimestamps to oldTimestampsUpdated;
@@ -124,8 +125,8 @@ ss shadow {
                 int thisEventCode = oldEventCodes[i];
                 int gap = thisTimestamp - previousTimestamp - 1;
                 /*
-                 * No need to pad sequence to the full injection
-                 * interval, so bail out when that code is seen
+                 * No need to pad sequence to the event marking the full
+                 * injection interval, so bail out when that code is seen.
                  */
                 if (thisEventCode == EVENT_CODE_FINAL) {
                     gap = 0;
@@ -135,7 +136,7 @@ ss shadow {
                     UPDATE_STATUS("No room for event!");
                     state idle;
                 }
-                DIAGNOSTIC("%d(%d) %d\n", thisTimestamp, gap, thisEventCode);
+                DIAGNOSTIC("%d %d %d\n", thisTimestamp, thisEventCode, gap);
                 newSequence[j++] = gap;
                 newSequence[j++] = thisEventCode;
                 previousTimestamp = thisTimestamp;
