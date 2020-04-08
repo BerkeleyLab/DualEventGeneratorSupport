@@ -28,8 +28,9 @@ assign oldEventCodes to "{SYS}:EVG1-SoftSeq:0:EvtCode-SP";
 monitor oldEventCodes;
 
 int oldEnableRB;
-assign oldEnableRB to "{SYS}:EVG1-SoftSeq:0:Enable-RB";
+assign oldEnableRB to "{SYS}:EVG1-SoftSeq:0:Enable-RB.VAL";
 monitor oldEnableRB;
+syncq oldEnableRB 2;
 
 /*
  * Detect updates
@@ -172,7 +173,7 @@ ss trigger {
      * Wait for current sequence finish
      */
     state awaitCompletion {
-        when (!oldEnableRB) {
+        when (pvGetQ(oldEnableRB) && !oldEnableRB) {
         } state awaitTrigger
     }
 
@@ -180,7 +181,7 @@ ss trigger {
      * Wait for new sequence to be triggered.
      */
     state awaitTrigger {
-        when (oldEnableRB) {
+        when (pvGetQ(oldEnableRB) && oldEnableRB) {
             if (efTestAndClear(enableSoftTrigger)) {
                 pvPut(newSingleShot, SYNC);
                 DIAGNOSTIC("Triggered\n");
