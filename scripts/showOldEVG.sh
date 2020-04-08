@@ -2,7 +2,7 @@
 
 # Track operation of MRF event generator IOC
 
-camonitor -tsi -g9 -#4 \
+camonitor -tsi -g9 -#6 \
     "LI11:EVG1-SoftSeq:0:Timestamp-SP" \
     "LI11:EVG1-SoftSeq:0:EvtCode-SP" \
     "LI11:EVG1-SoftSeq:0:Enable-RB" \
