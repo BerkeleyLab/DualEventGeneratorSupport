@@ -67,6 +67,7 @@ monitor debugLevel;
 int missedTriggerCount;
 assign missedTriggerCount to "{P}{R}shadowEVG:missedTriggers";
 evflag enableSoftTrigger;
+evflag sequencerActive;
 
 ss shadow {
     state awaitingConnections {
@@ -168,6 +169,7 @@ ss shadow {
             newSequenceEnable = 1;
             pvPut(newSequenceEnable, SYNC);
             efSet(enableSoftTrigger);
+            if (!efTest(sequencerActive)) efSet(sequencerActive);
             DIAGNOSTIC("Updated\n");
         } state done
     }
@@ -183,6 +185,13 @@ ss shadow {
 }
 
 ss trigger {
+    state startup {
+        when (TRUE) {
+            missedTriggerCount = 0;
+            pvPut(missedTriggerCount);
+        } state awaitCompletion
+    }
+
     /*
      * Wait for current sequence finish
      */
@@ -200,7 +209,7 @@ ss trigger {
                 pvPut(newSingleShot, SYNC);
                 DIAGNOSTIC("Triggered\n");
             }
-            else {
+            else if (efTest(sequencerActive)) {
                 missedTriggerCount++;
                 pvPut(missedTriggerCount);
             }
