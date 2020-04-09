@@ -54,6 +54,10 @@ assign newSequenceEnable to "{P}{R}E1:SEQ0:enable";
 unsigned int newSingleShot;
 assign newSingleShot to "{P}{R}INJ:singleShot";
 
+int newSequencerStatus;
+assign newSequencerStatus to "{P}{R}SEQ:status";
+monitor newSequencerStatus;
+
 /* Status */
 string statusMsg;
 assign statusMsg to "{P}{R}shadowEVG:msg";
@@ -84,7 +88,7 @@ ss shadow {
         } state awaitingConnections
     }
 
-    /* Wait for first sequence update to finish */
+    /* Wait for first sequence update to finish. */
     state starting {
         when (efTest(oldTimestampsUpdated) && efTest(oldEventCodesUpdated)) {
             efClear(oldTimestampsUpdated);
@@ -92,7 +96,7 @@ ss shadow {
         } state idle
     }
 
-    /* Wait for new sequence */
+    /* Wait for new sequence. */
     state idle {
         entry {
             efClear(enableSoftTrigger);
@@ -103,7 +107,7 @@ ss shadow {
         } state updateSequenceInfo
     }
 
-    /* Timestamps or event codes have changed */
+    /* Timestamps or event codes have changed. */
     state updateSequenceInfo {
         when (efTest(oldTimestampsUpdated) && efTest(oldEventCodesUpdated)) {
             efClear(oldTimestampsUpdated);
@@ -114,7 +118,7 @@ ss shadow {
         } state idle
     }
 
-    /* Timestamps and event codes have changed */
+    /* Timestamps and event codes have changed. Convert to new layout. */
     state convertSequence {
         when (TRUE) {
             int i, j = 0, limit;
@@ -142,16 +146,22 @@ ss shadow {
                 newSequence[j++] = thisEventCode;
                 previousTimestamp = thisTimestamp;
                 if (thisEventCode == EVENT_CODE_TERMINATOR) {
-                    state haveSequence;
+                    state awaitCompletion;
                 }
             }
             UPDATE_STATUS("No terminating event!");
         } state idle
     }
 
-    /* Valid sequence received */
-    state haveSequence {
-        entry {
+    /* Wait for any currently active sequence to complete. */
+    state awaitCompletion {
+        when ((newSequencerStatus & (1 << 3)) == 0) {
+        } state loadSequence
+    }
+
+    /* Load sequence into FPGA. */
+    state loadSequence {
+        when (TRUE) {
             newSequenceEnable = 0;
             pvPut(newSequenceEnable, SYNC);
             pvPut(newSequence, SYNC);
@@ -159,7 +169,11 @@ ss shadow {
             pvPut(newSequenceEnable, SYNC);
             efSet(enableSoftTrigger);
             DIAGNOSTIC("Updated\n");
-        }
+        } state done
+    }
+
+    /* New sequence loaded.  Await next update. */
+    state done {
         when (efTest(oldTimestampsUpdated) || efTest(oldEventCodesUpdated)) {
         } state updateSequenceInfo
         when (delay(1.4)) {
