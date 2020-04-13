@@ -45,16 +45,6 @@ record(longout, "$(P)$(R)clrPowerup_") {
 }
 
 #
-# Read status of both event generator sequencers
-#
-record(mbbiDirect, "$(P)$(R)SEQ:status") {
-    field(DESC, "Status of both generator sequencers")
-    field(DTYP, "asynUInt32Digital")
-    field(INP,  "@asynMask($(PORT), 0x0010, 0xFF, 0)")
-    field(SCAN, ".1 second")
-}
-
-#
 # Injector sequence
 #
 record(bo, "$(P)$(R)INJ:injCycleEnable") {
@@ -76,6 +66,7 @@ record(ao, "$(P)$(R)INJ:injCyclePeriod") {
     field(HOPR, "1200")
     field(DRVL, "1.0")
     field(DRVH, "1200")
+    field(VAL,  "1.4")
     info(autosaveFields_pass0, "VAL")
 }
 
@@ -117,4 +108,10 @@ record(longin, "$(P)$(R)CmdFailedCount") {
     field(DESC, "Commands never acknowledged")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0xF005, 0)")
+    field(FLNK, "$(P)$(R)SeqMissedCount")
+}
+record(longin, "$(P)$(R)SeqMissedCount") {
+    field(DESC, "Dropped sequencer status packets")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0xF006, 0)")
 }

@@ -26,6 +26,8 @@ eventGenerator_registerRecordDeviceDriver pdbbase
 eventGeneratorConfigure("EVG01", "$(EVG_ADDRESS)", 0)
 asynSetTraceIOMask("EVG01_CMD",-1,0x4)
 asynSetTraceMask("EVG01_CMD",-1,0x1)
+asynSetTraceIOMask("EVG01_SEQ",-1,0x4)
+asynSetTraceMask("EVG01_SEQ",-1,0x1)
 
 ###############################################################################
 # Load record instances

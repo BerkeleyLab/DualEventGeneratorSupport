@@ -3,16 +3,24 @@
 
 #include <stdint.h>
 
-#define EVG_PROTOCOL_UDP_PORT        58762
-#define EVG_PROTOCOL_MAGIC           0xBD008426
-#define EVG_PROTOCOL_MAGIC_SWAPPED   0x268400BD
-#define EVG_PROTOCOL_ARG_CAPACITY    350
+#define EVG_PROTOCOL_UDP_EPICS_PORT     58762
+#define EVG_PROTOCOL_UDP_STATUS_PORT    58763
+#define EVG_PROTOCOL_MAGIC              0xBD008426
+#define EVG_PROTOCOL_MAGIC_SWAPPED      0x268400BD
+#define EVG_PROTOCOL_ARG_CAPACITY       350
+#define EVG_PROTOCOL_EVG_COUNT          2
 
 struct evgPacket {
     uint32_t    magic;
     uint32_t    nonce;
     uint32_t    command;
     uint32_t    args[EVG_PROTOCOL_ARG_CAPACITY];
+};
+
+struct evgStatusPacket {
+    uint32_t    magic;
+    uint32_t    pkNumber;
+    uint32_t    sequencerStatus[EVG_PROTOCOL_EVG_COUNT];
 };
 
 #define EVG_PROTOCOL_SIZE_TO_ARG_COUNT(s) (EVG_PROTOCOL_ARG_CAPACITY - \
@@ -30,9 +38,10 @@ struct evgPacket {
 #define EVG_PROTOCOL_CMD_MASK_IDX            0x00FF
 
 #define EVG_PROTOCOL_CMD_HI_LONGIN           0x0000
+#define EVG_PROTOCOL_CMD_LONGIN_LO_GENERIC      0x000
 # define EVG_PROTOCOL_CMD_LONGIN_IDX_FIRMWARE_BUILD_DATE 0x00
 # define EVG_PROTOCOL_CMD_LONGIN_IDX_SOFTWARE_BUILD_DATE 0x01
-# define EVG_PROTOCOL_CMD_LONGIN_IDX_SEQUENCER_STATUS    0x10
+#define EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS   0x100
 
 #define EVG_PROTOCOL_CMD_HI_LONGOUT          0x1000
 # define EVG_PROTOCOL_CMD_LONGOUT_LO_NO_VALUE   0x000

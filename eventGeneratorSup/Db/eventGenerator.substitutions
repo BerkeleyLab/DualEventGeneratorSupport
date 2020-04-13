@@ -46,6 +46,13 @@ file "perSequence.template"
   {"\$(P)","\$(R)","\$(PORT)", 2, 1, 11 }
 }
 
+file "perGenerator.template"
+{ pattern
+  {    P,      R,      PORT,   E, I }
+  {"\$(P)","\$(R)","\$(PORT)", 1, 0 }
+  {"\$(P)","\$(R)","\$(PORT)", 2, 1 }
+}
+
 file "perGenericLO.template"
 { pattern
 {     P     R,    PORT,             NAME,      A,             DESC }

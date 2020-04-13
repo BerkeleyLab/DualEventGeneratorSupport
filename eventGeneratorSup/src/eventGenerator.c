@@ -5,6 +5,7 @@
 #include <epicsStdio.h>
 #include <epicsString.h>
 #include <epicsEvent.h>
+#include <epicsExit.h>
 #include <epicsThread.h>
 #include <epicsTime.h>
 #include <epicsMutex.h>
@@ -15,26 +16,26 @@
 #include <iocsh.h>
 #include <drvAsynIPPort.h>
 #include <asynCommonSyncIO.h>
+#include <asynOctetSyncIO.h>
 #include <asynStandardInterfaces.h>
 #include "evgProtocol.h"
-
-/*
- * Time conversion -- FIXME: Configuration parameter(s)
- */
-#define NOMINAL_RF_FREQUENCY 499.642e6
-#define NS_PER_TICK (1.0e9 / ((NOMINAL_RF_FREQUENCY / 4)))
 
 /*
  * Local ASYN subaddress
  * Augments values in evgProtocol.h
  */
 #define A_HI_IOC                0xF000
-# define A_IOC_LO_STATISTICS                0x000
+# define A_IOC_LO_STATISTICS        0x000
 
 /*
  * Number of times to retry a command
  */
 #define COMMAND_RETRY_LIMIT 4
+
+/*
+ * Sequencer status subscription
+ */
+#define SEQUENCER_STATUS_RESUBSCRIBE_SECONDS 10
 
 /*
  * Links to lower port
@@ -44,7 +45,6 @@ typedef struct portLink {
     char             *hostInfo;
     asynUser         *pasynUserCommon;
     asynUser         *pasynUserOctet;
-    asynInterface    *poctet;
     int               isCommunicating;
 } portLink;
 
@@ -53,14 +53,16 @@ typedef struct portLink {
  */
 typedef struct drvPvt {
     /*
-     * Link to lower-level port driver
+     * Links to lower-level port drivers
      */
     portLink        cmdLink;
+    portLink        seqLink;
 
     /*
      * Asyn interfaces we provide
      */
     char           *portName;
+    char           *threadName;
     asynUser       *pasynUser;  /* For controlling diagnostic messages */
     asynStandardInterfaces asynInterfaces;
 
@@ -75,20 +77,34 @@ typedef struct drvPvt {
      */
     unsigned long   commandCount[COMMAND_RETRY_LIMIT+1];
     unsigned long   commandFailedCount;
-    int             timeDifferenceWarned;
-    int             timeDifferenceWarnCount;
+    unsigned long   seqMissedCount;
 } drvPvt;
+
+/*
+ * Arrange for cleanup on IOC shutdown
+ */
+static volatile int shutdown;
+static void
+atExitHandler(void *arg)
+{
+    shutdown = 1;
+}
 
 /*
  * asynCommon methods
  */
 static void
+showLink(FILE *fp, struct portLink *link)
+{
+    fprintf(fp, " %s %scommunicating\n", link->portName,
+                                link->isCommunicating ? "" : "NOT ");
+}
+static void
 report(void *pvt, FILE *fp, int details)
 {
     drvPvt *pdpvt = (drvPvt *)pvt;
-
-    fprintf(fp, " %s %scommunicating\n", pdpvt->cmdLink.portName,
-                                pdpvt->cmdLink.isCommunicating ? "" : "NOT ");
+    showLink(fp, &pdpvt->cmdLink);
+    showLink(fp, &pdpvt->seqLink);
 }
 
 static asynStatus
@@ -113,10 +129,10 @@ static asynStatus
 cmdWriteRead(drvPvt *pdpvt, asynUser *pasynUser, int cmdArgCount, int *replyArgCount)
 {
     int retryCount;
+    double retryInterval = 0.1;
     size_t cmdSize = EVG_PROTOCOL_ARG_COUNT_TO_SIZE(cmdArgCount);
     size_t nTrans;
     int eom;
-    asynOctet *pasynOctet = pdpvt->cmdLink.poctet->pinterface;
     int omitSend = 0;
     asynStatus status;
 
@@ -143,24 +159,21 @@ cmdWriteRead(drvPvt *pdpvt, asynUser *pasynUser, int cmdArgCount, int *replyArgC
     }
     pdpvt->cmdLink.pasynUserOctet->timeout = 0.3;
     for (retryCount = 0 ; ; ) {
-        pasynManager->lockPort(pdpvt->cmdLink.pasynUserOctet);
         if (omitSend) {
             status = asynSuccess;
             omitSend = 0;
         }
         else {
-            status = pasynOctet->write(pdpvt->cmdLink.poctet->drvPvt,
-                                                  pdpvt->cmdLink.pasynUserOctet,
-                                                  (char *)&pdpvt->commandPacket,
-                                                  cmdSize, &nTrans);
+            status = pasynOctetSyncIO->write(pdpvt->cmdLink.pasynUserOctet,
+                                               (char *)&pdpvt->commandPacket,
+                                               cmdSize, retryInterval, &nTrans);
         }
         if (status == asynSuccess) {
-            status = pasynOctet->read(pdpvt->cmdLink.poctet->drvPvt,
-                                      pdpvt->cmdLink.pasynUserOctet,
-                                      (char *)&pdpvt->replyPacket,
-                                      sizeof pdpvt->replyPacket, &nTrans, &eom);
+            status = pasynOctetSyncIO->read(pdpvt->cmdLink.pasynUserOctet,
+                                                  (char *)&pdpvt->replyPacket,
+                                                  sizeof pdpvt->replyPacket,
+                                                  retryInterval, &nTrans, &eom);
         }
-        pasynManager->unlockPort(pdpvt->cmdLink.pasynUserOctet);
         if (status == asynSuccess) {
             if (nTrans >= EVG_PROTOCOL_ARG_COUNT_TO_SIZE(0)) {
                 if ((pdpvt->replyPacket.nonce == pdpvt->commandPacket.nonce)
@@ -191,6 +204,7 @@ cmdWriteRead(drvPvt *pdpvt, asynUser *pasynUser, int cmdArgCount, int *replyArgC
         }
         if (++retryCount > COMMAND_RETRY_LIMIT)
             break;
+        retryInterval = 0.5;
         asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, "%s retry: %s\n",
                    pdpvt->cmdLink.portName,
                    status == asynTimeout ? "Timeout" : pasynUser->errorMessage);
@@ -209,67 +223,6 @@ cmdWriteRead(drvPvt *pdpvt, asynUser *pasynUser, int cmdArgCount, int *replyArgC
 }
 
 /*
- * Get time from data or system
- */
-static void
-setTimestamp(drvPvt *pdpvt, int isValid,
-              epicsUInt32 seconds, epicsUInt32 ticks, epicsTimeStamp *ts)
-{
-    double x;
-    epicsTimeStamp iocTime;
-
-    epicsTimeGetCurrent(&iocTime);
-    if (isValid && (seconds != 0) && ((x = ticks * NS_PER_TICK) < 5.5e9)) {
-        int diff;
-        if (seconds > POSIX_TIME_AT_EPICS_EPOCH)
-            ts->secPastEpoch = seconds - POSIX_TIME_AT_EPICS_EPOCH;
-        else
-            ts->secPastEpoch = seconds;
-        if (x < 1e9) {
-            ts->nsec = x;
-        }
-        else {
-            uint64_t n = x;
-            ts->secPastEpoch += n / 1000000000;
-            ts->nsec = n % 1000000000;
-        }
-        diff = ts->secPastEpoch - iocTime.secPastEpoch;
-        if (abs(diff) > 5) {
-            if (!pdpvt->timeDifferenceWarned) {
-                if (pdpvt->timeDifferenceWarnCount < 100) {
-                    asynPrint(pdpvt->cmdLink.pasynUserOctet, ASYN_TRACE_ERROR,
-                               "%s: FPGA(%lu) - IOC(%lu) seconds: %d.\n",
-                                            pdpvt->portName,
-                                            (unsigned long)ts->secPastEpoch,
-                                            (unsigned long)iocTime.secPastEpoch,
-                                            diff);
-                    pdpvt->timeDifferenceWarned = 1;
-                    pdpvt->timeDifferenceWarnCount++;
-                }
-            }
-        }
-        else {
-            if (pdpvt->timeDifferenceWarned) {
-                asynPrint(pdpvt->cmdLink.pasynUserOctet, ASYN_TRACE_ERROR,
-                          "%s: FPGA/IOC time stamps agree.\n", pdpvt->portName);
-                pdpvt->timeDifferenceWarned = 0;
-            }
-        }
-    }
-    else {
-        if (isValid && !pdpvt->timeDifferenceWarned) {
-            asynPrint(pdpvt->cmdLink.pasynUserOctet, ASYN_TRACE_ERROR,
-                         "%s: FPGA time(%lu:%lu) bad -- using IOC time.\n",
-                                                         pdpvt->portName,
-                                                         (unsigned long)seconds,
-                                                         (unsigned long)ticks);
-            pdpvt->timeDifferenceWarned = 1;
-        }
-        *ts = iocTime;
-    }
-}
-
-/*
  * Push monitor data into records
  */
 static void
@@ -277,13 +230,12 @@ processMonitorPacket(drvPvt *pdpvt, asynStatus status, int replyArgCount)
 {
     ELLLIST *pclientList;
     interruptNode *pnode;
-    epicsTimeStamp when;
+    epicsTimeStamp now;
 
     if ((status == asynSuccess) && (replyArgCount < 2)) {
         status = asynError;
     }
-    setTimestamp(pdpvt, (status == asynSuccess),
-                 pdpvt->replyPacket.args[0], pdpvt->replyPacket.args[1], &when);
+    epicsTimeGetCurrent(&now);
     pasynManager->interruptStart(pdpvt->asynInterfaces.int32InterruptPvt, &pclientList);
     pnode = (interruptNode *)ellFirst(pclientList);
     while (pnode) {
@@ -296,7 +248,7 @@ processMonitorPacket(drvPvt *pdpvt, asynStatus status, int replyArgCount)
         if (ahi == EVG_PROTOCOL_CMD_HI_SYSMON) {
             int32_t v = 0;
             int32Interrupt->pasynUser->auxStatus = status;
-            int32Interrupt->pasynUser->timestamp = when;
+            int32Interrupt->pasynUser->timestamp = now;
             if (status == asynSuccess) {
                 if ((idx < 1) || (idx >= replyArgCount)) {
                     int32Interrupt->pasynUser->auxStatus = asynError;
@@ -378,7 +330,7 @@ int32Read(void *pvt, asynUser *pasynUser, epicsInt32 *value)
             status = asynError;
         }
         if (status == asynSuccess) {
-            *value = pdpvt->replyPacket.args[0] & 0xFFFF;
+            *value = pdpvt->replyPacket.args[0];
         }
         break;
 
@@ -398,8 +350,10 @@ int32Read(void *pvt, asynUser *pasynUser, epicsInt32 *value)
         if (alo == A_IOC_LO_STATISTICS) {
             if (idx <= COMMAND_RETRY_LIMIT)
                 *value = pdpvt->commandCount[idx];
-            else
+            else if (idx == (COMMAND_RETRY_LIMIT + 1))
                 *value = pdpvt->commandFailedCount;
+            else
+                *value = pdpvt->seqMissedCount;
             break;
         }
         /* Fall through to default case */
@@ -571,10 +525,152 @@ octetRead(void *pvt, asynUser *pasynUser, char *data, size_t maxchars, size_t *n
 static asynOctet octetMethods = { NULL, octetRead };
 
 /*
+ * Find the interrupt callback handles for the sequencer status records
+ */
+static int
+findSequencerStatusInterrupts(drvPvt *pdpvt, asynInt32Interrupt **interrupts)
+{
+    ELLLIST *pclientList;
+    interruptNode *pnode;
+    int foundMap = 0;
+    pasynManager->interruptStart(pdpvt->asynInterfaces.int32InterruptPvt, &pclientList);
+    pnode = (interruptNode *)ellFirst(pclientList);
+    while (pnode) {
+        asynInt32Interrupt *int32Interrupt = pnode->drvPvt;
+        pnode = (interruptNode *)ellNext(&pnode->node);
+        int a = int32Interrupt->addr;
+        if ((a & (EVG_PROTOCOL_CMD_MASK_HI | EVG_PROTOCOL_CMD_MASK_LO)) ==
+                                      (EVG_PROTOCOL_CMD_HI_LONGIN |
+                                       EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS)) {
+            unsigned int idx = a & EVG_PROTOCOL_CMD_MASK_IDX;
+            if (idx < EVG_PROTOCOL_EVG_COUNT) {
+                interrupts[idx] = int32Interrupt;
+                foundMap |= (1 << idx);
+            }
+        }
+    }
+    pasynManager->interruptEnd(pdpvt->asynInterfaces.int32InterruptPvt);
+    return (foundMap == ((1 << EVG_PROTOCOL_EVG_COUNT) - 1));
+}
+
+/*
+ * Sequencer status subscriber
+ */
+static void
+subscriberThread(void *arg)
+{
+    drvPvt *pdpvt = (drvPvt *)arg;
+    asynStatus status;
+    size_t ntrans;
+    epicsUInt32 magic = EVG_PROTOCOL_MAGIC;
+    epicsUInt32 seqno = 0;
+    epicsTimeStamp now, whenSubscribed;
+    int firstTime;
+    asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
+    extern volatile int interruptAccept;
+
+    while (!interruptAccept) epicsThreadSleep(2.0);
+    if (!findSequencerStatusInterrupts(pdpvt, interrupts)) {
+        errlogPrintf("==== FATAL ==== Can't find sequencer status records\n");
+        return;
+    }
+    for (;;) {
+        pdpvt->seqLink.isCommunicating = 0;
+        for (;;) {
+            if (shutdown) return;
+            status = pasynCommonSyncIO->connectDevice(
+                                                pdpvt->seqLink.pasynUserCommon);
+            if (status == asynSuccess)
+                break;
+            asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
+                    "%s: Can't connect device: %s.  "
+                    "This may be the result of an IOC shutdown, a network "
+                    "problem or a problem with the network routing tables.\n",
+                                  pdpvt->seqLink.portName,
+                                  pdpvt->seqLink.pasynUserCommon->errorMessage);
+            epicsThreadSleep(10.0);
+        }
+        firstTime = 1;
+        for (;;) {
+            struct evgStatusPacket pk;
+            int expectReply = 0;
+            int eomReason;
+            int i;
+
+            if (shutdown) return;
+            epicsTimeGetCurrent(&now);
+            if (firstTime
+             || (epicsTimeDiffInSeconds(&now, &whenSubscribed) >=
+                                        SEQUENCER_STATUS_RESUBSCRIBE_SECONDS)) {
+                whenSubscribed = now;
+                status = pasynOctetSyncIO->write(pdpvt->seqLink.pasynUserOctet,
+                                                           (const char *)&magic,
+                                                           sizeof(magic),
+                                                           1.0,
+                                                           &ntrans);
+                if (status != asynSuccess) {
+                    asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
+                                   "%s: Can't send subscription request: %s\n",
+                                   pdpvt->seqLink.portName,
+                                   pdpvt->seqLink.pasynUserOctet->errorMessage);
+                }
+                expectReply = 1;
+            }
+            status = pasynOctetSyncIO->read(pdpvt->seqLink.pasynUserOctet,
+                                           (char *)&pk,
+                                           sizeof(pk),
+                                           SEQUENCER_STATUS_RESUBSCRIBE_SECONDS,
+                                           &ntrans,
+                                           &eomReason);
+            if ((status == asynSuccess)
+             && ((ntrans != sizeof(pk)) || (pk.magic != EVG_PROTOCOL_MAGIC))) {
+                continue;
+            }
+            if ((status == asynTimeout) && !expectReply) {
+                continue;
+            }
+            epicsTimeGetCurrent(&now);
+            for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
+                asynInt32Interrupt *int32Interrupt = interrupts[i];
+                asynUser *pasynUser = int32Interrupt->pasynUser;
+                pasynUser->auxStatus = status;
+                pasynUser->timestamp = now;
+                int32Interrupt->callback(int32Interrupt->userPvt,
+                                              pasynUser, pk.sequencerStatus[i]);
+            }
+            if (status == asynSuccess) {
+                pdpvt->seqLink.isCommunicating = 1;
+                if (firstTime) {
+                    seqno = pk.pkNumber - 1;
+                    firstTime = 0;
+                }
+                pdpvt->seqMissedCount += (pk.pkNumber - seqno) - 1;
+                seqno = pk.pkNumber;
+            }
+            else {
+                asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
+                                   "%s: Read failed: %s\n",
+                                   pdpvt->seqLink.portName,
+                                   pdpvt->seqLink.pasynUserOctet->errorMessage);
+                break;
+            }
+        }
+        if (pasynCommonSyncIO->disconnectDevice(pdpvt->seqLink.pasynUserCommon)
+                                                               != asynSuccess) {
+            errlogPrintf("==== FATAL ==== %s can't disconnect: %s\n",
+                                pdpvt->cmdLink.portName,
+                                pdpvt->cmdLink.pasynUserCommon->errorMessage);
+            return;
+        }
+    }
+}
+
+/*
  * Create a new lower port and set up a link to it
  */
 static asynStatus
-setLink(portLink *link, drvPvt *pdpvt, const char *ext, const char *hostInfo, int priority)
+setLink(portLink *link, drvPvt *pdpvt, const char *ext, const char *hostInfo,
+                                                          unsigned int priority)
 {
     asynStatus status;
 
@@ -589,33 +685,34 @@ setLink(portLink *link, drvPvt *pdpvt, const char *ext, const char *hostInfo, in
         errlogPrintf("Can't set asynCommonSyncIO for port \"%s\".\n", link->portName);
         return asynError;
     }
-    link->pasynUserOctet= pasynManager->createAsynUser(NULL, NULL);
-    status = pasynManager->connectDevice(link->pasynUserOctet, link->portName, -1);
+    status = pasynOctetSyncIO->connect(link->portName, -1,
+                                       &link->pasynUserOctet, NULL);
     if (status != asynSuccess) {
-        errlogPrintf("Can't find asyn port \"%s\".\n", link->portName);
+        errlogPrintf("Can't set asynOctetSyncIO for port \"%s\".\n", link->portName);
         return asynError;
     }
-    link->poctet = pasynManager->findInterface(link->pasynUserOctet, asynOctetType, 0);
-    if (link->poctet == NULL) {
-        errlogPrintf("Can't find octet interface for \"%s\".\n", link->portName);
-        return asynError;
-    }
-    link->pasynUserOctet->timeout = 5.0;
     return asynSuccess;
 }
 
 static void
-evgConfigure(const char *portName, const char *hostName, int priority)
+evgConfigure(const char *portName, const char *hName, unsigned int priority)
 {
     drvPvt *pdpvt;
     asynStandardInterfaces *pInterfaces;
     asynStatus status;
     char *host;
-    int hostNameLen;
+    int hNameLen;
+    unsigned int threadPriority;
+    epicsThreadId tid;
+    static int firstTime = 1;
 
     /*
      * Set up local storage
      */
+    if (firstTime) {
+        epicsAtExit(atExitHandler, NULL);
+        firstTime = 0;
+    }
     pdpvt = (drvPvt *)callocMustSucceed(1, sizeof(drvPvt), portName);
     pdpvt->portName = epicsStrDup(portName);
     if (priority == 0) priority = epicsThreadPriorityMedium;
@@ -624,22 +721,27 @@ evgConfigure(const char *portName, const char *hostName, int priority)
     /*
      * Set up full information for connection to FPGA
      */
-    if (strchr(hostName, ':') != NULL) {
+    if (strchr(hName, ':') != NULL) {
         errlogPrintf("Host info must not specify port.\n");
         return;
     }
-    hostNameLen = strlen(hostName);
-    if (hostName[hostNameLen - 1] == '*') {
-        hostNameLen--;
+    hNameLen = strlen(hName);
+    if (hName[hNameLen - 1] == '*') {
+        hNameLen--;
         errlogPrintf("Warning -- Broadcast designator ignored.\n");
     }
-    host = (char *)callocMustSucceed(1, hostNameLen + 30, "bcmConf");
-    sprintf(host, "%.*s:%d UDP", hostNameLen, hostName, EVG_PROTOCOL_UDP_PORT);
+    host = (char *)callocMustSucceed(1, hNameLen + 30, "evgConf");
 
     /*
-     * Create the port that we'll use to communicate with the FPGA
+     * Create the ports that we'll use to communicate with the FPGA
      */
+    sprintf(host, "%.*s:%d UDP", hNameLen, hName, EVG_PROTOCOL_UDP_EPICS_PORT);
     status = setLink(&pdpvt->cmdLink, pdpvt, "_CMD", host, priority);
+    if (status != asynSuccess)
+        return;
+    epicsThreadLowestPriorityLevelAbove (priority, &priority);
+    sprintf(host, "%.*s:%d UDP", hNameLen, hName, EVG_PROTOCOL_UDP_STATUS_PORT);
+    status = setLink(&pdpvt->seqLink, pdpvt, "_SEQ", host, priority);
     if (status != asynSuccess)
         return;
 
@@ -670,6 +772,22 @@ evgConfigure(const char *portName, const char *hostName, int priority)
     if (status != asynSuccess) {
         errlogPrintf("Can't register interfaces: %s.\n",
                                                 pdpvt->pasynUser->errorMessage);
+        return;
+    }
+
+    /*
+     * Start the sequencer status subscriber thread.
+     */
+    epicsThreadLowestPriorityLevelAbove(priority, &threadPriority);
+    pdpvt->threadName = callocMustSucceed(1,strlen(portName)+12,"evgConf");
+    sprintf(pdpvt->threadName, "%s_SUBCRIBER", portName);
+    tid = epicsThreadCreate(pdpvt->threadName,
+                            threadPriority,
+                            epicsThreadGetStackSize(epicsThreadStackMedium),
+                            subscriberThread,
+                            pdpvt);
+    if (!tid) {
+        printf("Can't set up %s subscriber thread!\n", pdpvt->threadName);
         return;
     }
 }

@@ -1,5 +1,5 @@
-record(longin, "$(P)$(R)E$(E)seqStatus") {
-    field(DESC, "$(DESC)")
+record(longin, "$(P)$(R)E$(E):seqStatus") {
+    field(DESC, "EVG $(E) sequencer CSR")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0x010$(I), 1)")
     field(SCAN, "I/O Intr")

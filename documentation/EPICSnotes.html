@@ -31,6 +31,8 @@
 
 
 
+
+
       Only the portion of the record name following these macros is
       shown in the following tables </p>
     <h2>Sequence Waveform Records<br>
@@ -70,7 +72,9 @@
           </td>
           <td style="text-align: center;" align="center">0x3000<br>
           </td>
-          <td style="text-align: left;" valign="middle" align="left">Event
+          <td style="text-align: left;" align="left" valign="middle">Event
+
+
 
 
 
@@ -83,7 +87,9 @@
         <tr>
           <td style="text-align: center;" align="center">E1:SEQ1</td>
           <td style="text-align: center;" align="center">0x3001</td>
-          <td style="text-align: left;" valign="middle" align="left">Event
+          <td style="text-align: left;" align="left" valign="middle">Event
+
+
 
 
 
@@ -95,18 +101,18 @@
           </td>
         </tr>
         <tr>
-          <td valign="top" align="center">E2:SEQ0</td>
-          <td valign="top" align="center">0x3002<br>
+          <td align="center" valign="top">E2:SEQ0</td>
+          <td align="center" valign="top">0x3002<br>
           </td>
-          <td valign="middle" align="left">Event generator 2, sequence
+          <td align="left" valign="middle">Event generator 2, sequence
             0.&nbsp; This is the sequence used for AR/SR swapout.<br>
           </td>
         </tr>
         <tr>
-          <td valign="top" align="center">E2:SEQ1</td>
-          <td valign="top" align="center">0x3003<br>
+          <td align="center" valign="top">E2:SEQ1</td>
+          <td align="center" valign="top">0x3003<br>
           </td>
-          <td valign="middle" align="left">Event generator 2, sequence
+          <td align="left" valign="middle">Event generator 2, sequence
             1.&nbsp; This sequence is not normally used.<br>
           </td>
         </tr>
@@ -146,13 +152,15 @@
           </th>
         </tr>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center">clrPowerup_<br>
+          <td style="text-align: center;" align="center" valign="middle">clrPowerup_<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">0x1000<br>
+          <td style="text-align: center;" align="center" valign="middle">0x1000<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">longout<br>
+          <td style="text-align: center;" align="center" valign="middle">longout<br>
           </td>
-          <td style="text-align: left;" valign="middle" align="left">Part
+          <td style="text-align: left;" align="left" valign="middle">Part
+
+
 
 
 
@@ -163,12 +171,14 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center">softTrigger</td>
-          <td style="text-align: center;" valign="middle" align="center">0x1001<br>
+          <td style="text-align: center;" align="center" valign="middle">softTrigger</td>
+          <td style="text-align: center;" align="center" valign="middle">0x1001<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">longout<br>
+          <td style="text-align: center;" align="center" valign="middle">longout<br>
           </td>
-          <td style="text-align: left;" valign="middle" align="left">Generate
+          <td style="text-align: left;" align="left" valign="middle">Generate
+
+
 
 
 
@@ -178,26 +188,28 @@
             Value written is unimportant. </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">INJ:singleShot<br>
+          <td align="center" valign="middle">INJ:singleShot<br>
           </td>
-          <td valign="middle" align="center">0x1003<br>
+          <td align="center" valign="middle">0x1003<br>
           </td>
-          <td valign="middle" align="center">longout<br>
+          <td align="center" valign="middle">longout<br>
           </td>
-          <td valign="middle" align="left">Generate an injection cycle
+          <td align="left" valign="middle">Generate an injection cycle
             request when processed.&nbsp; Value written is
             unimportant.&nbsp; Effective only when repetitive injection
             cycle requests (see below) are disabled.<br>
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center">reboot<br>
+          <td style="text-align: center;" align="center" valign="middle">reboot<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">0x1F00<br>
+          <td style="text-align: center;" align="center" valign="middle">0x1F00<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">longout<br>
+          <td style="text-align: center;" align="center" valign="middle">longout<br>
           </td>
-          <td style="text-align: left;" valign="middle" align="left">Writing,
+          <td style="text-align: left;" align="left" valign="middle">Writing,
+
+
 
 
 
@@ -207,36 +219,36 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center">INJ:injCycleEnable<br>
+          <td style="text-align: center;" align="center" valign="middle">INJ:injCycleEnable<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">0x1F01<br>
+          <td style="text-align: center;" align="center" valign="middle">0x1F01<br>
           </td>
-          <td style="text-align: center;" valign="middle" align="center">bo<br>
+          <td style="text-align: center;" align="center" valign="middle">bo<br>
           </td>
           <td style="vertical-align: middle; text-align: left;"
-            valign="middle" align="left">Enable/Disable (1/0) injection
+            align="left" valign="middle">Enable/Disable (1/0) injection
             cycle start requests.&nbsp; These requests initiate event
             generator 1 sequence 1 if enabled, otherwise event generator
             1 sequence 0 if enabled, otherwise they are ignored.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">INJ:injCycleEnable</td>
-          <td valign="middle" align="center">0x1F02</td>
-          <td valign="middle" align="center">ao<br>
+          <td align="center" valign="middle">INJ:injCycleEnable</td>
+          <td align="center" valign="middle">0x1F02</td>
+          <td align="center" valign="middle">ao<br>
           </td>
-          <td valign="middle" align="left">Set interval, in seconds,
+          <td align="left" valign="middle">Set interval, in seconds,
             between injector cycle start requests.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">swapoutTrigger<br>
+          <td align="center" valign="middle">swapoutTrigger<br>
           </td>
-          <td valign="middle" align="center">0x1F03<br>
+          <td align="center" valign="middle">0x1F03<br>
           </td>
-          <td valign="middle" align="center">longout<br>
+          <td align="center" valign="middle">longout<br>
           </td>
-          <td valign="middle" align="left">Generate a swapout cycle
+          <td align="left" valign="middle">Generate a swapout cycle
             start request.&nbsp; These requests initiate event generator
             2 sequence 1 if enabled, otherwise event generator 2
             sequence 0 if enabled, otherwise they are ignored.</td>
@@ -254,6 +266,8 @@
 
 
 
+
+
       where <span style="font-style: italic;"></span> $(PORT) expands
       to the port name in the eventGeneratorConfigure command and <span
         style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3.</p>
@@ -264,8 +278,12 @@
 
 
 
+
+
       <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3,
       sets the event code to be emitted.&nbsp; The second, with name "E<i>e</i>:SW:<i>c</i>:trig"
+
+
 
 
 
@@ -290,10 +308,14 @@
 
 
 
+
+
     where <span style="font-style: italic;"></span> $(PORT) expands to
     the port name in the eventGeneratorConfigure command and <span
       style="font-style: italic;">xxx</span> is a numeric value&nbsp; as
     described in the following table.<span style="font-style: italic;"></span>&nbsp;
+
+
 
 
 
@@ -481,98 +503,93 @@
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">TOD:PPSvalid<br>
+          <td align="center" valign="middle">TOD:PPSvalid<br>
           </td>
-          <td valign="middle" align="center">0x220E<br>
+          <td align="center" valign="middle">0x220E<br>
           </td>
-          <td valign="middle" align="center">bi<br>
+          <td align="center" valign="middle">bi<br>
           </td>
-          <td valign="middle" align="left">Is hardware pulse per second
+          <td align="left" valign="middle">Is hardware pulse per second
             signal present?<br>
           </td>
         </tr>
       </tbody>
     </table>
     <br>
-    <h2>Sequencer Status Input Record<br>
+    <h2>Sequencer Status Input Records<br>
     </h2>
-    This mbbiDirector record, "$(P)$(R)SEQ:status", should be configured
-    with SCAN=".1 second", DTYP=asynInt32 and INP="@asyn($(PORT)
-    0x0010)", where <span style="font-style: italic;"></span> $(PORT)
-    expands to the port name in the eventGeneratorConfigure command.<span
-      style="font-style: italic;"></span>&nbsp; The scan rate is high
-    since the values present in this record are critical for the timing
-    of injector cycles.&nbsp; The individual bits in this record are
-    described in the following table.<br>
+    These longin records, "$(P)$(R)E<i>x</i>:seqStatus", should be
+    configured with SCAN="I/O Intr", DTYP=asynInt32 and
+    INP="@asyn($(PORT) 0x010y", where <span style="font-style: italic;"></span>
+    $(PORT) expands to the port name in the eventGeneratorConfigure
+    command and <i>x</i>/<i>y</i> are 1/0 or 2/1.<span
+      style="font-style: italic;"></span>&nbsp; These records are
+    updated from the FPGA using a publish/subscribe technique that
+    minimizes the latency between the time a value in the FPGA changes
+    and the time that the corresponding record is updated.&nbsp; The
+    individual bits in these records are described in the following
+    table.<br>
     <br>
     <table style=" text-align: left; margin-left: auto; margin-right:
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center"><span
+          <td style="text-align: center;" align="center" valign="middle"><span
               style="font-weight: bold;">Bit</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
         </tr>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center">B0</td>
-          <td style="text-align: left;" valign="middle" align="left">Set
-            when event generator 1, sequence 0 (the default sequence),
-            is enabled.<br>
+          <td style="text-align: center;" align="center" valign="middle">0</td>
+          <td style="text-align: left;" align="left" valign="middle">Set
+            when sequence 0 (the default sequence), is enabled.<br>
           </td>
         </tr>
         <tr>
           <td style="vertical-align: middle; text-align: center;"
-            valign="middle" align="center">B1</td>
-          <td style="text-align: left;" valign="middle" align="left">Set
-            when event generator 1, sequence 1, is enabled.&nbsp; This
-            sequence is automatically disabled after it has been
-            emitted.<br>
+            align="center" valign="middle">1</td>
+          <td style="text-align: left;" align="left" valign="middle">Set
+            when sequence 1 is enabled.&nbsp; This sequence is
+            automatically disabled after it has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">B2<br>
+          <td align="center" valign="middle">2<br>
           </td>
-          <td valign="middle" align="left">The currently active, or most
-            recently completed, event generator 1 sequence.<br>
+          <td align="left" valign="middle">The currently active, or most
+            recently completed, sequence.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">B3<br>
+          <td align="center" valign="middle">3<br>
           </td>
-          <td valign="middle" align="left">Set when event generator 1 is
+          <td align="left" valign="middle">Set when event generator is
             emitting a sequence.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">B4<br>
+          <td align="center" valign="middle">15–8<br>
           </td>
-          <td valign="middle" align="left">Set when event generator 2,
-            sequence 0, is enabled.</td>
-        </tr>
-        <tr>
-          <td valign="middle" align="center">B5<br>
-          </td>
-          <td valign="middle" align="left">Set when event generator 2,
-            sequence 1, is enabled.&nbsp; This sequence is automatically
-            disabled after it has been emitted.&nbsp; This sequence is
-            not used during normal operation.<br>
+          <td align="left" valign="middle">Incremented each time a
+            sequence is triggered.&nbsp; Can be used to unambiguously
+            detect that a sequence has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">B6<br>
+          <td align="center" valign="middle">23–16<br>
           </td>
-          <td valign="middle" align="left">The currently active, or most
-            recently completed, event generator 2 sequence.&nbsp; Never
-            set during normal operation since only sequence 0 is used.<br>
-          </td>
+          <td align="left" valign="middle">Incremented each time a
+            sequence is trigger request is ignored because it arrived
+            while a sequence was already active.&nbsp; Can be used to
+            unambiguously detect sequence overruns. </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">B7<br>
+          <td align="center" valign="middle">28–24<br>
           </td>
-          <td valign="middle" align="left">Set when event generator 2 is
-            emitting a sequence.</td>
+          <td align="left" valign="middle">The number of bits in the
+            sequence generator memory address.<br>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -620,36 +637,47 @@
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;"><span style="font-weight:
-              bold;">Name</span><br>
+          <td style="text-align: center;" align="center" valign="middle"><span
+              style="font-weight: bold;">Name</span><br>
           </td>
-          <th style="text-align: center;">ASYN<br>
+          <th style="text-align: center;" align="center" valign="middle">ASYN<br>
             Subaddress<br>
           </th>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
         </tr>
         <tr>
-          <td valign="middle" align="center">Cmd<i>x</i>RetryCount<br>
+          <td align="center" valign="middle">Cmd<i>x</i>RetryCount<br>
           </td>
-          <td style="text-align: center;">0xF00<i>x</i><br>
+          <td style="text-align: center;" align="center" valign="middle">0xF00<i>x</i><br>
           </td>
-          <td valign="middle">Number of commands sent to the FPGA that
-            were acknowledged after <i>x</i> retries, where <i>x</i>
-            ranges from 0 to 4, inclusive.&nbsp; Typically configured
-            with SCAN="10 second". </td>
+          <td align="left" valign="middle">Number of commands sent to
+            the FPGA that were acknowledged after <i>x</i> retries,
+            where <i>x</i> ranges from 0 to 4, inclusive.&nbsp;
+            Typically configured with SCAN="10 second". </td>
         </tr>
         <tr>
-          <td style="text-align: center;"><span style="font-style:
-              italic;"><span style="font-style: italic;"></span></span>CmdFailedCount<span
+          <td style="text-align: center;" align="center" valign="middle"><span
+              style="font-style: italic;"><span style="font-style:
+                italic;"></span></span>CmdFailedCount<span
               style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: center;">0xF005<span style="font-style:
-              italic;"></span><br>
+          <td style="text-align: center;" align="center" valign="middle">0xF005<span
+              style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: left;">Number of commands sent to the
-            FPGA that were never acknowledged.&nbsp; Typically
-            configured with SCAN="10 second". </td>
+          <td style="text-align: left;" align="left" valign="middle">Number
+            of commands sent to the FPGA that were never
+            acknowledged.&nbsp; Typically configured with SCAN="10
+            second". </td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">SeqMissedCount<br>
+          </td>
+          <td align="center" valign="middle">0xF006<span
+              style="font-style: italic;"></span></td>
+          <td align="left" valign="middle">Number of sequence status
+            monitoring packets dropped.<br>
+          </td>
         </tr>
       </tbody>
     </table>
