@@ -910,7 +910,7 @@ x 155
 y 47
 w 20
 h 60
-controlPv "$(P)$(R)SEQ:status"
+controlPv "$(P)$(R)E1:seqStatus"
 lineColor index 14
 onColor index 15
 offColor index 3
@@ -928,13 +928,12 @@ x 184
 y 47
 w 20
 h 60
-controlPv "$(P)$(R)SEQ:status"
+controlPv "$(P)$(R)E2:seqStatus"
 lineColor index 14
 onColor index 15
 offColor index 3
 lineWidth 2
 numBits 4
-shift 4
 endObjectProperties
 
 # (Static Text)
