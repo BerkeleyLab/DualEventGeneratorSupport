@@ -633,7 +633,7 @@ subscriberThread(void *arg)
                                               pasynUser, pk.sequencerStatus[i]);
             }
             if (status == asynSuccess) {
-                int diff;
+                int missed;
                 if (subscriptionAttempt) {
                     subscriptionAttempt = 0;
                     whenSubscribed = now;
@@ -642,9 +642,9 @@ subscriberThread(void *arg)
                     pdpvt->seqLink.isCommunicating = 1;
                     pkNumber = pk.pkNumber - 1;
                 }
-                diff = (pk.pkNumber - pkNumber) - 1;
-                if (diff > 0) {
-                    pdpvt->seqMissedCount += diff;
+                missed = (pk.pkNumber - pkNumber) - 1;
+                if (missed > 0) {
+                    pdpvt->seqMissedCount += missed;
                 }
                 pkNumber = pk.pkNumber;
             }
