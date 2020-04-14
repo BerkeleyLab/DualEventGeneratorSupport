@@ -1192,52 +1192,11 @@ major 4
 minor 0
 release 0
 x 306
-y 166
+y 170
 w 110
-h 16
+h 36
 
 beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 306
-y 166
-w 90
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "PPS Valid"
-}
-endObjectProperties
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 402
-y 166
-w 14
-h 14
-controlPv "$(P)$(R)TOD:PPSvalid"
-lineColor index 14
-onColor index 15
-offColor index 3
-numBits 1
-endObjectProperties
-
-endGroup
-
-endObjectProperties
 
 # (Group)
 object activeGroupClass
@@ -1246,7 +1205,7 @@ major 4
 minor 0
 release 0
 x 306
-y 186
+y 190
 w 110
 h 16
 
@@ -1259,7 +1218,7 @@ major 4
 minor 1
 release 1
 x 306
-y 186
+y 190
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1279,7 +1238,7 @@ major 4
 minor 0
 release 0
 x 402
-y 186
+y 190
 w 14
 h 14
 controlPv "$(P)$(R)INJ:injCycleAlign"
@@ -1288,6 +1247,64 @@ onColor index 15
 offColor index 3
 numBits 1
 shift 15
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 306
+y 170
+w 110
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 306
+y 170
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "PPS Valid"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 402
+y 170
+w 14
+h 14
+controlPv "$(P)$(R)TOD:PPSvalid"
+lineColor index 14
+onColor index 15
+offColor index 3
+numBits 1
+endObjectProperties
+
+endGroup
+
 endObjectProperties
 
 endGroup
