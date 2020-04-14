@@ -562,20 +562,20 @@ subscriberThread(void *arg)
     drvPvt *pdpvt = (drvPvt *)arg;
     asynStatus status;
     size_t ntrans;
-    epicsUInt32 magic = EVG_PROTOCOL_MAGIC;
-    epicsUInt32 seqno = 0;
+    epicsUInt32 pkNumber = 0;
+    int subscriptionAttempt;
     epicsTimeStamp now, whenSubscribed;
-    int firstTime;
     asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
     extern volatile int interruptAccept;
 
-    while (!interruptAccept) epicsThreadSleep(2.0);
+    while (!interruptAccept) epicsThreadSleep(1.0);
     if (!findSequencerStatusInterrupts(pdpvt, interrupts)) {
         errlogPrintf("==== FATAL ==== Can't find sequencer status records\n");
         return;
     }
     for (;;) {
         pdpvt->seqLink.isCommunicating = 0;
+        subscriptionAttempt = 0;
         for (;;) {
             if (shutdown) return;
             status = pasynCommonSyncIO->connectDevice(
@@ -590,19 +590,16 @@ subscriberThread(void *arg)
                                   pdpvt->seqLink.pasynUserCommon->errorMessage);
             epicsThreadSleep(10.0);
         }
-        firstTime = 1;
         for (;;) {
             struct evgStatusPacket pk;
-            int expectReply = 0;
             int eomReason;
             int i;
-
             if (shutdown) return;
             epicsTimeGetCurrent(&now);
-            if (firstTime
+            if (!pdpvt->seqLink.isCommunicating
              || (epicsTimeDiffInSeconds(&now, &whenSubscribed) >=
                                         SEQUENCER_STATUS_RESUBSCRIBE_SECONDS)) {
-                whenSubscribed = now;
+                epicsUInt32 magic = EVG_PROTOCOL_MAGIC;
                 status = pasynOctetSyncIO->write(pdpvt->seqLink.pasynUserOctet,
                                                            (const char *)&magic,
                                                            sizeof(magic),
@@ -614,22 +611,19 @@ subscriberThread(void *arg)
                                    pdpvt->seqLink.portName,
                                    pdpvt->seqLink.pasynUserOctet->errorMessage);
                 }
-                expectReply = 1;
+                subscriptionAttempt++;
             }
             status = pasynOctetSyncIO->read(pdpvt->seqLink.pasynUserOctet,
-                                           (char *)&pk,
-                                           sizeof(pk),
-                                           SEQUENCER_STATUS_RESUBSCRIBE_SECONDS,
-                                           &ntrans,
-                                           &eomReason);
+               (char *)&pk, sizeof(pk),
+               subscriptionAttempt ? 0.5 : SEQUENCER_STATUS_RESUBSCRIBE_SECONDS,
+               &ntrans, &eomReason);
             if ((status == asynSuccess)
              && ((ntrans != sizeof(pk)) || (pk.magic != EVG_PROTOCOL_MAGIC))) {
                 continue;
             }
-            if ((status == asynTimeout) && !expectReply) {
+            if ((status == asynTimeout) && (subscriptionAttempt < 2)) {
                 continue;
             }
-            epicsTimeGetCurrent(&now);
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 asynInt32Interrupt *int32Interrupt = interrupts[i];
                 asynUser *pasynUser = int32Interrupt->pasynUser;
@@ -639,13 +633,20 @@ subscriberThread(void *arg)
                                               pasynUser, pk.sequencerStatus[i]);
             }
             if (status == asynSuccess) {
-                pdpvt->seqLink.isCommunicating = 1;
-                if (firstTime) {
-                    seqno = pk.pkNumber - 1;
-                    firstTime = 0;
+                int diff;
+                if (subscriptionAttempt) {
+                    subscriptionAttempt = 0;
+                    whenSubscribed = now;
                 }
-                pdpvt->seqMissedCount += (pk.pkNumber - seqno) - 1;
-                seqno = pk.pkNumber;
+                if (!pdpvt->seqLink.isCommunicating) {
+                    pdpvt->seqLink.isCommunicating = 1;
+                    pkNumber = pk.pkNumber - 1;
+                }
+                diff = (pk.pkNumber - pkNumber) - 1;
+                if (diff > 0) {
+                    pdpvt->seqMissedCount += diff;
+                }
+                pkNumber = pk.pkNumber;
             }
             else {
                 asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
