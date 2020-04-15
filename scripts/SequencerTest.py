@@ -81,19 +81,22 @@ args = parser.parse_args()
 pattern0 = parseSequence(args.seq0)
 pattern1 = parseSequence(args.seq1)
 
+seqStatus = epics.PV(args.prefix + 'E%d:seqStatus' % (args.evg))
 seq0 = epics.PV(args.prefix + "E%d:SEQ0" % (args.evg))
 seq0enable = epics.PV(args.prefix + "E%d:SEQ0:enable" % (args.evg))
 if args.evg == 1:
     seq1 = epics.PV(args.prefix + "E%d:SEQ1" % (args.evg))
     seq1enable = epics.PV(args.prefix + "E%d:SEQ1:enable" % (args.evg))
     seq1enable.put(0, wait=True)
+    while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq1.put(pattern1, wait=True)
 else:
     swapoutTrigger = epics.PV(args.prefix + "swapoutTrigger")
 seq0enable.put(0, wait=True)
+while (seqStatus.get() & 0x8): time.sleep(0.1)
 seq0.put(pattern0, wait=True)
 seq0enable.put(1, wait=True)
-seqStatus = epics.PV(args.prefix + 'E%d:seqStatus' % (args.evg), callback=seqStatusCallback)
+seqStatus.add_callback(seqStatusCallback)
 
 if args.cycles > 0:
     awaitSequenceCompletion()
