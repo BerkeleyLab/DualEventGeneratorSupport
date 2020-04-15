@@ -91,7 +91,6 @@ seq0enable.put(0, wait=True)
 seq0.put(pattern0, wait=True)
 seq0enable.put(1, wait=True)
 seqStatus = epics.PV(args.prefix + 'E%d:seqStatus' % (args.evg), callback=seqStatusCallback)
-seqStatus.get()
 
 while args.cycles > 0:
     if args.evg == 1:
