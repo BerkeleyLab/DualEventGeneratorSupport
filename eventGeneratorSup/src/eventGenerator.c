@@ -77,6 +77,7 @@ typedef struct drvPvt {
      */
     unsigned long   commandCount[COMMAND_RETRY_LIMIT+1];
     unsigned long   commandFailedCount;
+    unsigned long   seqConnectCount;
     unsigned long   seqMissedCount;
 } drvPvt;
 
@@ -352,6 +353,8 @@ int32Read(void *pvt, asynUser *pasynUser, epicsInt32 *value)
                 *value = pdpvt->commandCount[idx];
             else if (idx == (COMMAND_RETRY_LIMIT + 1))
                 *value = pdpvt->commandFailedCount;
+            else if (idx == (COMMAND_RETRY_LIMIT + 2))
+                *value = pdpvt->seqConnectCount;
             else
                 *value = pdpvt->seqMissedCount;
             break;
@@ -582,6 +585,7 @@ subscriberThread(void *arg)
                                                 pdpvt->seqLink.pasynUserCommon);
             if (status == asynSuccess)
                 break;
+            if (shutdown) return;
             asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
                     "%s: Can't connect device: %s.  "
                     "This may be the result of an IOC shutdown, a network "
@@ -641,6 +645,7 @@ subscriberThread(void *arg)
                 if (!pdpvt->seqLink.isCommunicating) {
                     pdpvt->seqLink.isCommunicating = 1;
                     pkNumber = pk.pkNumber - 1;
+                    pdpvt->seqConnectCount++;
                 }
                 missed = (pk.pkNumber - pkNumber) - 1;
                 if (missed > 0) {
