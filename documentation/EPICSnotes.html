@@ -34,6 +34,7 @@
 
 
 
+
       Only the portion of the record name following these macros is
       shown in the following tables </p>
     <h2>Sequence Waveform Records<br>
@@ -82,6 +83,7 @@
 
 
 
+
             generator 1, sequence 0.&nbsp; This is the default injector
             sequence.<br>
           </td>
@@ -90,6 +92,7 @@
           <td style="text-align: center;" align="center">E1:SEQ1</td>
           <td style="text-align: center;" align="center">0x3001</td>
           <td style="text-align: left;" align="left" valign="middle">Event
+
 
 
 
@@ -170,6 +173,7 @@
 
 
 
+
             of the update on reconnect mechanism.&nbsp; Clears the FPGA
             'power up' status.<br>
           </td>
@@ -181,6 +185,7 @@
           <td style="text-align: center;" align="center" valign="middle">longout<br>
           </td>
           <td style="text-align: left;" align="left" valign="middle">Generate
+
 
 
 
@@ -213,6 +218,7 @@
           <td style="text-align: center;" align="center" valign="middle">longout<br>
           </td>
           <td style="text-align: left;" align="left" valign="middle">Writing,
+
 
 
 
@@ -275,6 +281,7 @@
 
 
 
+
       where <span style="font-style: italic;"></span> $(PORT) expands
       to the port name in the eventGeneratorConfigure command and <span
         style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3.</p>
@@ -288,8 +295,10 @@
 
 
 
+
       <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3,
       sets the event code to be emitted.&nbsp; The second, with name "E<i>e</i>:SW:<i>c</i>:trig"
+
 
 
 
@@ -320,10 +329,12 @@
 
 
 
+
     where <span style="font-style: italic;"></span> $(PORT) expands to
     the port name in the eventGeneratorConfigure command and <span
       style="font-style: italic;">xxx</span> is a numeric value&nbsp; as
     described in the following table.<span style="font-style: italic;"></span>&nbsp;
+
 
 
 
@@ -684,18 +695,37 @@
           </td>
           <td style="text-align: left;" align="left" valign="middle">Number
 
+
             of commands sent to the FPGA that were never
             acknowledged.&nbsp; Typically configured with SCAN="10
             second". </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">SeqMissedCount<br>
+          <td align="center" valign="middle">SeqConnectCount<br>
           </td>
           <td align="center" valign="middle">0xF006<span
               style="font-style: italic;"></span></td>
           <td align="left" valign="middle">Number of sequence status
-            monitoring packets dropped.<br>
+            subscription successes.<br>
           </td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle"><span style="caret-color:
+              rgba(0, 0, 0, 0.870588); color: rgba(0, 0, 0, 0.870588);
+              font-family: &quot;Source Sans Pro&quot;, sans-serif;
+              font-size: 16px; font-style: normal; font-variant-caps:
+              normal; font-weight: normal; letter-spacing: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-size-adjust: auto;
+              -webkit-text-stroke-width: 0px; background-color: rgb(251,
+              239, 231); text-decoration: none; display: inline
+              !important; float: none;"><span
+                class="Apple-converted-space"></span></span>SeqMissedCount</td>
+          <td align="center" valign="middle">0xF007<span
+              style="font-style: italic;"></span></td>
+          <td align="left" valign="middle">Number of sequence status
+            monitoring packets dropped.</td>
         </tr>
       </tbody>
     </table>
