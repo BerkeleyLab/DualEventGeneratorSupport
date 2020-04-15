@@ -12,6 +12,7 @@ import time
 
 oldSequenceNumber = None
 seqDone = False
+seqCount = [0, 0]
 def seqStatusCallback(pvname=None, value=None, **kws):
     global oldSequenceNumber, seqDone
     isActive = value & 0x8
@@ -24,6 +25,8 @@ def seqStatusCallback(pvname=None, value=None, **kws):
         print('Missed %d' % (diff - 1), file=sys.stderr)
         sys.exit(2)
     if (diff == 1) and (isActive == 0):
+        global seqCount
+        seqCount[(value & 0x4) >> 2] += 1
         oldSequenceNumber = sequenceNumber
         seqDone = True
 
@@ -31,7 +34,7 @@ def awaitSequenceCompletion():
     global seqDone
     then = time.time()
     while not seqDone:
-        if (time.time() - then) > 2.5:
+        if (time.time() - then) > 3.5:
             print('Timed out waiting for sequence completion.', file=sys.stderr)
             sys.exit(3)
         time.sleep(0.03)
@@ -92,13 +95,19 @@ seq0.put(pattern0, wait=True)
 seq0enable.put(1, wait=True)
 seqStatus = epics.PV(args.prefix + 'E%d:seqStatus' % (args.evg), callback=seqStatusCallback)
 
-while args.cycles > 0:
-    if args.evg == 1:
-        awaitSequenceCompletion()
-        seq1enable.put(1)
-    else:
-        time.sleep(1.0)
-        swapoutTrigger.put(args.swapout, wait=True)
-        awaitSequenceCompletion()
-    args.cycles -= 1
+if args.cycles > 0:
+    awaitSequenceCompletion()
+    seq0Count = seqCount[0]
+    while args.cycles > 0:
+        if args.evg == 1:
+            seq1enable.put(1)
+            awaitSequenceCompletion()
+            if seqCount[0] != seq0Count:
+                print("Missed sequence!", file=sys.stderr)
+                seq0Count = seqCount[0]
+        else:
+            time.sleep(1.0)
+            swapoutTrigger.put(args.swapout, wait=True)
+            awaitSequenceCompletion()
+        args.cycles -= 1
 sys.exit(0)
