@@ -78,6 +78,7 @@ typedef struct drvPvt {
     unsigned long   commandCount[COMMAND_RETRY_LIMIT+1];
     unsigned long   commandFailedCount;
     unsigned long   seqConnectCount;
+    unsigned long   seqReceivedCount;
     unsigned long   seqMissedCount;
 } drvPvt;
 
@@ -349,14 +350,25 @@ int32Read(void *pvt, asynUser *pasynUser, epicsInt32 *value)
 
     case A_HI_IOC:
         if (alo == A_IOC_LO_STATISTICS) {
-            if (idx <= COMMAND_RETRY_LIMIT)
-                *value = pdpvt->commandCount[idx];
-            else if (idx == (COMMAND_RETRY_LIMIT + 1))
+            switch (idx) {
+            default:
+                if (idx <= COMMAND_RETRY_LIMIT) {
+                    *value = pdpvt->commandCount[idx];
+                }
+                break;
+            case COMMAND_RETRY_LIMIT + 1:
                 *value = pdpvt->commandFailedCount;
-            else if (idx == (COMMAND_RETRY_LIMIT + 2))
+                break;
+            case COMMAND_RETRY_LIMIT + 2:
                 *value = pdpvt->seqConnectCount;
-            else
+                break;
+            case COMMAND_RETRY_LIMIT + 3:
+                *value = pdpvt->seqReceivedCount;
+                break;
+            case COMMAND_RETRY_LIMIT + 4:
                 *value = pdpvt->seqMissedCount;
+                break;
+            }
             break;
         }
         /* Fall through to default case */
@@ -651,6 +663,7 @@ subscriberThread(void *arg)
                 if (missed > 0) {
                     pdpvt->seqMissedCount += missed;
                 }
+                pdpvt->seqReceivedCount++;
                 pkNumber = pk.pkNumber;
             }
             else {

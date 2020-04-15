@@ -99,7 +99,7 @@ seq0enable.put(1, wait=True)
 seqStatus.add_callback(seqStatusCallback)
 
 if args.cycles > 0:
-    awaitSequenceCompletion()
+    while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq0Count = seqCount[0]
     while args.cycles > 0:
         if args.evg == 1:
