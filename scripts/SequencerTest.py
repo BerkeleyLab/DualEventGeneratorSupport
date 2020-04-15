@@ -10,17 +10,22 @@ import epics
 import sys
 import time
 
-oldStatus = None
+oldSequenceNumber = None
 seqDone = False
 def seqStatusCallback(pvname=None, value=None, **kws):
-    global oldStatus, seqDone
-    if (oldStatus != None):
-        if (value & 0x8) != 0 and (oldStatus & 0x8) == 0 and seqDone:
-            print('Overrun', file=sys.stderr)
-            sys.exit(2)
-        if (value & 0x8) == 0 and (oldStatus & 0x8) != 0:
-            seqDone = True
-    oldStatus = value
+    global oldSequenceNumber, seqDone
+    isActive = value & 0x8
+    sequenceNumber = (value >> 8) & 0xFF
+    if oldSequenceNumber == None:
+        oldSequenceNumber = sequenceNumber
+        return
+    diff = (sequenceNumber - oldSequenceNumber) & 0xFF
+    if diff > 1:
+        print('Missed %d' % (diff - 1), file=sys.stderr)
+        sys.exit(2)
+    if (diff == 1) and (isActive == 0):
+        oldSequenceNumber = sequenceNumber
+        seqDone = True
 
 def awaitSequenceCompletion():
     global seqDone
