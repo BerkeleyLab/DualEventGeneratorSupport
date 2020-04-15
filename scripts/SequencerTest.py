@@ -11,18 +11,16 @@ import sys
 import time
 
 oldStatus = None
-mask = None
 seqDone = False
 def seqStatusCallback(pvname=None, value=None, **kws):
-    global mask, oldStatus, seqDone
-    status = value & mask
+    global oldStatus, seqDone
     if (oldStatus != None):
-        if status != 0 and oldStatus == 0 and seqDone:
+        if (value & 0x8) != 0 and (oldStatus & 0x8) == 0 and seqDone:
             print('Overrun', file=sys.stderr)
             sys.exit(2)
-        if status == 0 and oldStatus != 0:
+        if (value & 0x8) == 0 and (oldStatus & 0x8) != 0:
             seqDone = True
-    oldStatus = status
+    oldStatus = value
 
 def awaitSequenceCompletion():
     global seqDone
@@ -74,7 +72,6 @@ args = parser.parse_args()
 
 pattern0 = parseSequence(args.seq0)
 pattern1 = parseSequence(args.seq1)
-mask = (1 << 3) if args.evg == 1 else (1 << 7)
 
 seq0 = epics.PV(args.prefix + "E%d:SEQ0" % (args.evg))
 seq0enable = epics.PV(args.prefix + "E%d:SEQ0:enable" % (args.evg))
@@ -88,7 +85,7 @@ else:
 seq0enable.put(0, wait=True)
 seq0.put(pattern0, wait=True)
 seq0enable.put(1, wait=True)
-seqStatus = epics.PV(args.prefix + 'SEQ:status', callback=seqStatusCallback)
+seqStatus = epics.PV(args.prefix + 'E%d:seqStatus' % (args.evg), callback=seqStatusCallback)
 seqStatus.get()
 
 while args.cycles > 0:
