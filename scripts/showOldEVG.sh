@@ -9,4 +9,5 @@ camonitor -tsi -g9 -#6 \
     "LI11:EVG1-SoftSeq:0:Commit-Cmd" \
     "LI11:EVG1-SoftSeq:0:LoadedSeq-RB" \
     "LI11:EVG1-SoftSeq:1:Enable-Cmd" \
-    "LI11:EVG1-SoftSeq:1:Disable-Cmd"
+    "LI11:EVG1-SoftSeq:1:Disable-Cmd" \
+    "TimInjReq"
