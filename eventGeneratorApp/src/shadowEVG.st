@@ -11,7 +11,7 @@ option +s; /* Safe mode */
                            pvPut(statusMsg)
 #define DIAGNOSTIC(...) if (debugLevel > 0) printf(__VA_ARGS__)
 
-#define SEQUENCE_CAPACITY       2048
+#define SEQUENCE_CAPACITY       1024
 #define EVENT_CODE_TERMINATOR   127
 #define EVENT_CODE_FINAL        100
 
