@@ -92,7 +92,7 @@ file "perSysmonLI.template"
 { pattern
 {     P     R,    PORT,          NAME,             A,               DESC }
  { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x210D, "Injection sequence request status" }
- { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign", 0x220D, "Injection sequence alignment status" }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x220D, "Injection sequence alignment status" }
 }
 
 file "perSysmonBI.template"
