@@ -92,10 +92,10 @@ if args.evg == 1:
     seq1.put(pattern1, wait=True)
 else:
     swapoutTrigger = epics.PV(args.prefix + "swapoutTrigger")
-seq0enable.put(0, wait=True)
-while (seqStatus.get() & 0x8): time.sleep(0.1)
-seq0.put(pattern0, wait=True)
-seq0enable.put(1, wait=True)
+    seq0enable.put(0, wait=True)
+    while (seqStatus.get() & 0x8): time.sleep(0.1)
+    seq0.put(pattern0, wait=True)
+    seq0enable.put(1, wait=True)
 seqStatus.add_callback(seqStatusCallback)
 
 if args.cycles > 0:
