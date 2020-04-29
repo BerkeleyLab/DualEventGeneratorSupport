@@ -76,15 +76,15 @@ file "perSysmonAI.template"
  { \$(P),\$(R),\$(PORT),   "E2:SFP:temp", 0x2305,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP temperature" }
  { \$(P),\$(R),\$(PORT),    "E2:SFP:Vcc", 0x2205,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP supply voltage" }
  { \$(P),\$(R),\$(PORT),"E2:SFP:txPower", 0x2106,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 SFP transmitter power" }
- { \$(P),\$(R),\$(PORT),   "E1:refCoinc", 0x2307, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 refClk" }
- { \$(P),\$(R),\$(PORT),  "E1:refJitter", 0x2207,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 refClk" }
- { \$(P),\$(R),\$(PORT),    "E1:txCoinc", 0x2308, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 txClk" }
- { \$(P),\$(R),\$(PORT),   "E1:txJitter", 0x2208,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 txClk" }
+ { \$(P),\$(R),\$(PORT),   "E1:refCoinc", 0x2307, "counts",                1.0,      0,    4,    0,  1000,      0,      0,      0,      0, MINOR, MINOR, MINOR, MINOR, "EVG 2 measurement of EVG1 refClk" }
+ { \$(P),\$(R),\$(PORT),  "E1:refJitter", 0x2207,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG1 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E1:txCoinc", 0x2308, "counts",                1.0,      0,    4,    0,  1000,      0,      0,      0,      0, MINOR, MINOR, MINOR, MINOR, "EVG 2 measurement of EVG1 txClk" }
+ { \$(P),\$(R),\$(PORT),   "E1:txJitter", 0x2208,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG1 txClk" }
  { \$(P),\$(R),\$(PORT),  "E1:frequency", 0x2009,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
- { \$(P),\$(R),\$(PORT),   "E2:refCoinc", 0x230A, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),  "E2:refJitter", 0x220A,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),    "E2:txCoinc", 0x230B, "counts",                1.0,      0,    4,    0,  1000,     -1,     -1,   1000,   1000, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 txClk" }
- { \$(P),\$(R),\$(PORT),   "E2:txJitter", 0x220B,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG 1 txClk" }
+ { \$(P),\$(R),\$(PORT),   "E2:refCoinc", 0x230A, "counts",                1.0,      0,    4,    0,  1000,      0,      0,      0,      0, MINOR, MINOR, MINOR, MINOR, "EVG 1 measurement of EVG2 refClk" }
+ { \$(P),\$(R),\$(PORT),  "E2:refJitter", 0x220A,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E2:txCoinc", 0x230B, "counts",                1.0,      0,    4,    0,  1000,      0,      0,      0,      0, MINOR, MINOR, MINOR, MINOR, "EVG 1 measurement of EVG2 txClk" }
+ { \$(P),\$(R),\$(PORT),   "E2:txJitter", 0x220B,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 txClk" }
  { \$(P),\$(R),\$(PORT),  "E2:frequency", 0x200C,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
 }
 
