@@ -4,4 +4,20 @@ record(longin, "$(P)$(R)E$(E):seqStatus") {
     field(INP,  "@asyn($(PORT), 0x010$(I), 1)")
     field(SCAN, "I/O Intr")
     field(TSE,  "-2")
+    field(FLNK, "$(P)$(R)E$(E):startCount")
+}
+record(calc, "$(P)$(R)E$(E):startCount") {
+    field(DESC, "EVG $(E) sequences started")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "8")
+    field(CALC, "J:=(A&B)#0;VAL+(J&!K);K:=J")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    field(FLNK, "$(P)$(R)E$(E):doneCount")
+}
+record(calc, "$(P)$(R)E$(E):doneCount") {
+    field(DESC, "EVG $(E) sequences completed")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "8")
+    field(CALC, "J:=(A&B)#0;VAL+(!J&K);K:=J")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
 }
