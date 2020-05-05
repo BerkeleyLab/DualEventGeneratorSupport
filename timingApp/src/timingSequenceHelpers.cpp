@@ -1,0 +1,96 @@
+#include "timingSequenceHelpers.h"
+#include "timingSequenceDefs.h"
+#include <stdio.h>
+
+/*******************************
+ * Function Implementations
+ */
+
+extern double psReadyDelay;
+
+extern "C" {
+
+void initArrays(int syncDelays[]) {
+	unsigned int i;
+	int tstamp = 0;
+
+	//printf("in initArrays(%ld, %ld, %g)\n", injFieldSyncDelay, extrFieldSyncDelay, psReadyDelay);
+
+	for (i = 0; i < NUM_EVTCODES; ++i) {
+		if (i == GTBCCD_EVTCODE) {
+			tstamp = DELAY_GUNON;
+		} else if (i == INJFIELD_MIN_EVTCODE) {
+			tstamp = syncDelays[INJ_SYNCDELAY_INDEX];
+		} else if (i == EXTRFIELD_MIN_EVTCODE) {
+			tstamp = syncDelays[EXTR_SYNCDELAY_INDEX];
+		} else if (i == PSREADY_EVTCODE) {
+			tstamp = DELAY_END;
+		} else if (i >= SEQUENCE_END_EVTCODE) {
+			tstamp = DELAY_END + syncDelays[PSREADY_SYNCDELAY_INDEX];
+		} else if (i > 10) {
+			tstamp += 1;
+		}
+		all_evtcode_tstamps[i] = tstamp;
+	}
+}
+
+void quickSort(unsigned char * evtcodes, int * tstamps, int left, int right) {
+	int i = left, j = right;
+	//int k;
+	int t;
+	unsigned char e;
+	int pivot = tstamps[(left+right)/2];
+
+	//printf("quickSort(evtcodes, tstamps, %ld, %ld)\n", left, right);
+	//for (k = left; k <= right; ++k) {
+//		printf("%g ", tstamps[k]);
+//	}
+	//printf("\n");
+	
+	// partition
+	while (i <= j) {
+		while (tstamps[i] < pivot)
+			++i;
+		while (tstamps[j] > pivot)
+			--j;
+		if (i <= j) {
+			//printf("swapping %ld and %ld\n", i, j);
+			t = tstamps[i];
+			tstamps[i] = tstamps[j];
+			tstamps[j] = t;
+			e = evtcodes[i];
+			evtcodes[i] = evtcodes[j];
+			evtcodes[j] = e;
+			++i;
+			--j;
+		}
+	}
+
+	// recursion
+	if (left < j) {
+		//printf("quickSort: recursing left=%ld, j=%ld\n", left, j);
+		quickSort(evtcodes, tstamps, left, j);
+	}
+	if (i < right) {
+		//printf("quickSort: recursing i=%ld, right=%ld\n", i, right);
+		quickSort(evtcodes, tstamps, i, right);
+	}
+
+	//printf("quickSort(evtcodes, tstamps, %ld, %ld): done\n", left, right);
+}
+
+void uniqueTimestamps(int * tstamps, int count) {
+	int i;
+	for (i = 0; i < count-1; ++i) {
+		if (tstamps[i] >= tstamps[i+1]) {
+			tstamps[i+1] = tstamps[i]+1.0;
+		}
+	}
+}
+
+int getTargetBucketDelay(int targetBucket) {
+	return (125 * ((21 * targetBucket) % 328)) / 4;
+}
+
+} // extern "C"
+
