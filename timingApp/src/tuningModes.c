@@ -50,10 +50,10 @@ int getTimestamp(unsigned char evtcode, int *syncDelays, int nBunches, int gunBu
     case 70: return syncDelays[EXTR_SYNCDELAY_INDEX] + getTargetBucketDelay(targetBucket) + 1 + 2500000;
     case 100: return DELAY_END + 0;
     case 127: return DELAY_END + 1;
-	default:
-		printf("Invalid event code %d passed to getTimestamp; returning -1\n", evtcode);
-		return -1;
-	}
+    default:
+        printf("Invalid event code %d passed to getTimestamp; returning -1\n", evtcode);
+        return -1;
+    }
 }
 
 unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
