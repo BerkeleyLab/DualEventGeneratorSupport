@@ -3,7 +3,6 @@ record(longin, "$(P)$(R)E$(E):seqStatus") {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0x010$(I), 1)")
     field(SCAN, "I/O Intr")
-    field(TSE,  "-2")
     field(FLNK, "$(P)$(R)E$(E):INJ:starts")
 }
 record(calc, "$(P)$(R)E$(E):INJ:starts") {
