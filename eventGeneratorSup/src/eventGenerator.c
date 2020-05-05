@@ -644,7 +644,6 @@ subscriberThread(void *arg)
                 asynInt32Interrupt *int32Interrupt = interrupts[i];
                 asynUser *pasynUser = int32Interrupt->pasynUser;
                 pasynUser->auxStatus = status;
-                pasynUser->timestamp = now;
                 int32Interrupt->callback(int32Interrupt->userPvt,
                                               pasynUser, pk.sequencerStatus[i]);
             }
