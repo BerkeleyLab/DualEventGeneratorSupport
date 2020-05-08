@@ -29,7 +29,7 @@
 // Delays used in calculating evt code timestamps
 // Units are approx. 8 nsec ticks
 #define DELAY_GUNON           10000
-#define DELAY_END             168740000
+#define DELAY_END             120000000
 
 // Indexes into the syncDelays array
 #define INJ_SYNCDELAY_INDEX     0
