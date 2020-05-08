@@ -17,6 +17,7 @@ record(calc, "$(P)$(R)E$(E):INJ:finishes") {
     field(DESC, "EVG $(E) injection sequences completed")
     field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
     field(INPB, "0x10")
-    field(CALC, "J:=(A&B)#0;VAL+(!J&K);K:=J")
+    field(INPC, "$(P)$(R)E$(E):INJ:starts NPP MS") {
+    field(CALC, "J:=(A&B)#0;(!J&K)?C:VAL;K:=J")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
 }
