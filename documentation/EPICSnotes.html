@@ -25,18 +25,18 @@
     remains enabled after being emitted.<br>
     <br>
     The first event generator, EVG1, drives the ALS injector.&nbsp;
-    Sequences are normally triggered by an oscillator running at the
+    Sequences are normally triggered by an FPGA clock running at the
     injection rate of approximately 0,7 Hz but can also be manually
-    triggered when this oscillator is disabled.&nbsp; The first sequence
+    triggered when this clock is disabled.&nbsp; The first sequence
     pattern memory, SEQ0, contains the default event sequence.&nbsp;
     This event sequence triggers the booster ramp power supplies but
     does not trigger the electron gun, linac, or other injection and
     extraction components.&nbsp; Since this sequence remains enabled
     after being emitted it is produced continuously, without IOC
-    intervention, as long as the trigger oscillator is enabled.&nbsp;
-    The timing IOC requests an actual injection cycle by writing the
-    desired event sequence to the second sequence pattern memory, SEQ1,
-    and then enabling that sequence.&nbsp; The FPGA provides <a
+    intervention, as long as the trigger clock is enabled.&nbsp; The
+    timing IOC requests an actual injection cycle by writing the desired
+    event sequence to the second sequence pattern memory, SEQ1, and then
+    enabling that sequence.&nbsp; The FPGA provides <a
       href="#SequencerStatus">status information</a> to allow the timing
     IOC to remain synchronized with the event sequences.<br>
     <br>
@@ -50,6 +50,10 @@
       comes with a database containing all the following records and EDM
       screens to display them.&nbsp; All record names begin with the
       macros <span style="font-family: monospace;">$(P)$(R)</span>.&nbsp;
+
+
+
+
 
 
 
@@ -105,7 +109,11 @@
           </td>
           <td style="text-align: center;" align="center">0x3000<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Event
+          <td style="text-align: left;" valign="middle" align="left">Event
+
+
+
+
 
 
 
@@ -123,7 +131,11 @@
         <tr>
           <td style="text-align: center;" align="center">E1:SEQ1</td>
           <td style="text-align: center;" align="center">0x3001</td>
-          <td style="text-align: left;" align="left" valign="middle">Event
+          <td style="text-align: left;" valign="middle" align="left">Event
+
+
+
+
 
 
 
@@ -140,18 +152,18 @@
           </td>
         </tr>
         <tr>
-          <td align="center" valign="top">E2:SEQ0</td>
-          <td align="center" valign="top">0x3002<br>
+          <td valign="top" align="center">E2:SEQ0</td>
+          <td valign="top" align="center">0x3002<br>
           </td>
-          <td align="left" valign="middle">Event generator 2, sequence
+          <td valign="middle" align="left">Event generator 2, sequence
             0.&nbsp; This is the sequence used for AR/SR swapout.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="top">E2:SEQ1</td>
-          <td align="center" valign="top">0x3003<br>
+          <td valign="top" align="center">E2:SEQ1</td>
+          <td valign="top" align="center">0x3003<br>
           </td>
-          <td align="left" valign="middle">Event generator 2, sequence
+          <td valign="middle" align="left">Event generator 2, sequence
             1.&nbsp; This sequence is not normally used.<br>
           </td>
         </tr>
@@ -191,13 +203,17 @@
           </th>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle">clrPowerup_<br>
+          <td style="text-align: center;" valign="middle" align="center">clrPowerup_<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0x1000<br>
+          <td style="text-align: center;" valign="middle" align="center">0x1000<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">longout<br>
+          <td style="text-align: center;" valign="middle" align="center">longout<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Part
+          <td style="text-align: left;" valign="middle" align="left">Part
+
+
+
+
 
 
 
@@ -213,12 +229,16 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle">softTrigger</td>
-          <td style="text-align: center;" align="center" valign="middle">0x1001<br>
+          <td style="text-align: center;" valign="middle" align="center">softTrigger</td>
+          <td style="text-align: center;" valign="middle" align="center">0x1001<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">longout<br>
+          <td style="text-align: center;" valign="middle" align="center">longout<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Generate
+          <td style="text-align: left;" valign="middle" align="left">Generate
+
+
+
+
 
 
 
@@ -233,26 +253,30 @@
             Value written is unimportant. </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">INJ:singleShot<br>
+          <td valign="middle" align="center">INJ:singleShot<br>
           </td>
-          <td align="center" valign="middle">0x1003<br>
+          <td valign="middle" align="center">0x1003<br>
           </td>
-          <td align="center" valign="middle">longout<br>
+          <td valign="middle" align="center">longout<br>
           </td>
-          <td align="left" valign="middle">Generate an injection cycle
+          <td valign="middle" align="left">Generate an injection cycle
             request when processed.&nbsp; Value written is
             unimportant.&nbsp; Effective only when repetitive injection
             cycle requests (see below) are disabled.<br>
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle">reboot<br>
+          <td style="text-align: center;" valign="middle" align="center">reboot<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0x1F00<br>
+          <td style="text-align: center;" valign="middle" align="center">0x1F00<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">longout<br>
+          <td style="text-align: center;" valign="middle" align="center">longout<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Writing,
+          <td style="text-align: left;" valign="middle" align="left">Writing,
+
+
+
+
 
 
 
@@ -267,36 +291,36 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle">INJ:injCycleEnable<br>
+          <td style="text-align: center;" valign="middle" align="center">INJ:injCycleEnable<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0x1F01<br>
+          <td style="text-align: center;" valign="middle" align="center">0x1F01<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">bo<br>
+          <td style="text-align: center;" valign="middle" align="center">bo<br>
           </td>
           <td style="vertical-align: middle; text-align: left;"
-            align="left" valign="middle">Enable/Disable (1/0) injection
+            valign="middle" align="left">Enable/Disable (1/0) injection
             cycle start requests.&nbsp; These requests initiate event
             generator 1 sequence 1 if enabled, otherwise event generator
             1 sequence 0 if enabled, otherwise they are ignored.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">INJ:injCycleEnable</td>
-          <td align="center" valign="middle">0x1F02</td>
-          <td align="center" valign="middle">ao<br>
+          <td valign="middle" align="center">INJ:injCycleEnable</td>
+          <td valign="middle" align="center">0x1F02</td>
+          <td valign="middle" align="center">ao<br>
           </td>
-          <td align="left" valign="middle">Set interval, in seconds,
+          <td valign="middle" align="left">Set interval, in seconds,
             between injector cycle start requests.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">swapoutTrigger<br>
+          <td valign="middle" align="center">swapoutTrigger<br>
           </td>
-          <td align="center" valign="middle">0x1F03<br>
+          <td valign="middle" align="center">0x1F03<br>
           </td>
-          <td align="center" valign="middle">longout<br>
+          <td valign="middle" align="center">longout<br>
           </td>
-          <td align="left" valign="middle">Generate a swapout cycle
+          <td valign="middle" align="left">Generate a swapout cycle
             start request.&nbsp; These requests initiate event generator
             2 sequence 1 if enabled, otherwise event generator 2
             sequence 0 if enabled, otherwise they are ignored.</td>
@@ -309,6 +333,10 @@
       trigger input is asserted.&nbsp; Record name "E<i>e</i>:HW:<i>c</i>"
       (<i>e</i>=1/2, <i>c</i>=1..4), DTYP=asynInt32 and
       OUT="@asyn($(PORT) 0x12<i>xy</i><span style="font-style: italic;"></span>)",
+
+
+
+
 
 
 
@@ -334,8 +362,16 @@
 
 
 
+
+
+
+
       <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3,
       sets the event code to be emitted.&nbsp; The second, with name "E<i>e</i>:SW:<i>c</i>:trig"
+
+
+
+
 
 
 
@@ -370,10 +406,18 @@
 
 
 
+
+
+
+
     where <span style="font-style: italic;"></span> $(PORT) expands to
     the port name in the eventGeneratorConfigure command and <span
       style="font-style: italic;">xxx</span> is a numeric value&nbsp; as
     described in the following table.<span style="font-style: italic;"></span>&nbsp;
+
+
+
+
 
 
 
@@ -487,7 +531,7 @@
         <tr>
           <td style="text-align: center;">E1:refCoinc</td>
           <td style="text-align: center;">0x2307 </td>
-          <td style="text-align: center;">ai</td>
+          <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 1 reference
             clock coincidence alignment point.<br>
           </td>
@@ -497,13 +541,13 @@
           <td style="text-align: center;">0x2207</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 reference
-            clock jitter measurement<br>
+            clock jitter.<br>
           </td>
         </tr>
         <tr>
           <td style="text-align: center;">E1:txCoinc</td>
           <td style="text-align: center;">0x2308 </td>
-          <td style="text-align: center;">ai</td>
+          <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 1 transmitter
             clock coincidence alignment point.</td>
         </tr>
@@ -525,7 +569,7 @@
         <tr>
           <td style="text-align: center;">E2:refCoinc</td>
           <td style="text-align: center;">0x230A </td>
-          <td style="text-align: center;">ai</td>
+          <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 2 reference
             clock coincidence alignment point.</td>
         </tr>
@@ -534,12 +578,12 @@
           <td style="text-align: center;">0x220A </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 reference
-            clock jitter measurement </td>
+            clock jitter. </td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:txCoinc</td>
           <td style="text-align: center;">0x230B </td>
-          <td style="text-align: center;">ai</td>
+          <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 2 transmitter
             clock coincidence alignment point.</td>
         </tr>
@@ -566,13 +610,13 @@
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">TOD:PPSvalid<br>
+          <td valign="middle" align="center">TOD:PPSvalid<br>
           </td>
-          <td align="center" valign="middle">0x220E<br>
+          <td valign="middle" align="center">0x220E<br>
           </td>
-          <td align="center" valign="middle">bi<br>
+          <td valign="middle" align="center">bi<br>
           </td>
-          <td align="left" valign="middle">Is hardware pulse per second
+          <td valign="middle" align="left">Is hardware pulse per second
             signal present?<br>
           </td>
         </tr>
@@ -597,60 +641,70 @@
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span
+          <td style="text-align: center;" valign="middle" align="center"><span
               style="font-weight: bold;">Bit</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle">0</td>
-          <td style="text-align: left;" align="left" valign="middle">Set
+          <td style="text-align: center;" valign="middle" align="center">0</td>
+          <td style="text-align: left;" valign="middle" align="left">Set
             when sequence 0 (the default sequence), is enabled.<br>
           </td>
         </tr>
         <tr>
           <td style="vertical-align: middle; text-align: center;"
-            align="center" valign="middle">1</td>
-          <td style="text-align: left;" align="left" valign="middle">Set
+            valign="middle" align="center">1</td>
+          <td style="text-align: left;" valign="middle" align="left">Set
             when sequence 1 is enabled.&nbsp; This sequence is
             automatically disabled after it has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">2<br>
+          <td valign="middle" align="center">2<br>
           </td>
-          <td align="left" valign="middle">The currently active, or most
+          <td valign="middle" align="left">The currently active, or most
             recently completed, sequence.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">3<br>
+          <td valign="middle" align="center">3<br>
           </td>
-          <td align="left" valign="middle">Set when event generator is
+          <td valign="middle" align="left">Set when event generator is
             emitting a sequence.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">15–8<br>
+          <td valign="middle" align="center">4<br>
           </td>
-          <td align="left" valign="middle">Incremented each time a
+          <td valign="middle" align="left">Set when event generator
+            begins emitting a sequence.&nbsp; Cleared when event
+            generator emits the event code specified by the XSDK
+            CFG_PRECOMPLETION_EVENT_CODE (38) parameter or when end of
+            sequence is reached.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">15–8<br>
+          </td>
+          <td valign="middle" align="left">Incremented each time a
             sequence is triggered.&nbsp; Can be used to unambiguously
             detect that a sequence has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">23–16<br>
+          <td valign="middle" align="center">23–16<br>
           </td>
-          <td align="left" valign="middle">Incremented each time a
+          <td valign="middle" align="left">Incremented each time a
             sequence is trigger request is ignored because it arrived
             while a sequence was already active.&nbsp; Can be used to
             unambiguously detect sequence overruns. </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">28–24<br>
+          <td valign="middle" align="center">28–24<br>
           </td>
-          <td align="left" valign="middle">The number of bits in the
+          <td valign="middle" align="left">The number of bits in the
             sequence generator memory address.<br>
           </td>
         </tr>
@@ -663,6 +717,16 @@
     FPGA.&nbsp; For example, a client can detect that a new sequence has
     occurred and completed by checking that bit 3 is low and that the
     value in bits 15 through 8 has changed.<br>
+    <br>
+    The forward link field in each "$(P)$(R)E<i>x</i>:seqStatus"longin
+    record is used to cause a pair of calc records to process.&nbsp; The
+    first of these, "$(P)$(R)E<i>x</i>:startCount, increments its value
+    each time the bit in the longin record selected by a mask in field B
+    of the calc record makes a transition from zero to one.&nbsp; The
+    other, "$(P)$(R)E<i>x</i>:doneCount, increments its value each time
+    that bit in the longin record makes a transition from one to
+    zero.&nbsp; Clients can monitor these records to synchronize
+    themselves with the beginning or end, respectively, of a sequence.<br>
     <h2>String Input Records</h2>
     <p>Processed on IOC startup and FPGA reconnect.<br>
     </p>
@@ -706,35 +770,39 @@
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span
+          <td style="text-align: center;" valign="middle" align="center"><span
               style="font-weight: bold;">Name</span><br>
           </td>
-          <th style="text-align: center;" align="center" valign="middle">ASYN<br>
+          <th style="text-align: center;" valign="middle" align="center">ASYN<br>
             Subaddress<br>
           </th>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
         </tr>
         <tr>
-          <td align="center" valign="middle">Cmd<i>x</i>RetryCount<br>
+          <td valign="middle" align="center">Cmd<i>x</i>RetryCount<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0xF00<i>x</i><br>
+          <td style="text-align: center;" valign="middle" align="center">0xF00<i>x</i><br>
           </td>
-          <td align="left" valign="middle">Number of commands sent to
+          <td valign="middle" align="left">Number of commands sent to
             the FPGA that were acknowledged after <i>x</i> retries,
             where <i>x</i> ranges from 0 to 4, inclusive.&nbsp;
             Typically configured with SCAN="10 second". </td>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span
+          <td style="text-align: center;" valign="middle" align="center"><span
               style="font-style: italic;"><span style="font-style:
                 italic;"></span></span>CmdFailedCount<span
               style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0xF005<span
+          <td style="text-align: center;" valign="middle" align="center">0xF005<span
               style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Number
+          <td style="text-align: left;" valign="middle" align="left">Number
+
+
+
+
 
 
 
@@ -743,16 +811,16 @@
             second". </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">SeqConnectCount<br>
+          <td valign="middle" align="center">SeqConnectCount<br>
           </td>
-          <td align="center" valign="middle">0xF006<span
+          <td valign="middle" align="center">0xF006<span
               style="font-style: italic;"></span></td>
-          <td align="left" valign="middle">Number of sequence status
+          <td valign="middle" align="left">Number of sequence status
             subscription successes.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle"><span style="caret-color:
+          <td valign="middle" align="center"><span style="caret-color:
               rgba(0, 0, 0, 0.870588); color: rgba(0, 0, 0, 0.870588);
               font-family: &quot;Source Sans Pro&quot;, sans-serif;
               font-size: 16px; font-style: normal; font-variant-caps:
@@ -764,9 +832,9 @@
               239, 231); text-decoration: none; display: inline
               !important; float: none;"><span
                 class="Apple-converted-space"></span></span>SeqMissedCount</td>
-          <td align="center" valign="middle">0xF007<span
+          <td valign="middle" align="center">0xF007<span
               style="font-style: italic;"></span></td>
-          <td align="left" valign="middle">Number of sequence status
+          <td valign="middle" align="left">Number of sequence status
             monitoring packets dropped.</td>
         </tr>
       </tbody>

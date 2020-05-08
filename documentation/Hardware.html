@@ -8,11 +8,41 @@
   </head>
   <body>
     <h1>Introduction</h1>
-    The dual event generator is based on an FPGA platform plus two FMC
+    The dual event generator consists of an FPGA platform and two FMC
     cards.<br>
     <p></p>
-    <h1>FMC Cards<br>
-    </h1>
+    <h1>Hardware</h1>
+    <h2>FPGA Card</h2>
+    <p>The FPGA carrier card is a 'Marble-Mini' developed by the LBNL
+      Accelerator Technology Group.&nbsp; The following block diagram
+      shows the salient features of this board.</p>
+    <blockquote>
+      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram"
+          height="508" width="667"><br>
+      </p>
+    </blockquote>
+    <ul>
+      <li>&nbsp;Open Hardware (OHWR) dual-LPC-FMC carrier based on an
+        Artix-7 in FG484 package.</li>
+      <li>AMC form-factor.</li>
+      <li>Power entry&nbsp; through barrel-style connector (CUI
+        PJ-102AH), AMC backplane, or Ethernet (PoE).</li>
+      <li>1000BaseT Ethernet on 8P8C "RJ45" connector.</li>
+      <li>Four FPGA GTP transceivers, up to 6 Gb/s, connected to SFP
+        slots.</li>
+      <li>Two FMC connectors.&nbsp; LPC subset, no high speed serial
+        link.</li>
+      <li>512M×16 bit DDR3L memory.</li>
+      <li>Two dual-row (12 pin) 3.3V PMOD connectors.</li>
+      <li>16 MB SPI flash memory for FPGA and application bootstrap.<br>
+      </li>
+    </ul>
+    <p><br>
+    </p>
+    <blockquote>
+      <p> </p>
+    </blockquote>
+    <h2>FMC Cards</h2>
     Each FMC card provides a reference clock to the FPGA gigabit
     transceiver block and to an FPGA clock input, four optically
     coupled, TTL level, hardware trigger inputs, an optically coupled,
@@ -25,6 +55,379 @@
     auxiliary input of the second card is used to provide a power line
     monitor signal to the FPGA. <br>
     <br>
+    <h1>Firmware</h1>
+    <h2>Clock Synchronization</h2>
+    Each event generator in the FPGA is synchronized to the RF master
+    oscillator driving its part of the accelerator.&nbsp; Each master
+    oscillator is divided by 4 and taken to the FPGA over a fiber
+    link.&nbsp; These reference clocks drive an FPGA transceiver
+    reference PLL and a sampling D flip-flop as shown in the following
+    figure.&nbsp; The rising edge of the sampled signals indicates the
+    phase of the signal relative to the sampling clock.&nbsp; The
+    sampling of both the event generator transceiver reference and PLL
+    output provides an accurate measurement of the phase of the signals
+    relative to the sampling clock and by extension, relative to each
+    other.&nbsp; Thus the phase at which the PLL has locked its output
+    relative to its input can be determined.<br>
+    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg"
+        alt="" height="50%" width="70%"><br>
+    </blockquote>
+    <br>
+    There are two levels of event system clock alignment.&nbsp; The
+    first is the alignment of the transceiver clock output relative to
+    the transceiver reference.&nbsp; Each transceiver output clock
+    drives all the logic in its event generator firmware.&nbsp; The
+    transceiver output clock can be at one of twenty possible phase
+    offsets relative to the incoming reference.&nbsp; The actual offset
+    is randomly set when the PLL locks to its reference.&nbsp; This
+    random selection is not acceptable for this application so there is
+    hardware on the FMC card and code in the FPGA to momentarily remove
+    the transceiver reference clock.&nbsp; The PLL then locks again at
+    one of the twenty possible phase offsets.&nbsp; The momentary
+    reference removals are repeated until the offset settles at a
+    particular value.&nbsp; The result is an event stream correctly
+    aligned with its the reference.<br>
+    <br>
+    The second clock alignment is the coincidence between the two RF
+    clock domains.&nbsp;&nbsp; The coincidence is determined by the
+    point at which the rising edge of the sampled clock aligns most
+    closely with the rising edge of the FPGA clock.&nbsp; The heartbeat
+    event in each clock domain is aligned with this coincidence.<br>
+    <br>
+    <br>
+    <h1 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
+      text-decoration: none;">TFTP Server</h1>
+    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;">FPGA
+      firmware, system parameters, and the default event sequence are
+      stored in flash memory in a psuedo-filesystem.&nbsp; A TFTP server
+      provides access to the following 'files':<b><span
+          style="font-family: monospace;"><br>
+        </span></b></p>
+    <table style="caret-color: rgb(0, 0, 0); font-family:
+      -webkit-standard; letter-spacing: normal; orphans: auto;
+      text-indent: 0px; text-transform: none; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none; text-align:
+      left; width: 1234.45654296875px;" cellspacing="2" cellpadding="2"
+      border="1">
+      <tbody>
+        <tr>
+          <td align="center" valign="top"><b>Name</b><br>
+          </td>
+          <td align="center" valign="top"><b>Description</b><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center; vertical-align: middle;">ImageA.bin<br>
+          </td>
+          <td style="vertical-align: top;">Primary FPGA bootstrap.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">ImageB.bin<br>
+          </td>
+          <td style="text-align: left;">Secondary FPGA bootstrap. Used
+            if the primary bootstrap file is missing or damaged.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">SystemParameters.bin<br>
+          </td>
+          <td style="text-align: left;">The internal representation of
+            the network configuration system parameters. </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">DefaultSequence.csv<br>
+          </td>
+          <td style="text-align: left;">A 'Comma Separated Values' file
+            of one or more lines containing delay,event pairs.&nbsp;
+            This is the sequence that will be generated when no other
+            injection sequence has been requested by the IOC.&nbsp; This
+            ensures that a valid injection sequence is generated even if
+            network or IOC issues prevent requests from reaching the
+            FPGA.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">FullFlash.bin<br>
+          </td>
+          <td style="text-align: left;">The entire 16 MB flash memory.<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;">Note:<br>
+    </p>
+    <ul>
+      <li>The files must be transferred in 'binary' mode.</li>
+      <li>Don't attempt simultaneous transfers from multiple clients.</li>
+      <li>The very basic filesystem emulation does not record the sizes
+        of the '.bin' files.&nbsp; Downloading these will transfer the
+        full area available so the resulting downloaded file will
+        contain the uploaded file followed by some number of extra
+        values.<br>
+      </li>
+    </ul>
+    <br>
+    <br>
+    <h2 style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
+      text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0,
+      0);">Setting Network Parameters</h2>
+    <ol style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
+      <li>Depress the "Recovery" push button on the front panel while
+        the system is powering up or rebooting.&nbsp; This sets the IPv4
+        network address to 192.168.1.129 and the Ethernet MAC address to
+        AA:4C:42:4E:4C:04.<span class="Apple-converted-space">&nbsp;</span><br>
+      </li>
+      <li>Connect the chassis to a 192.168.1.0/24 network and run the<span
+          class="Apple-converted-space">&nbsp;</span><a
+href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#scriptCONSOLE">console.py</a><span
+          class="Apple-converted-space">&nbsp;</span>script from a host
+        on that same network.<br>
+      </li>
+      <li>Use the<span class="Apple-converted-space">&nbsp;</span><a
+href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdMAC">mac</a><span
+          class="Apple-converted-space">&nbsp;</span>and/or<span
+          class="Apple-converted-space">&nbsp;</span><a
+href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdNET">net</a><span
+          class="Apple-converted-space">&nbsp;</span>commands to set the
+        Ethernet and/or IPv4 addresses.</li>
+      <li>Reboot or power cycle the system.</li>
+    </ol>
+    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><span
+        style="font-family: -webkit-standard;">Alternatively, a terminal
+        emulator program and USB cable can be used to communicate with
+        the system through its USB console serial port (115200-8N1) to
+        issue the<span class="Apple-converted-space">&nbsp;</span></span><a
+href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdMAC">mac</a><span
+        class="Apple-converted-space">&nbsp;</span>and/or<span
+        class="Apple-converted-space">&nbsp;</span><a
+href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdNET">net</a><span
+        class="Apple-converted-space">&nbsp;</span>commands.<span
+        class="Apple-converted-space"> <br>
+        <br>
+      </span></p>
+    <h2 style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
+      text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0,
+      0);">Console Commands</h2>
+    <p style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">The FPGA sends
+      startup and diagnostic messages to its USB console serial port and
+      to a UDP port accessible through the<span
+        class="Apple-converted-space">&nbsp;</span><a
+href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scriptCONSOLE">console.py</a><span
+        class="Apple-converted-space">&nbsp;</span>script.&nbsp; The
+      serial port is run at 115200-8N1.&nbsp;<span
+        class="Apple-converted-space"></span><span
+        class="Apple-converted-space">&nbsp;</span>Commands are entered
+      using a simple command line interpreter.&nbsp; There is no command
+      history and the only editing available is the backspace or delete
+      key which erases the character currently at the end of the
+      line.&nbsp; A carriage-return or line-feed character marks the end
+      of a line.&nbsp; Only enough of a command to make it unique is
+      required.&nbsp; Since no existing commands share a common leading
+      letter this means that only the first character of a command is
+      needed.&nbsp; The commands are:<br>
+    </p>
+    <dl style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
+      <dt><span style="font-weight: bold;">boot</span></dt>
+      <dd>The FPGA prompts for confirmation and then restarts as if
+        powered up.</dd>
+      <dt><br>
+      </dt>
+      <dt><span style="font-weight: bold;">clocks</span></dt>
+      <dd>Show the frequencies of the various FPGA clocks.</dd>
+      <dt><br>
+        <span style="font-weight: bold;">debug [<span style="font-style:
+            italic;">n</span>]</span></dt>
+      <dd>The debugging flags are set to the specified value, if one is
+        given.&nbsp; The bits are</dd>
+    </dl>
+    <ul style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); margin-left:
+      40px;">
+      <li>Bit 0 &nbsp; — Enable messages related to the EPICS UDP port.<br>
+      </li>
+      <li>Bit 1 &nbsp; — Enable messages related to the TFTP UDP port.</li>
+      <li>Bit 2 &nbsp; — Enable messages related to flash memory I/O
+        transactions.</li>
+      <li>Bit 4 &nbsp; — Enable messages related to the time of day
+        (NTP) state machine.</li>
+      <li>Bit 5 &nbsp; — Enable messages related to the time of day
+        (NTP) UDP port.</li>
+      <li>Bit 6 &nbsp; — Enable messages showing sequence memory
+        updates.</li>
+      <li>Bit 8 &nbsp; — Enable messages showing operation of the PLL
+        synchronization state machine.<br>
+      </li>
+    </ul>
+    <dl style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
+      <dt><span style="font-weight: bold;">log</span></dt>
+      <dd>Replay console startup messages.</dd>
+      <dt><br>
+        <span style="font-weight: bold;"><a name="cmdMAC"></a>mac
+          [aa:bb:cc:dd:ee:ff]</span></dt>
+      <dd>Show the Ethernet MAC address if no argument is present
+        otherwise set the MAC address in flash memory.&nbsp; The FGPA
+        prompts for confirmation before writing to the flash memory.<br>
+      </dd>
+      <dt><br>
+      </dt>
+      <dt><span style="font-weight: bold;"><a name="cmdNET"></a>net [</span><span
+          style="font-weight: bold;">www.xxx.yyy.zzz[/n]]</span></dt>
+      <dd>Show the network settings if no argument is present otherwise
+        set network parameters in flash memory based on the
+        argument.&nbsp; The network address is set to the specified
+        value.&nbsp; The netmask is set based on the optional network
+        address length (/n).&nbsp; If the network address length is
+        omitted a value of 24 (Class C network) is used.&nbsp; The FPGA
+        prompts for confirmation before writing to the flash memory.</dd>
+    </dl>
+    <dl style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
+      <dt><span style="font-weight: bold;">pll [evg1_target evg2_target]<br>
+        </span></dt>
+      <dd><span style="font-weight: bold;"></span>Show the target
+        offsets between the transceiver PLL reference and output for
+        each of the event generators if no argument is present otherwise
+        set the in flash memory to the specified values.<br>
+      </dd>
+    </dl>
+    <dl style="font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;
+      caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
+      <dt><span style="font-weight: bold;">reg r [n]</span></dt>
+      <dd><span style="font-weight: bold;"></span>Show the contents of<span
+          class="Apple-converted-space">&nbsp;</span><span
+          style="font-weight: bold;">n</span><span
+          class="Apple-converted-space">&nbsp;</span>(default 1)
+        general-purpose I/O registers starting at register<span
+          class="Apple-converted-space">&nbsp;</span><span
+          style="font-weight: bold;">r</span>.</dd>
+      <dt><br>
+        <span style="font-weight: bold;">seq</span><span
+          style="font-weight: bold;"> [evg [seq]]</span></dt>
+      <dd><span style="font-weight: bold;"></span>Show the contents of
+        the specified event receiver sequence memory.&nbsp; A missing or
+        out of range argument will show values for both event generators
+        and/or sequences.</dd>
+      <dt><br>
+      </dt>
+      <dt><span style="font-weight: bold;">tod [</span><span
+          style="font-weight: bold;">www.xxx.yyy.zzz]</span></dt>
+      <dd>Show the IPv4 address of the NTP server if no argument is
+        present otherwise set the address of the NTP server in flash
+        memory based on the argument.&nbsp; The FPGA prompts for
+        confirmation before writing to the flash memory.</dd>
+    </dl>
+    <br>
+    <h2 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
+      text-decoration: none;">Support Scripts<br>
+    </h2>
+    <dl style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;">
+      <dt><span style="font-weight: bold;"><a name="scriptCONSOLE"></a>console.py
+
+          [-a IP_name_or_address]<br>
+        </span></dt>
+      <dd>Connect to the console port of the FPGA.</dd>
+    </dl>
+    <br>
+    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><br>
+      <span style="font-weight: bold;"></span></p>
+    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><span
+        style="font-weight: bold;"></span></p>
+    <br class="Apple-interchange-newline">
     <br>
     <h2></h2>
     <p> </p>
