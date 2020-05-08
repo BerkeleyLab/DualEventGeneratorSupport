@@ -21,11 +21,8 @@
 #define MAX_MODE SRINJECTION_PREPARE_MODE
 
 #define NUM_EVTCODES                255
-#define GTBCCD_EVTCODE              14
-#define INJFIELD_MIN_EVTCODE        16
 #define GUNON_EVTCODE               36
 #define GUNOFF_EVTCODE              37
-#define EXTRFIELD_MIN_EVTCODE       38
 #define PSREADY_EVTCODE             70
 #define SEQUENCE_END_EVTCODE        127
 
