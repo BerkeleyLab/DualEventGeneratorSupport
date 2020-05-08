@@ -1,0 +1,3 @@
+record(longout, "$(T)$(NAME)") {
+    field(DESC, "$(DESC)")
+}

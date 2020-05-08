@@ -1,0 +1,18 @@
+file "perStatisticCounter.template"
+{ pattern
+{       T,               NAME,                         DESC }
+  { "\$(T)", TimSeqStartOverrunCount,      "" }
+  { "\$(T)", TimSeqStaleSequenceCount,     "" }
+  { "\$(T)", TimSeqInvalidModeCount,       "" }
+  { "\$(T)", TimSeqInvalidBucketCount,     "" }
+  { "\$(T)", TimSeqInvalidBunchesCount,    "" }
+  { "\$(T)", TimSeqNoBeamCurrentCount,     "" }
+  { "\$(T)", TimSeqBadBeamCurrentCount,    "" }
+  { "\$(T)", TimExcessiveBeamCurrentCount, "" }
+  { "\$(T)", TimSeqBadSeverityCount,       "" }
+  { "\$(T)", TimSeqNoFiberStatusCount,     "" }
+  { "\$(T)", TimSeqBadFiberStatusCount,    "" }
+  { "\$(T)", TimSeqSyncDelayTimeoutCount,  "" }
+  { "\$(T)", TimSeqSuccessCount,           "" }
+  { "\$(T)", TimSeqFailedCount,            "" }
+}

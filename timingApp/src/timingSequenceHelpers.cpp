@@ -10,30 +10,6 @@ extern double psReadyDelay;
 
 extern "C" {
 
-void initArrays(int syncDelays[]) {
-	unsigned int i;
-	int tstamp = 0;
-
-	//printf("in initArrays(%ld, %ld, %g)\n", injFieldSyncDelay, extrFieldSyncDelay, psReadyDelay);
-
-	for (i = 0; i < NUM_EVTCODES; ++i) {
-		if (i == GTBCCD_EVTCODE) {
-			tstamp = DELAY_GUNON;
-		} else if (i == INJFIELD_MIN_EVTCODE) {
-			tstamp = syncDelays[INJ_SYNCDELAY_INDEX];
-		} else if (i == EXTRFIELD_MIN_EVTCODE) {
-			tstamp = syncDelays[EXTR_SYNCDELAY_INDEX];
-		} else if (i == PSREADY_EVTCODE) {
-			tstamp = DELAY_END;
-		} else if (i >= SEQUENCE_END_EVTCODE) {
-			tstamp = DELAY_END + syncDelays[PSREADY_SYNCDELAY_INDEX];
-		} else if (i > 10) {
-			tstamp += 1;
-		}
-		all_evtcode_tstamps[i] = tstamp;
-	}
-}
-
 void quickSort(unsigned char * evtcodes, int * tstamps, int left, int right) {
 	int i = left, j = right;
 	//int k;
@@ -79,12 +55,16 @@ void quickSort(unsigned char * evtcodes, int * tstamps, int left, int right) {
 	//printf("quickSort(evtcodes, tstamps, %ld, %ld): done\n", left, right);
 }
 
-void uniqueTimestamps(int * tstamps, int count) {
+void uniqueTimestamps(unsigned char *evtcodes, int * tstamps, int count, int *merged) {
 	int i;
+    int prev = -1;
 	for (i = 0; i < count-1; ++i) {
 		if (tstamps[i] >= tstamps[i+1]) {
 			tstamps[i+1] = tstamps[i]+1.0;
 		}
+        *merged++ = (tstamps[i] - prev) - 1;
+        prev = tstamps[i];
+        *merged++ = evtcodes[i];
 	}
 }
 
