@@ -23,7 +23,6 @@
 #define NUM_EVTCODES                255
 #define GUNON_EVTCODE               36
 #define GUNOFF_EVTCODE              37
-#define PSREADY_EVTCODE             70
 #define SEQUENCE_END_EVTCODE        127
 
 // Delays used in calculating evt code timestamps

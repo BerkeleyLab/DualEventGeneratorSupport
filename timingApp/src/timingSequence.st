@@ -329,7 +329,7 @@ ss ssTiming {
         when () {
             uint8_t * e = modeEvtCodes[modeIndexes[mode]];
             int32_t i, nTStamps;
-            uint32_t highwater = 0, n = 0;
+            uint32_t highwater = 0, highwaterCount = 0;
             uint8_t foundEOS = 0;
 
             gunBunchesDelay = bunchesToField[bunches-1];
@@ -345,13 +345,13 @@ ss ssTiming {
                     fprintf(stderr, "WARNING: tstamp for evtcode %hu is %d; forcing to zero\n", evtcodes[nTStamps], tstamps[nTStamps]);
                     tstamps[nTStamps] = 0;
                 }
-                if (e[i] <= PSREADY_EVTCODE) {
+                if (e[i] < SEQUENCE_END_EVTCODE) {
                     if (tstamps[nTStamps] > highwater) {
                         highwater = tstamps[nTStamps];
                     }
                 }
                 else {
-                    tstamps[nTStamps] = highwater + ++n;
+                    tstamps[nTStamps] = highwater + ++highwaterCount;
                 }
                 nTStamps++;
                 if (e[i] == SEQUENCE_END_EVTCODE) {
