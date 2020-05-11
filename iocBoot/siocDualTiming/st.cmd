@@ -4,7 +4,7 @@
 # Set up environment
 epicsEnvSet "P" "$(P=EVG)"
 epicsEnvSet "R" "$(R=:)"
-epicsEnvSet "T" "$(T=:)"
+epicsEnvSet "T" "$(T=Test)"
 epicsEnvSet "EVG_ADDRESS" "$(EVG_ADDRESS=192.168.1.129)"
 < envPaths
 epicsEnvSet "IOCSH_PS1" "$(IOC)> "
