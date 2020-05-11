@@ -58,22 +58,20 @@ botShadowColor index 32
 font "helvetica-bold-r-14.0"
 buttonLabel "More..."
 numPvs 4
-numDsps 6
+numDsps 5
 displayFileName {
   0 "EVG_triggers.edl"
   1 "EVG_triggers.edl"
   2 "EVG_injectionEnable.edl"
-  3 "EVG_injectionPeriod.edl"
-  4 "EVG_resets.edl"
-  5 "EVG_statistics.edl"
+  3 "EVG_resets.edl"
+  4 "EVG_statistics.edl"
 }
 menuLabel {
   0 "Generator 1 Triggers"
   1 "Generator 2 Triggers"
   2 "Injection Enable"
-  3 "Injection Period"
-  4 "Resets"
-  5 "Statistics"
+  3 "Resets"
+  4 "Statistics"
 }
 symbols {
   0 "E=1"

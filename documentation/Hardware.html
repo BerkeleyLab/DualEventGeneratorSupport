@@ -151,14 +151,18 @@
           <td style="text-align: center;">DefaultSequence.csv<br>
           </td>
           <td style="text-align: left;"><a name="DefaultSequenceCSV"></a>A
-            'Comma Separated Values' file of one or more lines
-            containing delay,event pairs.&nbsp; This is the sequence
-            that will be generated when no other injection sequence has
-            been requested by the IOC.&nbsp; This ensures that a valid
-            injection sequence is generated even if network or IOC
-            issues prevent requests from reaching the FPGA.&nbsp; A line
-            with a third column containing an asterisk (*) marks this
-            event as the one that will clear bit 4 of the <a
+            'Comma Separated Values' file specifying the default
+            injection sequence.&nbsp; The first line is the time, in
+            milliseconds, between injection cycle requests.&nbsp; The
+            following lines contain delay,event pairs.&nbsp; Delay
+            values are in units of event generator ticks, about 8 ns
+            each.&nbsp; This is the sequence that will be generated when
+            no other injection sequence has been requested by the
+            IOC.&nbsp; This ensures that a valid injection sequence is
+            generated even if network or IOC issues prevent requests
+            from reaching the FPGA.&nbsp; A line with a third column
+            containing an asterisk (*) marks this event as the one that
+            will clear bit 4 of the <a
               href="EPICSnotes.html#PreCompletion">sequencer status
               record</a>.<br>
           </td>
@@ -409,6 +413,7 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       word-spacing: 0px; -webkit-text-size-adjust: auto;
       -webkit-text-stroke-width: 0px; text-decoration: none;">
       <dt><span style="font-weight: bold;"><a name="scriptCONSOLE"></a>console.py
+
 
 
           [-a IP_name_or_address]<br>
