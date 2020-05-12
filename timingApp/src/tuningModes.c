@@ -48,7 +48,6 @@ int getTimestamp(unsigned char evtcode, int *syncDelays, int nBunches, int gunBu
     case 66: return syncDelays[EXTR_SYNCDELAY_INDEX] + getTargetBucketDelay(targetBucket) + 14;
     case 68: return syncDelays[EXTR_SYNCDELAY_INDEX] + getTargetBucketDelay(targetBucket) + 0 + 2500000;
     case 70: return syncDelays[EXTR_SYNCDELAY_INDEX] + getTargetBucketDelay(targetBucket) + 1 + 2500000;
-    case 100: return DELAY_END + 0;
     case 127: return DELAY_END + 1;
     default:
         printf("Invalid event code %d passed to getTimestamp; returning -1\n", evtcode);
@@ -69,7 +68,6 @@ unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
         50,
         56,
         70,
-        100,
         127
     },
     {
@@ -90,7 +88,6 @@ unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
         50,
         56,
         70,
-        100,
         127
     },
     {
@@ -117,7 +114,6 @@ unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
         50,
         56,
         70,
-        100,
         127
     },
     {
@@ -148,7 +144,6 @@ unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
         54,
         56,
         70,
-        100,
         127
     },
     {
@@ -186,7 +181,6 @@ unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
         66,
         68,
         70,
-        100,
         127
     },
     {
@@ -201,7 +195,6 @@ unsigned char modeEvtCodes[NUM_MODES][MAX_SEQUENCE_LENGTH] = {
         50,
         56,
         70,
-        100,
         127
     }
 };
