@@ -15,7 +15,7 @@ epicsEnvSet "AUTOSAVE_PATH" "$(AUTOSAVE_PATH=/vxboot/ioc_data/$(IOC)/autosave)"
 # Register all support components
 cd "$(TOP)"
 dbLoadDatabase "dbd/eventGenerator.dbd"
-eventGenerator_registerRecordDeviceDriver pdbbase
+timing_registerRecordDeviceDriver pdbbase
 #pid_check("/vxboot/run/$(IOC).pid")
 
 ###############################################################################
@@ -69,4 +69,5 @@ $(FPGA_SIMM_DISABLE) <st.simm
 
 ###############################################################################
 # Start timing sequence program
+dbpf "$(T)TimSeqDebug" 1
 seq timingSequence "P=$(P),R=$(R),T=$(T)"
