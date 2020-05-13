@@ -123,7 +123,6 @@ record(bo, "$(T)TimInjReqCommit") {
 
 record(longout, "$(T)TimTargetBucket") {
 	field(DESC, "bucket number")
-	field(FLNK, "$(T)TimTargetBucketDelay")
 	field(DRVH, "328")
 	field(DRVL, "1")
 	field(HOPR, "328")
@@ -169,14 +168,6 @@ record(mbbo, "$(T)TimInjMode") {
 
 record(longout, "$(T)TimSequenceNumber") {
 	field(DESC, "Sequence Number")
-}
-
-record(calc, $(T)TimTargetBucketDelay) {
-	field(DESC, "Target Bucket Delay")
-	field(CALC, "31.25 * ((21 * A)%328)")
-	field(INPA, "$(T)TimTargetBucket")
-	field(EGU, "EvtClkTicks")
-	field(ASG, "readonly")
 }
 
 record(waveform, $(T)GunBunchToGunBias) {
