@@ -69,5 +69,5 @@ $(FPGA_SIMM_DISABLE) <st.simm
 
 ###############################################################################
 # Start timing sequence program
-dbpf "$(T)TimSeqDebug" 1
+dbpf "$(T)InjSeqDebug" 1
 seq timingSequence "P=$(P),R=$(R),T=$(T)"

@@ -65,39 +65,39 @@ sync syncDelays syncDelaysFlag;
  * Statistics
  */
 int startOverrunCount;
-assign startOverrunCount to "{T}TimSeqStartOverrunCount";
+assign startOverrunCount to "{T}InjSeqStartOverrunCount";
 int staleSequenceCount;
-assign staleSequenceCount to "{T}TimSeqStaleSequenceCount";
+assign staleSequenceCount to "{T}InjSeqStaleSequenceCount";
 int invalidModeCount;
-assign invalidModeCount to "{T}TimSeqInvalidModeCount";
+assign invalidModeCount to "{T}InjSeqInvalidModeCount";
 int invalidBucketCount;
-assign invalidBucketCount to "{T}TimSeqInvalidBucketCount";
+assign invalidBucketCount to "{T}InjSeqInvalidBucketCount";
 int invalidBunchesCount;
-assign invalidBunchesCount to "{T}TimSeqInvalidBunchesCount";
+assign invalidBunchesCount to "{T}InjSeqInvalidBunchesCount";
 int noBeamCurrentCount;
-assign noBeamCurrentCount to "{T}TimSeqNoBeamCurrentCount";
+assign noBeamCurrentCount to "{T}InjSeqNoBeamCurrentCount";
 int badBeamCurrentCount;
-assign badBeamCurrentCount to "{T}TimSeqBadBeamCurrentCount";
+assign badBeamCurrentCount to "{T}InjSeqBadBeamCurrentCount";
 int excessiveBeamCurrentCount;
-assign excessiveBeamCurrentCount to "{T}TimExcessiveBeamCurrentCount";
+assign excessiveBeamCurrentCount to "{T}InjExcessiveBeamCurrentCount";
 int badSeverityCount;
-assign badSeverityCount to "{T}TimSeqBadSeverityCount";
+assign badSeverityCount to "{T}InjSeqBadSeverityCount";
 int noFiberStatusCount;
-assign noFiberStatusCount to "{T}TimSeqNoFiberStatusCount";
+assign noFiberStatusCount to "{T}InjSeqNoFiberStatusCount";
 int badFiberStatusCount;
-assign badFiberStatusCount to "{T}TimSeqBadFiberStatusCount";
+assign badFiberStatusCount to "{T}InjSeqBadFiberStatusCount";
 int syncDelayTimeoutCount;
-assign syncDelayTimeoutCount to "{T}TimSeqSyncDelayTimeoutCount";
+assign syncDelayTimeoutCount to "{T}InjSeqSyncDelayTimeoutCount";
 int goodCount;
-assign goodCount to "{T}TimSeqSuccessCount";
+assign goodCount to "{T}InjSeqSuccessCount";
 int badCount;
-assign badCount to "{T}TimSeqFailedCount";
+assign badCount to "{T}InjSeqFailedCount";
 
 /*
  * Diagnostics
  */
 int debugFlag;
-assign debugFlag to "{T}TimSeqDebug";
+assign debugFlag to "{T}InjSeqDebug";
 monitor debugFlag;
 
 /**

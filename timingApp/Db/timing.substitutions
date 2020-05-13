@@ -1,19 +1,19 @@
 file "perStatisticCounter.template"
 { pattern
 {       T,               NAME,                         DESC }
-  { "\$(T)", TimSeqStartOverrunCount,      "" }
-  { "\$(T)", TimSeqStaleSequenceCount,     "" }
-  { "\$(T)", TimSeqInvalidModeCount,       "" }
-  { "\$(T)", TimSeqInvalidBucketCount,     "" }
-  { "\$(T)", TimSeqInvalidBunchesCount,    "" }
-  { "\$(T)", TimSeqNoBeamCurrentCount,     "" }
-  { "\$(T)", TimSeqBadBeamCurrentCount,    "" }
-  { "\$(T)", TimExcessiveBeamCurrentCount, "" }
-  { "\$(T)", TimSeqBadSeverityCount,       "" }
-  { "\$(T)", TimSeqNoFiberStatusCount,     "" }
-  { "\$(T)", TimSeqBadFiberStatusCount,    "" }
-  { "\$(T)", TimSeqSyncDelayTimeoutCount,  "" }
-  { "\$(T)", TimSeqSuccessCount,           "" }
-  { "\$(T)", TimSeqFailedCount,            "" }
-  { "\$(T)", TimSeqDebug,                  "Enable sequencer diagnostic messages" }
+  { "\$(T)", InjSeqStartOverrunCount,      "" }
+  { "\$(T)", InjSeqStaleSequenceCount,     "" }
+  { "\$(T)", InjSeqInvalidModeCount,       "" }
+  { "\$(T)", InjSeqInvalidBucketCount,     "" }
+  { "\$(T)", InjSeqInvalidBunchesCount,    "" }
+  { "\$(T)", InjSeqNoBeamCurrentCount,     "" }
+  { "\$(T)", InjSeqBadBeamCurrentCount,    "" }
+  { "\$(T)", InjExcessiveBeamCurrentCount, "" }
+  { "\$(T)", InjSeqBadSeverityCount,       "" }
+  { "\$(T)", InjSeqNoFiberStatusCount,     "" }
+  { "\$(T)", InjSeqBadFiberStatusCount,    "" }
+  { "\$(T)", InjSeqSyncDelayTimeoutCount,  "" }
+  { "\$(T)", InjSeqSuccessCount,           "" }
+  { "\$(T)", InjSeqFailedCount,            "" }
+  { "\$(T)", InjSeqDebug,                  "Enable sequencer diagnostic messages" }
 }
