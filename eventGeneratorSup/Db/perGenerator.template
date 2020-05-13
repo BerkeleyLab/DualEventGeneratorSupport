@@ -3,21 +3,21 @@ record(longin, "$(P)$(R)E$(E):seqStatus") {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0x010$(I), 1)")
     field(SCAN, "I/O Intr")
-    field(FLNK, "$(P)$(R)E$(E):INJ:starts")
+    field(FLNK, "$(P)$(R)E$(E):seqStarts")
 }
-record(calc, "$(P)$(R)E$(E):INJ:starts") {
+record(calc, "$(P)$(R)E$(E):seqStarts") {
     field(DESC, "EVG $(E) injection sequences started")
     field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
     field(INPB, "0x10")
     field(CALC, "J:=(A&B)#0;VAL+(J&!K);K:=J")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
-    field(FLNK, "$(P)$(R)E$(E):INJ:finishes")
+    field(FLNK, "$(P)$(R)E$(E):seqFinishes")
 }
-record(calc, "$(P)$(R)E$(E):INJ:finishes") {
+record(calc, "$(P)$(R)E$(E):seqFinishes") {
     field(DESC, "EVG $(E) injection sequences completed")
     field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
     field(INPB, "0x10")
-    field(INPC, "$(P)$(R)E$(E):INJ:starts NPP MS")
+    field(INPC, "$(P)$(R)E$(E):seqStarts NPP MS")
     field(CALC, "J:=(A&B)#0;(!J&K)?C:VAL;K:=J")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
 }
