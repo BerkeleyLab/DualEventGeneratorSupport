@@ -581,6 +581,7 @@ subscriberThread(void *arg)
     int subscriptionAttempt;
     epicsTimeStamp now, whenSubscribed;
     asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
+    enum readState {rsUnknown, rsGood, rsBad} readState = rsUnknown;
     extern volatile int interruptAccept;
 
     while (!interruptAccept) epicsThreadSleep(1.0);
@@ -649,6 +650,11 @@ subscriberThread(void *arg)
             }
             if (status == asynSuccess) {
                 int missed;
+                if (readState == rsBad) {
+                    asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
+                               "%s: Read succeeded\n", pdpvt->seqLink.portName);
+                }
+                readState = rsGood;
                 if (subscriptionAttempt) {
                     subscriptionAttempt = 0;
                     whenSubscribed = now;
@@ -666,10 +672,13 @@ subscriberThread(void *arg)
                 pkNumber = pk.pkNumber;
             }
             else {
-                asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
+                if (readState != rsBad) {
+                    asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
                                    "%s: Read failed: %s\n",
                                    pdpvt->seqLink.portName,
                                    pdpvt->seqLink.pasynUserOctet->errorMessage);
+                    readState = rsBad;
+                }
                 break;
             }
         }
