@@ -15,4 +15,5 @@ file "perStatisticCounter.template"
   { "\$(T)", TimSeqSyncDelayTimeoutCount,  "" }
   { "\$(T)", TimSeqSuccessCount,           "" }
   { "\$(T)", TimSeqFailedCount,            "" }
+  { "\$(T)", TimSeqDebug,                  "Enable sequencer diagnostic messages" }
 }

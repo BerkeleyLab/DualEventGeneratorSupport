@@ -16,12 +16,19 @@ DBD += timing.dbd
 timing_DBD += base.dbd
 
 # Include dbd files from all support applications:
-timing_DBD += eventGeneratorSup.dbd
 timing_DBD += timingSequence.dbd
+timing_DBD += eventGeneratorSup.dbd
+timing_DBD += drvAsynIPPort.dbd
+timing_DBD += asyn.dbd
+timing_DBD += asSupport.dbd
+timing_DBD += iocExit.dbd
 
 # Add all the support libraries needed by this IOC
 timing_LIBS += eventGeneratorSup
 timing_LIBS += asyn
+timing_LIBS += autosave
+timing_LIBS += iocExit
+timing_LIBS += seq
 
 # timing_registerRecordDeviceDriver.cpp derives from timing.dbd
 timing_SRCS += timingSequence.st
@@ -33,7 +40,6 @@ timing_SRCS += timing_registerRecordDeviceDriver.cpp
 timing_SRCS_DEFAULT += timingMain.cpp
 
 # Finally link to the EPICS Base libraries
-timing_LIBS += seq
 timing_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================

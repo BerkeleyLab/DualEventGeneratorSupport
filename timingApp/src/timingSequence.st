@@ -47,14 +47,14 @@ int potentate;
 assign potentate to "{T}TimPotentate";
 monitor potentate;
 int injCycleEnable;
-assign injCycleEnable to "$(P)$(R)INJ:injCycleEnable";
+assign injCycleEnable to "{P}{R}INJ:injCycleEnable";
 
 /*
  * Field delays
  */
 int syncDelays[2];
 assign syncDelays to {
-    "{T}TimInjFieldSyncDelay"
+    "{T}TimInjFieldSyncDelay",
     "{T}TimExtrFieldSyncDelay"
 };
 monitor syncDelays;
@@ -93,6 +93,13 @@ assign goodCount to "{T}TimSeqSuccessCount";
 int badCount;
 assign badCount to "{T}TimSeqFailedCount";
 
+/*
+ * Diagnostics
+ */
+int debugFlag;
+assign debugFlag to "{T}TimSeqDebug";
+monitor debugFlag;
+
 /**
  * Mapping of # gun bunches to injection field trigger
  */
@@ -110,6 +117,7 @@ int tstamps[MAX_SEQUENCE_LENGTH];
 /*
  * EVR IOC records.
  * Injection cycles are initiated only when all are valid.
+ * FIXME: Should LI11:EVR:[12], CR:EVR1, and S0220:EVR1 also be checked?
  */
 int b0215link, s0123link, s0817link;
 assign b0215link to "B0215:EVR1:Link-Sts";
@@ -126,10 +134,10 @@ assign evgSequence to "{P}{R}E1:SEQ1";
 int evgSeqEnable;
 assign evgSeqEnable to "{P}{R}E1:SEQ1:enable";
 int evgSeqStatus;
-assign evgSeqStatus to "{P}{R}SEQ:status";
+assign evgSeqStatus to "{P}{R}E1:seqStatus";
 monitor evgSeqStatus;
 int evgSequencerStarts;
-assign evgSequencerStarts to "{P}{R}SEQ:starts";
+assign evgSequencerStarts to "{P}{R}E1:seqStarts";
 monitor evgSequencerStarts;
 int evgSequencerCurrentStarts;
 
@@ -144,10 +152,12 @@ entry {
 
 ss ssTiming {
     /*
+     * Initial state
      * Wait for injection cycles to be enabled
      */
     state await_potentate {
         entry {
+            if(debugFlag) printf("State: await_potentate\n");
             injCycleEnable = 0;
             pvPut(injCycleEnable, SYNC);
         }
@@ -160,7 +170,8 @@ ss ssTiming {
     /*
      * Initial synchronization
      */
-    state sync_await_start {
+state sync_await_start {
+        entry { if(debugFlag) printf("State: sync_await_start\n"); }
         when (potentate == 0) { } state await_potentate
 
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
@@ -171,6 +182,7 @@ ss ssTiming {
      * Wait for injection cycle to start
      */
     state await_start {
+        entry { if(debugFlag) printf("State: await_start\n"); }
         when (potentate == 0) { } state await_potentate
 
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
@@ -182,6 +194,7 @@ ss ssTiming {
      * Wait for injection cycle to reach precompletion point
      */
     state await_precompletion {
+        entry { if(debugFlag) printf("State: await_precompletion\n"); }
         when (potentate == 0) { } state await_potentate
 
         when (efTestAndClear(requestFlag)) {
@@ -197,6 +210,7 @@ ss ssTiming {
      * Wait for injection cycle to complete
      */
     state await_completion {
+        entry { if(debugFlag) printf("State: await_completion\n"); }
         when (potentate == 0) { } state await_potentate
 
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) == 0) {
@@ -207,6 +221,7 @@ ss ssTiming {
      * Watch for injection request
      */
     state await_request {
+        entry { if(debugFlag) printf("State: await_request\n"); }
         when (potentate == 0) { } state await_potentate
 
         when (delay(REQUEST_WINDOW)) {
@@ -235,6 +250,7 @@ ss ssTiming {
      * Transient sequential states to validate, prepare, and send sequence
      */
     state validate_request {
+        entry { if(debugFlag) printf("State: validate_request\n"); }
         when (sequence == lastSequence) {
             staleSequenceCount++;
             pvPut(staleSequenceCount);
@@ -262,6 +278,7 @@ ss ssTiming {
     }
 
     state check_beamcurrent {
+        entry { if(debugFlag) printf("State: check_beamcurrent\n"); }
         when ((mode == SRINJECTION_MODE) && (pvGet(beamcurrent, SYNC, 0.01) != pvStatOK)) {
             noBeamCurrentCount++;
             pvPut(noBeamCurrentCount);
@@ -282,6 +299,7 @@ ss ssTiming {
     }
 
     state check_severities {
+        entry { if(debugFlag) printf("State: check_severities\n"); }
         when ((pvSeverity(evgSeqStatus) != pvSevrNONE)
             || (pvSeverity(evgSequencerStarts) != pvSevrNONE)) {
             badSeverityCount++;
@@ -293,6 +311,7 @@ ss ssTiming {
     }
 
     state check_fiber_links {
+        entry { if(debugFlag) printf("State: check_fiber_links\n"); }
         when ((pvGet(b0215link, SYNC, 0.01) != pvStatOK)
            || (pvGet(s0123link, SYNC, 0.01) != pvStatOK)
            || (pvGet(s0123link, SYNC, 0.01) != pvStatOK)) {
@@ -313,6 +332,7 @@ ss ssTiming {
      * Wait for field-related adjustments
      */
     state awaitSyncs {
+        entry { if(debugFlag) printf("State: awaitSyncs\n"); }
         when (efTestAndClear(syncDelaysFlag)) {
         } state create_requested_sequence
 
@@ -326,6 +346,7 @@ ss ssTiming {
      * Create the new sequence
      */
     state create_requested_sequence {
+        entry { if(debugFlag) printf("State: create_requested_sequence\n"); }
         when () {
             uint8_t * e = modeEvtCodes[modeIndexes[mode]];
             int32_t i, nTStamps;
@@ -369,6 +390,7 @@ ss ssTiming {
     }
 
     state load_requested_sequence {
+        entry { if(debugFlag) printf("State: load_requested_sequence\n"); }
         when (potentate == 0) { } state await_potentate
 
         when (evgSequencerStarts != evgSequencerCurrentStarts) {
@@ -387,6 +409,7 @@ ss ssTiming {
     }
 
     state increment_bad_count {
+        entry { if(debugFlag) printf("State: increment_bad_count\n"); }
         when() {
             badCount++;
             pvPut(badCount);
