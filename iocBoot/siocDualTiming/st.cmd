@@ -2,6 +2,7 @@
 
 ###############################################################################
 # Set up environment
+epicsEnvSet "FPGA_SIMM_DISABLE" "$(FPGA_SIMM_DISABLE=#)"
 epicsEnvSet "P" "$(P=EVG)"
 epicsEnvSet "R" "$(R=:)"
 epicsEnvSet "T" "$(T=Test)"
@@ -63,5 +64,9 @@ dbl >"/vxboot/PVnames/$(IOC)"
 epicsEnvShow >"/vxboot/PVenv/$(IOC).softioc"
 
 ###############################################################################
-# Start shadowing old event generator
+# Put FPGA I/O records into simulation mode?
+$(FPGA_SIMM_DISABLE) <st.simm
+
+###############################################################################
+# Start timing sequence program
 seq timingSequence "P=$(P),R=$(R),T=$(T)"
