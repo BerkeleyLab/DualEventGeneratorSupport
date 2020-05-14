@@ -2,7 +2,6 @@
 
 ###############################################################################
 # Set up environment
-epicsEnvSet "FPGA_SIMM_DISABLE" "$(FPGA_SIMM_DISABLE=#)"
 epicsEnvSet "P" "$(P=EVG)"
 epicsEnvSet "R" "$(R=:)"
 epicsEnvSet "T" "$(T=Test)"
@@ -10,6 +9,11 @@ epicsEnvSet "EVG_ADDRESS" "$(EVG_ADDRESS=192.168.1.129)"
 < envPaths
 epicsEnvSet "IOCSH_PS1" "$(IOC)> "
 epicsEnvSet "AUTOSAVE_PATH" "$(AUTOSAVE_PATH=/vxboot/ioc_data/$(IOC)/autosave)"
+
+###############################################################################
+# Conditionals
+epicsEnvSet "FPGA_SIMM_DISABLE" "$(FPGA_SIMM_DISABLE=#)"
+epicsEnvSet "SEQ_DEBUG" "$(SEQ_DEBUG=0)"
 
 ###############################################################################
 # Register all support components
@@ -69,5 +73,5 @@ $(FPGA_SIMM_DISABLE) <st.simm
 
 ###############################################################################
 # Start timing sequence program
-dbpf "$(T)InjSeqDebug" 1
+dbpf "$(T)InjSeqDebug" $(SEQ_DEBUG)
 seq timingSequence "P=$(P),R=$(R),T=$(T)"

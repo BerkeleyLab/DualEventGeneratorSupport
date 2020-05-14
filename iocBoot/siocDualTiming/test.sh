@@ -8,6 +8,7 @@ case "$#" in
 esac
 export EVG_ADDRESS
 export FPGA_SIMM_DISABLE=""
+export SEQ_DEBUG="1"
 export P="testEVG"
 export R=":"
 export T="test"
