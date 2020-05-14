@@ -211,3 +211,14 @@ record(bi, $(T)TimPotentate) {
 record(stringin, $(T)TimSeqStatus) {
 	field(DESC, "Timing Soft Sequencer Status")
 }
+
+
+# EVR IOC records.
+# Injection cycles are initiated only when all are valid.
+# FIXME: Should LI11:EVR:[12], CR:EVR1, and S0220:EVR1 also be checked?
+record(calc, "$(T)TimAllEVRvalid") {
+    field(INPA, "B0215:EVR1:Link-Sts MS CPP")
+    field(INPB, "S0123:EVR1:Link-Sts MS CPP")
+    field(INPC, "S0817:EVR1:Link-Sts MS CPP")
+    field(CALC, "A&B&C")
+}

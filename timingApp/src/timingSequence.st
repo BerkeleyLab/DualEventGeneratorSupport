@@ -5,9 +5,11 @@ program timingSequence ("T=T.P=EVG1:,R=")
 //  P:, R: Event generator prefixes
 // Defaults provided here can be overridden by seq command in st.cmd.
 
-// Wait for connections, safe mode
-option +cs;
-// run-time debug messages
+// No wait for connections
+option -c;
+// Safe mode
+option +s;
+// Enable run-time debug messages
 option +d;
 
 #include "timingSequenceConstants.h"
@@ -82,10 +84,8 @@ int excessiveBeamCurrentCount;
 assign excessiveBeamCurrentCount to "{T}InjExcessiveBeamCurrentCount";
 int badSeverityCount;
 assign badSeverityCount to "{T}InjSeqBadSeverityCount";
-int noFiberStatusCount;
-assign noFiberStatusCount to "{T}InjSeqNoFiberStatusCount";
-int badFiberStatusCount;
-assign badFiberStatusCount to "{T}InjSeqBadFiberStatusCount";
+int badEVRCount;
+assign badEVRCount to "{T}InjSeqBadEVRCount";
 int syncDelayTimeoutCount;
 assign syncDelayTimeoutCount to "{T}InjSeqSyncDelayTimeoutCount";
 int goodCount;
@@ -115,14 +115,10 @@ uint8_t evtcodes[MAX_SEQUENCE_LENGTH];
 int tstamps[MAX_SEQUENCE_LENGTH];
 
 /*
- * EVR IOC records.
- * Injection cycles are initiated only when all are valid.
- * FIXME: Should LI11:EVR:[12], CR:EVR1, and S0220:EVR1 also be checked?
+ * Injection cycles are initiated only when all EVR links are good.
  */
-int b0215link, s0123link, s0817link;
-assign b0215link to "B0215:EVR1:Link-Sts";
-assign s0123link to "S0123:EVR1:Link-Sts";
-assign s0817link to "S0817:EVR1:Link-Sts";
+int allEVRvalid;
+assign allEVRvalid to "{T}TimAllEVRvalid";
 
 /*
  * Event generator FPGA
@@ -156,15 +152,22 @@ ss ssTiming {
      * Wait for injection cycles to be enabled
      */
     state await_potentate {
+        int oldConnectCount = -1;
         entry {
             if(debugFlag) printf("State: await_potentate\n");
             injCycleEnable = 0;
             pvPut(injCycleEnable, SYNC);
         }
-        when (potentate != 0) {
+        when ((pvConnectCount() == pvAssignCount())
+           && (potentate != 0)) {
             injCycleEnable = 1;
             pvPut(injCycleEnable, SYNC);
         } state sync_await_start
+        when (delay(10) && (pvConnectCount() != oldConnectCount)) {
+            oldConnectCount = pvConnectCount();
+            printf("Timing Sequencer: %d/%d connected\n", pvConnectCount(),
+                                                          pvAssignCount());
+        } state await_potentate
     }
 
     /*
@@ -172,7 +175,8 @@ ss ssTiming {
      */
 state sync_await_start {
         entry { if(debugFlag) printf("State: sync_await_start\n"); }
-        when (potentate == 0) { } state await_potentate
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
 
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
         } state await_completion
@@ -183,7 +187,8 @@ state sync_await_start {
      */
     state await_start {
         entry { if(debugFlag) printf("State: await_start\n"); }
-        when (potentate == 0) { } state await_potentate
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
 
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
             efClear(syncDelaysFlag);
@@ -195,7 +200,8 @@ state sync_await_start {
      */
     state await_precompletion {
         entry { if(debugFlag) printf("State: await_precompletion\n"); }
-        when (potentate == 0) { } state await_potentate
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
 
         when (efTestAndClear(requestFlag)) {
             /* Ignore requests outside expected window */
@@ -211,7 +217,8 @@ state sync_await_start {
      */
     state await_completion {
         entry { if(debugFlag) printf("State: await_completion\n"); }
-        when (potentate == 0) { } state await_potentate
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
 
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) == 0) {
         } state await_start
@@ -222,7 +229,8 @@ state sync_await_start {
      */
     state await_request {
         entry { if(debugFlag) printf("State: await_request\n"); }
-        when (potentate == 0) { } state await_potentate
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
 
         when (delay(REQUEST_WINDOW)) {
             /* No request, default cycle will be emitted */
@@ -307,21 +315,14 @@ state sync_await_start {
         } state increment_bad_count
 
         when () {
-        } state check_fiber_links
+        } state check_links
     }
 
-    state check_fiber_links {
-        entry { if(debugFlag) printf("State: check_fiber_links\n"); }
-        when ((pvGet(b0215link, SYNC, 0.01) != pvStatOK)
-           || (pvGet(s0123link, SYNC, 0.01) != pvStatOK)
-           || (pvGet(s0123link, SYNC, 0.01) != pvStatOK)) {
-            noFiberStatusCount++;
-            pvPut(noFiberStatusCount);
-        } state increment_bad_count
-
-        when (!b0215link || !s0123link || !s0817link) {
-            badFiberStatusCount++;
-            pvPut(badFiberStatusCount);
+    state check_links {
+        entry { if(debugFlag) printf("State: check_links\n"); }
+        when ((pvStatus(allEVRvalid) != pvStatOK) || (allEVRvalid == 0)) {
+            badEVRCount++;
+            pvPut(badEVRCount);
         } state increment_bad_count
 
         when () {
@@ -333,6 +334,9 @@ state sync_await_start {
      */
     state awaitSyncs {
         entry { if(debugFlag) printf("State: awaitSyncs\n"); }
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
+
         when (efTestAndClear(syncDelaysFlag)) {
         } state create_requested_sequence
 
@@ -391,7 +395,8 @@ state sync_await_start {
 
     state load_requested_sequence {
         entry { if(debugFlag) printf("State: load_requested_sequence\n"); }
-        when (potentate == 0) { } state await_potentate
+        when ((pvConnectCount() < pvAssignCount())
+           || (potentate == 0)) { } state await_potentate
 
         when (evgSequencerStarts != evgSequencerCurrentStarts) {
             startOverrunCount++;

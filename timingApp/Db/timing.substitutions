@@ -10,8 +10,7 @@ file "perStatisticCounter.template"
   { "\$(T)", InjSeqBadBeamCurrentCount,    "" }
   { "\$(T)", InjExcessiveBeamCurrentCount, "" }
   { "\$(T)", InjSeqBadSeverityCount,       "" }
-  { "\$(T)", InjSeqNoFiberStatusCount,     "" }
-  { "\$(T)", InjSeqBadFiberStatusCount,    "" }
+  { "\$(T)", InjSeqBadEVRCount,            "" }
   { "\$(T)", InjSeqSyncDelayTimeoutCount,  "" }
   { "\$(T)", InjSeqSuccessCount,           "" }
   { "\$(T)", InjSeqFailedCount,            "" }
