@@ -1,6 +1,7 @@
 file "perStatisticCounter.template"
 { pattern
 {       T,               NAME,                         DESC }
+  { "\$(T)", InjSeqNoConnectionCount,      "" }
   { "\$(T)", InjSeqStartOverrunCount,      "" }
   { "\$(T)", InjSeqStaleSequenceCount,     "" }
   { "\$(T)", InjSeqInvalidModeCount,       "" }

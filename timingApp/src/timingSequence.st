@@ -66,6 +66,8 @@ sync syncDelays syncDelaysFlag;
 /*
  * Statistics
  */
+int missingConnectionCount;
+assign missingConnectionCount to "{T}InjSeqNoConnectionCount";
 int startOverrunCount;
 assign startOverrunCount to "{T}InjSeqStartOverrunCount";
 int staleSequenceCount;
@@ -149,25 +151,34 @@ entry {
 ss ssTiming {
     /*
      * Initial state
-     * Wait for injection cycles to be enabled
+     * Wait for connections to complete
      */
-    state await_potentate {
-        int oldConnectCount = -1;
+    state await_connections {
+        int oldConnectCount;
         entry {
-            if(debugFlag) printf("State: await_potentate\n");
-            injCycleEnable = 0;
-            pvPut(injCycleEnable, SYNC);
+            if(debugFlag) printf("State: await_connections\n");
+            oldConnectCount = -1;
         }
-        when ((pvConnectCount() == pvAssignCount())
-           && (potentate != 0)) {
-            injCycleEnable = 1;
-            pvPut(injCycleEnable, SYNC);
-        } state sync_await_start
+        when (pvConnectCount() == pvAssignCount()) { } state await_potentate
         when (delay(10) && (pvConnectCount() != oldConnectCount)) {
             oldConnectCount = pvConnectCount();
             printf("Timing Sequencer: %d/%d connected\n", pvConnectCount(),
                                                           pvAssignCount());
-        } state await_potentate
+        } state await_connections
+    }
+
+    /*
+     * Wait for injection cycles to be enabled
+     */
+    state await_potentate {
+        entry {
+            if(debugFlag) printf("State: await_potentate\n");
+        }
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate != 0) {
+            injCycleEnable = 1;
+            pvPut(injCycleEnable, SYNC);
+        } state sync_await_start
     }
 
     /*
@@ -175,9 +186,8 @@ ss ssTiming {
      */
 state sync_await_start {
         entry { if(debugFlag) printf("State: sync_await_start\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
         } state await_completion
     }
@@ -187,9 +197,8 @@ state sync_await_start {
      */
     state await_start {
         entry { if(debugFlag) printf("State: await_start\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
             efClear(syncDelaysFlag);
         } state await_precompletion
@@ -200,9 +209,8 @@ state sync_await_start {
      */
     state await_precompletion {
         entry { if(debugFlag) printf("State: await_precompletion\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
         when (efTestAndClear(requestFlag)) {
             /* Ignore requests outside expected window */
         } state await_precompletion
@@ -217,11 +225,9 @@ state sync_await_start {
      */
     state await_completion {
         entry { if(debugFlag) printf("State: await_completion\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
-        when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) == 0) {
-        } state await_start
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
+        when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) == 0) { } state await_start
     }
 
     /*
@@ -229,9 +235,8 @@ state sync_await_start {
      */
     state await_request {
         entry { if(debugFlag) printf("State: await_request\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
         when (delay(REQUEST_WINDOW)) {
             /* No request, default cycle will be emitted */
         } state await_completion
@@ -334,11 +339,9 @@ state sync_await_start {
      */
     state awaitSyncs {
         entry { if(debugFlag) printf("State: awaitSyncs\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
-        when (efTestAndClear(syncDelaysFlag)) {
-        } state create_requested_sequence
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
+        when (efTestAndClear(syncDelaysFlag)) {} state create_requested_sequence
 
         when (delay(LOAD_WINDOW)) {
             syncDelayTimeoutCount++;
@@ -395,9 +398,8 @@ state sync_await_start {
 
     state load_requested_sequence {
         entry { if(debugFlag) printf("State: load_requested_sequence\n"); }
-        when ((pvConnectCount() < pvAssignCount())
-           || (potentate == 0)) { } state await_potentate
-
+        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
+        when (potentate == 0) { } state no_potentate
         when (evgSequencerStarts != evgSequencerCurrentStarts) {
             startOverrunCount++;
             pvPut(startOverrunCount);
@@ -411,6 +413,22 @@ state sync_await_start {
             goodCount++;
             pvPut(goodCount);
         } state await_start
+    }
+
+    state no_potentate {
+        when() {
+            injCycleEnable = 0;
+            pvPut(injCycleEnable, SYNC);
+        } state await_potentate
+    }
+
+    state missing_connection {
+        when() {
+            injCycleEnable = 0;
+            pvPut(injCycleEnable, SYNC);
+            missingConnectionCount++;
+            pvPut(missingConnectionCount);
+        } state await_connections
     }
 
     state increment_bad_count {
