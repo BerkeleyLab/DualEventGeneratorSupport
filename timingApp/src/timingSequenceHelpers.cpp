@@ -55,12 +55,13 @@ void quickSort(unsigned char * evtcodes, int * tstamps, int left, int right) {
 	//printf("quickSort(evtcodes, tstamps, %ld, %ld): done\n", left, right);
 }
 
-void uniqueTimestamps(unsigned char *evtcodes, int * tstamps, int count, int *merged) {
+void
+uniqueTimestamps(unsigned char *evtcodes, int *tstamps, int count, int *merged) {
 	int i;
     int prev = -1;
 	for (i = 0; i < count-1; ++i) {
-		if (tstamps[i] >= tstamps[i+1]) {
-			tstamps[i+1] = tstamps[i]+1.0;
+		if (tstamps[i+1] <= tstamps[i]) {
+			tstamps[i+1] = tstamps[i] + 1;
 		}
         *merged++ = (tstamps[i] - prev) - 1;
         prev = tstamps[i];

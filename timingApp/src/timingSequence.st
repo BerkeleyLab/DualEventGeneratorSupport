@@ -355,10 +355,10 @@ state sync_await_start {
     state create_requested_sequence {
         entry { if(debugFlag) printf("State: create_requested_sequence\n"); }
         when () {
-            uint8_t * e = modeEvtCodes[modeIndexes[mode]];
-            int32_t i, nTStamps;
-            uint32_t highwater = 0, highwaterCount = 0;
-            uint8_t foundEOS = 0;
+            unsigned char *e = modeEvtCodes[modeIndexes[mode]];
+            int i, nTStamps;
+            int highwater = 0, highwaterCount = 0;
+            int foundEOS = 0;
 
             gunBunchesDelay = bunchesToField[bunches-1];
             for (i = 0, nTStamps = 0; i < MAX_SEQUENCE_LENGTH; i++) {
@@ -389,7 +389,7 @@ state sync_await_start {
             }
             if (!foundEOS) {
                 fprintf(stderr, "No EOS event in mode %d\n", mode);
-                state await_completion;
+                state increment_bad_count;
             }
             quickSort(evtcodes, tstamps, 0, nTStamps-1);
             uniqueTimestamps(evtcodes, tstamps, nTStamps, evgSequence);
