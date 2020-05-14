@@ -5,4 +5,4 @@ dbpf "$(P)$(R)E1:SEQ1.SIMM"        YES
 dbpf "$(P)$(R)E1:SEQ1:enable.SIMM" YES
 dbpf "$(P)$(R)INJ:singleShot.SIMM" YES
 dbpf "$(P)$(R)sysmonTrig_.SIMM"    YES
-dbpf "$(P)$(R)SEQ:status.SIMM"     YES
+dbpf "$(P)$(R)E1:seqStatus.SIMM"   YES
