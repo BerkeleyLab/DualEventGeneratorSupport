@@ -427,11 +427,9 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
     &&  (aLo == EVG_PROTOCOL_CMD_WAVEFORM_LO_SEQUENCE)) {
         int nSend = 1;
         int pkNumber = 0;
-        if ((n < 2)
-         || (n % 2)
-         || (value[n-1] != EVG_PROTOCOL_WAVEFORM_END_OF_TABLE_EVENT_CODE)) {
+        if ((n < 2) || (n % 2)) {
             epicsSnprintf(pasynUser->errorMessage,
-                                pasynUser->errorMessageSize, "No end-of-table");
+                               pasynUser->errorMessageSize, "Invalid table size");
             return asynError;
         }
         pdpvt->commandPacket.command = address;
@@ -451,9 +449,15 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
                 n = 0;
             }
             if ((n == 0)
+             && (code != EVG_PROTOCOL_WAVEFORM_END_OF_TABLE_EVENT_CODE)) {
+                epicsSnprintf(pasynUser->errorMessage,
+                             pasynUser->errorMessageSize, "No end-of-sequence");
+                return asynError;
+            }
+            if ((n == 0)
              || (nSend == EVG_PROTOCOL_ARG_CAPACITY)
              || ((nSend == (EVG_PROTOCOL_ARG_CAPACITY-1))
-              && (*value>=EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT))) {
+              && (*value >= EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT))) {
                 pdpvt->commandPacket.args[0] = pkNumber;
                 status = cmdWriteRead(pdpvt, pasynUser, nSend, &replyCount);
                 if (status != asynSuccess) {
