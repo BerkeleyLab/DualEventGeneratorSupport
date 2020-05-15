@@ -33,8 +33,8 @@ typedef enum { /* Request waveform indices.  */
         GUN_BUNCHES,
         INJ_MODE,
         GUN_INHIBIT,
-        RESERVED1,      /* FIXME: Should be INJ_FIELD_SYNC_DELAY */
-        RESERVED2,      /* FIXME: Should be EXTR_FIELD_SYNC_DELAY */
+        INJ_FIELD_SYNC_DELAY,
+        EXTR_FIELD_SYNC_DELAY,
         SEQUENCE,
 } REQUEST_FIELDS;
 }%
@@ -46,6 +46,7 @@ int bucket = 1;     /* Target bucket (1-328) */
 int bunches = 1;    /* Number of electron gun bunches (1-16) */
 int inhibit = 0;    /* Inhibit electron gun if set, even if mode allows gun */
 int mode = 0;       /* Type of injection sequence.  Indexes modeEvtCodes. */
+int syncDelays[2];  /* Field delays */
 
 /*
  * Storage ring current.
@@ -64,16 +65,6 @@ monitor potentate;
 int injCycleEnable;
 assign injCycleEnable to "{P}{R}INJ:injCycleEnable";
 
-/*
- * Field delays
- * FIXME: These values should move to the two unused 'request' fields!
- */
-int syncDelays[2];
-assign syncDelays to {
-    "{T}TimInjFieldSyncDelay",
-    "{T}TimExtrFieldSyncDelay"
-};
-monitor syncDelays;
 
 /*
  * Statistics
@@ -301,6 +292,8 @@ state sync_await_start {
             mode     = request[INJ_MODE];
             inhibit  = request[GUN_INHIBIT];
             sequence = request[SEQUENCE];
+            syncDelays[0] = request[INJ_FIELD_SYNC_DELAY];
+            syncDelays[1] = request[EXTR_FIELD_SYNC_DELAY];
         } state validate_request
     }
 

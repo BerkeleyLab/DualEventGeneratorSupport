@@ -26,23 +26,15 @@ def pv(name):
 seqStatus = pv(args.evg + 'E1:seqStatus')
 seqStatusBusy = 0x10
 
-# 'Temporary' field delays
-# Values obtained emperically from running system
-TimInjFieldSyncDelaySP = pv(args.test + 'TimInjFieldSyncDelaySP')
-TimExtrFieldSyncDelaySP = pv(args.test + 'TimExtrFieldSyncDelaySP')
-TimInjFieldSyncDelaySP.put(14663)
-TimExtrFieldSyncDelaySP.put(5877)
-
 # Injection request
-# FIXME: RESERVED values should be INJ_FIELD_SYNC_DELAY, EXTR_FIELD_SYNC_DELAY
-TARGET_BUCKET = 0
-GUN_BUNCHES   = 1
-INJ_MODE      = 2
-GUN_INHIBIT   = 3
-RESERVED1     = 4
-RESERVED2     = 5
-SEQUENCE      = 6
-request = [1, 4, 40, 0, 0, 0, 1]
+TARGET_BUCKET         = 0
+GUN_BUNCHES           = 1
+INJ_MODE              = 2
+GUN_INHIBIT           = 3
+INJ_FIELD_SYNC_DELAY  = 4
+EXTR_FIELD_SYNC_DELAY = 5
+SEQUENCE              = 6
+request = [1, 4, 40, 0, 1832886, 60239272, 1]
 request[SEQUENCE] = int(time.time())
 requestPV = pv(args.test + 'TimInjReq')
 bucketIndex = 0
