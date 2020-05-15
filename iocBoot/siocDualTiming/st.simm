@@ -1,8 +1,0 @@
-# Put FPGA I/O records into simulation mode to inhibit
-# error messages when FPGA is not connected.
-dbpf "$(P)$(R)shadowEVG:diag"      1
-dbpf "$(P)$(R)E1:SEQ1.SIMM"        YES
-dbpf "$(P)$(R)E1:SEQ1:enable.SIMM" YES
-dbpf "$(P)$(R)INJ:singleShot.SIMM" YES
-dbpf "$(P)$(R)sysmonTrig_.SIMM"    YES
-dbpf "$(P)$(R)E1:seqStatus.SIMM"   YES
