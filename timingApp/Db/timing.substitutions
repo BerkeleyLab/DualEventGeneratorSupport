@@ -1,19 +1,14 @@
-file "perStatisticCounter.template"
+file "perTimingSequencer.template"
 { pattern
-{       T,               NAME,                         DESC }
-  { "\$(T)", InjSeqNoConnectionCount,      "" }
-  { "\$(T)", InjSeqStartOverrunCount,      "" }
-  { "\$(T)", InjSeqStaleSequenceCount,     "" }
-  { "\$(T)", InjSeqInvalidModeCount,       "" }
-  { "\$(T)", InjSeqInvalidBucketCount,     "" }
-  { "\$(T)", InjSeqInvalidBunchesCount,    "" }
-  { "\$(T)", InjSeqNoBeamCurrentCount,     "" }
-  { "\$(T)", InjSeqBadBeamCurrentCount,    "" }
-  { "\$(T)", InjExcessiveBeamCurrentCount, "" }
-  { "\$(T)", InjSeqBadSeverityCount,       "" }
-  { "\$(T)", InjSeqBadEVRCount,            "" }
-  { "\$(T)", InjSeqSyncDelayTimeoutCount,  "" }
-  { "\$(T)", InjSeqSuccessCount,           "" }
-  { "\$(T)", InjSeqFailedCount,            "" }
-  { "\$(T)", InjSeqDebug,                  "Enable sequencer diagnostic messages" }
+{       T     }
+  { "\$(T)" }
+}
+
+file "perTimingSequencerVar.template"
+{ pattern
+{       T,               NAME,                     DESC }
+  { "\$(T)", InjSeqSuccessCount,      "Number of successful non-default cycles" }
+  { "\$(T)", InjSeqFailedCount,       "Number of failed non-default cycles" }
+  { "\$(T)", InjSeqStartOverrunCount, "Count times that request came too late" }
+  { "\$(T)", InjSeqDebug,             "Enable sequencer diagnostic messages" }
 }

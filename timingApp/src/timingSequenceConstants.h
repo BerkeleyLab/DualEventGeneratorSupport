@@ -4,8 +4,6 @@
 #define MAX_SEQUENCE_LENGTH   100
 #define EVG_SEQUENCE_CAPACITY 200
 
-#define NUM_REQUEST_FIELDS 7
-
 // Some ranges for request parameters
 #define MIN_BUCKETS 1
 #define MAX_BUCKETS 328

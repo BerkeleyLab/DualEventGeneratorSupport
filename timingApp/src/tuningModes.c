@@ -9,8 +9,16 @@
 
 #include "tuningModes.h"
 #include "timingSequenceDefs.h"
-#include "timingSequenceHelpers.h"
 #include <stdio.h>
+
+/*
+ * Convert target bucket to delay
+ */
+static int
+getTargetBucketDelay(int targetBucket)
+{
+	return (125 * ((21 * targetBucket) % 328)) / 4;
+}
 
 int getTimestamp(unsigned char evtcode, int *syncDelays, int nBunches, int gunBunchesDelay, int targetBucket) {
     switch (evtcode) {

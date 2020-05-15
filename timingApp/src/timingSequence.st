@@ -13,18 +13,31 @@ option +s;
 option +d;
 
 #include "timingSequenceConstants.h"
+%%#include <stdio.h>
+%%#include <stdlib.h>
 %%#include "timingSequenceDefs.h"
-%%#include "timingSequenceHelpers.h"
 %%#include "tuningModes.h"
 
 /*
  * Injection request waveform.
  */
-int32_t request[NUM_REQUEST_FIELDS];
+int32_t request[7];
 assign request to "{T}TimInjReq";
 monitor request;
 evflag requestFlag;
 sync request requestFlag;
+unsigned int modeIndexes[255];
+%{
+typedef enum { /* Request waveform indices.  */
+        TARGET_BUCKET,
+        GUN_BUNCHES,
+        INJ_MODE,
+        GUN_INHIBIT,
+        RESERVED1,      /* FIXME: Should be INJ_FIELD_SYNC_DELAY */
+        RESERVED2,      /* FIXME: Should be EXTR_FIELD_SYNC_DELAY */
+        SEQUENCE,
+} REQUEST_FIELDS;
+}%
 
 /* Values extracted from injection request waveform: */
 int sequence = 0;   /* Sequence #: request ignored if no change from previous */
@@ -53,6 +66,7 @@ assign injCycleEnable to "{P}{R}INJ:injCycleEnable";
 
 /*
  * Field delays
+ * FIXME: These values should move to the two unused 'request' fields!
  */
 int syncDelays[2];
 assign syncDelays to {
@@ -60,40 +74,34 @@ assign syncDelays to {
     "{T}TimExtrFieldSyncDelay"
 };
 monitor syncDelays;
-evflag syncDelaysFlag;
-sync syncDelays syncDelaysFlag;
 
 /*
  * Statistics
  */
-int missingConnectionCount;
-assign missingConnectionCount to "{T}InjSeqNoConnectionCount";
-int startOverrunCount;
-assign startOverrunCount to "{T}InjSeqStartOverrunCount";
-int staleSequenceCount;
-assign staleSequenceCount to "{T}InjSeqStaleSequenceCount";
-int invalidModeCount;
-assign invalidModeCount to "{T}InjSeqInvalidModeCount";
-int invalidBucketCount;
-assign invalidBucketCount to "{T}InjSeqInvalidBucketCount";
-int invalidBunchesCount;
-assign invalidBunchesCount to "{T}InjSeqInvalidBunchesCount";
-int noBeamCurrentCount;
-assign noBeamCurrentCount to "{T}InjSeqNoBeamCurrentCount";
-int badBeamCurrentCount;
-assign badBeamCurrentCount to "{T}InjSeqBadBeamCurrentCount";
-int excessiveBeamCurrentCount;
-assign excessiveBeamCurrentCount to "{T}InjExcessiveBeamCurrentCount";
-int badSeverityCount;
-assign badSeverityCount to "{T}InjSeqBadSeverityCount";
-int badEVRCount;
-assign badEVRCount to "{T}InjSeqBadEVRCount";
-int syncDelayTimeoutCount;
-assign syncDelayTimeoutCount to "{T}InjSeqSyncDelayTimeoutCount";
+%{
+typedef enum {
+    FC_SUCCESS,
+    FC_MISSING_CONNECTION,
+    FC_START_OVERRUN,
+    FC_STALE_SEQUENCE,
+    FC_INVALID_MODE,
+    FC_INVALID_BUCKET,
+    FC_INVALID_BUNCHES,
+    FC_INVALID_BEAM_CURRENT,
+    FC_EXCESSIVE_BEAM_CURRENT,
+    FC_PV_SEVERITY,
+    FC_BAD_EVR,
+    FC_NO_EOS,
+} FAULT_CODE;
+}%
 int goodCount;
 assign goodCount to "{T}InjSeqSuccessCount";
 int badCount;
 assign badCount to "{T}InjSeqFailedCount";
+int faultCode;
+assign faultCode to "{T}InjSeqFaultCode";
+int startOverrunCount;
+assign startOverrunCount to "{T}InjSeqStartOverrunCount";
 
 /*
  * Diagnostics
@@ -114,13 +122,13 @@ int gunBunchesDelay;
  * Soft sequence
  */
 uint8_t evtcodes[MAX_SEQUENCE_LENGTH];
-int tstamps[MAX_SEQUENCE_LENGTH];
 
 /*
  * Injection cycles are initiated only when all EVR links are good.
  */
 int allEVRvalid;
 assign allEVRvalid to "{T}TimAllEVRvalid";
+monitor allEVRvalid;
 
 /*
  * Event generator FPGA
@@ -138,6 +146,43 @@ int evgSequencerStarts;
 assign evgSequencerStarts to "{P}{R}E1:seqStarts";
 monitor evgSequencerStarts;
 int evgSequencerCurrentStarts;
+
+%{
+/*
+ * Comparison routine for qsort
+ * Primary sort on time stamp (first word)
+ * Secondary sort on event code (second word)
+ */
+static int
+tsCompare(const void *a, const void *b)
+{
+    const int *ap = a, *bp = b;
+    int diff;
+    if ((diff = ap[0] - bp[0]) == 0) {
+        diff = ap[1] - bp[1];
+    }
+    return diff;
+}
+
+/*
+ * Ensure monotonically increasing time stamps
+ * and convert time stamps to delay.
+ */
+static void
+monotonicSequence(int count, int *tstampsAndEvents)
+{
+	int i, idx;
+    int prev = -1;
+	for (i = 0, idx = 0; i < count; i++, idx += 2) {
+        int this = tstampsAndEvents[idx];
+		if (tstampsAndEvents[idx+2] <= this) {
+			tstampsAndEvents[idx+2] = this + 1;
+		}
+        tstampsAndEvents[idx] = (this - prev) - 1;
+        prev = this;
+	}
+}
+}%
 
 entry {
     modeIndexes[DEFAULT_MODE] = DEFAULT_MODE_INDEX;
@@ -200,7 +245,6 @@ state sync_await_start {
         when (pvConnectCount() != pvAssignCount()) { } state missing_connection
         when (potentate == 0) { } state no_potentate
         when ((evgSeqStatus & EVG_SEQ_STATUS_ACTIVE) != 0) {
-            efClear(syncDelaysFlag);
         } state await_precompletion
     }
 
@@ -242,6 +286,7 @@ state sync_await_start {
         } state await_completion
 
         when (evgSequencerStarts != evgSequencerCurrentStarts) {
+            faultCode = FC_START_OVERRUN;
             startOverrunCount++;
             pvPut(startOverrunCount);
         } state increment_bad_count
@@ -265,25 +310,19 @@ state sync_await_start {
     state validate_request {
         entry { if(debugFlag) printf("State: validate_request\n"); }
         when (sequence == lastSequence) {
-            staleSequenceCount++;
-            pvPut(staleSequenceCount);
+            faultCode = FC_STALE_SEQUENCE;
         } state increment_bad_count
 
         when ((mode < MIN_MODE) || (mode > MAX_MODE)) {
-            invalidModeCount++;
-            pvPut(invalidModeCount);
+            faultCode = FC_INVALID_MODE;
         } state increment_bad_count
 
         when ((bucket < MIN_BUCKETS) || (bucket > MAX_BUCKETS)) {
-            fprintf(stderr, "Invalid target bucket %d, aborting injection\n", bucket);
-            invalidBucketCount++;
-            pvPut(invalidBucketCount);
+            faultCode = FC_INVALID_BUCKET;
         } state increment_bad_count
 
         when ((bunches < MIN_BUNCHES) || (bunches > MAX_BUNCHES)) {
-            fprintf(stderr, "Invalid #bunches %d, aborting injection\n", bunches);
-            invalidBunchesCount++;
-            pvPut(invalidBunchesCount);
+            faultCode = FC_INVALID_BUNCHES;
         } state increment_bad_count
 
         when () {
@@ -292,19 +331,12 @@ state sync_await_start {
 
     state check_beamcurrent {
         entry { if(debugFlag) printf("State: check_beamcurrent\n"); }
-        when ((mode == SRINJECTION_MODE) && (pvGet(beamcurrent, SYNC, 0.01) != pvStatOK)) {
-            noBeamCurrentCount++;
-            pvPut(noBeamCurrentCount);
-        } state increment_bad_count
-
         when ((mode == SRINJECTION_MODE) && (pvSeverity(beamcurrent) == pvSevrINVALID)) {
-            badBeamCurrentCount++;
-            pvPut(badBeamCurrentCount);
+            faultCode = FC_INVALID_BEAM_CURRENT;
         } state increment_bad_count
 
         when ((mode == SRINJECTION_MODE) && (beamcurrent > MAX_BEAM_CURRENT)) {
-            excessiveBeamCurrentCount++;
-            pvPut(excessiveBeamCurrentCount);
+            faultCode = FC_EXCESSIVE_BEAM_CURRENT;
         } state increment_bad_count
 
         when () {
@@ -315,8 +347,7 @@ state sync_await_start {
         entry { if(debugFlag) printf("State: check_severities\n"); }
         when ((pvSeverity(evgSeqStatus) != pvSevrNONE)
             || (pvSeverity(evgSequencerStarts) != pvSevrNONE)) {
-            badSeverityCount++;
-            pvPut(badSeverityCount);
+            faultCode = FC_PV_SEVERITY;
         } state increment_bad_count
 
         when () {
@@ -326,27 +357,12 @@ state sync_await_start {
     state check_links {
         entry { if(debugFlag) printf("State: check_links\n"); }
         when ((pvStatus(allEVRvalid) != pvStatOK) || (allEVRvalid == 0)) {
-            badEVRCount++;
-            pvPut(badEVRCount);
+printf("pvStatus(allEVRvalid):%d  %d\n", pvStatus(allEVRvalid), allEVRvalid);
+            faultCode = FC_BAD_EVR;
         } state increment_bad_count
 
         when () {
-        } state awaitSyncs
-    }
-
-    /*
-     * Wait for field-related adjustments
-     */
-    state awaitSyncs {
-        entry { if(debugFlag) printf("State: awaitSyncs\n"); }
-        when (pvConnectCount() != pvAssignCount()) { } state missing_connection
-        when (potentate == 0) { } state no_potentate
-        when (efTestAndClear(syncDelaysFlag)) {} state create_requested_sequence
-
-        when (delay(LOAD_WINDOW)) {
-            syncDelayTimeoutCount++;
-            pvPut(syncDelayTimeoutCount);
-        } state increment_bad_count
+        } state create_requested_sequence
     }
 
     /*
@@ -360,39 +376,48 @@ state sync_await_start {
             int highwater = 0, highwaterCount = 0;
             int foundEOS = 0;
 
+            /*
+             * Get time stamp for each event and merge into common array
+             */
             gunBunchesDelay = bunchesToField[bunches-1];
             for (i = 0, nTStamps = 0; i < MAX_SEQUENCE_LENGTH; i++) {
+                int event = e[i];
+                int tstamp;
                 if (inhibit) {
-                    if (e[i] == GUNON_EVTCODE || e[i] == GUNOFF_EVTCODE) {
+                    if (event == GUNON_EVTCODE || event == GUNOFF_EVTCODE) {
                         continue;
                     }
                 }
-                evtcodes[nTStamps] = e[i];
-                tstamps[nTStamps] = getTimestamp(e[i], syncDelays, bunches, gunBunchesDelay, bucket);
-                if (tstamps[nTStamps] < 0) {
-                    fprintf(stderr, "WARNING: tstamp for evtcode %hu is %d; forcing to zero\n", evtcodes[nTStamps], tstamps[nTStamps]);
-                    tstamps[nTStamps] = 0;
+                evtcodes[nTStamps] = event;
+                tstamp = getTimestamp(event, syncDelays, bunches,
+                                                       gunBunchesDelay, bucket);
+                if (tstamp < 0) {
+                    fprintf(stderr, "WARNING: tstamp for evtcode %hu is %d -- "
+                               "forcing to zero\n", evtcodes[nTStamps], tstamp);
+                    tstamp = 0;
                 }
-                if (e[i] < SEQUENCE_END_EVTCODE) {
-                    if (tstamps[nTStamps] > highwater) {
-                        highwater = tstamps[nTStamps];
+                if (event < SEQUENCE_END_EVTCODE) {
+                    if (tstamp > highwater) {
+                        highwater = tstamp;
                     }
                 }
                 else {
-                    tstamps[nTStamps] = highwater + ++highwaterCount;
+                    tstamp = highwater + ++highwaterCount;
                 }
+                evgSequence[(2*nTStamps)+0] = tstamp;
+                evgSequence[(2*nTStamps)+1] = event;
                 nTStamps++;
-                if (e[i] == SEQUENCE_END_EVTCODE) {
+                if (event == SEQUENCE_END_EVTCODE) {
                     foundEOS = 1;
                     break;
                 }
             }
             if (!foundEOS) {
-                fprintf(stderr, "No EOS event in mode %d\n", mode);
+                faultCode = FC_NO_EOS;
                 state increment_bad_count;
             }
-            quickSort(evtcodes, tstamps, 0, nTStamps-1);
-            uniqueTimestamps(evtcodes, tstamps, nTStamps, evgSequence);
+            qsort(evgSequence, nTStamps, 2*sizeof(int), tsCompare);
+            monotonicSequence(nTStamps, evgSequence);
         } state load_requested_sequence
     }
 
@@ -401,6 +426,7 @@ state sync_await_start {
         when (pvConnectCount() != pvAssignCount()) { } state missing_connection
         when (potentate == 0) { } state no_potentate
         when (evgSequencerStarts != evgSequencerCurrentStarts) {
+            faultCode = FC_START_OVERRUN;
             startOverrunCount++;
             pvPut(startOverrunCount);
         } state increment_bad_count
@@ -410,6 +436,8 @@ state sync_await_start {
             evgSeqEnable = 1;
             pvPut(evgSeqEnable);
             lastSequence = sequence;
+            faultCode = FC_SUCCESS;
+            pvPut(faultCode);
             goodCount++;
             pvPut(goodCount);
         } state await_start
@@ -424,16 +452,17 @@ state sync_await_start {
 
     state missing_connection {
         when() {
+            faultCode = FC_MISSING_CONNECTION;
+            pvPut(faultCode);
             injCycleEnable = 0;
             pvPut(injCycleEnable, SYNC);
-            missingConnectionCount++;
-            pvPut(missingConnectionCount);
         } state await_connections
     }
 
     state increment_bad_count {
         entry { if(debugFlag) printf("State: increment_bad_count\n"); }
         when() {
+            pvPut(faultCode);
             badCount++;
             pvPut(badCount);
         } state await_completion
