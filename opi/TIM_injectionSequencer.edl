@@ -4,9 +4,9 @@ major 4
 minor 0
 release 1
 x 621
-y 128
-w 250
-h 265
+y 216
+w 320
+h 180
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -29,7 +29,7 @@ minor 1
 release 1
 x 0
 y 1
-w 250
+w 320
 h 22
 font "helvetica-medium-r-18.0"
 fontAlign "center"
@@ -47,34 +47,57 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 1
-y 30
-w 237
-h 17
+x 8
+y 124
+w 64
+h 39
 
 beginGroup
 
-# (Text Monitor)
-object activeXTextDspClass:noedit
+# (Message Button)
+object activeMessageButtonClass
 beginObjectProperties
 major 4
-minor 7
+minor 1
 release 0
-x 158
-y 30
-w 80
-h 16
-controlPv "$(T)InjSeqGoodCount"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
+x 42
+y 143
+w 30
+h 20
 fgColor index 14
-bgColor index 2
-autoHeight
-limitsFromDb
-nullColor index 7
-useHexPrefix
-newPos
-objType "monitors"
+onColor index 31
+offColor index 31
+topShadowColor index 30
+botShadowColor index 32
+controlPv "$(T)InjSeqDebug"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 8
+y 143
+w 30
+h 20
+fgColor index 14
+onColor index 31
+offColor index 31
+topShadowColor index 30
+botShadowColor index 32
+controlPv "$(T)InjSeqDebug"
+pressValue "0"
+onLabel "Clr"
+offLabel "Clr"
+3d
+font "helvetica-medium-r-14.0"
 endObjectProperties
 
 # (Static Text)
@@ -83,77 +106,17 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 1
-y 30
-w 150
-h 17
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 2
-useDisplayBg
-value {
-  "Successful requests"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 1
-y 50
-w 237
-h 17
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 158
-y 50
-w 80
+x 8
+y 124
+w 64
 h 16
-controlPv "$(T)InjSeqBadCount"
 font "helvetica-medium-r-14.0"
-fontAlign "right"
+fontAlign "center"
 fgColor index 14
-bgColor index 2
-autoHeight
-limitsFromDb
-nullColor index 7
-useHexPrefix
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 1
-y 50
-w 150
-h 17
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 2
+bgColor index 19
 useDisplayBg
 value {
-  "Failed requests"
+  "Debug"
 }
 endObjectProperties
 
@@ -184,7 +147,7 @@ x 158
 y 70
 w 80
 h 16
-controlPv "$(T)InjStartOverrunCount"
+controlPv "$(T)InjSeqStartOverrunCount"
 font "helvetica-medium-r-14.0"
 fontAlign "right"
 fgColor index 14
@@ -228,7 +191,7 @@ major 4
 minor 0
 release 0
 x 1
-y 90
+y 50
 w 237
 h 17
 
@@ -241,8 +204,128 @@ major 4
 minor 7
 release 0
 x 158
-y 90
+y 50
 w 80
+h 16
+controlPv "$(T)InjSeqFailedCount"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 2
+autoHeight
+limitsFromDb
+nullColor index 7
+useHexPrefix
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 1
+y 50
+w 150
+h 17
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 2
+useDisplayBg
+value {
+  "Failed requests"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 30
+w 237
+h 17
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 158
+y 30
+w 80
+h 16
+controlPv "$(T)InjSeqSuccessCount"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 2
+autoHeight
+limitsFromDb
+nullColor index 7
+useHexPrefix
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 1
+y 30
+w 150
+h 17
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 2
+useDisplayBg
+value {
+  "Successful requests"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 90
+w 307
+h 17
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 158
+y 90
+w 150
 h 16
 controlPv "$(T)InjSeqFaultCode"
 font "helvetica-medium-r-14.0"

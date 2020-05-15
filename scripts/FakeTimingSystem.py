@@ -1,23 +1,21 @@
 #!/usr/bin/env python
 
-#
-# Act as ALS timing system client
-#
-
 from __future__ import print_function
 import argparse
 import epics
 import sys
 import time
 
-parser = argparse.ArgumentParser(description='Demonstrate timing sequencer operation.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('-e', '--evg', default='testEVG:', help='Event geneerator Record name prefix')
+parser = argparse.ArgumentParser(description='Fake facility timing system to exercise dual event generator.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('-c', '--count', type=int, default=1, help='Number of cycles to requess')
+parser.add_argument('-e', '--evg', default='testEVG:', help='Event generator record name prefix')
+parser.add_argument('-m', '--monitor', action='store_true', help='Monitor and display event sequences')
 parser.add_argument('-t', '--test', default='test', help='Timing system test prefix')
 parser.add_argument('-v', '--verbose', action='store_true', help='Show outgoing requests')
 args = parser.parse_args()
 
 def pv(name):
-    pv = epics.PV(name)
+    pv = epics.PV(name, connection_timeout=1.0)
     pv.get()
     if not pv.connect():
         print('Unable to connect to "%s"' % (name))
@@ -28,41 +26,50 @@ def pv(name):
 seqStatus = pv(args.evg + 'E1:seqStatus')
 seqStatusBusy = 0x10
 
-# Show event generator updates
-sequence = pv(args.evg + 'E1:SEQ1')
-sequenceNORD = pv(args.evg + 'E1:SEQ1.NORD')
-
 # 'Temporary' field delays
+# Values obtained emperically from running system
 TimInjFieldSyncDelaySP = pv(args.test + 'TimInjFieldSyncDelaySP')
 TimExtrFieldSyncDelaySP = pv(args.test + 'TimExtrFieldSyncDelaySP')
+TimInjFieldSyncDelaySP.put(14663)
+TimExtrFieldSyncDelaySP.put(5877)
 
 # Injection request
+# FIXME: RESERVED values should be INJ_FIELD_SYNC_DELAY, EXTR_FIELD_SYNC_DELAY
 TARGET_BUCKET = 0
-GUN_BUNCHES   = 4
+GUN_BUNCHES   = 1
 INJ_MODE      = 2
 GUN_INHIBIT   = 3
 RESERVED1     = 4
 RESERVED2     = 5
 SEQUENCE      = 6
-request = [1, 4, 70, 0, 0, 0, 1]
+request = [1, 4, 40, 0, 0, 0, 1]
+request[SEQUENCE] = int(time.time())
 requestPV = pv(args.test + 'TimInjReq')
 bucketIndex = 0
 
 # Show the sequence requests
+then = 0.0
 def sequenceCallback(pvname=None, value=None, **kws):
-    global sequenceNORD
-    print(sequenceNORD, sequence)
+    global then
+    now = time.time()
+    if then == 0:
+        then = now
+    print("+%.6f"%(now - then))
+    then = now
+    i = 0
+    while True:
+        gap = value[i]
+        evCode = value[i+1]
+        i += 2
+        print('%d:%d'%(gap, evCode))
+        if evCode == 127: break;
 
-checks = 0;
-while (seqStatus.get() == None):
-    time.sleep(0.5)
-    checks += 1
-    if checks > 5:
-        print('Unable to connect')
-        sys.exit(1)
-sequence.add_callback(sequenceCallback)
+if args.monitor:
+    # Show event generator updates
+    sequence = pv(args.evg + 'E1:SEQ1')
+    sequence.add_callback(sequenceCallback)
 
-while True:
+while args.count > 0:
     while (seqStatus.get() & seqStatusBusy) == 0:
         time.sleep(0.05)
     while (seqStatus.get() & seqStatusBusy) != 0:
@@ -71,6 +78,6 @@ while True:
     request[TARGET_BUCKET] = bucketIndex + 1
     request[SEQUENCE] += 1
     requestPV.put(request)
-    TimInjFieldSyncDelaySP.put(100000)
-    TimExtrFieldSyncDelaySP.put(1000000)
     if (args.verbose): print(request)
+    args.count -= 1
+time.sleep(1.0)
