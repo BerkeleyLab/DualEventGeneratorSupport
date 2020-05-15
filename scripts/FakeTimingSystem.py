@@ -23,8 +23,18 @@ def pv(name):
     return pv
 
 # Synchronize with booster cycle
+cycleDone = False
+seqStatusWasBusy = None
+def seqStatusCallback(pvname=None, value=None, **kws):
+    global cycleDone, seqStatusWasBusy
+    seqStatIsBusy = (value & 0x10) != 0
+    if seqStatusWasBusy == None:
+        seqStatusWasBusy = seqStatIsBusy
+    if not seqStatIsBusy and seqStatusWasBusy:
+        cycleDone = True
+    seqStatusWasBusy = seqStatIsBusy
 seqStatus = pv(args.evg + 'E1:seqStatus')
-seqStatusBusy = 0x10
+seqStatus.add_callback(seqStatusCallback)
 
 # Injection request
 TARGET_BUCKET         = 0
@@ -61,11 +71,11 @@ if args.monitor:
     sequence = pv(args.evg + 'E1:SEQ1')
     sequence.add_callback(sequenceCallback)
 
+cycleDone = False
 while args.count > 0:
-    while (seqStatus.get() & seqStatusBusy) == 0:
+    while not cycleDone:
         time.sleep(0.05)
-    while (seqStatus.get() & seqStatusBusy) != 0:
-        time.sleep(0.05)
+    cycleDone = False
     bucketIndex = (bucketIndex + 1) % 328
     request[TARGET_BUCKET] = bucketIndex + 1
     request[SEQUENCE] += 1
