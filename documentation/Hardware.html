@@ -18,7 +18,7 @@
       shows the salient features of this board.</p>
     <blockquote>
       <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram"
-          height="508" width="667"><br>
+          width="667" height="508"><br>
       </p>
     </blockquote>
     <ul>
@@ -56,6 +56,149 @@
     monitor signal to the FPGA. <br>
     <br>
     <h1>Firmware</h1>
+    <h2>Configuration Parameters</h2>
+    <p>The following table summarizes the configuration parameters
+      shared between the FPGA software and firmware.</p>
+    <table cellspacing="2" cellpadding="2" border="1" width="80%">
+      <tbody>
+        <tr>
+          <td align="center" valign="middle">Parameter<br>
+          </td>
+          <td align="center" valign="middle">Value<br>
+          </td>
+          <td align="center" valign="middle">Description<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_MINIMUM_INJECTION_CYCLE_MS<br>
+          </td>
+          <td align="center" valign="middle">990<br>
+          </td>
+          <td align="left" valign="middle">The lower limit on the time,
+            in milliseconds between injection cycle requests.&nbsp; The
+            injection cycle time is specified by the first line of the<a
+              href="#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_MAXIMUM_INJECTION_CYCLE_MS<br>
+          </td>
+          <td align="center" valign="middle">2010<br>
+          </td>
+          <td align="left" valign="middle">The upper limit on the time,
+            in milliseconds between injection cycle requests.</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_HARDWARE_TRIGGER_COUNT<br>
+          </td>
+          <td align="center" valign="middle">4<br>
+          </td>
+          <td align="left" valign="middle">The number of hardware
+            triggers.<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_DIAGNOSTIC_INPUT_COUNT<br>
+          </td>
+          <td align="center" valign="middle">2<br>
+          </td>
+          <td align="left" valign="middle">The number of diagnostic
+            inputs.<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_DIAGNOSTIC_OUTPUT_COUNT<br>
+          </td>
+          <td align="center" valign="middle">2<br>
+          </td>
+          <td align="left" valign="middle">The number of diagnostic
+            outputs.</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_SEQUENCE_RAM_CAPACITY<br>
+          </td>
+          <td align="center" valign="middle">1024<br>
+          </td>
+          <td align="left" valign="middle">The size of the event
+            sequence RAM.&nbsp; Long intervals between events consume
+            more than one entry so the actual number of events in a
+            sequence may be less than this value.<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_EVG1_CLK_PER_RF_COINCIDENCE<br>
+          </td>
+          <td align="center" valign="middle">608<br>
+          </td>
+          <td align="left" valign="middle">The number of cycles of the
+            first RF reference clock to return to the same phase offset
+            relative to the second RF reference clock.<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_EVG2_CLK_PER_RF_COINCIDENCE<br>
+          </td>
+          <td align="center" valign="middle">609<br>
+          </td>
+          <td align="left" valign="middle">The number of cycles of the
+            second RF reference clock to return to the same phase offset
+            relative to the first RF reference clock.</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_EVG1_CLK_PER_HEARTBEAT<br>
+          </td>
+          <td align="center" valign="middle">121296000<br>
+          </td>
+          <td align="left" valign="middle">The number of cycles of the
+            first RF reference clock between heartbeat events on the
+            first event generator link.<br>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">CFG_EVG2_CLK_PER_HEARTBEAT<br>
+          </td>
+          <td align="center" valign="middle">124640000<br>
+          </td>
+          <td align="left" valign="middle">The number of cycles of the
+            second RF reference clock between heartbeat events on the
+            second event generator link.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    The relationships between the per-generator parameters can be
+    summarized as:<br>
+    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF1</mtext></msub><mo>×</mo><mtext>CFG_EVG1_CLK_PER_RF_COINCIDENCE<br>
+            </mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
+            = \text{F}_\text{RF1} \times
+            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
+    </blockquote>
+    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext></mrow><annotation
+            encoding="TeX">\text{T}_\text{coincidence} =
+            \text{F}_\text{RF1} \times
+            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
+    </blockquote>
+    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>heartbeat1</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF1</mtext></msub><mo>×</mo><mtext>CFG_EVG1_CLK_PER_HEARTBEAT<br>
+            </mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
+            = \text{F}_\text{RF1} \times
+            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
+    </blockquote>
+    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>heartbeat2</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_HEARTBEAT<br>
+            </mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
+            = \text{F}_\text{RF1} \times
+            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
+    </blockquote>
+    where
+    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF1</mtext></msub><annotation
+          encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
+    and
+    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF2</mtext></msub><annotation
+          encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
+    are the frequencies of the reference clock inputs.&nbsp; The
+    reference clock inputs are driven at 1/4 the rate of the master
+    oscillators for the two frequency domains.&nbsp; Note that the&nbsp;
+    heartbeat intervals are are not the same.<br>
+    <br>
     <h2>Clock Synchronization</h2>
     Each event generator in the FPGA is synchronized to the RF master
     oscillator driving its part of the accelerator.&nbsp; Each master
@@ -70,7 +213,7 @@
     other.&nbsp; Thus the phase at which the PLL has locked its output
     relative to its input can be determined.<br>
     <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg"
-        alt="" height="50%" width="70%"><br>
+        alt="" width="70%" height="50%"><br>
     </blockquote>
     <br>
     There are two levels of event system clock alignment.&nbsp; The
@@ -412,6 +555,7 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       word-spacing: 0px; -webkit-text-size-adjust: auto;
       -webkit-text-stroke-width: 0px; text-decoration: none;">
       <dt><span style="font-weight: bold;"><a name="scriptCONSOLE"></a>console.py
+
 
 
 
