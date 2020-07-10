@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Dual Event Generator Support</title>
     <meta name="generator" content="amaya 8.5, see
@@ -9,8 +8,7 @@
   <body>
     <h1>Introduction</h1>
     This support module and soft IOC provide ASYN drivers to control and
-    acquire data from the ALS dual event generator.<span
-      style="font-weight: bold;"></span>&nbsp; The module consists of C
+    acquire data from the ALS dual event generator.<span style="font-weight: bold;"></span>&nbsp; The module consists of C
     source, a database, and engineering screens.&nbsp; The dual event
     generator provides timing and RF signals for each ALS frequency
     domain.&nbsp; Each generator produces continuous heartbeat,
@@ -36,8 +34,7 @@
     intervention, as long as the trigger clock is enabled.&nbsp; The
     timing IOC requests an actual injection cycle by writing the desired
     event sequence to the second sequence pattern memory, SEQ1, and then
-    enabling that sequence.&nbsp; The FPGA provides <a
-      href="#SequencerStatus">status information</a> to allow the timing
+    enabling that sequence.&nbsp; The FPGA provides <a href="#SequencerStatus">status information</a> to allow the timing
     IOC to remain synchronized with the event sequences.<br>
     <br>
     The second event generator, EVG2, drives the ALS accumulator and
@@ -78,11 +75,8 @@
     </h2>
     These records set the pattern and timing of event codes to be
     emitted when an event sequence is initiated.&nbsp; Set FTVL="LONG",
-    NELM="2048", DTYP="asynInt32ArrayOut", INP="@asyn($(PORT) <span
-      style="font-style: italic;">xxx</span>)", where <span
-      style="font-style: italic;"></span> $(PORT) expands to the port
-    name in the eventGeneratorConfigure command and <span
-      style="font-style: italic;">xxx</span> is the numeric value&nbsp;
+    NELM="2048", DTYP="asynInt32ArrayOut", INP="@asyn($(PORT) <span style="font-style: italic;">xxx</span>)", where <span style="font-style: italic;"></span> $(PORT) expands to the port
+    name in the eventGeneratorConfigure command and <span style="font-style: italic;">xxx</span> is the numeric value&nbsp;
     shown in the following table.<br>
     <br>
     The entries in these records are delay:event pairs.&nbsp; The first
@@ -93,8 +87,7 @@
     slots.<br>
     <br>
     <table style=" text-align: left; margin-left: auto; margin-right:
-      auto; width: 90%; height: 78px;" cellspacing="2" cellpadding="2"
-      border="1">
+      auto; width: 90%; height: 78px;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
@@ -203,8 +196,7 @@
             Subaddress<br>
           </th>
           <td style="text-align: center;"><span style="font-weight:
-              bold;">Reco</span><span style="font-weight: bold;">rd</span><span
-              style="font-weight: bold;"><br>
+              bold;">Reco</span><span style="font-weight: bold;">rd</span><span style="font-weight: bold;"><br>
             </span><span style="font-weight: bold;">Type</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
@@ -311,8 +303,7 @@
           </td>
           <td style="text-align: center;" align="center" valign="middle">bo<br>
           </td>
-          <td style="vertical-align: middle; text-align: left;"
-            align="left" valign="middle">Enable/Disable (1/0) injection
+          <td style="vertical-align: middle; text-align: left;" align="left" valign="middle">Enable/Disable (1/0) injection
             cycle start requests.&nbsp; These requests initiate event
             generator 1 sequence 1 if enabled, otherwise event generator
             1 sequence 0 if enabled, otherwise they are ignored.<br>
@@ -355,8 +346,7 @@
 
 
       where <span style="font-style: italic;"></span> $(PORT) expands
-      to the port name in the eventGeneratorConfigure command and <span
-        style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3.</p>
+      to the port name in the eventGeneratorConfigure command and <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3.</p>
     <h2>Software Triggers</h2>
     <p>Each software trigger is controller by two longout records.&nbsp;
       The first, with name "E<i>e</i>:SW:<i>c</i>" (<i>e</i>=1/2, <i>c</i>=1..4),
@@ -424,8 +414,7 @@
 
 
     where <span style="font-style: italic;"></span> $(PORT) expands to
-    the port name in the eventGeneratorConfigure command and <span
-      style="font-style: italic;">xxx</span> is a numeric value&nbsp; as
+    the port name in the eventGeneratorConfigure command and <span style="font-style: italic;">xxx</span> is a numeric value&nbsp; as
     described in the following table.<span style="font-style: italic;"></span>&nbsp;
 
 
@@ -451,8 +440,7 @@
     Records are processed by $(P)$(R)sysmonTrig_ processing.&nbsp; All
     temperatures are in degrees Celsius.<br>
     <span style="font-weight: bold;"></span><br>
-    <table style=" text-align: left; margin-left: auto; margin-right:
-      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
@@ -461,9 +449,7 @@
           <th style="text-align: center;">ASYN<br>
             Subaddress<br>
           </th>
-          <td style="vertical-align: middle; text-align: center;"><span
-              style="font-weight: bold;">Record</span><span
-              style="font-weight: bold;"><br>
+          <td style="vertical-align: middle; text-align: center;"><span style="font-weight: bold;">Record</span><span style="font-weight: bold;"><br>
             </span><span style="font-weight: bold;">Type</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
@@ -500,7 +486,7 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">E1:SFP:temp<br>
+          <td style="text-align: center;">E1:txSFP:temp<br>
           </td>
           <td style="text-align: center;">0x2303 </td>
           <td style="text-align: center;">ai</td>
@@ -509,43 +495,89 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">E1:SFP:Vcc</td>
+          <td style="text-align: center;">E1:txSFP:Vcc</td>
           <td style="text-align: center;">0x2203</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 SFP supply
             voltage.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
-          <td style="text-align: center;">E1:SFP:txPower</td>
+          <td style="text-align: center;">E1:txSFP:txPower</td>
           <td style="text-align: center;">0x2104</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 SFP
             transmitted power.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
-          <td style="text-align: center;">E2:SFP:temp</td>
+          <td style="text-align: center;">E2:txSFP:temp</td>
           <td style="text-align: center;">0x2305</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 SFP
             temperature.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
-          <td style="text-align: center;">E2:SFP:Vcc</td>
+          <td style="text-align: center;">E2:txSFP:Vcc</td>
           <td style="text-align: center;">0x2205 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 SFP supply
             voltage.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
-          <td style="text-align: center;">E2:SFP:txPower</td>
+          <td style="text-align: center;">E2:txSFP:txPower</td>
           <td style="text-align: center;">0x2106 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 SFP
             transmitted power.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
+  <td style="text-align: center;">E1:rxSFP:temp</td>
+  <td style="text-align: center;">0x2307</td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Event generator 1 EVGIO SFP
+            temperature.</td>
+</tr>
+<tr>
+  <td style="text-align: center;">E1:rxSFP:Vcc</td>
+  <td style="text-align: center;">0x2207</td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Event generator 1 EVGIO SFP supply
+            voltage.<span style="font-style: italic;"></span></td>
+</tr>
+<tr>
+  <td style="text-align: center;">E1:rxSFP:rxPower</td>
+  <td style="text-align: center;">0x2108</td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Event generator 1 EVGIO SFP received power.</td>
+</tr>
+<tr>
+  <td style="text-align: center;">E2:rxSFP:temp</td>
+  <td style="text-align: center;">0x2309</td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Event generator 2 EVGIO SFP
+            temperature.</td>
+</tr>
+<tr>
+  <td style="text-align: center;">E2:rxSFP:Vcc</td>
+  <td style="text-align: center;">0x2309</td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Event generator 2 EVGIO SFP supply
+            voltage.</td>
+</tr>
+<tr>
+  <td style="text-align: center;">E2:rxSFP:rxPower</td>
+  <td style="text-align: center;">0x230A</td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Event generator 2 EVGIO SFP received power.</td>
+</tr>
+<tr>
           <td style="text-align: center;">E1:refCoinc</td>
-          <td style="text-align: center;">0x2307 </td>
+          <td style="text-align: center;">0x230B </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 1 reference
             clock coincidence alignment point.<br>
@@ -553,7 +585,7 @@
         </tr>
         <tr>
           <td style="text-align: center;">E1:refJitter</td>
-          <td style="text-align: center;">0x2207</td>
+          <td style="text-align: center;">0x220B</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 reference
             clock jitter.<br>
@@ -561,21 +593,21 @@
         </tr>
         <tr>
           <td style="text-align: center;">E1:txCoinc</td>
-          <td style="text-align: center;">0x2308 </td>
+          <td style="text-align: center;">0x230C</td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 1 transmitter
             clock coincidence alignment point.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E1:txJitter</td>
-          <td style="text-align: center;">0x2208 </td>
+          <td style="text-align: center;">0x22C </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 transmitter
             clock jitter.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E1:frequency</td>
-          <td style="text-align: center;">0x2009 </td>
+          <td style="text-align: center;">0x200D </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 reference
             clock frequency.<span style="font-style: italic;"></span><br>
@@ -583,69 +615,89 @@
         </tr>
         <tr>
           <td style="text-align: center;">E2:refCoinc</td>
-          <td style="text-align: center;">0x230A </td>
+          <td style="text-align: center;">0x230E </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 2 reference
             clock coincidence alignment point.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:refJitter</td>
-          <td style="text-align: center;">0x220A </td>
+          <td style="text-align: center;">0x220E </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 reference
             clock jitter. </td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:txCoinc</td>
-          <td style="text-align: center;">0x230B </td>
+          <td style="text-align: center;">0x230F </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 2 transmitter
             clock coincidence alignment point.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:txJitter </td>
-          <td style="text-align: center;">0x220B </td>
+          <td style="text-align: center;">0x220F </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 transmitter
             clock jitter. </td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:frequency</td>
-          <td style="text-align: center;">0x200C </td>
+          <td style="text-align: center;">0x2010 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 reference
             clock frequency.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
           <td style="text-align: center;">INJ:injCycleStatus</td>
-          <td style="text-align: center;">0x210D </td>
+          <td style="text-align: center;">0x2111 </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Injection cycle start requests
             enabled/disabled (1/0).<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">TOD:PPSvalid<br>
+          <td style="text-align: center;">TOD:PPSvalid<br>
           </td>
-          <td align="center" valign="middle">0x220E<br>
+          <td style="text-align: center;">0x2212<br>
           </td>
-          <td align="center" valign="middle">bi<br>
+          <td style="text-align: center;">bi<br>
           </td>
-          <td align="left" valign="middle">Is hardware pulse per second
+          <td style="text-align: left;">Is hardware pulse per second
             signal present?<br>
           </td>
-        </tr>
+        </tr><tr>
+  <td style="text-align: center;">E1:EVGIOstatus_<br>
+  </td>
+  <td style="text-align: center;">0x2113</td>
+  <td style="text-align: center;">longin<br>
+  </td>
+  <td style="vertical-align: top;">Event generator 1 EVGIO raw status.<br>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">E2:EVGIOstatus_</td>
+  <td style="text-align: center;">0x2213</td>
+  <td style="text-align: center;">longin<br>
+  </td>
+  <td style="vertical-align: top;">Event generator 2 EVGIO raw status.</td>
+</tr>
+
       </tbody>
     </table>
     <br>
+The EVGIO raw status records forward link to mbbiDirect records which 
+make the individual bits available.&nbsp; The bit fields of these 
+records are, BF=Auxiliary switch (active low), BE=SFP receiver loss of 
+signal, BD=SFP not present, B5=Diagnostic input 1, B4=Diagnostic input 
+0, B1=Diagnostic output 1, B0=Diagnostic output 0.<br>
     <h2><a name="SequencerStatus"></a>Sequencer Status Input Records<br>
     </h2>
     These longin records, "$(P)$(R)E<i>x</i>:seqStatus", should be
     configured with SCAN="I/O Intr", DTYP=asynInt32 and
     INP="@asyn($(PORT) 0x010y", where <span style="font-style: italic;"></span>
     $(PORT) expands to the port name in the eventGeneratorConfigure
-    command and <i>x</i>/<i>y</i> are 1/0 or 2/1.<span
-      style="font-style: italic;"></span>&nbsp; These records are
+    command and <i>x</i>/<i>y</i> are 1/0 or 2/1.<span style="font-style: italic;"></span>&nbsp; These records are
     updated from the FPGA using a publish/subscribe technique that
     minimizes the latency between the time a value in the FPGA changes
     and the time that the corresponding record is updated.&nbsp; The
@@ -656,8 +708,7 @@
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span
-              style="font-weight: bold;">Bit</span><br>
+          <td style="text-align: center;" align="center" valign="middle"><span style="font-weight: bold;">Bit</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
@@ -669,8 +720,7 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: middle; text-align: center;"
-            align="center" valign="middle">1</td>
+          <td style="vertical-align: middle; text-align: center;" align="center" valign="middle">1</td>
           <td style="text-align: left;" align="left" valign="middle">Set
             when sequence 1 is enabled.&nbsp; This sequence is
             automatically disabled after it has been emitted.<br>
@@ -775,19 +825,15 @@
     </table>
     <br>
     <h2>Communication Statistics Longin Records</h2>
-    &nbsp;Set DTYP=asynInt32 and INP="@asyn($(PORT) <span
-      style="font-style: italic;">xxx</span>)", where <span
-      style="font-style: italic;"></span> $(PORT) expands to the port
-    name in the eventGeneratorConfigure command and <span
-      style="font-style: italic;">xxx</span> is a numeric value as
+    &nbsp;Set DTYP=asynInt32 and INP="@asyn($(PORT) <span style="font-style: italic;">xxx</span>)", where <span style="font-style: italic;"></span> $(PORT) expands to the port
+    name in the eventGeneratorConfigure command and <span style="font-style: italic;">xxx</span> is a numeric value as
     described in the following table.<br>
     &nbsp; <br>
     <table style=" text-align: left; margin-left: auto; margin-right:
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span
-              style="font-weight: bold;">Name</span><br>
+          <td style="text-align: center;" align="center" valign="middle"><span style="font-weight: bold;">Name</span><br>
           </td>
           <th style="text-align: center;" align="center" valign="middle">ASYN<br>
             Subaddress<br>
@@ -806,13 +852,10 @@
             Typically configured with SCAN="10 second". </td>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span
-              style="font-style: italic;"><span style="font-style:
-                italic;"></span></span>CmdFailedCount<span
-              style="font-style: italic;"></span><br>
+          <td style="text-align: center;" align="center" valign="middle"><span style="font-style: italic;"><span style="font-style:
+                italic;"></span></span>CmdFailedCount<span style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0xF005<span
-              style="font-style: italic;"></span><br>
+          <td style="text-align: center;" align="center" valign="middle">0xF005<span style="font-style: italic;"></span><br>
           </td>
           <td style="text-align: left;" align="left" valign="middle">Number
 
@@ -831,8 +874,7 @@
         <tr>
           <td align="center" valign="middle">SeqConnectCount<br>
           </td>
-          <td align="center" valign="middle">0xF006<span
-              style="font-style: italic;"></span></td>
+          <td align="center" valign="middle">0xF006<span style="font-style: italic;"></span></td>
           <td align="left" valign="middle">Number of sequence status
             subscription successes.<br>
           </td>
@@ -848,10 +890,8 @@
               word-spacing: 0px; -webkit-text-size-adjust: auto;
               -webkit-text-stroke-width: 0px; background-color: rgb(251,
               239, 231); text-decoration: none; display: inline
-              !important; float: none;"><span
-                class="Apple-converted-space"></span></span>SeqMissedCount</td>
-          <td align="center" valign="middle">0xF007<span
-              style="font-style: italic;"></span></td>
+              !important; float: none;"><span class="Apple-converted-space"></span></span>SeqMissedCount</td>
+          <td align="center" valign="middle">0xF007<span style="font-style: italic;"></span></td>
           <td align="left" valign="middle">Number of sequence status
             monitoring packets dropped.</td>
         </tr>
@@ -889,5 +929,6 @@
     <br>
     <h2></h2>
     <p> </p>
-  </body>
-</html>
+  
+
+</body></html>
