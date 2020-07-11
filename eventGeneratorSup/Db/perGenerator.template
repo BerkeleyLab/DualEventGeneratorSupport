@@ -21,3 +21,21 @@ record(calc, "$(P)$(R)E$(E):seqFinishes") {
     field(CALC, "J:=(A&B)#0;(!J&K)?C:VAL;K:=J")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
 }
+
+record(longin, "$(P)$(R)E$(E):EVGIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVGIOstatus") }
+record(mbbiDirect, "$(P)$(R)E$(E):EVGIOstatus") {
+    field(DESC, "Individual bits of $(P)$(R)E$(E):EVGIOstatus_")
+    field(INP,  "$(P)$(R)E$(E):EVGIOstatus_")
+}
+
+record(longout, "$(P)$(R)E$(E):diagOut") {
+    field(DESC, "EVG $(E) diagnostic output control")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT), 0x140$(I), 0)")
+}
+record(longout, "$(P)$(R)E$(E):diagOut:rc_") {
+    field(DESC, "Push EVG $(E) diag out on (re)connect)")
+    field(SCAN, "Event")
+    field(EVNT, "RECON")
+    field(FLNK, "$(P)$(R)E$(E):diagOut")
+}

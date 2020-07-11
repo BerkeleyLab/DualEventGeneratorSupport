@@ -53,13 +53,6 @@ file "perGenerator.template"
   {"\$(P)","\$(R)","\$(PORT)", 2, 1 }
 }
 
-file "perEVGIO.template"
-{ pattern
-  {    P,      R,      PORT,   E }
-  {"\$(P)","\$(R)","\$(PORT)", 1 }
-  {"\$(P)","\$(R)","\$(PORT)", 2 }
-}
-
 file "perGenericLO.template"
 { pattern
 {     P     R,    PORT,             NAME,      A,             DESC }
