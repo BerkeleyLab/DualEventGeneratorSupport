@@ -738,8 +738,9 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
 The EVGIO raw status records forward link to mbbiDirect records which 
 make the individual bits available.&nbsp; The bit fields of these 
 records are, BF=Auxiliary switch (active low), BE=SFP receiver loss of 
-signal, BD=SFP not present, B5=Diagnostic input 1, B4=Diagnostic input 
-0, B1=Diagnostic output 1, B0=Diagnostic output 0.<br>
+signal, BD=SFP not present, B9:B8= Diagnostic output multiplexer select,
+ B5=Diagnostic record output 1, B4=Diagnostic record output 0, 
+B1=Diagnostic input 1, B0=Diagnostic input 0.<br>
     <h2><a name="SequencerStatus"></a>Sequencer Status Input Records<br>
     </h2>
     These longin records, "$(P)$(R)E<i>x</i>:seqStatus", should be
