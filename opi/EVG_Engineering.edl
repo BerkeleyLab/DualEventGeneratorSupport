@@ -4,7 +4,7 @@ major 4
 minor 0
 release 1
 x 373
-y 116
+y 138
 w 560
 h 280
 font "helvetica-medium-r-18.0"
@@ -1257,7 +1257,7 @@ major 4
 minor 0
 release 0
 x 328
-y 203
+y 206
 w 213
 h 16
 
@@ -1270,7 +1270,7 @@ major 4
 minor 1
 release 1
 x 511
-y 203
+y 206
 w 30
 h 16
 font "helvetica-medium-r-14.0"
@@ -1290,7 +1290,7 @@ major 4
 minor 7
 release 0
 x 421
-y 203
+y 206
 w 85
 h 16
 controlPv "$(P)$(R)E2:frequency"
@@ -1317,7 +1317,7 @@ major 4
 minor 1
 release 1
 x 328
-y 203
+y 206
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1334,19 +1334,6 @@ endGroup
 
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 328
-y 186
-w 219
-h 80
-
-beginGroup
-
 # (Related Display)
 object relatedDisplayClass
 beginObjectProperties
@@ -1354,7 +1341,7 @@ major 4
 minor 4
 release 0
 x 467
-y 236
+y 238
 w 80
 h 25
 fgColor index 14
@@ -1392,7 +1379,7 @@ major 4
 minor 0
 release 0
 x 330
-y 230
+y 232
 w 110
 h 36
 
@@ -1405,7 +1392,7 @@ major 4
 minor 0
 release 0
 x 330
-y 250
+y 252
 w 110
 h 16
 
@@ -1418,7 +1405,7 @@ major 4
 minor 1
 release 1
 x 330
-y 250
+y 252
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1438,7 +1425,7 @@ major 4
 minor 0
 release 0
 x 426
-y 250
+y 252
 w 14
 h 14
 controlPv "$(P)$(R)INJ:injCycleAlign"
@@ -1460,7 +1447,7 @@ major 4
 minor 0
 release 0
 x 330
-y 230
+y 232
 w 110
 h 16
 
@@ -1473,7 +1460,7 @@ major 4
 minor 1
 release 1
 x 330
-y 230
+y 232
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1493,7 +1480,7 @@ major 4
 minor 0
 release 0
 x 426
-y 230
+y 232
 w 14
 h 14
 controlPv "$(P)$(R)TOD:PPSvalid"
@@ -1589,10 +1576,6 @@ useDisplayBg
 value {
   "EVG 1 refClk"
 }
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
 endGroup
