@@ -347,7 +347,7 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
     <tr>
       <td style="text-align: center;">0x000<br>
       </td>
-      <td style="vertical-align: top;">Output 0 driven by bit 4 (0x10), 1 by bit 5 (0x20).<br>
+      <td style="vertical-align: top;">Output 0 driven by E<span style="font-style: italic;">x</span>:diagOut bit 4 (0x10), 1 by bit 5 (0x20).<br>
       </td>
     </tr>
     <tr>
@@ -359,8 +359,7 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
     <tr>
       <td style="text-align: center;">0x200<br>
       </td>
-      <td style="vertical-align: top;">Reserved<br>
-      </td>
+      <td style="vertical-align: top;">Output 0 driven by reference clock (RF/4), 1 by heartbeat.</td>
     </tr>
     <tr>
       <td style="text-align: center;">0x300<br>
@@ -737,12 +736,63 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
     <br>
 The EVGIO raw status records forward link to mbbiDirect records which 
 make the individual bits available.&nbsp; The bit fields of these 
-records are, BF=Auxiliary switch (active low), BE=SFP receiver loss of 
-signal, BD=SFP not present, B9:B8= Diagnostic output multiplexer select,
- B5=Diagnostic record output 1, B4=Diagnostic record output 0, 
-B1=Diagnostic input 1, B0=Diagnostic input 0.<br>
-    <h2><a name="SequencerStatus"></a>Sequencer Status Input Records<br>
+records are:<br>
+<br>
+<table style="text-align: left; width: 400px; margin-left: 40px;" cellspacing="2" cellpadding="2" border="1">
+  <tbody>
+    <tr>
+      <td style="text-align: center;"><span style="font-weight: bold;">mbbiDirect Field</span><br>
+      </td>
+      <td style="vertical-align: middle; text-align: center;"><span style="font-weight: bold;">Description</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">B0<br>
+      </td>
+      <td style="text-align: left;">Diagnostic input 0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">B1<br>
+      </td>
+      <td style="text-align: left;">Diagnostic input 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">B4<br>
+      </td>
+      <td style="text-align: left;">Diagnostic output 0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">B5<br>
+      </td>
+      <td style="text-align: left;">Diagnostic output 1<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">B9:B8<br>
+      </td>
+      <td style="text-align: left;">Diagnostic output multiplexer selection </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">BD<br>
+      </td>
+      <td style="text-align: left;">SFP not present</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">BE<br>
+      </td>
+      <td style="text-align: left;">SFP receiver loss of signal</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">BF<br>
+      </td>
+      <td style="text-align: left;">Auxiliary switch (active low) </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2><a name="SequencerStatus"></a>Sequencer Status Input Records<br>
     </h2>
+
     These longin records, "$(P)$(R)E<i>x</i>:seqStatus", should be
     configured with SCAN="I/O Intr", DTYP=asynInt32 and
     INP="@asyn($(PORT) 0x010y", where <span style="font-style: italic;"></span>

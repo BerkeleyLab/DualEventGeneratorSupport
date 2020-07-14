@@ -82,21 +82,21 @@ file "perSysmonAI.template"
  { \$(P),\$(R),\$(PORT),   "E2:rxSFP:temp", 0x2309,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx SFP temperature" }
  { \$(P),\$(R),\$(PORT),    "E2:rxSFP:Vcc", 0x2209,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx SFP supply voltage" }
  { \$(P),\$(R),\$(PORT),"E2:rxSFP:rxPower", 0x210A,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx SFP receiver power" }
- { \$(P),\$(R),\$(PORT),    "E1:refJitter", 0x220B,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG1 refClk" }
- { \$(P),\$(R),\$(PORT),     "E1:txJitter", 0x220C,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 measurement of EVG1 txClk" }
+ { \$(P),\$(R),\$(PORT),    "E1:refJitter", 0x220B,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 refClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),     "E1:txJitter", 0x220C,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 txClk sampled by EVG 2 refClk" }
  { \$(P),\$(R),\$(PORT),    "E1:frequency", 0x200D,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
- { \$(P),\$(R),\$(PORT),    "E2:refJitter", 0x220E,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 refClk" }
- { \$(P),\$(R),\$(PORT),     "E2:txJitter", 0x220F,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 measurement of EVG2 txClk" }
+ { \$(P),\$(R),\$(PORT),    "E2:refJitter", 0x220E,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 refClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),     "E2:txJitter", 0x220F,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 txClk sampled by EVG 1 refClk" }
  { \$(P),\$(R),\$(PORT),    "E2:frequency", 0x2010,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
 }
 
 file "perSysmonLI.template"
 { pattern
 {     P     R,    PORT,          NAME,             A,      EGU,               DESC }
- { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x210B, "counts", "EVG 2 measurement of EVG1 refClk" }
- { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x210C, "counts", "EVG 2 measurement of EVG1 txClk" }
- { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x210E, "counts", "EVG 1 measurement of EVG2 refClk" }
- { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x210F, "counts", "EVG 1 measurement of EVG2 txClk" }
+ { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x210B, "counts", "EVG 1 refClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x210C, "counts", "EVG1 txClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x210E, "counts", "EVG2 refClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x210F, "counts", "EVG2 txClk sampled by EVG 1 refClk" }
  { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x2111,       "", "Injection sequence request status" }
  { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x2211,       "", "Injection sequence alignment status" }
  { \$(P),\$(R),\$(PORT),   "E1:EVGIOstatus_",  0x2113,       "", "EVGIO 1 raw status" }
