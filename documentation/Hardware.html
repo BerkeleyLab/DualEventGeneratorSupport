@@ -216,13 +216,20 @@
     transceiver output clock can be at one of twenty possible phase
     offsets relative to the incoming reference.&nbsp; The actual offset
     is randomly set when the PLL locks to its reference.&nbsp; This
-    random selection is not acceptable for this application so there is
-    hardware on the FMC card and code in the FPGA to momentarily remove
-    the transceiver reference clock.&nbsp; The PLL then locks again at
-    one of the twenty possible phase offsets.&nbsp; The momentary
-    reference removals are repeated until the offset settles at a
-    particular value.&nbsp; The result is an event stream correctly
-    aligned with its the reference.<br>
+    random selection is not acceptable for this application so on 
+startup the transceiver is repetitively reset until it happens to lock 
+at the desired phase offset.&nbsp; The result is an event stream 
+correctly
+    aligned with its the reference.&nbsp; There is
+    hardware on the FMC card to momentarily remove
+    the transceiver reference clock as an alternate way to force the 
+transceiver to resynchronize, but this capability is currently 
+unused.&nbsp; It has been empirically determined that the transceivers 
+on the Marble Mini board have some undocumented idiosyncrasies, namely 
+that the second transceiver can not be reset alone and, fortunately, 
+that the first transceiver always starts up at the same phase 
+offset.&nbsp; The startup code has been modified to reflect these 
+characteristics.<br>
     <br>
     The second clock alignment is the coincidence between the two RF
     clock domains.&nbsp;&nbsp; The coincidence is determined by the

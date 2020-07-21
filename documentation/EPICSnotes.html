@@ -34,8 +34,12 @@
     intervention, as long as the trigger clock is enabled.&nbsp; The
     timing IOC requests an actual injection cycle by writing the desired
     event sequence to the second sequence pattern memory, SEQ1, and then
-    enabling that sequence.&nbsp; The FPGA provides <a href="#SequencerStatus">status information</a> to allow the timing
-    IOC to remain synchronized with the event sequences.<br>
+    enabling that sequence.&nbsp; The FPGA provides <a href="#SequencerStatus">status information</a>
+ to allow the timing
+    IOC to remain synchronized with the event sequences.&nbsp; Sequence 
+trigger requests are delayed until the next 60 Hz power line marker and 
+then further delayed until the next coincidence between the booster and 
+accumulator rings.<br>
     <br>
     The second event generator, EVG2, drives the ALS accumulator and
     storage rings and their associated transport lines.&nbsp; Sequences
