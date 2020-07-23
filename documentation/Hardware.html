@@ -16,7 +16,7 @@
       Accelerator Technology Group.&nbsp; The following block diagram
       shows the salient features of this board.</p>
     <blockquote>
-      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram" width="667" height="508"><br>
+      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram" height="508" width="667"><br>
       </p>
     </blockquote>
     <ul>
@@ -206,7 +206,7 @@
     relative to the sampling clock and by extension, relative to each
     other.&nbsp; Thus the phase at which the PLL has locked its output
     relative to its input can be determined.<br>
-    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg" alt="" width="70%" height="50%"><br>
+    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg" alt="" height="50%" width="70%"><br>
     </blockquote>
     <br>
     There are two levels of event system clock alignment.&nbsp; The
@@ -236,7 +236,16 @@ characteristics.<br>
     point at which the rising edge of the sampled clock aligns most
     closely with the rising edge of the FPGA clock.&nbsp; The heartbeat
     event in each clock domain is aligned with this coincidence.<br>
+<br>
+The transceiver reference clocks are connected as follows:<br>
+<ul>
+  <li>FMC1_GBTCLK0_M2C -&gt; MGTREFCLK1 -&gt; PLL0 -&gt; GTP_X0Y4_TX</li>
+  <li>FMC2_GBTCLK0_M2C -&gt; MGTREFCLK0 -&gt; PLL1 -&gt; GTP_X0Y5_TX</li>
+</ul>
+<div style="margin-left: 40px;"><img src="EVG1_GTP.png" alt="" style=" width: 341px; height: 286px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="EVG2_GTP.png" alt="" style=" width: 341px; height: 286px;">
     <br>
+</div>
+
     <br>
     <h1 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
       font-family: -webkit-standard; font-style: normal;
