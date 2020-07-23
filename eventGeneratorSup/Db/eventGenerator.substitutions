@@ -61,6 +61,7 @@ file "perGenericLO.template"
  { \$(P),\$(R),\$(PORT),"INJ:singleShot", 0x1003, "Manually trigger an injection cycle" }
  { \$(P),\$(R),\$(PORT),   "FPGA:reboot", 0x1F00, "Write 1, 100, 10000 to force reboot" }
  { \$(P),\$(R),\$(PORT),"swapoutTrigger", 0x1F02, "Trigger swapout cycle with given offset" }
+ { \$(P),\$(R),\$(PORT),     "MGT:reset", 0x1F03, "Write 1, 10, 100 for MGT reset/resync" }
 }
 
 file "perSysmonAI.template"

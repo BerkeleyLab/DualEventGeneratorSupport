@@ -25,17 +25,30 @@ record(calc, "$(P)$(R)E$(E):seqFinishes") {
 record(longin, "$(P)$(R)E$(E):EVGIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVGIOstatus") }
 record(mbbiDirect, "$(P)$(R)E$(E):EVGIOstatus") {
     field(DESC, "Individual bits of $(P)$(R)E$(E):EVGIOstatus_")
-    field(INP,  "$(P)$(R)E$(E):EVGIOstatus_")
+    field(INP,  "$(P)$(R)E$(E):EVGIOstatus_ NPP")
 }
 
-record(longout, "$(P)$(R)E$(E):diagOut") {
+record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(DESC, "EVG $(E) diagnostic output control")
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT), 0x140$(I), 0)")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask($(PORT), 0x140$(I), 0xFFFF, 0)")
+    field(ZRVL, "0x00")
+    field(ZRST, "Static {0, 0}")
+    field(ONVL, "0x10")
+    field(ONST, "Static {0, 1}")
+    field(TWVL, "0x20")
+    field(TWST, "Static {1, 0}")
+    field(THVL, "0x30")
+    field(THST, "Static {1, 1}")
+    field(FRVL, "0x100")
+    field(FRST, "{RefClk, TxClk}")
+    field(FVVL, "0x200")
+    field(FVST, "{Heartbeat, TxClk}")
+    info(autosaveFields_pass0, "VAL")
 }
-record(longout, "$(P)$(R)E$(E):diagOut:rc_") {
+record(fanout, "$(P)$(R)E$(E):diagOut:rc_") {
     field(DESC, "Push EVG $(E) diag out on (re)connect)")
     field(SCAN, "Event")
     field(EVNT, "RECON")
-    field(FLNK, "$(P)$(R)E$(E):diagOut")
+    field(LNK1, "$(P)$(R)E$(E):diagOut")
 }

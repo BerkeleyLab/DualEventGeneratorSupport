@@ -386,27 +386,25 @@ static asynInt32 int32Methods = { int32Write, int32Read };
  * asynUInt32Digital methods
  */
 static asynStatus
+uint32DigitalWrite(void *pvt, asynUser *pasynUser, epicsUInt32 value,
+                                                               epicsUInt32 mask)
+{
+    return int32Write(pvt, pasynUser, value & mask);
+}
+static asynStatus
 uint32DigitalRead(void *pvt, asynUser *pasynUser, epicsUInt32 *value,
                                                                epicsUInt32 mask)
 {
-    drvPvt *pdpvt = (drvPvt *)pvt;
-    int address;
     asynStatus status;
-    int nRead;
+    epicsInt32 v = 0;
 
-    if ((status = pasynManager->getAddr(pasynUser, &address)) != asynSuccess)
+    if ((status = int32Read(pvt, pasynUser, &v)) != asynSuccess)
         return status;
-    pdpvt->commandPacket.command = address;
-    status = cmdWriteRead(pdpvt, pasynUser, 0, &nRead);
-    if ((status == asynSuccess) && (nRead != 1)) {
-        epicsSnprintf(pasynUser->errorMessage, pasynUser->errorMessageSize,
-                                                               "Bad read size");
-        return asynError;
-    }
-    *value = pdpvt->replyPacket.args[0] & mask;
+    *value = v & mask;
     return status;
 }
-static asynUInt32Digital uint32DigitalMethods = { NULL, uint32DigitalRead };
+static asynUInt32Digital uint32DigitalMethods = { uint32DigitalWrite,
+                                                  uint32DigitalRead };
 
 /*
  * asynInt32Array methods
