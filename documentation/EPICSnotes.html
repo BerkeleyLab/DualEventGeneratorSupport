@@ -357,18 +357,19 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
     <tr>
       <td style="text-align: center;">0x100<br>
       </td>
-      <td style=" vertical-align: top;">Output 0 driven by reference clock (RF/4), 1 by transmitter clock (RF/4).<br>
+      <td style=" vertical-align: top;">Output 0 driven by transmitter clock (RF/4), 1 by reference clock (RF/4).<br>
       </td>
     </tr>
     <tr>
       <td style="text-align: center;">0x200<br>
       </td>
-      <td style="vertical-align: top;">Output 0 driven by heartbeat marker, 1 by transmitter clock (RF/4).</td>
+      <td style="vertical-align: top;">Output 0 driven by transmitter clock (RF/4), 1 by heartbeat marker.<br>
+</td>
     </tr>
     <tr>
       <td style="text-align: center;">0x300<br>
       </td>
-      <td style="vertical-align: top;">Reserved<br>
+      <td style="vertical-align: top;">Output 0 driven by transmitter clock (RF/4), 1 by <span style="font-weight: bold;">other</span> generator heartbeat marker.&nbsp; Useful for confirming generator coincidence.
       </td>
     </tr>
   </tbody>
