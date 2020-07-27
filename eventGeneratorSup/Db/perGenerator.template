@@ -44,6 +44,8 @@ record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(FRST, "{RefClk, TxClk}")
     field(FVVL, "0x200")
     field(FVST, "{Heartbeat, TxClk}")
+    field(SXVL, "0x300")
+    field(SXST, "{Alt Heartbeat, TxClk}")
     info(autosaveFields_pass0, "VAL")
 }
 record(fanout, "$(P)$(R)E$(E):diagOut:rc_") {
