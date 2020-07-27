@@ -17,9 +17,6 @@ def seqStatusCallback(pvname=None, value=None, **kws):
     global oldSequenceNumber, seqDone
     isActive = value & 0x8
     sequenceNumber = (value >> 8) & 0xFF
-    if oldSequenceNumber == None:
-        oldSequenceNumber = sequenceNumber
-        return
     diff = (sequenceNumber - oldSequenceNumber) & 0xFF
     if diff > 1:
         print('Missed %d' % (diff - 1), file=sys.stderr)
@@ -96,6 +93,7 @@ else:
     while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq0.put(pattern0, wait=True)
     seq0enable.put(1, wait=True)
+oldSequenceNumber = (seqStatus.get() >> 8) & 0xFF
 seqStatus.add_callback(seqStatusCallback)
 
 if args.cycles > 0:
