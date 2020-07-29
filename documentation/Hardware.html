@@ -247,6 +247,50 @@ The transceiver reference clocks are connected as follows:<br>
 </div>
 
     <br>
+<br>
+<h2>Special Event Codes</h2>
+The following event codes have special meaning.<br>
+<ul>
+  <li>112 (0x70) – Shift a 0 bit into event receiver 32 bit time-of-day shift register.<br>
+  </li>
+  <li>113 (0x71) – Shift a 1 bit into event receiver 32 bit time-of-day shift register.</li>
+  <li>122 (0x7A) – Heartbeat event.</li>
+  <li>125 (0x7D) – Pulse-per-second event.&nbsp; Copies time-of-day shift register contents into event receiver time stamp 'seconds' and clears their time stamp 'ticks'.<br>
+  </li>
+</ul>
+<h2>Event Source Precedence<br>
+</h2>
+
+<p>There are four sources that can place event codes in the output 
+stream, namely the sequence pattern memory, the heartbeat firmware, the 
+pulse-per-second firmware, and time-of-day (seconds) firmware.&nbsp; An 
+event code slot can be occupied by at most a single event code so the 
+following rules are applied when multiple event codes are scheduled to 
+occur at the same time.<br>
+</p>
+<ul>
+  <li>Sequence pattern event requests have the highest priority and are never omitted or shifted to a later event code slot.</li>
+  <li>Heartbeat events are never shifted to a later event code 
+slot.&nbsp; If a heartbeat event request and a sequence pattern event 
+request occur simultaneously the heartbeat event request is ignored.</li>
+  <li>Pulse-per-second event requests are delayed to the first available
+ event code slot following sequence pattern or heartbeat events.&nbsp; It is good practice to minimize this shifting of pulse-per-second events by providing at least two empty slots between sequence pattern events.</li>
+  <li>Time-of-day (POSIX seconds) events are delayed to the first 
+available event code slot following all other event requests.&nbsp; This
+ has no effect on the operation of the timing system as long as all 32 
+time-of-day events arrive by the time of the next pulse-per-second 
+event.<br>
+  </li>
+</ul>
+<h2>Distributed Data Bus</h2>
+<p>A 50% (approximately) duty cycle waveform is place on the least 
+significant bit of the distributed data bus.&nbsp; The rising edge of 
+this signal is coincident with the heartbeat event, or where the 
+heartbeat event would have occurred if the heartbeat event is preempted 
+by a sequence pattern event.<br>
+  <br>
+</p>
+
     <h1 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
       font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; letter-spacing: normal; orphans: auto;
