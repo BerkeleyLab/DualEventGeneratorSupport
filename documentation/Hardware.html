@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Dual Event Generator Hardware</title>
     <meta name="generator" content="amaya 8.5, see
@@ -9,20 +8,163 @@
   <body>
     <h1>Introduction</h1>
     The dual event generator consists of an FPGA platform and two FMC
-    cards.<br>
+    cards.&nbsp; Each event generator distributes RF reference and 
+timing signals on an optical fiber using a protocol compatible with that
+ used by Micro-Research Finland timing equipment.&nbsp; The ALS-U 
+project requires two event generators, one for each of the RF 
+frequencies in use.&nbsp; The generators are locked to a common base and
+ ensure coincidence between the two frequency domains.<br>
     <p></p>
     <h1>Hardware</h1>
-    <h2>FPGA Card</h2>
+    
+<h2>Front Panel</h2>
+<img src="FrontPanel.png" alt="" style=" width: 1129px; height: 312px;">
+<h3><span style="color: rgb(0, 0, 0);">Front Panel Connectors</span></h3>
+
+
+    
+<p>There are several connectors on the event generator front panel.<br>
+    </p>
+
+
+    
+<ol>
+<li>RJ-45 1000Base-T Ethernet.</li><li>USB console serial port and JTAG interface.&nbsp; The serial port is run
+        at 115200-8N1.&nbsp; To view the diagnostic messages sent to the
+        serial port the following command can be used on Linux or OS X
+        machines (the name of the USB tty may differ):<br>
+        <div style="margin-left: 40px;"><span style="font-family:
+            monospace;">cu -s 115200 -l /dev/ttyUSB2</span><br>
+        </div><div style="margin-left: 40px;"> </div>
+      </li><li>LC50 duplex fiber ports providing the two MRF compatible event links.</li><li>Diagnostic
+ I/O BNC connectors carrying non-isolated, LVTTL level signals.&nbsp; 
+Inputs are high impedance, outputs are capable of driving 50Ω loads.<br>
+  </li>
+</ol>
+
+
+    
+<h3><span style="color: rgb(0, 0, 0);">Front Panel Controls</span></h3>
+
+<h4>“Display” button</h4>
+
+
+    
+<p>This button has multiple uses.<br>
+    </p>
+
+
+    
+<ol>
+<li>To extend its lifetime the display back light is turned off
+        after half an hour.&nbsp; Pressing and releasing this button
+        enables the display for another half hour.</li><li>If the display is showing a warning message pressing and holding 
+this button for one second will clear the warning message and restore 
+the display to its current page.</li>
+  <li>If the application supports more than one page of information each momentary press cycles to the next display page.</li>
+</ol>
+
+<h4>“Reboot/Recovery” button</h4>
+
+
+
+    
+<p>Pressing this button for more than one second causes the FPGA to 
+perform a power-on reset.&nbsp; If the switch is held down during a 
+power-up operation the FPGA will enter "recovery" mode where the 
+Ethernet MAC address and IPv4 address are set to default values 
+(AA:4C:42:4E:4C:04 and 192.168.1.129/24, respectively).</p>
+
+<h3><span style="color: rgb(0, 0, 0);">Front Panel Display</span></h3>
+
+
+    
+<h2><span style="color: rgb(0, 0, 0);"></span></h2>
+
+
+    <span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the figure below.<br>
+  <br>
+</span>
+<div style="margin-left: 80px;"><img src="Display.png" alt="" style=" width: 320px; height: 240px;"></div>
+<ol>
+<li>The top few lines of the display show the status of the event 
+sequence pattern generators.&nbsp; The green indicator to the right of 
+the 'TRG:' text blinks when an event sequence is triggered.&nbsp; The
+ value to the right of the 'SEQ:' text shows the number (0/1) 
+of the currently or previously active sequence.<br>
+</li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
+      </li><li>The 'Temperature' region shows a bar indicator of the 
+temperature of various components.&nbsp; SFP1 and 2 are the ones 
+generating the event streams, 3 and 4 are the ones receiving the 
+reference clocks.<br>
+</li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
+ network address is normally shown as white text on a black background.&nbsp;
+ A network address shown as black text on a white background indicates 
+the the unit is in "recovery" mode.<br>
+  </li><li>The bottom line of the display shows the date and time (UTC).<br>
+  </li>
+</ol>
+
+<h4>Special displays</h4>
+
+
+    
+    
+<ul>
+<li>Black text on a red background – event generator is reporting a fatal
+        error condition.&nbsp;&nbsp; The only exit from this state is a reset or power cycle.<br>
+</li><li>Black text on a yellow background – event generator is reporting a warning
+        condition.&nbsp; Pressing and holding the "Display" button for one second will exit this state.<br>
+</li>
+</ul>
+
+
+
+
+    
+<h2>Rear Panel Components</h2>
+
+
+
+
+    
+<p>There are several components on the event generator rear panel.<br>
+    </p>
+
+
+
+    
+<ol>
+<li>Connector for 12V power adapter.</li>
+  <li>Holder for 3A slow-blow fuse.<br>
+  </li>
+<li>On/Off switch.<br>
+<div style="margin-left: 40px;"> </div>
+      </li>
+  
+<li>SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
+<li>LC50 duplex fiber ports accepting the reference clocks for each of the event generators.</li>
+<li>Isolated BNC connectors carrying LVTTL level hardware triggers and timing reference signals.&nbsp; Inputs 
+are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1.8V and maximum input is 5.0V.<br>
+</li>
+</ol>
+<img src="RearPanel.png" alt="" style=" width: 1181px; height: 333px;">
+
+
+    
+<h3><span style="color: rgb(0, 0, 0);"></span></h3>
+
+<h2>FPGA Card</h2>
+
     <p>The FPGA carrier card is a 'Marble-Mini' developed by the LBNL
       Accelerator Technology Group.&nbsp; The following block diagram
       shows the salient features of this board.</p>
     <blockquote>
-      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram"
-          height="508" width="667"><br>
+      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram" width="667" height="508"><br>
       </p>
     </blockquote>
     <ul>
-      <li>&nbsp;Open Hardware (OHWR) dual-LPC-FMC carrier based on an
+      <li>Open Hardware (OHWR) dual-LPC-FMC carrier based on an
         Artix-7 in FG484 package.</li>
       <li>AMC form-factor.</li>
       <li>Power entry&nbsp; through barrel-style connector (CUI
@@ -44,9 +186,9 @@
     </blockquote>
     <h2>FMC Cards</h2>
     Each FMC card provides a reference clock to the FPGA gigabit
-    transceiver block and to an FPGA clock input, four optically
-    coupled, TTL level, hardware trigger inputs, an optically coupled,
-    TTL level, auxiliary input and a reset/recovery button input.&nbsp;
+    transceiver block and to an FPGA clock input, five optically
+    coupled, TTL level, hardware trigger inputs, and one optically coupled,
+    TTL level auxiliary input.&nbsp;
     Each card also provides two non-isolated, TTL level, diagnostic
     inputs and two non-isolated, LVTTL level, diagnostic outputs capable
     of driving 50Ω loads.&nbsp; The reference clocks are driven by an
@@ -76,8 +218,7 @@
           </td>
           <td align="left" valign="middle">The lower limit on the time,
             in milliseconds between injection cycle requests.&nbsp; The
-            injection cycle time is specified by the first line of the<a
-              href="#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
+            injection cycle time is specified by the first line of the<a href="#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
           </td>
         </tr>
         <tr>
@@ -91,7 +232,7 @@
         <tr>
           <td align="left" valign="middle">CFG_HARDWARE_TRIGGER_COUNT<br>
           </td>
-          <td align="center" valign="middle">4<br>
+          <td align="center" valign="middle">5<br>
           </td>
           <td align="left" valign="middle">The number of hardware
             triggers.<br>
@@ -174,8 +315,7 @@
             = \text{F}_\text{RF1} \times
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
-    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext></mrow><annotation
-            encoding="TeX">\text{T}_\text{coincidence} =
+    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence} =
             \text{F}_\text{RF1} \times
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
@@ -192,15 +332,15 @@
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
     where
-    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF1</mtext></msub><annotation
-          encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
+    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF1</mtext></msub><annotation encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
     and
-    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF2</mtext></msub><annotation
-          encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
+    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF2</mtext></msub><annotation encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
     are the frequencies of the reference clock inputs.&nbsp; The
     reference clock inputs are driven at 1/4 the rate of the master
     oscillators for the two frequency domains.&nbsp; Note that the
     heartbeat intervals are are not the same.<br>
+<br>
+If changes are made to any of these parameters the createVerilogIDX.sh script must be run and the firmware and software rebuilt.<br>
     <br>
     <h2>Clock Synchronization</h2>
     Each event generator in the FPGA is synchronized to the RF master
@@ -215,8 +355,7 @@
     relative to the sampling clock and by extension, relative to each
     other.&nbsp; Thus the phase at which the PLL has locked its output
     relative to its input can be determined.<br>
-    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg"
-        alt="" height="50%" width="70%"><br>
+    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg" alt="" width="70%" height="50%"><br>
     </blockquote>
     <br>
     There are two levels of event system clock alignment.&nbsp; The
@@ -254,8 +393,7 @@
         -&gt; GTP_X0Y5_TX -&gt; SFP2<br>
       </li>
     </ul>
-    <div style="margin-left: 40px;"><img src="EVG1_GTP.png" alt=""
-        style=" width: 341px; height: 286px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div style="margin-left: 40px;"><img src="EVG1_GTP.png" alt="" style=" width: 341px; height: 286px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <img src="EVG2_GTP.png" alt="" style=" width: 341px; height:
         286px;"> <br>
     </div>
@@ -274,30 +412,38 @@
       <li>122 (0x7A) – Heartbeat event.</li>
       <li>125 (0x7D) – Pulse-per-second event.&nbsp; Copies time-of-day
         shift register contents into event receiver time stamp 'seconds'
-        and clears their time stamp 'tick' counters.<br>
+        and clears the time stamp 'tick' counters.<br>
       </li>
     </ul>
     <h2>Event Source Precedence<br>
     </h2>
-    <p>There are four sources that can place event codes in the output
-      stream, namely the sequence pattern memory, the heartbeat
-      firmware, the pulse-per-second firmware, and time-of-day (seconds)
-      firmware.&nbsp; An event code slot can be occupied by at most a
-      single event code so the following rules are applied when multiple
-      event codes are requested at the same time.<br>
+    <p>There are several sources that can request an event code be
+    placed in the output stream.
+      An event code slot can be occupied by at most a
+      single event code so the sources are assigned a priority with
+      the event corresponding to the highest priority request being
+      emitted when two or more requests are present simultaneously.
+      The sources and their priorities are as follows.<br>
     </p>
     <ul>
       <li>Sequence pattern event requests have the highest priority and
-        are never omitted or shifted to a later event code slot.</li>
+        are never omitted or shifted to a later event code slot.&nbsp;
+        It is good practice to minimize the
+        shifting of lower priority events by providing at least one empty slot between sequence pattern events.</li>
       <li>Heartbeat events are never shifted to a later event code
         slot.&nbsp; If a heartbeat event request and a sequence pattern
         event request occur simultaneously the heartbeat event request
         is ignored.</li>
       <li>Pulse-per-second event requests are delayed to the first
         available event code slot following sequence pattern or
-        heartbeat events.&nbsp; It is good practice to minimize this
-        shifting of pulse-per-second events by providing at least two
-        empty slots between sequence pattern events.</li>
+        heartbeat events.</li>
+      <li>Hardware triggered event requests are delayed to the first
+        available event code slot following sequence pattern,
+        heartbeat, or pulse-per-second events.&nbsp; If multiple hardware triggers are present the lowest numbered input takes
+        precedence.</li>
+      <li>Software triggered event requests are delayed to the first
+        available event code slot following sequence pattern,
+        heartbeat, pulse-per-second, or hardware triggered events.</li>
       <li>Time-of-day (POSIX seconds) events are delayed to the first
         available event code slot following all other event
         requests.&nbsp; This has no effect on the operation of the
@@ -329,16 +475,14 @@
       -webkit-text-stroke-width: 0px; text-decoration: none;">FPGA
       firmware, system parameters, and the default event sequence are
       stored in flash memory in a psuedo-filesystem.&nbsp; A TFTP server
-      provides access to the following 'files':<b><span
-          style="font-family: monospace;"><br>
+      provides access to the following 'files':<b><span style="font-family: monospace;"><br>
         </span></b></p>
     <table style="caret-color: rgb(0, 0, 0); font-family:
       -webkit-standard; letter-spacing: normal; orphans: auto;
       text-indent: 0px; text-transform: none; widows: auto;
       word-spacing: 0px; -webkit-text-size-adjust: auto;
       -webkit-text-stroke-width: 0px; text-decoration: none; text-align:
-      left; width: 1234.45654296875px;" cellspacing="2" cellpadding="2"
-      border="1">
+      left; width: 1234.45654296875px;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
           <td align="center" valign="top"><b>Name</b><br>
@@ -380,8 +524,7 @@
             generated even if network or IOC issues prevent requests
             from reaching the FPGA.&nbsp; A line with a third column
             containing an asterisk (*) marks this event as the one that
-            will clear bit 4 of the <a
-              href="EPICSnotes.html#PreCompletion">sequencer status</a>.<br>
+            will clear bit 4 of the <a href="EPICSnotes.html#PreCompletion">sequencer status</a>.<br>
           </td>
         </tr>
         <tr>
@@ -391,16 +534,14 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;" align="center"
-            valign="middle">FMC1_EEPROM.bin<br>
+          <td style="vertical-align: top;" align="center" valign="middle">FMC1_EEPROM.bin<br>
           </td>
           <td style="vertical-align: top;" align="left" valign="middle">The
             IPMI EEPROM of the card installed in the first FMC slot.<br>
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;" align="center"
-            valign="middle">FMC2_EEPROM.bin</td>
+          <td style="vertical-align: top;" align="center" valign="middle">FMC2_EEPROM.bin</td>
           <td style="vertical-align: top;" align="left" valign="middle">The
             IPMI EEPROM of the card installed in the second FMC slot.</td>
         </tr>
@@ -418,23 +559,35 @@
       <li>The files must be transferred in 'binary' mode.</li>
       <li>Don't attempt simultaneous transfers from multiple clients.</li>
       <li>The very basic filesystem emulation does not record the sizes
-        of the '.bin' files.&nbsp; Downloading these will transfer the
+        of the '.bin' files.&nbsp; Downloading these from the FPGA will transfer the
         full area available so the resulting downloaded file will
         contain the uploaded file followed by some number of extra
         values.</li>
       <li>The IPMI EEPROMs can be written only when the 'Write Enable'
-        jumper is in place on the FMC cards.<br>
-      </li>
-    </ul>
-    <br>
-    <br>
-    <h2 style="font-family: -webkit-standard; font-style: normal;
+        jumper is in place on the FMC cards.</li></ul>
+<p><br>
+</p>
+
+    
+<h1><a name="GPS_PMOD"></a>GPS Time Provider<br>
+</h1>
+A Digilent <a href="DataSheets/pmodgps-gms-u1lp_rm.pdf">GPS PMOD card</a> can be 
+used to supply the time of day and pulse per second references required 
+by the dual event generator.&nbsp; Connect the PMOD card to the ‘odd’ 
+side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
+ the NTP server address to 0.0.0.0.&nbsp; The FMC pulse-per-second input
+ is ignored in this mode of operation.<br>
+<br>
+
+    
+<h1 style=" font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; letter-spacing: normal; orphans: auto;
       text-align: start; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
       text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0,
-      0);">Setting Network Parameters</h2>
+      0);">Setting Network Parameters</h1>
+
     <ol style="font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; font-weight: normal; letter-spacing:
       normal; orphans: auto; text-align: start; text-indent: 0px;
@@ -442,24 +595,17 @@
       word-spacing: 0px; -webkit-text-size-adjust: auto;
       -webkit-text-stroke-width: 0px; text-decoration: none;
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
-      <li>Depress the "Recovery" push button on the front panel while
+      <li>Depress the "Reset/Recovery" push button on the front panel while
         the system is powering up or rebooting.&nbsp; This sets the IPv4
-        network address to 192.168.1.129 and the Ethernet MAC address to
-        AA:4C:42:4E:4C:04.<span class="Apple-converted-space">&nbsp;</span><br>
+        network address to 192.168.1.129, the Ethernet MAC address to
+        AA:4C:42:4E:4C:04, and the NTP server address to 0.0.0.0.<span class="Apple-converted-space"></span><br>
       </li>
-      <li>Connect the chassis to a 192.168.1.0/24 network and run the<span
-          class="Apple-converted-space">&nbsp;</span><a
-href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#scriptCONSOLE">console.py</a><span
-          class="Apple-converted-space">&nbsp;</span>script from a host
+      <li>Connect the chassis to a 192.168.1.0/24 network and run the<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#scriptCONSOLE">console.py</a><span class="Apple-converted-space">&nbsp;</span>script from a host
         on that same network.<br>
       </li>
-      <li>Use the<span class="Apple-converted-space">&nbsp;</span><a
-href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdMAC">mac</a><span
-          class="Apple-converted-space">&nbsp;</span>and/or<span
-          class="Apple-converted-space">&nbsp;</span><a
-href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdNET">net</a><span
-          class="Apple-converted-space">&nbsp;</span>commands to set the
-        Ethernet and/or IPv4 addresses.</li>
+      <li>Use the<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdMAC">mac</a><span class="Apple-converted-space">,</span><span class="Apple-converted-space"> </span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdNET">net</a><span class="Apple-converted-space">, and <a href="#cmdTOD">tod</a> </span>commands to set the
+        Ethernet,&nbsp; IPv4 addresses, and&nbsp; NTP server address, respectively.<br>
+</li>
       <li>Reboot or power cycle the system.</li>
     </ol>
     <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
@@ -468,26 +614,21 @@ href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmw
       normal; orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-size-adjust: auto;
-      -webkit-text-stroke-width: 0px; text-decoration: none;"><span
-        style="font-family: -webkit-standard;">Alternatively, a terminal
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="font-family: -webkit-standard;">Alternatively, a terminal
         emulator program and USB cable can be used to communicate with
         the system through its USB console serial port (115200-8N1) to
-        issue the<span class="Apple-converted-space">&nbsp;</span></span><a
-href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdMAC">mac</a><span
-        class="Apple-converted-space">&nbsp;</span>and/or<span
-        class="Apple-converted-space">&nbsp;</span><a
-href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdNET">net</a><span
-        class="Apple-converted-space">&nbsp;</span>commands.<span
-        class="Apple-converted-space"> <br>
+        issue the desired <span class="Apple-converted-space"><span style="text-decoration: underline;"></span></span></span><span style="text-decoration: underline;"></span><span class="Apple-converted-space"></span><span class="Apple-converted-space"></span><span class="Apple-converted-space"></span>commands.<span class="Apple-converted-space"> <br>
         <br>
       </span></p>
-    <h2 style="font-family: -webkit-standard; font-style: normal;
+    
+<h1 style=" font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; letter-spacing: normal; orphans: auto;
       text-align: start; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
       text-decoration: none; caret-color: rgb(0, 0, 0); color: rgb(0, 0,
-      0);">Console Commands</h2>
+      0);">Console Commands</h1>
+
     <p style="font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; font-weight: normal; letter-spacing:
       normal; orphans: auto; text-align: start; text-indent: 0px;
@@ -496,13 +637,8 @@ href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#
       -webkit-text-stroke-width: 0px; text-decoration: none;
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">The FPGA sends
       startup and diagnostic messages to its USB console serial port and
-      to a UDP port accessible through the<span
-        class="Apple-converted-space">&nbsp;</span><a
-href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scriptCONSOLE">console.py</a><span
-        class="Apple-converted-space">&nbsp;</span>script.&nbsp; The
-      serial port is run at 115200-8N1.&nbsp;<span
-        class="Apple-converted-space"></span><span
-        class="Apple-converted-space">&nbsp;</span>Commands are entered
+      to a UDP port accessible through the<span class="Apple-converted-space">&nbsp;</span><a href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scriptCONSOLE">console.py</a><span class="Apple-converted-space">&nbsp;</span>script.&nbsp; The
+      serial port is run at 115200-8N1.&nbsp;<span class="Apple-converted-space"></span><span class="Apple-converted-space">&nbsp;</span>Commands are entered
       using a simple command line interpreter.&nbsp; There is no command
       history and the only editing available is the backspace or delete
       key which erases the character currently at the end of the
@@ -523,8 +659,7 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       <dd>The FPGA prompts for confirmation and then restarts as if
         powered up.</dd>
       <dt><br>
-        <span style="font-weight: bold;">debug [-s] [<span
-            style="font-style: italic;">n</span>]</span></dt>
+        <span style="font-weight: bold;">debug [-s] [<span style="font-style: italic;">n</span>]</span></dt>
       <dd>The debugging flags are set to the specified value, if one is
         given.&nbsp; The bits are</dd>
     </dl>
@@ -542,9 +677,8 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       <li>Bit 2 &nbsp; — Enable messages related to flash memory I/O
         transactions.</li>
       <li>Bit 4 &nbsp; — Enable messages related to the time of day
-        (NTP) state machine.</li>
-      <li>Bit 5 &nbsp; — Enable messages related to the time of day
-        (NTP) UDP port.</li>
+        (NTP or GPS) state machine.</li>
+      
       <li>Bit 6 &nbsp; — Enable messages showing sequence memory
         updates.</li>
       <li>Bit 8 &nbsp; — Enable messages showing operation of the PLL
@@ -607,8 +741,7 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       </dd>
       <dt><br>
       </dt>
-      <dt><span style="font-weight: bold;"><a name="cmdNET"></a>net [</span><span
-          style="font-weight: bold;">www.xxx.yyy.zzz[/n]]</span></dt>
+      <dt><span style="font-weight: bold;"><a name="cmdNET"></a>net [</span><span style="font-weight: bold;">www.xxx.yyy.zzz[/n]]</span></dt>
       <dd>Show the network settings if no argument is present otherwise
         set network parameters in flash memory based on the
         argument.&nbsp; The network address is set to the specified
@@ -640,24 +773,17 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       -webkit-text-stroke-width: 0px; text-decoration: none;
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
       <dt><span style="font-weight: bold;">reg r [n]</span></dt>
-      <dd><span style="font-weight: bold;"></span>Show the contents of<span
-          class="Apple-converted-space">&nbsp;</span><span
-          style="font-weight: bold;">n</span><span
-          class="Apple-converted-space">&nbsp;</span>(default 1)
-        general-purpose I/O registers starting at register<span
-          class="Apple-converted-space">&nbsp;</span><span
-          style="font-weight: bold;">r</span>.</dd>
+      <dd><span style="font-weight: bold;"></span>Show the contents of<span class="Apple-converted-space">&nbsp;</span><span style="font-weight: bold;">n</span><span class="Apple-converted-space">&nbsp;</span>(default 1)
+        general-purpose I/O registers starting at register<span class="Apple-converted-space">&nbsp;</span><span style="font-weight: bold;">r</span>.</dd>
       <dt><br>
-        <span style="font-weight: bold;">seq</span><span
-          style="font-weight: bold;"> [evg [seq]]</span></dt>
+        <span style="font-weight: bold;">seq</span><span style="font-weight: bold;"> [evg [seq]]</span></dt>
       <dd><span style="font-weight: bold;"></span>Show the contents of
         the specified event receiver sequence memory.&nbsp; A missing or
         out of range argument will show values for both event generators
         and/or sequences.</dd>
       <dt><br>
       </dt>
-      <dt><span style="font-weight: bold;">tod [</span><span
-          style="font-weight: bold;">www.xxx.yyy.zzz]</span></dt>
+      <dt><span style="font-weight: bold;"><a name="cmdTOD"></a>tod [</span><span style="font-weight: bold;">www.xxx.yyy.zzz]</span></dt>
       <dd>Show the IPv4 address of the NTP server if no argument is
         present otherwise set the address of the NTP server in flash
         memory based on the argument.&nbsp; The FPGA prompts for
@@ -705,11 +831,13 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       normal; orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-size-adjust: auto;
-      -webkit-text-stroke-width: 0px; text-decoration: none;"><span
-        style="font-weight: bold;"></span></p>
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="font-weight: bold;"></span></p>
     <br class="Apple-interchange-newline">
     <br>
     <h2></h2>
     <p> </p>
-  </body>
-</html>
+  
+
+
+
+</body></html>

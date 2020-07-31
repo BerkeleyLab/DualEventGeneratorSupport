@@ -273,7 +273,7 @@ major 4
 minor 1
 release 0
 x 5
-y 165
+y 175
 w 200
 h 25
 fgColor index 14
@@ -283,8 +283,8 @@ topShadowColor index 30
 botShadowColor index 32
 controlPv "$(P)$(R)fetchTOD"
 pressValue "1"
-onLabel "Sync with NTP server"
-offLabel "Sync with NTP server"
+onLabel "Sync with time source"
+offLabel "Sync with time source"
 3d
 font "helvetica-bold-r-14.0"
 endObjectProperties
