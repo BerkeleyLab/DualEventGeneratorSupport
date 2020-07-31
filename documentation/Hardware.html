@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Dual Event Generator Hardware</title>
     <meta name="generator" content="amaya 8.5, see
@@ -9,7 +8,12 @@
   <body>
     <h1>Introduction</h1>
     The dual event generator consists of an FPGA platform and two FMC
-    cards.<br>
+    cards.&nbsp; Each event generator distributes RF reference and 
+timing signals on an optical fiber using a protocol compatible with that
+ used by Micro-Research Finland timing equipment.&nbsp; The ALS-U 
+project requires two event generators, one for each of the RF 
+frequencies in use.&nbsp; The generators are locked to a common base and
+ ensure coincidence between the two frequency domains.<br>
     <p></p>
     <h1>Hardware</h1>
     <h2>FPGA Card</h2>
@@ -17,8 +21,7 @@
       Accelerator Technology Group.&nbsp; The following block diagram
       shows the salient features of this board.</p>
     <blockquote>
-      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram"
-          height="508" width="667"><br>
+      <p><img src="MarbleMiniBlockDiagram.png" alt="Block Diagram" width="667" height="508"><br>
       </p>
     </blockquote>
     <ul>
@@ -76,8 +79,7 @@
           </td>
           <td align="left" valign="middle">The lower limit on the time,
             in milliseconds between injection cycle requests.&nbsp; The
-            injection cycle time is specified by the first line of the<a
-              href="#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
+            injection cycle time is specified by the first line of the<a href="#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
           </td>
         </tr>
         <tr>
@@ -91,7 +93,7 @@
         <tr>
           <td align="left" valign="middle">CFG_HARDWARE_TRIGGER_COUNT<br>
           </td>
-          <td align="center" valign="middle">4<br>
+          <td align="center" valign="middle">5<br>
           </td>
           <td align="left" valign="middle">The number of hardware
             triggers.<br>
@@ -174,8 +176,7 @@
             = \text{F}_\text{RF1} \times
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
-    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext></mrow><annotation
-            encoding="TeX">\text{T}_\text{coincidence} =
+    <blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence} =
             \text{F}_\text{RF1} \times
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
@@ -192,11 +193,9 @@
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
     where
-    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF1</mtext></msub><annotation
-          encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
+    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF1</mtext></msub><annotation encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
     and
-    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF2</mtext></msub><annotation
-          encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
+    <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF2</mtext></msub><annotation encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
     are the frequencies of the reference clock inputs.&nbsp; The
     reference clock inputs are driven at 1/4 the rate of the master
     oscillators for the two frequency domains.&nbsp; Note that the
@@ -215,8 +214,7 @@
     relative to the sampling clock and by extension, relative to each
     other.&nbsp; Thus the phase at which the PLL has locked its output
     relative to its input can be determined.<br>
-    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg"
-        alt="" height="50%" width="70%"><br>
+    <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg" alt="" width="70%" height="50%"><br>
     </blockquote>
     <br>
     There are two levels of event system clock alignment.&nbsp; The
@@ -254,8 +252,7 @@
         -&gt; GTP_X0Y5_TX -&gt; SFP2<br>
       </li>
     </ul>
-    <div style="margin-left: 40px;"><img src="EVG1_GTP.png" alt=""
-        style=" width: 341px; height: 286px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div style="margin-left: 40px;"><img src="EVG1_GTP.png" alt="" style=" width: 341px; height: 286px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <img src="EVG2_GTP.png" alt="" style=" width: 341px; height:
         286px;"> <br>
     </div>
@@ -329,16 +326,14 @@
       -webkit-text-stroke-width: 0px; text-decoration: none;">FPGA
       firmware, system parameters, and the default event sequence are
       stored in flash memory in a psuedo-filesystem.&nbsp; A TFTP server
-      provides access to the following 'files':<b><span
-          style="font-family: monospace;"><br>
+      provides access to the following 'files':<b><span style="font-family: monospace;"><br>
         </span></b></p>
     <table style="caret-color: rgb(0, 0, 0); font-family:
       -webkit-standard; letter-spacing: normal; orphans: auto;
       text-indent: 0px; text-transform: none; widows: auto;
       word-spacing: 0px; -webkit-text-size-adjust: auto;
       -webkit-text-stroke-width: 0px; text-decoration: none; text-align:
-      left; width: 1234.45654296875px;" cellspacing="2" cellpadding="2"
-      border="1">
+      left; width: 1234.45654296875px;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
           <td align="center" valign="top"><b>Name</b><br>
@@ -380,8 +375,7 @@
             generated even if network or IOC issues prevent requests
             from reaching the FPGA.&nbsp; A line with a third column
             containing an asterisk (*) marks this event as the one that
-            will clear bit 4 of the <a
-              href="EPICSnotes.html#PreCompletion">sequencer status</a>.<br>
+            will clear bit 4 of the <a href="EPICSnotes.html#PreCompletion">sequencer status</a>.<br>
           </td>
         </tr>
         <tr>
@@ -391,16 +385,14 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;" align="center"
-            valign="middle">FMC1_EEPROM.bin<br>
+          <td style="vertical-align: top;" align="center" valign="middle">FMC1_EEPROM.bin<br>
           </td>
           <td style="vertical-align: top;" align="left" valign="middle">The
             IPMI EEPROM of the card installed in the first FMC slot.<br>
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;" align="center"
-            valign="middle">FMC2_EEPROM.bin</td>
+          <td style="vertical-align: top;" align="center" valign="middle">FMC2_EEPROM.bin</td>
           <td style="vertical-align: top;" align="left" valign="middle">The
             IPMI EEPROM of the card installed in the second FMC slot.</td>
         </tr>
@@ -447,18 +439,10 @@
         network address to 192.168.1.129 and the Ethernet MAC address to
         AA:4C:42:4E:4C:04.<span class="Apple-converted-space">&nbsp;</span><br>
       </li>
-      <li>Connect the chassis to a 192.168.1.0/24 network and run the<span
-          class="Apple-converted-space">&nbsp;</span><a
-href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#scriptCONSOLE">console.py</a><span
-          class="Apple-converted-space">&nbsp;</span>script from a host
+      <li>Connect the chassis to a 192.168.1.0/24 network and run the<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#scriptCONSOLE">console.py</a><span class="Apple-converted-space">&nbsp;</span>script from a host
         on that same network.<br>
       </li>
-      <li>Use the<span class="Apple-converted-space">&nbsp;</span><a
-href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdMAC">mac</a><span
-          class="Apple-converted-space">&nbsp;</span>and/or<span
-          class="Apple-converted-space">&nbsp;</span><a
-href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdNET">net</a><span
-          class="Apple-converted-space">&nbsp;</span>commands to set the
+      <li>Use the<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdMAC">mac</a><span class="Apple-converted-space">&nbsp;</span>and/or<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdNET">net</a><span class="Apple-converted-space">&nbsp;</span>commands to set the
         Ethernet and/or IPv4 addresses.</li>
       <li>Reboot or power cycle the system.</li>
     </ol>
@@ -468,17 +452,10 @@ href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmw
       normal; orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-size-adjust: auto;
-      -webkit-text-stroke-width: 0px; text-decoration: none;"><span
-        style="font-family: -webkit-standard;">Alternatively, a terminal
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="font-family: -webkit-standard;">Alternatively, a terminal
         emulator program and USB cable can be used to communicate with
         the system through its USB console serial port (115200-8N1) to
-        issue the<span class="Apple-converted-space">&nbsp;</span></span><a
-href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdMAC">mac</a><span
-        class="Apple-converted-space">&nbsp;</span>and/or<span
-        class="Apple-converted-space">&nbsp;</span><a
-href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdNET">net</a><span
-        class="Apple-converted-space">&nbsp;</span>commands.<span
-        class="Apple-converted-space"> <br>
+        issue the<span class="Apple-converted-space">&nbsp;</span></span><a href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdMAC">mac</a><span class="Apple-converted-space">&nbsp;</span>and/or<span class="Apple-converted-space">&nbsp;</span><a href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#cmdNET">net</a><span class="Apple-converted-space">&nbsp;</span>commands.<span class="Apple-converted-space"> <br>
         <br>
       </span></p>
     <h2 style="font-family: -webkit-standard; font-style: normal;
@@ -496,13 +473,8 @@ href="file:///Users/wenorum/xildev/src/siocbcm/head/documentation/Firmware.html#
       -webkit-text-stroke-width: 0px; text-decoration: none;
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">The FPGA sends
       startup and diagnostic messages to its USB console serial port and
-      to a UDP port accessible through the<span
-        class="Apple-converted-space">&nbsp;</span><a
-href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scriptCONSOLE">console.py</a><span
-        class="Apple-converted-space">&nbsp;</span>script.&nbsp; The
-      serial port is run at 115200-8N1.&nbsp;<span
-        class="Apple-converted-space"></span><span
-        class="Apple-converted-space">&nbsp;</span>Commands are entered
+      to a UDP port accessible through the<span class="Apple-converted-space">&nbsp;</span><a href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scriptCONSOLE">console.py</a><span class="Apple-converted-space">&nbsp;</span>script.&nbsp; The
+      serial port is run at 115200-8N1.&nbsp;<span class="Apple-converted-space"></span><span class="Apple-converted-space">&nbsp;</span>Commands are entered
       using a simple command line interpreter.&nbsp; There is no command
       history and the only editing available is the backspace or delete
       key which erases the character currently at the end of the
@@ -523,8 +495,7 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       <dd>The FPGA prompts for confirmation and then restarts as if
         powered up.</dd>
       <dt><br>
-        <span style="font-weight: bold;">debug [-s] [<span
-            style="font-style: italic;">n</span>]</span></dt>
+        <span style="font-weight: bold;">debug [-s] [<span style="font-style: italic;">n</span>]</span></dt>
       <dd>The debugging flags are set to the specified value, if one is
         given.&nbsp; The bits are</dd>
     </dl>
@@ -607,8 +578,7 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       </dd>
       <dt><br>
       </dt>
-      <dt><span style="font-weight: bold;"><a name="cmdNET"></a>net [</span><span
-          style="font-weight: bold;">www.xxx.yyy.zzz[/n]]</span></dt>
+      <dt><span style="font-weight: bold;"><a name="cmdNET"></a>net [</span><span style="font-weight: bold;">www.xxx.yyy.zzz[/n]]</span></dt>
       <dd>Show the network settings if no argument is present otherwise
         set network parameters in flash memory based on the
         argument.&nbsp; The network address is set to the specified
@@ -640,24 +610,17 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       -webkit-text-stroke-width: 0px; text-decoration: none;
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
       <dt><span style="font-weight: bold;">reg r [n]</span></dt>
-      <dd><span style="font-weight: bold;"></span>Show the contents of<span
-          class="Apple-converted-space">&nbsp;</span><span
-          style="font-weight: bold;">n</span><span
-          class="Apple-converted-space">&nbsp;</span>(default 1)
-        general-purpose I/O registers starting at register<span
-          class="Apple-converted-space">&nbsp;</span><span
-          style="font-weight: bold;">r</span>.</dd>
+      <dd><span style="font-weight: bold;"></span>Show the contents of<span class="Apple-converted-space">&nbsp;</span><span style="font-weight: bold;">n</span><span class="Apple-converted-space">&nbsp;</span>(default 1)
+        general-purpose I/O registers starting at register<span class="Apple-converted-space">&nbsp;</span><span style="font-weight: bold;">r</span>.</dd>
       <dt><br>
-        <span style="font-weight: bold;">seq</span><span
-          style="font-weight: bold;"> [evg [seq]]</span></dt>
+        <span style="font-weight: bold;">seq</span><span style="font-weight: bold;"> [evg [seq]]</span></dt>
       <dd><span style="font-weight: bold;"></span>Show the contents of
         the specified event receiver sequence memory.&nbsp; A missing or
         out of range argument will show values for both event generators
         and/or sequences.</dd>
       <dt><br>
       </dt>
-      <dt><span style="font-weight: bold;">tod [</span><span
-          style="font-weight: bold;">www.xxx.yyy.zzz]</span></dt>
+      <dt><span style="font-weight: bold;">tod [</span><span style="font-weight: bold;">www.xxx.yyy.zzz]</span></dt>
       <dd>Show the IPv4 address of the NTP server if no argument is
         present otherwise set the address of the NTP server in flash
         memory based on the argument.&nbsp; The FPGA prompts for
@@ -705,11 +668,11 @@ href="file:///Users/wenorum/xildev/src/siocbcm/documentation/Firmware.html#scrip
       normal; orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-size-adjust: auto;
-      -webkit-text-stroke-width: 0px; text-decoration: none;"><span
-        style="font-weight: bold;"></span></p>
+      -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="font-weight: bold;"></span></p>
     <br class="Apple-interchange-newline">
     <br>
     <h2></h2>
     <p> </p>
-  </body>
-</html>
+  
+
+</body></html>
