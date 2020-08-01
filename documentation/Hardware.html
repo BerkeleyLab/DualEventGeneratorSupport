@@ -276,25 +276,33 @@ frequencies in use.&nbsp; The generators are locked to a common base and
     </ul>
     <h2>Event Source Precedence<br>
     </h2>
-    <p>There are four sources that can place event codes in the output
-      stream, namely the sequence pattern memory, the heartbeat
-      firmware, the pulse-per-second firmware, and time-of-day (seconds)
-      firmware.&nbsp; An event code slot can be occupied by at most a
-      single event code so the following rules are applied when multiple
-      event codes are requested at the same time.<br>
+    <p>There are several sources that can request an event code be
+    placed in the output stream.
+      An event code slot can be occupied by at most a
+      single event code so the sources are assigned a priority with
+      the event corresponding to the highest priority request being
+      emitted when two or more requests are present simultaneously.
+      The sources and their priorities are as follows.<br>
     </p>
     <ul>
       <li>Sequence pattern event requests have the highest priority and
-        are never omitted or shifted to a later event code slot.</li>
+        are never omitted or shifted to a later event code slot.&nbsp;
+        It is good practice to minimize the
+        shifting of lower priority events by providing at least one empty slot between sequence pattern events.</li>
       <li>Heartbeat events are never shifted to a later event code
         slot.&nbsp; If a heartbeat event request and a sequence pattern
         event request occur simultaneously the heartbeat event request
         is ignored.</li>
       <li>Pulse-per-second event requests are delayed to the first
         available event code slot following sequence pattern or
-        heartbeat events.&nbsp; It is good practice to minimize this
-        shifting of pulse-per-second events by providing at least two
-        empty slots between sequence pattern events.</li>
+        heartbeat events.</li>
+      <li>Hardware triggered event requests are delayed to the first
+        available event code slot following sequence pattern,
+        heartbeat, or pulse-per-second events.&nbsp; If multiple hardware triggers are present the lowest numbered input takes
+        precedence.</li>
+      <li>Software triggered event requests are delayed to the first
+        available event code slot following sequence pattern,
+        heartbeat, pulse-per-second, or hardware triggered events.</li>
       <li>Time-of-day (POSIX seconds) events are delayed to the first
         available event code slot following all other event
         requests.&nbsp; This has no effect on the operation of the
@@ -674,5 +682,6 @@ frequencies in use.&nbsp; The generators are locked to a common base and
     <h2></h2>
     <p> </p>
   
+
 
 </body></html>
