@@ -39,7 +39,9 @@
     IOC to remain synchronized with the event sequences.&nbsp; Sequence 
 trigger requests are delayed until the next 60 Hz power line marker and 
 then further delayed until the next coincidence between the booster and 
-accumulator rings.<br>
+accumulator rings.&nbsp; If the hardware 60 Hz power line marker is not 
+present an internal 60 Hz clock is used instead to ensure that the 
+injection cycle is not held off indefinitely.<br>
     <br>
     The second event generator, EVG2, drives the ALS accumulator and
     storage rings and their associated transport lines.&nbsp; Sequences
@@ -710,6 +712,21 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
           </td>
         </tr>
         <tr>
+  <td style="text-align: center;">INJ:injCycleAlign</td>
+  <td style="text-align: center;">0x2211<br>
+  </td>
+  <td style="text-align: center;">longin<br>
+  </td>
+  <td style="vertical-align: middle; text-align: left;">Injection cycle 
+alignment status.&nbsp; Bit 15 is 0/1 when the hardware&nbsp; 60 Hz 
+power line marker is invalid/valid.&nbsp; Bit 14 is 0/1 when the 
+booster/accumulator bucket alignment coincidence marker is 
+unsynchronized/synchronized with the heartbeat.&nbsp; Bits 11:0 are the 
+reload value for the millisecond counter that generates injection 
+requests.<br>
+  </td>
+</tr>
+<tr>
           <td style="text-align: center;">TOD:PPSvalid<br>
           </td>
           <td style="text-align: center;">0x2212<br>
