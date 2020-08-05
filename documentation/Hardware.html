@@ -96,7 +96,11 @@ sequence pattern generators.&nbsp; An indicator to the right of the
 value to the right of the 'SEQ:' text shows the pattern number (0/1) 
 currently or previously emitted.<br>
 </li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
-      </li><li>The 'Temperatures' region shows a bar indicator of the temperature of various components.</li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
+      </li><li>The 'Temperatures' region shows a bar indicator of the 
+temperature of various components.&nbsp; SFP1 and 2 are the ones 
+generating the event streams, 3 and 4 are the ones receiving the 
+reference clocks.<br>
+</li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
  network address is normally shown as white text on a black background.&nbsp;
  A network address shown as black text on a white background indicates 
 the the unit is in "recovery" mode.<br>
@@ -121,8 +125,40 @@ the the unit is in "recovery" mode.<br>
 
 
     
+<h2>Rear Panel Components<br>
+</h2>
+
+
+
+
+    
+<p>There are several components on the event generator rear panel.<br>
+    </p>
+
+
+
+    
+<ol>
+<li>Connector for 12V power adapter.</li>
+  <li>Holder for 3A slow-blow fuse.<br>
+  </li>
+<li>On/Off switch.<br>
+<div style="margin-left: 40px;"> </div>
+      </li>
+  <li>LC50 duplex fiber ports accepting the reference clocks for each of the event generators.<br>
+  </li>
+<li>SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.<br>
+</li><li>&nbsp;Isolated BNC connectors carrying LVTTL level hardware triggers and timing reference signals.&nbsp; Inputs 
+are medium impedance (475Ω plus series LED).</li>
+</ol>
 <p><br>
 </p>
+
+
+
+    
+<h3><span style="color: rgb(0, 0, 0);"></span></h3>
+
 <h2>FPGA Card</h2>
 
     <p>The FPGA carrier card is a 'Marble-Mini' developed by the LBNL
@@ -308,6 +344,8 @@ the the unit is in "recovery" mode.<br>
     reference clock inputs are driven at 1/4 the rate of the master
     oscillators for the two frequency domains.&nbsp; Note that the
     heartbeat intervals are are not the same.<br>
+<br>
+If changes are made to any of these parameters the createVerilogIDX.sh script must be run and the firmware and software rebuilt.<br>
     <br>
     <h2>Clock Synchronization</h2>
     Each event generator in the FPGA is synchronized to the RF master
@@ -536,7 +574,7 @@ the the unit is in "recovery" mode.<br>
 </p>
 
     
-<h1>GPS Time Provider<br>
+<h1><a name="GPS_PMOD"></a>GPS Time Provider<br>
 </h1>
 A Digilent <a href="DataSheets/pmodgps-gms-u1lp_rm.pdf">GPS PMOD card</a> can be 
 used to supply the time of day and pulse per second references required 
