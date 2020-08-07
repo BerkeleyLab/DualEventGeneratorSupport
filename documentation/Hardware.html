@@ -29,14 +29,14 @@ frequencies in use.&nbsp; The generators are locked to a common base and
 
     
 <ol>
-<li>RJ-45 16000Base-T Ethernet.</li><li>USB console serial port and JTAG interface.&nbsp; The serial port is run
+<li>RJ-45 1000Base-T Ethernet.</li><li>USB console serial port and JTAG interface.&nbsp; The serial port is run
         at 115200-8N1.&nbsp; To view the diagnostic messages sent to the
         serial port the following command can be used on Linux or OS X
         machines (the name of the USB tty may differ):<br>
         <div style="margin-left: 40px;"><span style="font-family:
             monospace;">cu -s 115200 -l /dev/ttyUSB2</span><br>
         </div><div style="margin-left: 40px;"> </div>
-      </li><li>LC50 duplex fiber ports providing the two MRF-compatible event links.</li><li>&nbsp;Diagnostic
+      </li><li>LC50 duplex fiber ports providing the two MRF compatible event links.</li><li>&nbsp;Diagnostic
  I/O BNC connectors carrying non-isolated, LVTTL level signals.&nbsp; 
 Inputs are high impedance, outputs are capable of driving 50Ω loads.<br>
   </li>
@@ -93,7 +93,7 @@ the 'TRG:' text blinks when an event sequence is triggered.&nbsp; The
  value to the right of the 'SEQ:' text shows the number (0/1) 
 of the currently or previously active sequence.<br>
 </li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
-      </li><li>The 'Temperatures' region shows a bar indicator of the 
+      </li><li>The 'Temperature' region shows a bar indicator of the 
 temperature of various components.&nbsp; SFP1 and 2 are the ones 
 generating the event streams, 3 and 4 are the ones receiving the 
 reference clocks.<br>
