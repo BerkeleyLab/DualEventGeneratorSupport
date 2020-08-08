@@ -23,7 +23,7 @@ frequencies in use.&nbsp; The generators are locked to a common base and
 
 
     
-<p>There are several connectors on the event generator front panel.<br>
+<p>There are several components on the event generator front panel.<br>
     </p>
 
 
@@ -75,7 +75,7 @@ power-up operation the FPGA will enter "recovery" mode where the
 Ethernet MAC address and IPv4 address are set to default values 
 (AA:4C:42:4E:4C:04 and 192.168.1.129/24, respectively).</p>
 
-<h3><span style="color: rgb(0, 0, 0);">Front Panel Display</span></h3>
+<h3><span style="color: rgb(0, 0, 0);"><a name="FrontPanelDisplay"></a>Front Panel Display</span></h3>
 
 
     
@@ -128,7 +128,7 @@ the the unit is in "recovery" mode.<br>
 
 
     
-<p>There are several components on the event generator rear panel.<br>
+<p>There following components are present on the event generator rear panel.<br>
     </p>
 
 
@@ -145,7 +145,7 @@ the the unit is in "recovery" mode.<br>
 <li>SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
 <li>LC50 duplex fiber ports accepting the reference clocks for each of the event generators.</li>
 <li>Isolated BNC connectors carrying LVTTL level hardware triggers and timing reference signals.&nbsp; Inputs 
-are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1.8V and maximum input is 5.0V.<br>
+are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1.8V and maximum input voltage is 5.0V.<br>
 </li>
 </ol>
 <img src="RearPanel.png" alt="" style=" width: 1181px; height: 333px;">
@@ -174,8 +174,9 @@ are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1
         slots.</li>
       <li>Two FMC connectors.&nbsp; LPC subset, no high speed serial
         link.</li>
-      <li>512M×16 bit DDR3L memory.</li>
-      <li>Two dual-row (12 pin) 3.3V PMOD connectors.</li>
+      <li>512M×16 bit DDR3L memory, unused in this application.<br>
+</li>
+      <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these drives the <a href="#FrontPanelDisplay">front panel display</a> and the other is used to connect the optional <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD">GPS receiver</a>.</li>
       <li>16 MB SPI flash memory for FPGA and application bootstrap.<br>
       </li>
     </ul>

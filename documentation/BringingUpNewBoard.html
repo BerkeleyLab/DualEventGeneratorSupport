@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>BringingUpNewBoard</title></head><body>
+<h1>Bootstrapping A New Board</h1>
+These instructions assume that a download image is ready for download as described in the 'Updating Firmware' documentation.<br>
+<ol>
+  <li>Connect the USB ports of the development machine and the Marble Mini.</li>
+  <li>In a terminal window start the Xilinx virtual cable server:<br>
+    <span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp; ftdiJTAG -c 30M -g 1:1</span></li>
+  <li>Start Vivado and select the ALSUeventGenerator project.</li>
+  <li>Click 'Open Hardware Manager' (or Flow-&gt;Hardware Manager menu item)..</li>
+  <li>Click 'Open Target'.</li>
+  <li>Click 'Open New Target...'.</li>
+  <li>In the 'Open New Hardware Target' window that pops up, click 'Next&gt;'.</li>
+  <li>Set the menu to 'Connect to Local server', then click 
+'Next&gt;'.&nbsp; This menu item must be chosen even if the server was 
+started on a different machine.</li>
+  <li>If the desired device is not present in the 'Hardware Targets' 
+table, click the 'Add Xilinx Virtual Cable (XVC)' button and select the 
+IP address and port corresponding to the server started in step 2 
+(defaults are 127.0.0.1 and 2542, respectively).</li>
+  <li>Ensure that the desired device is highlighted in the 'Hardware Targets' table, then click 'Next&gt;'.</li>
+  <li>Click 'Finish'.</li>
+  <li>Click 'Program Device' (or Tools-&gt;Program Device menu item).</li>
+  <li>In the 'Program Device' window that pops up, clear the 'Debug 
+probes file' entry then navigate the 'Bitstream file' to the scripts 
+directory in the Vitis workspace and select the download.bit file there,
+ then click 'Program'.</li>
+  <li>Once the download is complete the application will start running on the Marble Mini.</li>
+  <li>Use a TFTP client to transfer the download.bit file to the Marble Mini flash memory.</li>
+  <li>Set the application system parameters as appropriate.</li>
+</ol>
+<br>
+Steps 1 through 11 apply to setting up a ChipScope session, too.&nbsp; Perform them, then click 'Refresh Device'.<br>
+<br>
+</body></html>
