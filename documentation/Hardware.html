@@ -8,7 +8,7 @@
   <body>
     <h1>Introduction</h1>
     The dual event generator consists of an FPGA platform, two FMC
-    cards, a front panel display and an optional PMOD card.&nbsp; Each event generator distributes RF reference and 
+    cards, a front panel display, and an optional PMOD card.&nbsp; Each event generator distributes RF reference and 
 timing signals on an optical fiber using a protocol compatible with that
  used by Micro-Research Finland timing equipment.&nbsp; The ALS-U 
 project requires two event generators, one for each of the RF 
@@ -76,7 +76,7 @@ ImageA.bin file.</li>
     
 <p>Pressing this button for more than one second causes the FPGA to 
 perform a power-on reset.&nbsp; If the switch is held down during a 
-power-up operation the FPGA will enter "recovery" mode where the 
+power-up operation the FPGA will enter “recovery” mode where the 
 Ethernet MAC address and IPv4 address are set to default values 
 (AA:4C:42:4E:4C:04 and 192.168.1.129/24, respectively).<br>
 </p>
@@ -106,7 +106,7 @@ reference clocks.<br>
 </li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
  network address is normally shown as white text on a black background.&nbsp;
  A network address shown as black text on a white background indicates 
-the the unit is in "recovery" mode.<br>
+the the unit is in “recovery” mode.<br>
   </li><li>The bottom line of the display shows the date and time (UTC).<br>
   </li>
 </ol>
@@ -120,7 +120,7 @@ the the unit is in "recovery" mode.<br>
 <li>Black text on a red background – event generator is reporting a fatal
         error condition.&nbsp;&nbsp; The only exit from this state is a reset or power cycle.<br>
 </li><li>Black text on a yellow background – event generator is reporting a warning
-        condition.&nbsp; Pressing and holding the "Display" button for one second will exit this state.<br>
+        condition.&nbsp; Pressing and holding the “Display” button for one second will exit this state.<br>
 </li>
 </ul>
 
@@ -465,7 +465,43 @@ If changes are made to any of these parameters the createVerilogIDX.sh script mu
       the heartbeat event would have occurred if the heartbeat event is
       preempted by a sequence pattern event.<br>
       <br>
+</p>
+<h1><a name="GPS_PMOD"></a>GPS Time Provider<br>
+</h1>
+
+A Digilent <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/DataSheets/pmodgps-gms-u1lp_rm.pdf">GPS PMOD card</a> can be 
+used to supply the time of day and pulse per second references required 
+by the dual event generator.&nbsp; Connect the PMOD card to the ‘odd’ 
+side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
+ the NTP server address to 0.0.0.0.&nbsp; The FMC pulse-per-second input
+ is ignored in this mode of operation.<br>
+<br>
+
+<h1>Minimal Hardware System</h1>
+<p>If an application requires just an MRF compatible event stream, for 
+example for testing or development of equipment containing embedded MRF 
+receivers, only the FPGA and PMOD boards are required.&nbsp; Neither 
+display nor FMC cards need be provided.&nbsp; Of course if the FMC cards
+ are omitted there will be no hardware trigger nor power line reference 
+inputs but the system can still function.<br>
+</p>
+<p>In this mode of operation the transceiver reference clocks are connected as follows:<br>
+
     </p>
+<ul>
+  <li>J5/J2 (EXT_CLK) → C378/C379 → MGTREFCLK1 → PLL0
+        → GTP_X0Y4_TX → SFP1<br>
+      </li>
+<li>On-board 125 MHz clock (FPGA_REF_CLK1) → C296/C297 → MGTREFCLK0 → PLL1
+        → GTP_X0Y5_TX → SFP2</li>
+</ul>
+<p><br>
+</p>
+
+    
+<p>
+    </p>
+
     <h1 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
       font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; letter-spacing: normal; orphans: auto;
@@ -572,19 +608,11 @@ If changes are made to any of these parameters the createVerilogIDX.sh script mu
         values.</li>
       <li>The IPMI EEPROMs can be written only when the 'Write Enable'
         jumper is in place on the FMC cards.</li></ul>
-<p><br>
-</p>
+
 
     
-<h1><a name="GPS_PMOD"></a>GPS Time Provider<br>
-</h1>
-A Digilent <a href="DataSheets/pmodgps-gms-u1lp_rm.pdf">GPS PMOD card</a> can be 
-used to supply the time of day and pulse per second references required 
-by the dual event generator.&nbsp; Connect the PMOD card to the ‘odd’ 
-side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
- the NTP server address to 0.0.0.0.&nbsp; The FMC pulse-per-second input
- is ignored in this mode of operation.<br>
-<br>
+
+
 
     
 <h1 style=" font-family: -webkit-standard; font-style: normal;
