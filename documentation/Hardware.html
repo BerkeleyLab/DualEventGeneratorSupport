@@ -481,8 +481,8 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
 <p>If an application requires just an MRF compatible event stream, for 
 example for testing or development of equipment containing embedded MRF 
 receivers, only the FPGA and PMOD boards are required.&nbsp; Neither 
-display nor FMC cards need be provided.&nbsp; Of course if the FMC cards
- are omitted there will be no hardware trigger nor power line reference 
+display nor FMC cards need be provided.&nbsp; If the FMC cards are 
+omitted there will be no hardware trigger nor power line reference 
 inputs but the system can still function.<br>
 </p>
 <p>In this mode of operation the transceiver reference clocks are connected as follows:<br>
@@ -492,10 +492,11 @@ inputs but the system can still function.<br>
   <li>J5/J2 (EXT_CLK) → C378/C379 → MGTREFCLK1 → PLL0
         → GTP_X0Y4_TX → SFP1<br>
       </li>
-<li>On-board 125 MHz clock (FPGA_REF_CLK1) → C296/C297 → MGTREFCLK0 → PLL1
+<li>On-board 125 MHz clock (FPGA_REF_CLK1, White Rabbit) → C296/C297 → MGTREFCLK0 → PLL1
         → GTP_X0Y5_TX → SFP2</li>
 </ul>
-<p><br>
+<p>If this arrangement does not match the application requirements the 
+transceiver wizard can be used to change the clock configuration.<br>
 </p>
 
     
