@@ -9,7 +9,7 @@ firmware and software using its JTAG port.&nbsp; The instructions assume
   <li>Connect the USB ports of the development machine and the FPGA to be programmed.</li>
   <li>In a terminal window start the Xilinx virtual cable server:<br>
     <span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp; ftdiJTAG -c 30M -g 1:1</span></li>
-  <li>In the Vivado session click 'Open Hardware Manager' (or Flow-&gt;Hardware Manager menu item)..</li>
+  <li>In the Vivado session click 'Open Hardware Manager' (or Flow-&gt;Hardware Manager menu item).</li>
   <li>Click 'Open Target'.</li>
   <li>Click 'Open New Target...'.</li>
   <li>In the 'Open New Hardware Target' window that pops up, click 'Next&gt;'.</li>
@@ -25,8 +25,8 @@ IP address and port corresponding to the server started in step 2
   <li>Click 'Program Device' (or Tools-&gt;Program Device menu item).</li>
   <li>In the 'Program Device' window that pops up, clear the 'Debug 
 probes file' field then navigate the 'Bitstream file' field to the 
-scripts directory in the Vitis workspace and select the download.bit 
-file there, then click 'Program'.</li>
+scripts directory in the Vitis workspace, select the download.bit file 
+there, then click 'Program'.</li>
   <li>Once the download is complete the application will start running.&nbsp; Use a <a href="Hardware.html#ConsoleCommands">console</a> session in another teminal window to observe its progress.<br>
   </li>
   <li>Use a TFTP client to transfer the download.bit file to the flash memory.</li>
