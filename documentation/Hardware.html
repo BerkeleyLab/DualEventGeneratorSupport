@@ -464,10 +464,21 @@ If changes are made to any of these parameters the createVerilogIDX.sh script mu
       of this signal is coincident with the heartbeat event, or where
       the heartbeat event would have occurred if the heartbeat event is
       preempted by a sequence pattern event.<br>
-      <br>
+<br>
 </p>
-<h1><a name="GPS_PMOD"></a>GPS Time Provider<br>
-</h1>
+<h1>Time Providers</h1>
+<p>During normal operation the event generator tracks the progress of 
+time by incrrementing the number of POSIX seconds each time that the 
+'pulse per second' marker is asserted.&nbsp; At startup, and whenever 
+the pulse per second marker resumes after an interruption, the event 
+generator obtains the number of POSIX seconds from the selected time 
+provider.&nbsp; The event generator can use either of two possible time 
+provides, namely an <a href="#cmdTOD">NTP server</a> on the network or a <a href="#GPS_PMOD">GPS receiver card</a>.<br>
+</p>
+<p></p>
+<h2><a name="GPS_PMOD"></a>GPS Time Provider<br>
+
+</h2>
 
 A Digilent <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/DataSheets/pmodgps-gms-u1lp_rm.pdf">GPS PMOD card</a> can be 
 used to supply the time of day and pulse per second references required 
@@ -825,7 +836,8 @@ transceiver wizard can be used to change the clock configuration.<br>
       <dd>Show the IPv4 address of the NTP server if no argument is
         present otherwise set the address of the NTP server in flash
         memory based on the argument.&nbsp; The FPGA prompts for
-        confirmation before writing to the flash memory.</dd>
+        confirmation before writing to the flash memory.&nbsp; To use the <a href="#GPS_PMOD">GPS receiver</a> instead of an NTP server, set the NTP server address to 0.0.0.0.<span style="text-decoration: underline;"> </span><span style="text-decoration: underline;"></span><span style="text-decoration: underline;"></span><a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD"><br>
+</a></dd>
     </dl>
     <br>
     <h2 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
@@ -852,27 +864,7 @@ transceiver wizard can be used to change the clock configuration.<br>
 
           [-a IP_name_or_address]<br>
         </span></dt>
-      <dd>Connect to the console port of the FPGA.</dd>
-    </dl>
-    <br>
-    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
-      font-family: -webkit-standard; font-style: normal;
-      font-variant-caps: normal; font-weight: normal; letter-spacing:
-      normal; orphans: auto; text-align: start; text-indent: 0px;
-      text-transform: none; white-space: normal; widows: auto;
-      word-spacing: 0px; -webkit-text-size-adjust: auto;
-      -webkit-text-stroke-width: 0px; text-decoration: none;"><br>
-      <span style="font-weight: bold;"></span></p>
-    <p style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
-      font-family: -webkit-standard; font-style: normal;
-      font-variant-caps: normal; font-weight: normal; letter-spacing:
-      normal; orphans: auto; text-align: start; text-indent: 0px;
-      text-transform: none; white-space: normal; widows: auto;
-      word-spacing: 0px; -webkit-text-size-adjust: auto;
-      -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="font-weight: bold;"></span></p>
-    <br class="Apple-interchange-newline">
-    <br>
-    <h2></h2>
+      <dd>Connect to the console port of the FPGA.</dd></dl><h2></h2>
     <p> </p>
   
 
