@@ -88,7 +88,99 @@ Ethernet MAC address and IPv4 address are set to default values
 <h2><span style="color: rgb(0, 0, 0);"></span></h2>
 
 
-    <span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the figure below.<br>
+    
+<p>The Marble Mini PMOD1 connector connects to the front panel Display
+      and Reset/Recovery push buttons and drives a 240×320
+      display equipped with a Sitronix ST7789V controller configured for
+      4-line serial operation.&nbsp; The connector pin assignments are
+      shown in the following table.<br>
+    </p>
+
+    
+<table style="text-align: left; width: 500px; margin-left: 40px;" cellspacing="2" cellpadding="2" border="1">
+
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span style="font-weight:
+              bold;">PMOD1</span><span style="font-weight: bold;"><br>
+            </span><span style="font-weight: bold;">Line</span><br>
+          </td>
+          <td style="vertical-align: middle; text-align: center;"><span style="font-weight: bold;">ST7789V</span><span style="font-weight: bold;"><br>
+            </span><span style="font-weight: bold;">Line</span><br>
+          </td>
+          <td style="vertical-align: middle; text-align: center;"><span style="font-weight: bold;">De</span><span style="font-weight: bold;">scrip</span><span style="font-weight: bold;">tion</span><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">0<br>
+          </td>
+          <td style="text-align: center;"><span style="text-decoration:overline"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mtext>CS</mtext><mo>¯</mo></mover><annotation encoding="TeX">\overline{\text{CS}}</annotation></semantics></math></span>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">1<br>
+          </td>
+          <td style="text-align: center;">SDA<br>
+          </td>
+          <td style="vertical-align: top;">Bidirectional data transfer.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">2<br>
+          </td>
+          <td style="text-align: center;">–<br>
+          </td>
+          <td style=" vertical-align: top;">Enable display backlight
+            driver<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">3<br>
+          </td>
+          <td style="text-align: center;">SCLK<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">4<br>
+          </td>
+          <td style="text-align: center;"><span style="text-decoration:overline"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mtext>RESET</mtext><mo>¯</mo></mover><annotation encoding="TeX">\overline{\text{RESET}}</annotation></semantics></math></span></td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">5<br>
+          </td>
+          <td style="text-align: center;"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>D/</mtext><mover><mtext>C</mtext><mo>¯</mo></mover></mrow><annotation encoding="TeX">\text{D/}\overline{\text{C}}</annotation></semantics></math><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">6<br>
+          </td>
+          <td style="text-align: center;">–<br>
+          </td>
+          <td style="vertical-align: top;">Reset/Recovery button
+            (active low, on-board pull-up)<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">7<br>
+          </td>
+          <td style="text-align: center;">–<br>
+          </td>
+          <td style="vertical-align: top;">Display button (active low, on-board
+            pull-up)</td>
+        </tr>
+      </tbody>
+    
+</table>
+<br>
+<span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the figure below.<br>
   <br>
 </span>
 <div style="margin-left: 80px;"><img src="Display.png" alt="" style=" width: 320px; height: 240px;"></div>
