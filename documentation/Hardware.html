@@ -297,6 +297,13 @@ are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1
     monitor signal to the FPGA. <br>
     <br>
     <h1>Firmware</h1>
+<p>To keep the FPGA as responsive as possible to EPICS IOC requests the 
+firmware provides two µBlaze processors.&nbsp; The first is used for 
+console and display updates and for reading and writing the non-volatile
+ memory.&nbsp; The second is used for EPICS communication, encompassing 
+both event generator status publisher and event system server.<br>
+</p>
+
     <h2>Configuration Parameters</h2>
     <p>The following table summarizes the configuration parameters
       shared between the FPGA software and firmware.</p>
