@@ -24,7 +24,7 @@ record(calc, "$(P)$(R)E$(E):seqFinishes") {
 
 record(longin, "$(P)$(R)E$(E):EVGIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVGIOstatus") }
 record(mbbiDirect, "$(P)$(R)E$(E):EVGIOstatus") {
-    field(DESC, "Individual bits of $(P)$(R)E$(E):EVGIOstatus_")
+    field(DESC, "Bits of $(P)$(R)E$(E):EVGIOstatus_")
     field(INP,  "$(P)$(R)E$(E):EVGIOstatus_ NPP")
 }
 
