@@ -8,6 +8,7 @@ epicsEnvSet "EVG_ADDRESS" "$(EVG_ADDRESS=192.168.1.129)"
 epicsEnvSet "OLD_EVG_SYS" "$(OLD_EVG_SYS=LI11)"
 epicsEnvSet "OLD_EVG_T" "$(OLD_EVG_T=)"
 epicsEnvSet "FPGA_SIMM_DISABLE" "$(FPGA_SIMM_DISABLE=#)"
+epicsEnvSet "TRACK_OLD_EVG_DISABLE" "$(TRACK_OLD_EVG_DISABLE=#)"
 < envPaths
 epicsEnvSet "EPICS_CA_MAX_ARRAY_BYTES" "150000"
 epicsEnvSet "IOCSH_PS1" "$(IOC)> "
@@ -70,5 +71,5 @@ $(FPGA_SIMM_DISABLE) <st.simm
 
 ###############################################################################
 # Start shadowing old event generator
-seq shadowEVG "P=$(P),R=$(R),SYS=$(OLD_EVG_SYS),T=$(OLD_EVG_T)"
+$(TRACK_OLD_EVG_DISABLE) seq shadowEVG "P=$(P),R=$(R),SYS=$(OLD_EVG_SYS),T=$(OLD_EVG_T)"
 
