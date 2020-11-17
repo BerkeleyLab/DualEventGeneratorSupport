@@ -4,7 +4,7 @@
 # Set up environment
 epicsEnvSet "P" "$(P=EVG)"
 epicsEnvSet "R" "$(R=:)"
-epicsEnvSet "EVG_ADDRESS" "$(EVG_ADDRESS=192.168.1.129)"
+epicsEnvSet "EVG_ADDRESS" "$(EVG_ADDRESS=131.243.93.169)"
 epicsEnvSet "OLD_EVG_SYS" "$(OLD_EVG_SYS=LI11)"
 epicsEnvSet "OLD_EVG_T" "$(OLD_EVG_T=)"
 epicsEnvSet "FPGA_SIMM_DISABLE" "$(FPGA_SIMM_DISABLE=#)"
