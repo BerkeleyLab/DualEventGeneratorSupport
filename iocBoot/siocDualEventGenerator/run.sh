@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start soft IOC in various modes
-export EVG_ADDRESS="${EVG_ADDRESS=192.168.1.129}"
+export EVG_ADDRESS="${EVG_ADDRESS=131.243.93.169}"
 export FPGA_SIMM_DISABLE="#"
 export TRACK_OLD_EVG_DISABLE="#"
 for i in "$@"
