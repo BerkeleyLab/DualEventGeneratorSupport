@@ -21,7 +21,7 @@ consolePort = 50004
 
 consoleSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 consoleSock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-consoleSock.sendto(bytes([1]), (address, consolePort))
+consoleSock.sendto('\1', (address, consolePort))
 
 forceFlush = True
 def fetchFromFPGA():
