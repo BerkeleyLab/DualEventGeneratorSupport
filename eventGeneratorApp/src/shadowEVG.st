@@ -55,7 +55,7 @@ unsigned int newSingleShot;
 assign newSingleShot to "{P}{R}INJ:singleShot";
 
 int newSequencerStatus;
-assign newSequencerStatus to "{P}{R}SEQ:status";
+assign newSequencerStatus to "{P}{R}E1:seqStatus";
 monitor newSequencerStatus;
 
 /* Status */
