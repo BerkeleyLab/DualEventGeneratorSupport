@@ -68,8 +68,3 @@ epicsEnvShow >"/vxboot/PVenv/$(IOC).softioc"
 ###############################################################################
 # Put FPGA I/O records into simulation mode?
 $(FPGA_SIMM_DISABLE) <st.simm
-
-###############################################################################
-# Start shadowing old event generator
-$(TRACK_OLD_EVG_DISABLE) seq shadowEVG "P=$(P),R=$(R),SYS=$(OLD_EVG_SYS),T=$(OLD_EVG_T)"
-
