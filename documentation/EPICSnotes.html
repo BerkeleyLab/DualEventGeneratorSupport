@@ -908,10 +908,10 @@ records are:<br>
     <br>
     The forward link field in each "$(P)$(R)E<i>x</i>:seqStatus"longin
     record is used to cause a pair of calc records to process.&nbsp; The
-    first of these, "$(P)$(R)E<i>x</i>:startCount, increments its value
+    first of these, "$(P)$(R)E<i>x</i>:seqStarts, increments its value
     each time the bit in the longin record selected by a mask in field B
     of the calc record makes a transition from zero to one.&nbsp; The
-    other, "$(P)$(R)E<i>x</i>:doneCount, increments its value each time
+    other, "$(P)$(R)E<i>x</i>:seqFinishes, increments its value each time
     that bit in the longin record makes a transition from one to
     zero.&nbsp; Clients can monitor these records to synchronize
     themselves with the beginning or end, respectively, of a sequence.<br>
