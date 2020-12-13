@@ -128,7 +128,7 @@ injection cycle is not held off indefinitely.<br>
 
 
             generator 1, sequence 0.&nbsp; This is the default injector
-            sequence.&nbsp; This record is usually left unused since the
+            sequence.&nbsp; This record is usually left unwritten since the
             FPGA loads a <a href="Hardware.html#DefaultSequenceCSV">default
               sequence</a> from its own flash memory on startup.<br>
           </td>
@@ -312,7 +312,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">INJ:injCycleEnable<br>
+          <td style="text-align: center;"><a name="injCycleEnable"></a>INJ:injCycleEnable<br>
           </td>
           <td style="text-align: center;">0x1F01<br>
           </td>
@@ -908,10 +908,10 @@ records are:<br>
     <br>
     The forward link field in each "$(P)$(R)E<i>x</i>:seqStatus"longin
     record is used to cause a pair of calc records to process.&nbsp; The
-    first of these, "$(P)$(R)E<i>x</i>:startCount, increments its value
+    first of these, "$(P)$(R)E<i>x</i>:seqStarts, increments its value
     each time the bit in the longin record selected by a mask in field B
     of the calc record makes a transition from zero to one.&nbsp; The
-    other, "$(P)$(R)E<i>x</i>:doneCount, increments its value each time
+    other, "$(P)$(R)E<i>x</i>:seqFinishes, increments its value each time
     that bit in the longin record makes a transition from one to
     zero.&nbsp; Clients can monitor these records to synchronize
     themselves with the beginning or end, respectively, of a sequence.<br>
