@@ -6,7 +6,7 @@ release 1
 x 373
 y 138
 w 560
-h 280
+h 270
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -48,7 +48,7 @@ major 4
 minor 0
 release 0
 x 26
-y 125
+y 173
 w 210
 h 76
 
@@ -61,7 +61,7 @@ major 4
 minor 0
 release 0
 x 26
-y 185
+y 233
 w 210
 h 16
 
@@ -74,7 +74,7 @@ major 4
 minor 1
 release 1
 x 211
-y 185
+y 233
 w 25
 h 16
 font "helvetica-medium-r-14.0"
@@ -93,7 +93,7 @@ major 4
 minor 7
 release 0
 x 157
-y 185
+y 233
 w 50
 h 16
 controlPv "$(P)$(R)FPGA:temp"
@@ -119,7 +119,7 @@ major 4
 minor 1
 release 1
 x 26
-y 185
+y 233
 w 126
 h 16
 font "helvetica-medium-r-14.0"
@@ -143,7 +143,7 @@ major 4
 minor 0
 release 0
 x 26
-y 165
+y 213
 w 210
 h 16
 
@@ -156,7 +156,7 @@ major 4
 minor 1
 release 1
 x 211
-y 165
+y 213
 w 25
 h 16
 font "helvetica-medium-r-14.0"
@@ -175,7 +175,7 @@ major 4
 minor 7
 release 0
 x 157
-y 165
+y 213
 w 50
 h 16
 controlPv "$(P)$(R)FPGA:VccBRAM:V"
@@ -201,7 +201,7 @@ major 4
 minor 1
 release 1
 x 26
-y 165
+y 213
 w 117
 h 16
 font "helvetica-medium-r-14.0"
@@ -225,7 +225,7 @@ major 4
 minor 0
 release 0
 x 26
-y 145
+y 193
 w 210
 h 16
 
@@ -238,7 +238,7 @@ major 4
 minor 1
 release 1
 x 211
-y 145
+y 193
 w 25
 h 16
 font "helvetica-medium-r-14.0"
@@ -257,7 +257,7 @@ major 4
 minor 7
 release 0
 x 157
-y 145
+y 193
 w 50
 h 16
 controlPv "$(P)$(R)FPGA:VccAUX:V"
@@ -283,7 +283,7 @@ major 4
 minor 1
 release 1
 x 26
-y 145
+y 193
 w 106
 h 16
 font "helvetica-medium-r-14.0"
@@ -307,7 +307,7 @@ major 4
 minor 0
 release 0
 x 26
-y 125
+y 173
 w 210
 h 16
 
@@ -320,7 +320,7 @@ major 4
 minor 1
 release 1
 x 211
-y 125
+y 173
 w 25
 h 16
 font "helvetica-medium-r-14.0"
@@ -339,7 +339,7 @@ major 4
 minor 7
 release 0
 x 157
-y 125
+y 173
 w 50
 h 16
 controlPv "$(P)$(R)FPGA:VccINT:V"
@@ -365,7 +365,7 @@ major 4
 minor 1
 release 1
 x 26
-y 125
+y 173
 w 99
 h 16
 font "helvetica-medium-r-14.0"
@@ -1340,8 +1340,8 @@ beginObjectProperties
 major 4
 minor 4
 release 0
-x 467
-y 238
+x 461
+y 233
 w 80
 h 25
 fgColor index 14
@@ -1378,8 +1378,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 330
-y 232
+x 59
+y 122
 w 110
 h 36
 
@@ -1391,8 +1391,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 330
-y 252
+x 59
+y 142
 w 110
 h 16
 
@@ -1404,8 +1404,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 330
-y 252
+x 59
+y 142
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1424,8 +1424,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 426
-y 252
+x 155
+y 142
 w 14
 h 14
 controlPv "$(P)$(R)INJ:injCycleAlign"
@@ -1446,8 +1446,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 330
-y 232
+x 59
+y 122
 w 110
 h 16
 
@@ -1459,8 +1459,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 330
-y 232
+x 59
+y 122
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1479,8 +1479,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 426
-y 232
+x 155
+y 122
 w 14
 h 14
 controlPv "$(P)$(R)TOD:PPSvalid"
