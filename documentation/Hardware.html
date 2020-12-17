@@ -7,13 +7,19 @@
   </head>
   <body>
     <h1>Introduction</h1>
-    The dual event generator consists of an FPGA platform, two FMC
+    <font size="+2">NOTE: To allow testing at the ALS the dual event 
+generator FPGA software has been compiled with a set of parameters 
+different than those <a href="#ConfigurationParameters">described later in this document</a>.&nbsp;
+ To use at the ALS-U the definitions in the config.h header file must be
+ restored to their ALS-U values and the application rebuilt.</font><br>
+&nbsp;<br>
+The dual event generator consists of an FPGA platform, two FMC
     cards, a front panel display, and an optional PMOD card.&nbsp; Each event generator distributes RF reference and 
 timing signals on an optical fiber using a protocol compatible with that
  used by Micro-Research Finland timing equipment.&nbsp; The ALS-U 
 project requires two event generators, one for each of the RF 
 frequencies in use.&nbsp; The generators are locked to a common base and
- ensure coincidence between the two frequency domains.<br>
+ ensure coincidence between the two frequency domains.&nbsp; The FPGA can also act as a stratum 1 NTP server.<br>
     <p></p>
     <h1>Hardware</h1>
     
@@ -38,7 +44,7 @@ frequencies in use.&nbsp; The generators are locked to a common base and
         </div><div style="margin-left: 40px;"> </div>
       </li><li>LC50 duplex fiber ports providing the two MRF compatible event links.</li><li>Diagnostic
  I/O BNC connectors carrying non-isolated, LVTTL level signals.&nbsp; 
-Inputs are high impedance, outputs are capable of driving 50Ω loads.<br>
+Inputs are high impedance, 5V tolerant, outputs are capable of driving 50Ω loads.<br>
   </li>
 </ol>
 
@@ -304,7 +310,7 @@ console and display updates and for reading and writing the non-volatile
 both event generator status publisher and event system server.<br>
 </p>
 
-    <h2>Configuration Parameters</h2>
+    <h2><a name="ConfigurationParameters"></a>Configuration Parameters</h2>
     <p>The following table summarizes the configuration parameters
       shared between the FPGA software and firmware.</p>
     <table width="80%" cellspacing="2" cellpadding="2" border="1">
