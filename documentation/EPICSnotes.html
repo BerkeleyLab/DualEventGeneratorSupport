@@ -817,10 +817,13 @@ records are:<br>
     configured with SCAN="I/O Intr", DTYP=asynInt32 and
     INP="@asyn($(PORT) 0x010y", where <span style="font-style: italic;"></span>
     $(PORT) expands to the port name in the eventGeneratorConfigure
-    command and <i>x</i>/<i>y</i> are 1/0 or 2/1.<span style="font-style: italic;"></span>&nbsp; These records are
+    command and <i>x</i>/<i>y</i> are 1/0 or 2/1.<span style="font-style: italic;"></span>&nbsp;
+ These records are
     updated from the FPGA using a publish/subscribe technique that
     minimizes the latency between the time a value in the FPGA changes
-    and the time that the corresponding record is updated.&nbsp; The
+    and the time that the corresponding record is updated.&nbsp; The 
+record time stamps are obtained from the FPGA at the time the status was
+ transmitted to the IOC.&nbsp; The
     individual bits in these records are described in the following
     table.<br>
     <br>
