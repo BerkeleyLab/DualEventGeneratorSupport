@@ -644,7 +644,7 @@ subscriberThread(void *arg)
                 continue;
             }
             if (status == asynSuccess) {
-                pkTime.secPastEpoch = pk.posixSeconds - POSIX_TIME_AT_EPICS_EPOCH;
+                pkTime.secPastEpoch = pk.posixSeconds-POSIX_TIME_AT_EPICS_EPOCH;
                 pkTime.nsec = pk.ntpFraction / 4.294967296;
             }
             else {
