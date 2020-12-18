@@ -643,8 +643,13 @@ subscriberThread(void *arg)
             if ((status == asynTimeout) && (subscriptionAttempt < 2)) {
                 continue;
             }
-            pkTime.secPastEpoch = pk.posixSeconds - POSIX_TIME_AT_EPICS_EPOCH;
-            pkTime.nsec = pk.ntpFraction / 4.294967296;
+            if (status == asynSuccess) {
+                pkTime.secPastEpoch = pk.posixSeconds - POSIX_TIME_AT_EPICS_EPOCH;
+                pkTime.nsec = pk.ntpFraction / 4.294967296;
+            }
+            else {
+                pkTime = now;
+            }
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 asynInt32Interrupt *int32Interrupt = interrupts[i];
                 asynUser *pasynUser = int32Interrupt->pasynUser;
