@@ -195,7 +195,9 @@ Ethernet MAC address and IPv4 address are set to default values
 sequence pattern generators.&nbsp; The green indicator to the right of 
 the 'TRG:' text blinks when an event sequence is triggered.&nbsp; The
  value to the right of the 'SEQ:' text shows the number (0/1) 
-of the currently or previously active sequence.<br>
+of the currently or previously active sequence.&nbsp; The 'HW:' line 
+shows the status of the hardware trigger inputs with trigger input 0 at 
+the right side of the bitmap displays.<br>
 </li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
       </li><li>The 'Temperature' region shows a bar indicator of the 
 temperature of various components.&nbsp; SFP1 and 2 are the ones 
@@ -248,7 +250,12 @@ the the unit is in “recovery” mode.<br>
   
 <li>SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
 <li>LC50 duplex fiber ports accepting the reference clocks for each of the event generators.</li>
-<li>Isolated BNC connectors carrying LVTTL level hardware triggers and timing reference signals.&nbsp; Inputs 
+<li>Broadcomm "Versatile Link" fiber receivers for hardware event 
+triggers.&nbsp; Only the first five connectors of each group of eight 
+are used.&nbsp; Event triggers are generated upon loss of light.<br>
+</li>
+
+<li>Isolated BNC connectors carrying LVTTL level timing reference signals.&nbsp; Inputs 
 are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1.8V and maximum input voltage is 5.0V.<br>
 </li>
 </ol>
@@ -291,8 +298,9 @@ are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1
     </blockquote>
     <h2>FMC Cards</h2>
     Each FMC card provides a reference clock to the FPGA gigabit
-    transceiver block and to an FPGA clock input, five optically
-    coupled, TTL level, hardware trigger inputs, and one optically coupled,
+    transceiver block and to an FPGA clock input, five TTL level, 
+hardware trigger inputs driven by fiber to copper converts on another 
+board, and one optically coupled,
     TTL level auxiliary input.&nbsp;
     Each card also provides two non-isolated, TTL level, diagnostic
     inputs and two non-isolated, LVTTL level, diagnostic outputs capable
