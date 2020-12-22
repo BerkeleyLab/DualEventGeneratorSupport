@@ -1446,7 +1446,7 @@ major 4
 minor 0
 release 0
 x 28
-y 112
+y 111
 w 208
 h 25
 
@@ -1459,7 +1459,7 @@ major 4
 minor 0
 release 0
 x 184
-y 112
+y 111
 w 52
 h 22
 
@@ -1472,7 +1472,7 @@ major 4
 minor 0
 release 0
 x 184
-y 124
+y 123
 w 51
 h 10
 controlPv "$(P)$(R)E2:EVGIOstatus_"
@@ -1480,6 +1480,7 @@ lineColor index 14
 onColor index 15
 offColor index 3
 numBits 5
+shift 8
 endObjectProperties
 
 # (Static Text)
@@ -1489,7 +1490,7 @@ major 4
 minor 1
 release 1
 x 185
-y 112
+y 111
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1509,7 +1510,7 @@ major 4
 minor 1
 release 1
 x 205
-y 112
+y 111
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1529,7 +1530,7 @@ major 4
 minor 1
 release 1
 x 225
-y 112
+y 111
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1553,7 +1554,7 @@ major 4
 minor 0
 release 0
 x 124
-y 113
+y 112
 w 52
 h 22
 
@@ -1566,7 +1567,7 @@ major 4
 minor 0
 release 0
 x 124
-y 125
+y 124
 w 51
 h 10
 controlPv "$(P)$(R)E1:EVGIOstatus_"
@@ -1574,6 +1575,7 @@ lineColor index 14
 onColor index 15
 offColor index 3
 numBits 5
+shift 8
 endObjectProperties
 
 # (Static Text)
@@ -1583,7 +1585,7 @@ major 4
 minor 1
 release 1
 x 125
-y 113
+y 112
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1603,7 +1605,7 @@ major 4
 minor 1
 release 1
 x 145
-y 113
+y 112
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1623,7 +1625,7 @@ major 4
 minor 1
 release 1
 x 165
-y 113
+y 112
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1647,7 +1649,7 @@ major 4
 minor 1
 release 1
 x 28
-y 121
+y 120
 w 90
 h 16
 font "helvetica-medium-r-14.0"
