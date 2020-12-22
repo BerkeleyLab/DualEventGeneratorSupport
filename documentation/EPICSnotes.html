@@ -381,8 +381,8 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
 
     <h2>Hardware Triggers</h2>
     <p>These records set the event code to be emitted when a hardware
-      trigger input is asserted.&nbsp; Record name "E<i>e</i>:HW:<i>c</i>"
-      (<i>e</i>=1/2, <i>c</i>=1..4), DTYP=asynInt32 and
+      trigger input makes the transition from light to no light (1→0).&nbsp; Record name "E<i>e</i>:HW:<i>c</i>"
+      (<i>e</i>=1/2, <i>c</i>=1..5), DTYP=asynInt32 and
       OUT="@asyn($(PORT) 0x12<i>xy</i><span style="font-style: italic;"></span>)",
 
 
@@ -401,7 +401,7 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
 
 
       where <span style="font-style: italic;"></span> $(PORT) expands
-      to the port name in the eventGeneratorConfigure command and <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..3.</p>
+      to the port name in the eventGeneratorConfigure command and <span style="font-style: italic;">x</span> =1/2, <i>y</i>=0..4.</p>
     <h2>Software Triggers</h2>
     <p>Each software trigger is controller by two longout records.&nbsp;
       The first, with name "E<i>e</i>:SW:<i>c</i>" (<i>e</i>=1/2, <i>c</i>=1..4),
