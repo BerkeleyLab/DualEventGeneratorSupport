@@ -151,7 +151,7 @@ controlPv "$(P)$(R)E$(E):SW:1"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -175,7 +175,7 @@ controlPv "$(P)$(R)E$(E):HW:1"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -299,7 +299,7 @@ controlPv "$(P)$(R)E$(E):SW:2"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -323,7 +323,7 @@ controlPv "$(P)$(R)E$(E):HW:2"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -407,7 +407,7 @@ controlPv "$(P)$(R)E$(E):SW:3"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -431,7 +431,7 @@ controlPv "$(P)$(R)E$(E):HW:3"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -515,7 +515,7 @@ controlPv "$(P)$(R)E$(E):SW:4"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -539,7 +539,7 @@ controlPv "$(P)$(R)E$(E):HW:4"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
@@ -656,7 +656,7 @@ controlPv "$(P)$(R)E$(E):HW:5"
 font "helvetica-medium-r-18.0"
 fontAlign "right"
 fgColor index 14
-bgColor index 2
+bgColor index 31
 editable
 autoHeight
 limitsFromDb
