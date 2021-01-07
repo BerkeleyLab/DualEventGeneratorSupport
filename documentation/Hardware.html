@@ -842,16 +842,18 @@ transceiver wizard can be used to change the clock configuration.<br>
         transactions.</li>
       <li>Bit 4 &nbsp; — Enable messages related to the time of day
         (NTP or GPS) state machine.</li>
-<li>Bit 7 &nbsp; — Display the memories for both sequences of both event
- generators.&nbsp; Note that FPGA response to IOC requests is inhibited 
-while a sequence is being displayed.<br>
-</li>
+<li>Bit 5 &nbsp; —Enable messages showing sequence memory
+        updates.</li>
 
       
-      <li>Bit 6 &nbsp; — Enable messages showing sequence memory
-        updates.</li>
+      <li>Bit 6 &nbsp; — Display the memories for both sequences of both event
+ generators.&nbsp; Note that FPGA response to IOC requests is inhibited 
+while a sequence is being displayed.</li>
       <li>Bit 8 &nbsp; — Enable messages showing operation of the PLL
         synchronization state machine.</li>
+<li>Bit 12 — Enable log messages for each IIC operation.<br>
+</li>
+
       <li>Bit 16 — Force the LCD display out of warning mode (like
         pressing and holding Display button).</li>
       <li>Bit 24 — Dump the LCD screen contents to the console serial
