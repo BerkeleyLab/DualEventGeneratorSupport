@@ -42,10 +42,8 @@ frequencies in use.&nbsp; The generators are locked to a common base and
         <div style="margin-left: 40px;"><span style="font-family:
             monospace;">cu -s 115200 -l /dev/ttyUSB2</span><br>
         </div><div style="margin-left: 40px;"> </div>
-      </li><li>LC50 duplex fiber ports providing the two MRF compatible event links.</li><li>Diagnostic
- I/O BNC connectors carrying non-isolated, LVTTL level signals.&nbsp; 
-Inputs are high impedance, 5V tolerant, outputs are capable of driving 50Ω loads.<br>
-  </li>
+      </li><li>Up to three fiber I/O cartridges per event domain, each with 12 LC50 fiber connectors.<br>
+</li>
 </ol>
 
 
@@ -70,8 +68,7 @@ the display to its current page.</li>
   <li>If the application supports more than one page of information each momentary press cycles to the next display page.</li>
 <li>Holding 
 this button down then pressing the “Reboot/Recovery” button 
-will cause the ImageB.bin file to be used in place of the default 
-ImageA.bin file.</li>
+will cause the DEVG_B.bin file to be used in place of the default DEVG_A.bin file.</li>
 
 </ol>
 
@@ -95,7 +92,7 @@ Ethernet MAC address and IPv4 address are set to default values
 
 
     
-<p>The Marble Mini PMOD1 connector connects to the front panel Display
+<p>The Marble PMOD1 connector connects to the front panel Display
       and Reset/Recovery push buttons and drives a 240×320
       display equipped with a Sitronix ST7789V controller configured for
       4-line serial operation.&nbsp; The connector pin assignments are
@@ -246,12 +243,13 @@ the the unit is in “recovery” mode.<br>
 <li>Connectors for 12V power adapters.</li>
   <li>Holder for 3A slow-blow fuse.<br>
   </li>
-<li>On/Off switch.<br>
-<div style="margin-left: 40px;"> </div>
-      </li>
+<li>On/Off switch.</li>
+<li>Diagnostic I/O BNC connectors.&nbsp; LVTTL, non-isolated.<br>
+</li>
+
   
-<li>SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
-<li>LC50 duplex fiber ports accepting the reference clocks for each of the event generators.</li>
+<li>Isolated SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
+
 <li>Broadcomm "Versatile Link" fiber receivers for hardware event 
 triggers.&nbsp; Only the first five connectors of each group of eight 
 are used.&nbsp; Event triggers are generated upon loss of light.<br>
@@ -283,8 +281,8 @@ are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1
       <li>Eight FPGA GTX transceivers, up to 12.5 Gb/s, connected to QSFP
         slots and FMC connectors.<br>
 </li>
-      <li>Two FMC connectors.&nbsp; LPC superset, with two high speed serial
-        links.</li>
+      <li>Two FMC connectors.&nbsp; LPC superset, with multiple high speed serial lanes.<br>
+</li>
       <li>SO-DIMM SDRAM connector, unused in this application.<br>
 </li>
       <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these drives the <a href="#FrontPanelDisplay">front panel display</a> and the other is used to connect the optional <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD">GPS receiver</a>.</li>
@@ -313,6 +311,8 @@ outputs.&nbsp; The first channel of the first transceiver is typically
 used to carry the reference clock signal to the card.&nbsp; A 40×40 
 crosspoint switch allows for flexible routing of event streams and 
 reference clocks between the Firefly modules and the FMC connector.<br>
+<br>
+In addition to their use in the dual event generator the FMC cards are also used in the event fanout modules.<br>
     <br><br>
 <h2></h2>
     <p> </p>
