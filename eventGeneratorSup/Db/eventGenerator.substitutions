@@ -70,46 +70,78 @@ file "perGenericLO.template"
 
 file "perSysmonAI.template"
 { pattern
-{     P     R,    PORT,             NAME,      A,        EGU,             ESLO,   EOFF, PREC, LOPR,  HOPR,   LOLO,    LOW,   HIGH,   HIHI,  LLSV,   LSV,   HSV,  HHSV,       DESC }
- { \$(P),\$(R),\$(PORT),       "FPGA:temp", 0x2101,"degrees C",7.690083168046e-3,-273.15,    3,    0,   100,      5,     10,     65,     75, MAJOR, MINOR, MINOR, MAJOR, "FPGA internal temperature" }
- { \$(P),\$(R),\$(PORT),   "FPGA:VccINT:V", 0x2201,      "V",        45.77636e-6,      0,    4,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccINT voltage" }
- { \$(P),\$(R),\$(PORT),   "FPGA:VccAUX:V", 0x2102,      "V",        45.77636e-6,      0,    4,    0,     5,   1.70,   1.75,   1.85,   1.90, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccAUX voltage" }
- { \$(P),\$(R),\$(PORT),  "FPGA:VccBRAM:V", 0x2202,      "V",        45.77636e-6,      0,    4,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA Vcc BRAM voltage" }
- { \$(P),\$(R),\$(PORT),   "E1:txSFP:temp", 0x2303,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx SFP temperature" }
- { \$(P),\$(R),\$(PORT),    "E1:txSFP:Vcc", 0x2203,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx SFP supply voltage" }
- { \$(P),\$(R),\$(PORT),"E1:txSFP:txPower", 0x2104,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx SFP transmitter power" }
- { \$(P),\$(R),\$(PORT),   "E2:txSFP:temp", 0x2305,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx SFP temperature" }
- { \$(P),\$(R),\$(PORT),    "E2:txSFP:Vcc", 0x2205,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx SFP supply voltage" }
- { \$(P),\$(R),\$(PORT),"E2:txSFP:txPower", 0x2106,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx SFP transmitter power" }
- { \$(P),\$(R),\$(PORT),   "E1:rxSFP:temp", 0x2307,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx SFP temperature" }
- { \$(P),\$(R),\$(PORT),    "E1:rxSFP:Vcc", 0x2207,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx SFP supply voltage" }
- { \$(P),\$(R),\$(PORT),"E1:rxSFP:rxPower", 0x2108,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx SFP receiver power" }
- { \$(P),\$(R),\$(PORT),   "E2:rxSFP:temp", 0x2309,"degrees C",       3.90625e-3,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx SFP temperature" }
- { \$(P),\$(R),\$(PORT),    "E2:rxSFP:Vcc", 0x2209,      "V",               1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx SFP supply voltage" }
- { \$(P),\$(R),\$(PORT),"E2:rxSFP:rxPower", 0x210A,     "uW",                0.1,      0,    4,    0,  1000,    250,    300,    899,    900, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx SFP receiver power" }
- { \$(P),\$(R),\$(PORT),    "E1:refJitter", 0x220B,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 refClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),     "E1:txJitter", 0x220C,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 txClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),    "E1:frequency", 0x200D,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
- { \$(P),\$(R),\$(PORT),    "E2:refJitter", 0x220E,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 refClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),     "E2:txJitter", 0x220F,     "ps",             13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 txClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),    "E2:frequency", 0x2010,    "MHz",               1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
+{     P     R,    PORT,               NAME,     A,         EGU,         ESLO,   EOFF, PREC, LOPR,  HOPR,   LOLO,    LOW,   HIGH,   HIHI,  LLSV,   LSV,   HSV,  HHSV,       DESC }
+ { \$(P),\$(R),\$(PORT),       "FPGA:temp", 0x2101,"degrees C", 7.6900832e-3,-273.15,    3,    0,   100,      5,     10,     65,     75, MAJOR, MINOR, MINOR, MAJOR, "FPGA internal temperature" }
+ { \$(P),\$(R),\$(PORT),   "FPGA:VccINT:V", 0x2201,        "V",  45.77636e-6,      0,    4,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccINT voltage" }
+ { \$(P),\$(R),\$(PORT),   "FPGA:VccAUX:V", 0x2102,        "V",  45.77636e-6,      0,    4,    0,     5,   1.70,   1.75,   1.85,   1.90, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccAUX voltage" }
+ { \$(P),\$(R),\$(PORT),  "FPGA:VccBRAM:V", 0x2202,        "V",  45.77636e-6,      0,    4,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA Vcc BRAM voltage" }
+
+ { \$(P),\$(R),\$(PORT),        "FMC1:I12", 0x2304,        "I",       5.0e-4,      0    40,    0,    20,   -0.2,   -0.1,    1.0,    1.5, MAJOR, MINOR, MINOR, MAJOR, "FMC1 supply current" }
+ { \$(P),\$(R),\$(PORT),        "FMC1:V12", 0x2204,        "V",       5.0e-4,      0,    4,    0,    20,     11,  11.25,  12.75,     13, MAJOR, MINOR, MINOR, MAJOR, "FMC1 supply voltage" }
+ { \$(P),\$(R),\$(PORT),        "FMC2:I12", 0x2305,        "I",       5.0e-4,      0    40,    0,    20,   -0.2,   -0.1,    1.0,    1.5, MAJOR, MINOR, MINOR, MAJOR, "FMC1 supply current" }
+ { \$(P),\$(R),\$(PORT),        "FMC2:V12", 0x2205,        "V",       5.0e-4,      0,    4,    0,    20,     11,  11.25,  12.75,     13, MAJOR, MINOR, MINOR, MAJOR, "FMC1 supply voltage" }
+# FIXME: Next board revision will fix the polarity of the reading
+ { \$(P),\$(R),\$(PORT),      "Marble:Iin", 0x2306,        "I",-4.4117647e-4,      0    40,    0,    20,   -2.0,   -2.5,    2.0,    2.5, MAJOR, MINOR, MINOR, MAJOR, "Board supply current" }
+ { \$(P),\$(R),\$(PORT),      "Marble:Vin", 0x2206,        "V",       5.0e-4,      0,    4,    0,    20,     11,  11.25,  12.75,     13, MAJOR, MINOR, MINOR, MAJOR, "Board supply voltage" }
+
+ { \$(P),\$(R),\$(PORT),      "E1:Tx1:Vcc", 0x2207,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E1:Tx1:temp", 0x2307,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),      "E1:Rx1:Vcc", 0x2208,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 1 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx1:temp", 0x2308,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 temperature" }
+
+ { \$(P),\$(R),\$(PORT),      "E1:Tx2:Vcc", 0x2209,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E1:Tx2:temp", 0x2309,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 temperature" }
+ { \$(P),\$(R),\$(PORT),      "E1:Rx2:Vcc", 0x220A,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 2 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx2:temp", 0x230A,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 2 temperature" }
+
+ { \$(P),\$(R),\$(PORT),      "E1:Tx3:Vcc", 0x320B,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 3 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E1:Tx3:temp", 0x330B,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 3 temperature" }
+ { \$(P),\$(R),\$(PORT),      "E1:Rx3:Vcc", 0x320C,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 3 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx3:temp", 0x330C,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 3 temperature" }
+
+ { \$(P),\$(R),\$(PORT),      "E2:Tx1:Vcc", 0x220D,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 1 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E2:Tx1:temp", 0x230D,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),      "E2:Rx1:Vcc", 0x220E,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E2:Rx1:temp", 0x230E,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 temperature" }
+
+ { \$(P),\$(R),\$(PORT),      "E2:Tx2:Vcc", 0x220F,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 2 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E2:Tx2:temp", 0x230F,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 2 temperature" }
+ { \$(P),\$(R),\$(PORT),      "E2:Rx2:Vcc", 0x2210,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 2 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E2:Rx2:temp", 0x2310,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 2 temperature" }
+
+ { \$(P),\$(R),\$(PORT),      "E2:Tx3:Vcc", 0x3211,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 3 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E2:Tx3:temp", 0x3311,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 3 temperature" }
+ { \$(P),\$(R),\$(PORT),      "E2:Rx3:Vcc", 0x3212,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 3 supply voltage" }
+ { \$(P),\$(R),\$(PORT),     "E2:Rx3:temp", 0x3312,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 3 temperature" }
+
+ { \$(P),\$(R),\$(PORT),        "U28:temp", 0x2313,"degrees C",          0.5,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U28 temperature" }
+ { \$(P),\$(R),\$(PORT),        "U29:temp", 0x2413,"degrees C",          0.5,      0,    4,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U29 temperature" }
+
+
+ { \$(P),\$(R),\$(PORT),    "E1:refJitter", 0x2214,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 refClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),     "E1:txJitter", 0x2215,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 txClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E1:frequency", 0x2016,      "MHz",         1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
+ { \$(P),\$(R),\$(PORT),    "E2:refJitter", 0x2217,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 refClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),     "E2:txJitter", 0x2218,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 txClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E2:frequency", 0x2019,      "MHz",         1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
 }
 
 file "perSysmonLI.template"
 { pattern
 {     P     R,    PORT,          NAME,             A,      EGU,               DESC }
- { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x210B, "counts", "EVG 1 refClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x210C, "counts", "EVG1 txClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x210E, "counts", "EVG2 refClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x210F, "counts", "EVG2 txClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x2111,       "", "Injection sequence request status" }
- { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x2211,       "", "Injection sequence alignment status" }
- { \$(P),\$(R),\$(PORT),   "E1:EVGIOstatus_",  0x2113,       "", "EVGIO 1 raw status" }
- { \$(P),\$(R),\$(PORT),   "E2:EVGIOstatus_",  0x2213,       "", "EVGIO 1 raw status" }
+ { \$(P),\$(R),\$(PORT),        "Marble:PIO_", 0x2003,       "", "Marble port expanders" }
+ { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x211A, "counts", "EVG 1 refClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x211B, "counts", "EVG 1 txClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x211C, "counts", "EVG 2 refClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x211D, "counts", "EVG 2 txClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x211E,       "", "Injection sequence request status" }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x221F,       "", "Injection sequence alignment status" }
+ { \$(P),\$(R),\$(PORT),    "E1:EVGOstatus_",  0x2121,       "", "EVG 1 raw status" }
+ { \$(P),\$(R),\$(PORT),    "E2:EVGOstatus_",  0x2220,       "", "EVG 2 raw status" }
 }
 
 file "perSysmonBI.template"
 { pattern
 {     P     R,    PORT,          NAME,          A,       ZNAM,      ONAM,       ZSV,        OSV,         DESC }
- { \$(P),\$(R),\$(PORT), "TOD:PPSvalid",   0x2212,  "Invalid",   "Valid",   "MAJOR", "NO_ALARM", "Is PPS signal valid" }
+ { \$(P),\$(R),\$(PORT), "TOD:PPSvalid",   0x2220,  "Invalid",   "Valid",   "MAJOR", "NO_ALARM", "Is PPS signal valid" }
 }
