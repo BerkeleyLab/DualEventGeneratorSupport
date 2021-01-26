@@ -4,7 +4,7 @@ major 4
 minor 0
 release 1
 x 373
-y 138
+y 160
 w 560
 h 230
 font "helvetica-medium-r-18.0"
@@ -39,351 +39,6 @@ useDisplayBg
 value {
   "$(P)$(R)"
 }
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 305
-y 42
-w 210
-h 76
-
-beginGroup
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 305
-y 102
-w 210
-h 16
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 490
-y 102
-w 25
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "C"
-}
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 436
-y 102
-w 50
-h 16
-controlPv "$(P)$(R)FPGA:temp"
-format "float"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-fgAlarm
-bgColor index 2
-autoHeight
-precision 1
-nullColor index 7
-useHexPrefix
-useAlarmBorder
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 305
-y 102
-w 126
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "FPGA Temperature"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 305
-y 82
-w 210
-h 16
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 490
-y 82
-w 25
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "V"
-}
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 436
-y 82
-w 50
-h 16
-controlPv "$(P)$(R)FPGA:VccBRAM:V"
-format "float"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-fgAlarm
-bgColor index 2
-autoHeight
-precision 3
-nullColor index 7
-useHexPrefix
-useAlarmBorder
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 305
-y 82
-w 117
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "FPGA Vcc BRAM"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 305
-y 62
-w 210
-h 16
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 490
-y 62
-w 25
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "V"
-}
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 436
-y 62
-w 50
-h 16
-controlPv "$(P)$(R)FPGA:VccAUX:V"
-format "float"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-fgAlarm
-bgColor index 2
-autoHeight
-precision 3
-nullColor index 7
-useHexPrefix
-useAlarmBorder
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 305
-y 62
-w 106
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "FPGA Vcc AUX"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 305
-y 42
-w 210
-h 16
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 490
-y 42
-w 25
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "V"
-}
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 436
-y 42
-w 50
-h 16
-controlPv "$(P)$(R)FPGA:VccINT:V"
-format "float"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-fgAlarm
-bgColor index 2
-autoHeight
-precision 3
-nullColor index 7
-useHexPrefix
-useAlarmBorder
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 305
-y 42
-w 99
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "FPGA Vcc INT"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
 # (Group)
@@ -585,8 +240,8 @@ beginObjectProperties
 major 4
 minor 4
 release 0
-x 451
-y 190
+x 457
+y 198
 w 80
 h 25
 fgColor index 14
@@ -596,22 +251,24 @@ botShadowColor index 32
 font "helvetica-bold-r-14.0"
 buttonLabel "More..."
 numPvs 4
-numDsps 6
+numDsps 7
 displayFileName {
-  0 "EVG_Firefly.edl"
-  1 "EVG_triggers.edl"
+  0 "EVG_Supplies.edl"
+  1 "EVG_Firefly.edl"
   2 "EVG_triggers.edl"
-  3 "EVG_injectionEnable.edl"
-  4 "EVG_resets.edl"
-  5 "EVG_statistics.edl"
+  3 "EVG_triggers.edl"
+  4 "EVG_injectionEnable.edl"
+  5 "EVG_resets.edl"
+  6 "EVG_statistics.edl"
 }
 menuLabel {
-  0 "Firefly Status"
-  1 "Generator 1 Triggers"
-  2 "Generator 2 Triggers"
-  3 "Injection Enable"
-  4 "Resets"
-  5 "Statistics"
+  0 "Power Supplies"
+  1 "Firefly Status"
+  2 "Generator 1 Triggers"
+  3 "Generator 2 Triggers"
+  4 "Injection Enable"
+  5 "Resets"
+  6 "Statistics"
 }
 symbols {
   0 "E=1"
@@ -625,8 +282,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 300
-y 139
+x 308
+y 152
 w 213
 h 36
 
@@ -638,8 +295,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 300
-y 159
+x 308
+y 172
 w 213
 h 16
 
@@ -651,8 +308,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 483
-y 159
+x 491
+y 172
 w 30
 h 16
 font "helvetica-medium-r-14.0"
@@ -671,8 +328,8 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 393
-y 159
+x 401
+y 172
 w 85
 h 16
 controlPv "$(P)$(R)E2:frequency"
@@ -698,8 +355,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 300
-y 159
+x 308
+y 172
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -722,8 +379,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 300
-y 139
+x 308
+y 152
 w 213
 h 16
 
@@ -735,8 +392,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 483
-y 139
+x 491
+y 152
 w 30
 h 16
 font "helvetica-medium-r-14.0"
@@ -755,8 +412,8 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 393
-y 139
+x 401
+y 152
 w 85
 h 16
 controlPv "$(P)$(R)E1:frequency"
@@ -782,8 +439,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 300
-y 139
+x 308
+y 152
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -810,235 +467,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 28
-y 115
-w 208
-h 25
-
-beginGroup
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 184
-y 115
-w 52
-h 22
-
-beginGroup
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 184
-y 127
-w 51
-h 10
-controlPv "$(P)$(R)E2:EVGIOstatus_"
-lineColor index 14
-onColor index 15
-offColor index 3
-numBits 5
-shift 8
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 185
-y 115
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "1"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 205
-y 115
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "3"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 225
-y 115
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "5"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 124
-y 116
-w 52
-h 22
-
-beginGroup
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 124
-y 128
-w 51
-h 10
-controlPv "$(P)$(R)E1:EVGIOstatus_"
-lineColor index 14
-onColor index 15
-offColor index 3
-numBits 5
-shift 8
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 125
-y 116
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "1"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 145
-y 116
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "3"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 165
-y 116
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "5"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 28
-y 124
-w 90
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Hw Trig"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
 x 77
-y 152
+y 158
 w 110
 h 36
 
@@ -1051,7 +481,7 @@ major 4
 minor 0
 release 0
 x 77
-y 172
+y 178
 w 110
 h 16
 
@@ -1064,7 +494,7 @@ major 4
 minor 1
 release 1
 x 77
-y 172
+y 178
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1084,7 +514,7 @@ major 4
 minor 0
 release 0
 x 173
-y 172
+y 178
 w 14
 h 14
 controlPv "$(P)$(R)INJ:injCycleAlign"
@@ -1106,7 +536,7 @@ major 4
 minor 0
 release 0
 x 77
-y 152
+y 158
 w 110
 h 16
 
@@ -1119,7 +549,7 @@ major 4
 minor 1
 release 1
 x 77
-y 152
+y 158
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1139,7 +569,7 @@ major 4
 minor 0
 release 0
 x 173
-y 152
+y 158
 w 14
 h 14
 controlPv "$(P)$(R)TOD:PPSvalid"
@@ -1151,6 +581,736 @@ endObjectProperties
 
 endGroup
 
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 30
+w 210
+h 116
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 90
+w 210
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 490
+y 90
+w 25
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "C"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 436
+y 90
+w 50
+h 16
+controlPv "$(P)$(R)FPGA:temp"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+precision 1
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 305
+y 90
+w 126
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "FPGA Temperature"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 70
+w 210
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 490
+y 70
+w 25
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "V"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 436
+y 70
+w 50
+h 16
+controlPv "$(P)$(R)FPGA:VccBRAM:V"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+precision 3
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 305
+y 70
+w 126
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "FPGA Vcc BRAM"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 50
+w 210
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 490
+y 50
+w 25
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "V"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 436
+y 50
+w 50
+h 16
+controlPv "$(P)$(R)FPGA:VccAUX:V"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+precision 3
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 305
+y 50
+w 126
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "FPGA Vcc AUX"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 30
+w 210
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 490
+y 30
+w 25
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "V"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 436
+y 30
+w 50
+h 16
+controlPv "$(P)$(R)FPGA:VccINT:V"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+precision 3
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 305
+y 30
+w 126
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "FPGA Vcc INT"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 110
+w 210
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 490
+y 110
+w 25
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "C"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 436
+y 110
+w 50
+h 16
+controlPv "$(P)$(R)U28:temp"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+precision 1
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 305
+y 110
+w 126
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Board Temp (U28)"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 305
+y 130
+w 210
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 490
+y 130
+w 25
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "C"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 436
+y 130
+w 50
+h 16
+controlPv "$(P)$(R)U29:temp"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+precision 1
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 305
+y 130
+w 126
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Board Temp (U29)"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 118
+w 218
+h 25
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 184
+y 118
+w 52
+h 22
+
+beginGroup
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 184
+y 130
+w 61
+h 10
+controlPv "$(P)$(R)E2:EVGIOstatus_"
+lineColor index 14
+onColor index 15
+offColor index 3
+numBits 6
+shift 8
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 185
+y 118
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 205
+y 118
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "3"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 225
+y 118
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "5"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 114
+y 118
+w 52
+h 22
+
+beginGroup
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 114
+y 130
+w 61
+h 10
+controlPv "$(P)$(R)E1:EVGIOstatus_"
+lineColor index 14
+onColor index 15
+offColor index 3
+numBits 6
+shift 8
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 115
+y 118
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 135
+y 118
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "3"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 155
+y 118
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "5"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 18
+y 127
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Hw Trig"
+}
 endObjectProperties
 
 endGroup
