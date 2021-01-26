@@ -288,7 +288,9 @@ injection cycle is not held off indefinitely.<br>
   <td style="text-align: center;">E<span style="font-style: italic;">x</span>:loopback</td>
   <td style="text-align: center;">0x150<span style="font-style: italic;">y</span></td>
   <td style="text-align: center;">longout</td>
-  <td style="text-align: left;">Crosspoint switch channel to loop back to FPGA for round trip latency measurement.<br>
+  <td style="text-align: left;">Crosspoint switch channel to loop back 
+to FPGA for round trip latency measurement.&nbsp; Writing to this record
+ causes the corresponding <a href="#latencyMeaurement">E<span style="font-style: italic;">x</span>:latency</a> record to process.<br>
   </td>
 </tr>
 <tr>
@@ -384,9 +386,17 @@ The signals present on the diagnostic outputs are controlled by bits 8 and 9 of 
   </tbody>
 </table>
 <br>
-<br>
-
-    <h2>Hardware Triggers</h2>
+<h2><a name="latencyMeaurement"></a>Latency Measurement</h2>
+Processing the E<span style="font-style: italic;">x</span>:loopback record forces the corresponding E<span style="font-style: italic;">x</span>:latency record to process. These ai records have DTYP=asynInt32 and INP="@asyn($(PORT) 0x010<span style="font-style:
+      italic;">y</span>)", where <span style="font-style: italic;"></span>
+    $(PORT) expands to the port name in the eventGeneratorConfigure
+    command and <span style="font-style: italic;">y</span> is one less than the <span style="font-style: italic;">x</span>
+ in the record name.&nbsp; The latency measurement records also process 
+once every 10 seconds.&nbsp; The value is the round trip time, in ns, 
+for a ping request from the event generator to the event receiver 
+selected by the crosspoint switches in the event generator and the 
+fanout modules.&nbsp; There are also internal helper records, E<span style="font-style: italic;">x</span>:latencyRb_, which should not be accessed by clients.<br>
+<h2>Hardware Triggers</h2>
     <p>These records set the event code to be emitted when a hardware
       trigger input makes the transition from light to no light (1→0).&nbsp; Record name "E<i>e</i>:HW:<i>c</i>"
       (<i>e</i>=1/2, <i>c</i>=1..5), DTYP=asynInt32 and
