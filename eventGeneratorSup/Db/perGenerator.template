@@ -54,6 +54,25 @@ record(longout, "$(P)$(R)E$(E):loopback") {
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT), 0x150$(I), 0)")
     info(autosaveFields_pass0, "VAL")
+    field(FLNK, "$(P)$(R)E$(E):latencyRb_")
+}
+record(seq, "$(P)$(R)E$(E):latencyRb_") {
+    field(DESC, "Force EVG $(E) latency readback")
+    field(LNK1, "$(P)$(R)E$(E):latency.PROC")
+    field(DOL1, "1")
+    field(DLY1, "0.02")
+}
+record(ai, "$(P)$(R)E$(E):latency") {
+    field(DESC, "EVG $(E) round-trip latency")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x020$(I), 0)")
+    field(SCAN, "10 second")
+    field(EGU,  "ns")
+    field(LINR, "SLOPE")
+    field(ESLO, "0.5")
+    field(EOFF, "0")
+    field(LOPR, "0")
+    field(HOPR, "1000")
 }
 record(fanout, "$(P)$(R)E$(E):diagOut:rc_") {
     field(DESC, "Push EVG $(E) diag out on (re)connect)")
