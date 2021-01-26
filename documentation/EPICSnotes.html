@@ -214,7 +214,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;">longout<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Part
+          <td style="text-align: left;">Part
 
 
 
@@ -241,7 +241,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;">longout<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Generate
+          <td style="text-align: left;">Generate
 
 
 
@@ -268,7 +268,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;">longout<br>
           </td>
-          <td align="left" valign="middle">Generate an injection cycle
+          <td style="text-align: left;">Generate an injection cycle
             request when processed.&nbsp; Value written is
             unimportant.&nbsp; Effective only when repetitive injection
             cycle requests (see below) are disabled.<br>
@@ -281,7 +281,14 @@ injection cycle is not held off indefinitely.<br>
   </td>
   <td style="text-align: center;">longout<br>
   </td>
-  <td style="vertical-align: middle; text-align: left;">Control event generator <span style="font-style: italic;">x</span> (1/2) diagnostic outputs (<span style="font-style: italic;">y</span>=0/1).<br>
+  <td style="text-align: left;">Control event generator <span style="font-style: italic;">x</span> (1/2) diagnostic outputs (<span style="font-style: italic;">y</span>=0/1).<br>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">E<span style="font-style: italic;">x</span>:loopback</td>
+  <td style="text-align: center;">0x150<span style="font-style: italic;">y</span></td>
+  <td style="text-align: center;">longout</td>
+  <td style="text-align: left;">Crosspoint switch channel to loop back to FPGA for round trip latency measurement.<br>
   </td>
 </tr>
 <tr>
@@ -291,7 +298,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;">longout<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Writing,
+          <td style="text-align: left;">Writing,
 
 
 
@@ -318,7 +325,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;">bo<br>
           </td>
-          <td style="vertical-align: middle; text-align: left;" align="left" valign="middle">Enable/Disable (1/0) injection
+          <td style="text-align: left;">Enable/Disable (1/0) injection
             cycle start requests.&nbsp; These requests initiate event
             generator 1 sequence 1 if enabled, otherwise event generator
             1 sequence 0 if enabled, otherwise they are ignored.<br>
@@ -331,7 +338,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;">longout<br>
           </td>
-          <td align="left" valign="middle">Generate a swapout cycle
+          <td style="text-align: left;">Generate a swapout cycle
             start request.&nbsp; These requests initiate event generator
             2 sequence 1 if enabled, otherwise event generator 2
             sequence 0 if enabled, otherwise they are ignored.</td>

@@ -49,9 +49,16 @@ record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(SXST, "{Alt Heartbeat, TxClk}")
     info(autosaveFields_pass0, "VAL")
 }
+record(longout, "$(P)$(R)E$(E):loopback") {
+    field(DESC, "EVG $(E) loopback channel")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT), 0x150$(I), 0)")
+    info(autosaveFields_pass0, "VAL")
+}
 record(fanout, "$(P)$(R)E$(E):diagOut:rc_") {
     field(DESC, "Push EVG $(E) diag out on (re)connect)")
     field(SCAN, "Event")
     field(EVNT, "RECON")
     field(LNK1, "$(P)$(R)E$(E):diagOut")
+    field(LNK2, "$(P)$(R)E$(E):loopback")
 }
