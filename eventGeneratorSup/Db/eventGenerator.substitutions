@@ -130,18 +130,14 @@ file "perSysmonLI.template"
 { pattern
 {     P     R,    PORT,          NAME,             A,      EGU,               DESC }
  { \$(P),\$(R),\$(PORT),        "Marble:PIO_", 0x2003,       "", "Marble port expanders" }
- { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x211A, "counts", "EVG 1 refClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x211B, "counts", "EVG 1 txClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x211C, "counts", "EVG 2 refClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x211D, "counts", "EVG 2 txClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x211E,       "", "Injection sequence request status" }
- { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x221F,       "", "Injection sequence alignment status" }
- { \$(P),\$(R),\$(PORT),    "E1:EVGOstatus_",  0x2121,       "", "EVG 1 raw status" }
- { \$(P),\$(R),\$(PORT),    "E2:EVGOstatus_",  0x2220,       "", "EVG 2 raw status" }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x211A,       "", "Injection sequence request status" }
+ { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x221A,       "", "Injection sequence alignment status" }
+ { \$(P),\$(R),\$(PORT),    "E1:EVGOstatus_",  0x211C,       "", "EVG 1 raw status" }
+ { \$(P),\$(R),\$(PORT),    "E2:EVGOstatus_",  0x221D,       "", "EVG 2 raw status" }
 }
 
 file "perSysmonBI.template"
 { pattern
 {     P     R,    PORT,          NAME,          A,       ZNAM,      ONAM,       ZSV,        OSV,         DESC }
- { \$(P),\$(R),\$(PORT), "TOD:PPSvalid",   0x2220,  "Invalid",   "Valid",   "MAJOR", "NO_ALARM", "Is PPS signal valid" }
+ { \$(P),\$(R),\$(PORT), "TOD:PPSvalid",   0x221B,  "Invalid",   "Valid",   "MAJOR", "NO_ALARM", "Is PPS signal valid" }
 }
