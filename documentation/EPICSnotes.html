@@ -558,94 +558,103 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">E1:txSFP:temp<br>
+          <td style="text-align: center;">Marble:PIO_<br>
           </td>
-          <td style="text-align: center;">0x2303 </td>
-          <td style="text-align: center;">ai</td>
-          <td style="text-align: left;">Event generator 1 SFP
-            temperature.<span style="font-style: italic;"></span><br>
+          <td style="text-align: center;">0x2003 </td>
+          <td style="text-align: center;">longin<br>
+</td>
+          <td style="text-align: left;">Marble port expanders.<span style="font-style: italic;"></span><br>
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">E1:txSFP:Vcc</td>
-          <td style="text-align: center;">0x2203</td>
+          <td style="text-align: center;">FMC1:V12<br>
+</td>
+          <td style="text-align: center;">0x2204</td>
           <td style="text-align: center;">ai</td>
-          <td style="text-align: left;">Event generator 1 SFP supply
-            voltage.<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">FMC 1 12V supply voltage.<span style="font-style: italic;"></span><br>
+</td>
         </tr>
         <tr>
-          <td style="text-align: center;">E1:txSFP:txPower</td>
-          <td style="text-align: center;">0x2104</td>
+          <td style="text-align: center;">FMC1:I12<br>
+</td>
+          <td style="text-align: center;">0x2304</td>
           <td style="text-align: center;">ai</td>
-          <td style="text-align: left;">Event generator 1 SFP
-            transmitted power.<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">FMC 1 12V supply current.<span style="font-style: italic;"></span><br>
+</td>
         </tr>
         <tr>
-          <td style="text-align: center;">E2:txSFP:temp</td>
-          <td style="text-align: center;">0x2305</td>
+          <td style="text-align: center;">FMC1:V12</td>
+          <td style="text-align: center;">0x2205</td>
           <td style="text-align: center;">ai</td>
-          <td style="text-align: left;">Event generator 2 SFP
-            temperature.<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">FMC 2 12V supply voltage.<span style="font-style: italic;"></span><br>
+</td>
         </tr>
         <tr>
-          <td style="text-align: center;">E2:txSFP:Vcc</td>
-          <td style="text-align: center;">0x2205 </td>
+  <td style="text-align: center;">FMC2:I12</td>
+  <td style="text-align: center;">0x2305<br>
+  </td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">FMC 2 12V supply current.</td>
+</tr>
+<tr>
+  <td style="text-align: center;">Marble:Vin</td>
+  <td style="text-align: center;">0x2206<br>
+  </td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Board supply voltage.<br>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">Marble:Iin</td>
+  <td style="text-align: center;">0x2306<br>
+  </td>
+  <td style="text-align: center;">ai<br>
+  </td>
+  <td style="text-align: left;">Board supply current.<br>
+  </td>
+</tr>
+<tr>
+          <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Tx<span style="font-style: italic;">y</span>:Vcc</td>
+          <td style="text-align: center;">0x2107,...</td>
           <td style="text-align: center;">ai</td>
-          <td style="text-align: left;">Event generator 2 SFP supply
-            voltage.<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">EVG <span style="font-style: italic;">x</span>(1,2) transmitter <span style="font-style: italic;">y</span>(1,2,3) supply voltage.<span style="font-style: italic;"></span><br>
+</td>
         </tr>
         <tr>
-          <td style="text-align: center;">E2:txSFP:txPower</td>
-          <td style="text-align: center;">0x2106 </td>
+          <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Tx<span style="font-style: italic;">y</span>:temp</td>
+          <td style="text-align: center;">0x2407,...</td>
           <td style="text-align: center;">ai</td>
-          <td style="text-align: left;">Event generator 2 SFP
-            transmitted power.<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">EVG <span style="font-style: italic;">x</span>(1,2) transmitter <span style="font-style: italic;">y</span>(1,2,3) temperature.<span style="font-style: italic;"></span><br>
+</td>
         </tr>
         <tr>
-  <td style="text-align: center;">E1:rxSFP:temp</td>
-  <td style="text-align: center;">0x2307</td>
+  <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Rx<span style="font-style: italic;">y</span>:Vcc</td>
+  <td style="text-align: center;">0x2108,...</td>
   <td style="text-align: center;">ai<br>
   </td>
-  <td style="text-align: left;">Event generator 1 EVGIO SFP
-            temperature.</td>
+  <td style="text-align: left;">EVG <span style="font-style: italic;">x</span>(1,2) receiver <span style="font-style: italic;">y</span>(1,2,3) supply voltage.</td>
 </tr>
 <tr>
-  <td style="text-align: center;">E1:rxSFP:Vcc</td>
-  <td style="text-align: center;">0x2207</td>
+  <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Rx<span style="font-style: italic;">y</span>:temp</td>
+  <td style="text-align: center;">0x2408,...</td>
   <td style="text-align: center;">ai<br>
   </td>
-  <td style="text-align: left;">Event generator 1 EVGIO SFP supply
-            voltage.<span style="font-style: italic;"></span></td>
+  <td style="text-align: left;"><span style="font-style: italic;"></span>EVG <span style="font-style: italic;">x</span>(1,2) receiver <span style="font-style: italic;">y</span>(1,2,3) temperature.<span style="font-style: italic;"></span></td>
 </tr>
+
+
+
+
 <tr>
-  <td style="text-align: center;">E1:rxSFP:rxPower</td>
-  <td style="text-align: center;">0x2108</td>
-  <td style="text-align: center;">ai<br>
+  <td style="vertical-align: top;"><br>
   </td>
-  <td style="text-align: left;">Event generator 1 EVGIO SFP received power.</td>
-</tr>
-<tr>
-  <td style="text-align: center;">E2:rxSFP:temp</td>
-  <td style="text-align: center;">0x2309</td>
-  <td style="text-align: center;">ai<br>
+  <td style="vertical-align: top;"><br>
   </td>
-  <td style="text-align: left;">Event generator 2 EVGIO SFP
-            temperature.</td>
-</tr>
-<tr>
-  <td style="text-align: center;">E2:rxSFP:Vcc</td>
-  <td style="text-align: center;">0x2309</td>
-  <td style="text-align: center;">ai<br>
+  <td style="vertical-align: top;">ai</td>
+  <td style="vertical-align: top;"><br>
   </td>
-  <td style="text-align: left;">Event generator 2 EVGIO SFP supply
-            voltage.</td>
-</tr>
-<tr>
-  <td style="text-align: center;">E2:rxSFP:rxPower</td>
-  <td style="text-align: center;">0x230A</td>
-  <td style="text-align: center;">ai<br>
-  </td>
-  <td style="text-align: left;">Event generator 2 EVGIO SFP received power.</td>
 </tr>
 <tr>
           <td style="text-align: center;">E1:refCoinc</td>
