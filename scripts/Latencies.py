@@ -18,6 +18,7 @@ class EVG:
     def __init__(self, prefix, evg):
         self.latency = (epics.PV(args.prefix + 'E%d:latency' % evg))
         self.loopback = (epics.PV(args.prefix + 'E%d:loopback' % evg))
+        self.offset = self.getLatencyForChannel(36)
 
     def getLatencyForChannel(self, chan):
         if ((chan < 0) or (chan > 36)):
