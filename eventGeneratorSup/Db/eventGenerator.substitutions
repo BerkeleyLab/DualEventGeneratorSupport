@@ -136,8 +136,8 @@ file "perSysmonLI.template"
  { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x2118, "counts", "EVG2 txClk sampled by EVG 1 refClk" }
  { \$(P),\$(R),\$(PORT), "INJ:injCycleStatus", 0x211A,       "", "Injection sequence request status" }
  { \$(P),\$(R),\$(PORT), "INJ:injCycleAlign",  0x221A,       "", "Injection sequence alignment status" }
- { \$(P),\$(R),\$(PORT),    "E1:EVGOstatus_",  0x211C,       "", "EVG 1 raw status" }
- { \$(P),\$(R),\$(PORT),    "E2:EVGOstatus_",  0x221D,       "", "EVG 2 raw status" }
+ { \$(P),\$(R),\$(PORT),    "E1:EVIOstatus_",  0x211C,       "", "EVG 1 raw status" }
+ { \$(P),\$(R),\$(PORT),    "E2:EVIOstatus_",  0x221C,       "", "EVG 2 raw status" }
 }
 
 file "perSysmonBI.template"

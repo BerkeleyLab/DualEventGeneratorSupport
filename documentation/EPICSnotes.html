@@ -648,17 +648,26 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
 
 
 <tr>
-  <td style="vertical-align: top;"><br>
+  <td style="vertical-align: top;">U28:temp<br>
   </td>
-  <td style="vertical-align: top;"><br>
+  <td style="vertical-align: top;">0x2313<br>
   </td>
   <td style="vertical-align: top;">ai</td>
-  <td style="vertical-align: top;"><br>
+  <td style="vertical-align: top;">Board temperature monitor (U28).<br>
   </td>
 </tr>
 <tr>
+  <td style="vertical-align: top;">U29:temp<br>
+  </td>
+  <td style="vertical-align: top;">0x2413<br>
+  </td>
+  <td style="vertical-align: top;">ai<br>
+  </td>
+  <td style="vertical-align: top;">oard temperature monitor (U29).</td>
+</tr>
+<tr>
           <td style="text-align: center;">E1:refCoinc</td>
-          <td style="text-align: center;">0x230B </td>
+          <td style="text-align: center;">0x2114 </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 1 reference
             clock coincidence alignment point.<br>
@@ -666,7 +675,7 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
         </tr>
         <tr>
           <td style="text-align: center;">E1:refJitter</td>
-          <td style="text-align: center;">0x220B</td>
+          <td style="text-align: center;">0x2214</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 reference
             clock jitter.<br>
@@ -674,21 +683,21 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
         </tr>
         <tr>
           <td style="text-align: center;">E1:txCoinc</td>
-          <td style="text-align: center;">0x230C</td>
+          <td style="text-align: center;">0x2115</td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 1 transmitter
             clock coincidence alignment point.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E1:txJitter</td>
-          <td style="text-align: center;">0x22C </td>
+          <td style="text-align: center;">0x2215 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 transmitter
             clock jitter.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E1:frequency</td>
-          <td style="text-align: center;">0x200D </td>
+          <td style="text-align: center;">0x2016 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 1 reference
             clock frequency.<span style="font-style: italic;"></span><br>
@@ -696,42 +705,42 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
         </tr>
         <tr>
           <td style="text-align: center;">E2:refCoinc</td>
-          <td style="text-align: center;">0x230E </td>
+          <td style="text-align: center;">0x2117 </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 2 reference
             clock coincidence alignment point.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:refJitter</td>
-          <td style="text-align: center;">0x220E </td>
+          <td style="text-align: center;">0x2217 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 reference
             clock jitter. </td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:txCoinc</td>
-          <td style="text-align: center;">0x230F </td>
+          <td style="text-align: center;">0x2118 </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Event generator 2 transmitter
             clock coincidence alignment point.</td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:txJitter </td>
-          <td style="text-align: center;">0x220F </td>
+          <td style="text-align: center;">0x2218 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 transmitter
             clock jitter. </td>
         </tr>
         <tr>
           <td style="text-align: center;">E2:frequency</td>
-          <td style="text-align: center;">0x2010 </td>
+          <td style="text-align: center;">0x2019 </td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">Event generator 2 reference
             clock frequency.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
           <td style="text-align: center;">INJ:injCycleStatus</td>
-          <td style="text-align: center;">0x2111 </td>
+          <td style="text-align: center;">0x211A </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Injection cycle start requests
             enabled/disabled (1/0).<br>
@@ -739,7 +748,7 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
         </tr>
         <tr>
   <td style="text-align: center;">INJ:injCycleAlign</td>
-  <td style="text-align: center;">0x2211<br>
+  <td style="text-align: center;">0x221A<br>
   </td>
   <td style="text-align: center;">longin<br>
   </td>
@@ -753,7 +762,7 @@ unsynchronized/synchronized with the heartbeat.&nbsp; Bits 11:0 are the injectio
 <tr>
           <td style="text-align: center;">TOD:PPSvalid<br>
           </td>
-          <td style="text-align: center;">0x2212<br>
+          <td style="text-align: center;">0x221B<br>
           </td>
           <td style="text-align: center;">bi<br>
           </td>
@@ -761,9 +770,9 @@ unsynchronized/synchronized with the heartbeat.&nbsp; Bits 11:0 are the injectio
             signal present?<br>
           </td>
         </tr><tr>
-  <td style="text-align: center;">E1:EVGIOstatus_<br>
+  <td style="text-align: center;">E1:EVIOstatus_<br>
   </td>
-  <td style="text-align: center;">0x2113</td>
+  <td style="text-align: center;">0x211C</td>
   <td style="text-align: center;">longin<br>
   </td>
   <td style="vertical-align: top;">Event generator 1 EVGIO raw 
@@ -773,8 +782,8 @@ trigger inputs 5 through 1 (1/0, light/no light).<br>
   </td>
 </tr>
 <tr>
-  <td style="text-align: center;">E2:EVGIOstatus_</td>
-  <td style="text-align: center;">0x2213</td>
+  <td style="text-align: center;">E2:EVIOstatus_</td>
+  <td style="text-align: center;">0x221C</td>
   <td style="text-align: center;">longin<br>
   </td>
   <td style="vertical-align: top;">Event generator 2 EVGIO raw status.</td>
