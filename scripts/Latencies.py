@@ -36,7 +36,11 @@ class EVG:
             self.latency.get_timevars()
             if self.latency.timestamp >= self.loopback.timestamp: break
             time.sleep(0.001)
-        return self.latency.get() - self.internalLatency
+        l = self.latency.get()
+        if chan == 36:
+            return l
+        else:
+            return l - self.internalLatency
 
 evgs = []
 for e in (1, 2):
