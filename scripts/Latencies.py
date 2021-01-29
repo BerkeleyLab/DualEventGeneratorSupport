@@ -17,17 +17,11 @@ args = parser.parse_args()
 
 class EVG:
     def __init__(self, prefix, evg):
-        self.internalLatency = 0.0
+        self.localLatency = -1.0
         self.latency = epics.PV(args.prefix + 'E%d:latency' % evg,form='time')
         self.loopback = epics.PV(args.prefix + 'E%d:loopback' % evg,form='time')
 
-    def setInternalLatency(self, newInternalLatency=None):
-        if newInternalLatency == None:
-            self.internalLatency = self.getLatencyForChannel(36)
-        else:
-            self.internalLatency = newInternalLatency
-
-    def getLatencyForChannel(self, chan):
+    def getAbsoluteLatencyForChannel(self, chan):
         if ((chan < 0) or (chan > 36)):
             raise ValueError("Channel out of range")
         self.loopback.put(chan, wait=True)
@@ -36,19 +30,26 @@ class EVG:
             self.latency.get_timevars()
             if self.latency.timestamp >= self.loopback.timestamp: break
             time.sleep(0.001)
-        l = self.latency.get()
-        if chan == 36:
-            return l
-        else:
-            return l - self.internalLatency
+        return self.latency.get()
+
+    def getRelativeLatencyForChannel(self, chan):
+        # Lazy initializaiton of local latency measurement
+        if self.localLatency < 0:
+            self.localLatency = self.getAbsoluteLatencyForChannel(36)
+        l = self.getAbsoluteLatencyForChannel(chan)
+        # Local loopback measurement is always absolute
+        if chan < 36: l -= self.localLatency
+        return l
 
 evgs = []
 for e in (1, 2):
-    evg = EVG(args.prefix, e)
-    evgs.append(evg)
-    if args.external: evg.setInternalLatency()
+    evgs.append(EVG(args.prefix, e))
 for channel in range(1, 37):
     print('%2d:' % (channel), end='')
     for evg in evgs:
-        print('%7.1f' % (evg.getLatencyForChannel(channel)), end='')
+        if args.external:
+            l = evg.getRelativeLatencyForChannel(channel)
+        else:
+            l = evg.getAbsoluteLatencyForChannel(channel)
+        print('%7.1f' % (l), end='')
     print('')
