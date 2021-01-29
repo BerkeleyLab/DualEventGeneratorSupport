@@ -19,7 +19,7 @@ both event generator status publisher and event system server.<br>
       shared between the FPGA software and firmware.</p>
 
     
-<table width="80%" cellspacing="2" cellpadding="2" border="1">
+<table cellspacing="2" cellpadding="2" border="1" width="80%">
 
       <tbody>
         <tr>
@@ -310,7 +310,7 @@ of the tile (MGTREFCLK0_115) and the reference clock from the second FMC
       significant bit of the distributed data bus.&nbsp; The rising edge
       of this signal is coincident with the heartbeat event, or where
       the heartbeat event would have occurred if the heartbeat event is
-      preempted by a sequence pattern event.&nbsp; A 100 kHz 50% duty cycle waveform is place on the next-to-least
+      preempted by a sequence pattern event.&nbsp; A 100 kHz 50% duty cycle waveform is placed on the next-to-least
       significant bit of the distributed data bus for use by the round-trip latency measurement firmware.<br>
 <br>
 </p>
@@ -647,10 +647,13 @@ while a sequence is being displayed.</li><li>Bit 8 &nbsp; — Enable messages sh
       -webkit-text-stroke-width: 0px; text-decoration: none;
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
 <dt><span style="font-weight: bold;">pll [evg1_target evg2_target]<br>
-        </span></dt><dd><span style="font-weight: bold;"></span>Show the target
-        offsets between the transceiver PLL reference and output for
+        </span></dt><dd><span style="font-weight: bold;"></span>Show the
+ target
+        offsets between the transceiver PLL output and reference for
         each of the event generators if no argument is present otherwise
-        write the specified values to flash memory.<br>
+        write the specified values to flash memory.&nbsp; At boot time 
+the FPGA resets the transceivers until the offset between the PLL output
+ and reference match these values.s<br>
       </dd>
 </dl>
 

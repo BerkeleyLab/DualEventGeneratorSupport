@@ -183,7 +183,7 @@ Ethernet MAC address and IPv4 address are set to default values
     
 </table>
 <br>
-<span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the figure below.<br>
+<span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the image below.<br>
   <br>
 </span>
 <div style="margin-left: 80px;"><img src="Display.png" alt="" style=" width: 320px; height: 240px;"></div>
@@ -199,7 +199,7 @@ right.&nbsp; A green block indicates the presence of light at the
 trigger input.<br>
 </li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
       </li><li>The 'Temperature' region shows a bar indicator of the 
-temperature of the FPGA and the warmest receiver and transmitter module on each of the FMC cards.<br>
+temperature of the FPGA and the warmest receiver and transmitter module on each of the FMC cards.6<br>
 </li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
  network address is normally shown as white text on a black background.&nbsp;
  A network address shown as black text on a white background indicates 
@@ -294,13 +294,12 @@ are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1
     </blockquote>
     <h2>FMC Cards</h2>
     Each FMC card provides a reference clock to the FPGA gigabit
-    transceiver block and to an FPGA clock input, six TTL level, 
-hardware trigger inputs driven by fiber to copper converts on another 
+    transceiver block and to an FPGA clock input, six hardware trigger inputs driven by fiber to copper converts on another 
 board, and one optically coupled,
     TTL level auxiliary input.&nbsp;
     Each card also provides one non-isolated, TTL level, diagnostic
-    input and one non-isolated, LVTTL level, diagnostic 
-output.&nbsp;&nbsp; The auxiliary input of the first card is
+    input and two non-isolated, LVTTL level, diagnostic 
+outputs capable of driving 50Ω loads.&nbsp;&nbsp; The auxiliary input of the first card is
     used to provide a pulse-per-second signal to the FPGA and the
     auxiliary input of the second card is used to provide a power line
     monitor signal to the FPGA.&nbsp;&nbsp; Up to three 12-channel 
