@@ -191,7 +191,7 @@ If changes are made to any of these parameters the createVerilogIDX.sh script mu
     output provides an accurate measurement of the phase of the signals
     relative to the sampling clock and by extension, relative to each
     other.&nbsp; Thus the phase at which the PLL has locked its output
-    relative to its input can be determined.<br>
+    relative to its input can be determined as can the point where the PLL output clocks align most closely.<br>
 
     
 <blockquote><img src="DualEventGeneratorCoincidenceSampling.svg" alt="" style=" width: 965px; height: 680px;"><br>
@@ -209,22 +209,19 @@ If changes are made to any of these parameters the createVerilogIDX.sh script mu
     random selection is not acceptable for this application so on
     startup the transceiver is repetitively reset until it happens to
     lock at the desired phase offset.&nbsp; The result is an event
-    stream correctly aligned with its the reference.&nbsp; There is
-    hardware on the FMC card to momentarily remove the transceiver
-    reference clock as an alternate way to force the transceiver to
-    resynchronize, but this capability is currently unused.&nbsp; It has
-    been empirically determined that the transceivers on the Marble Mini
-    board have some undocumented idiosyncrasies, namely that the second
-    transceiver can not be reset alone and, fortunately, that the first
-    transceiver always starts up at the same phase offset.&nbsp; The
-    startup code has been modified to reflect these characteristics.<br>
+    stream correctly aligned with its the reference.&nbsp; The 
+crosspoint switch on the FMC card could be used to remove the 
+transceiver
+    reference clock momentarily as an alternate way to force the 
+transceiver to
+    resynchronize, but this capability is currently unused. <br>
 
     <br>
 
     The second clock alignment is the coincidence between the two RF
     clock domains.&nbsp;&nbsp; The coincidence is determined by the
     point at which the rising edge of the sampled clock aligns most
-    closely with the rising edge of the FPGA clock.&nbsp; The heartbeat
+    closely with the rising edge of the FPGA clock using the D flip-flop sampling logic shown above. The heartbeat
     event in each clock domain is aligned with this coincidence.<br>
 
     <br>
@@ -238,7 +235,7 @@ drives the second FMC card.
   </div>
   <br>
 </div>
-The clock crosspoint switch is configured to to route the reference 
+The Marble clock crosspoint switch is configured to to route the reference 
 clock from the first FMC card (FMC1_GBTCLK0_M2C) to the first MGT clock 
 of the tile (MGTREFCLK0_115) and the reference clock from the second FMC
  card (FMC2_GBTCLK0_M2C) to the second MGT clock of the tile 
