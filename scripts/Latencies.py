@@ -37,7 +37,7 @@ class EVG:
             if l != 0: break;
             passCount += 1
             if passCount > 1000:
-                print("Timed out waiting for data to stabilize.",file=sys.stderr)
+                print("Timed out waiting for stable data.", file=sys.stderr)
                 sys.exit(1)
             self.loopbackPROC.put(1)
             time.sleep(0.001)
