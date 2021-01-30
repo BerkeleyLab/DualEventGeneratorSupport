@@ -40,7 +40,6 @@ class EVG:
                 print("Timed out waiting for stable data.", file=sys.stderr)
                 sys.exit(1)
             self.loopbackPROC.put(1)
-            time.sleep(0.001)
         return l
 
     def getRelativeLatencyForChannel(self, chan):

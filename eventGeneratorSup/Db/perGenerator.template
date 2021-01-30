@@ -60,7 +60,7 @@ record(seq, "$(P)$(R)E$(E):latencyRb_") {
     field(DESC, "Force EVG $(E) latency readback")
     field(LNK1, "$(P)$(R)E$(E):latency.PROC")
     field(DOL1, "1")
-    field(DLY1, "0.001")  # Provide time for measurement to stabilize
+    field(DLY1, "0.005")  # Provide time for measurement to stabilize
 }
 record(ai, "$(P)$(R)E$(E):latency") {
     field(DESC, "EVG $(E) round-trip latency")
