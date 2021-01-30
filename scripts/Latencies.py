@@ -18,8 +18,9 @@ args = parser.parse_args()
 class EVG:
     def __init__(self, prefix, evg):
         self.localLatency = -1.0
-        self.latency = epics.PV(args.prefix + 'E%d:latency' % evg,form='time')
-        self.loopback = epics.PV(args.prefix + 'E%d:loopback' % evg,form='time')
+        self.latency = epics.PV(args.prefix + 'E%d:latency'%(evg),form='time')
+        self.loopback = epics.PV(args.prefix + 'E%d:loopback'%(evg),form='time')
+        self.loopbackPROC = epics.PV(args.prefix + 'E%d:loopback.PROC'%(evg))
 
     def getAbsoluteLatencyForChannel(self, chan):
         if ((chan < 0) or (chan > 36)):
@@ -30,7 +31,12 @@ class EVG:
             self.latency.get_timevars()
             if self.latency.timestamp >= self.loopback.timestamp: break
             time.sleep(0.001)
-        return self.latency.get()
+        while True:
+            l = self.latency.get()
+            if l != 0: break;
+            self.loopbackPROC.put(1)
+            time.sleep(0.001)
+        return l
 
     def getRelativeLatencyForChannel(self, chan):
         # Lazy initializaiton of local latency measurement
