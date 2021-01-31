@@ -35,16 +35,15 @@ class EVG:
             time.sleep(0.01)
             self.latency.get_timevars()
         passCount = 0
-        while True:
+        while self.latency.severity != 0:
             self.loopbackPROC.put(1)
-            l = self.latency.get()
-            if l != 0: break;
             passCount += 1
             if passCount > 1000:
-                print("Timed out waiting for stable data.", file=sys.stderr)
+                print("Timed out waiting for valid data.", file=sys.stderr)
             time.sleep(0.01)
         if args.verbose and passCount > 0:
             print("Readout pass %d" % (passCount), file=sys.stderr)
+        l = self.latency.get()
         return l
 
     def getRelativeLatencyForChannel(self, chan):
