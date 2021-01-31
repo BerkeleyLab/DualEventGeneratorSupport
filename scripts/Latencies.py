@@ -13,6 +13,7 @@ import time
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
 parser.add_argument('-e', '--external', action='store_true', help='Measure external latency by subtracting local FPGA to crosspoint switch latency')
+parser.add_argument('-v', '--verbose', action='store_true', help='Enable some additional diagnostic messages.')
 args = parser.parse_args()
 
 class EVG:
@@ -40,6 +41,9 @@ class EVG:
                 print("Timed out waiting for stable data.", file=sys.stderr)
                 sys.exit(1)
             self.loopbackPROC.put(1)
+            time.sleep(0.01)
+        if args.verbose and passCount > 1:
+            print("Pass %d" % (passCount), file=sys.stderr)
         return l
 
     def getRelativeLatencyForChannel(self, chan):
