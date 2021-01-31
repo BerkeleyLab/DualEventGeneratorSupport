@@ -19,35 +19,36 @@ args = parser.parse_args()
 class EVG:
     def __init__(self, prefix, evg):
         self.localLatency = -1.0
-        self.latency = epics.PV(args.prefix + 'E%d:latency'%(evg),form='time')
-        self.loopback = epics.PV(args.prefix + 'E%d:loopback'%(evg),form='time')
+        self.latency = epics.PV(args.prefix + 'E%d:latency'%(evg),form='time',auto_monitor=True)
+        self.loopback = epics.PV(args.prefix + 'E%d:loopback'%(evg),form='time',auto_monitor=True)
         self.loopbackPROC = epics.PV(args.prefix + 'E%d:loopback.PROC'%(evg))
 
     def getAbsoluteLatencyForChannel(self, chan):
         if ((chan < 0) or (chan > 36)):
             raise ValueError("Channel out of range")
         self.loopback.put(chan, wait=True)
-        self.loopback.get_timevars()
-        while True:
+        passCount = 0
+        while self.latency.timestamp < self.loopback.timestamp:
+            passCount += 1
+            if passCount > 1000:
+                print("Timed out waiting for updated data.", file=sys.stderr)
+            time.sleep(0.01)
             self.latency.get_timevars()
-            if self.latency.timestamp >= self.loopback.timestamp: break
-            time.sleep(0.001)
         passCount = 0
         while True:
+            self.loopbackPROC.put(1)
             l = self.latency.get()
             if l != 0: break;
             passCount += 1
             if passCount > 1000:
                 print("Timed out waiting for stable data.", file=sys.stderr)
-                sys.exit(1)
-            self.loopbackPROC.put(1)
             time.sleep(0.01)
-        if args.verbose and passCount > 1:
-            print("Pass %d" % (passCount), file=sys.stderr)
+        if args.verbose and passCount > 0:
+            print("Readout pass %d" % (passCount), file=sys.stderr)
         return l
 
     def getRelativeLatencyForChannel(self, chan):
-        # Lazy initializaiton of local latency measurement
+        # Lazy initialization of local latency measurement
         if self.localLatency < 0:
             self.localLatency = self.getAbsoluteLatencyForChannel(36)
         l = self.getAbsoluteLatencyForChannel(chan)
