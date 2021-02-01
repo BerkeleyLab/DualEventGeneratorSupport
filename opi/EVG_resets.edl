@@ -6,7 +6,7 @@ release 1
 x 248
 y 270
 w 445
-h 265
+h 320
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -154,7 +154,7 @@ major 4
 minor 0
 release 0
 x 22
-y 93
+y 90
 w 400
 h 47
 
@@ -167,7 +167,7 @@ major 4
 minor 1
 release 0
 x 297
-y 119
+y 116
 w 100
 h 21
 fgColor index 14
@@ -175,7 +175,7 @@ onColor index 31
 offColor index 31
 topShadowColor index 30
 botShadowColor index 32
-controlPv "$(P)$(R)MGT:reset"
+controlPv "$(P)$(R)MGT:Tx:realign"
 pressValue "100"
 onLabel "Step 3"
 offLabel "Step 3"
@@ -190,7 +190,7 @@ major 4
 minor 1
 release 0
 x 167
-y 119
+y 116
 w 100
 h 21
 fgColor index 14
@@ -198,7 +198,7 @@ onColor index 31
 offColor index 31
 topShadowColor index 30
 botShadowColor index 32
-controlPv "$(P)$(R)MGT:reset"
+controlPv "$(P)$(R)MGT:Tx:realign"
 pressValue "10"
 onLabel "Step 2"
 offLabel "Step 2"
@@ -213,7 +213,7 @@ major 4
 minor 1
 release 0
 x 37
-y 119
+y 116
 w 100
 h 21
 fgColor index 14
@@ -221,7 +221,7 @@ onColor index 31
 offColor index 31
 topShadowColor index 30
 botShadowColor index 32
-controlPv "$(P)$(R)MGT:reset"
+controlPv "$(P)$(R)MGT:Tx:realign"
 pressValue "1"
 onLabel "Step 1"
 offLabel "Step 1"
@@ -236,7 +236,7 @@ major 4
 minor 1
 release 1
 x 22
-y 93
+y 90
 w 400
 h 24
 font "helvetica-medium-r-18.0"
@@ -245,7 +245,7 @@ fgColor index 14
 bgColor index 19
 useDisplayBg
 value {
-  "Reset Transceivers"
+  "Realign Transmitters"
 }
 endObjectProperties
 
@@ -260,7 +260,7 @@ major 4
 minor 0
 release 0
 x 5
-y 163
+y 215
 w 432
 h 93
 
@@ -273,7 +273,7 @@ major 4
 minor 1
 release 0
 x 5
-y 175
+y 227
 w 200
 h 25
 fgColor index 14
@@ -296,7 +296,7 @@ major 4
 minor 0
 release 0
 x 216
-y 163
+y 215
 w 221
 h 93
 
@@ -309,7 +309,7 @@ major 4
 minor 0
 release 0
 x 216
-y 163
+y 215
 w 221
 h 93
 
@@ -322,7 +322,7 @@ major 4
 minor 1
 release 1
 x 397
-y 230
+y 282
 w 40
 h 16
 font "helvetica-medium-r-14.0"
@@ -341,7 +341,7 @@ major 4
 minor 1
 release 1
 x 397
-y 190
+y 242
 w 40
 h 16
 font "helvetica-medium-r-14.0"
@@ -360,7 +360,7 @@ major 4
 minor 1
 release 1
 x 345
-y 163
+y 215
 w 45
 h 16
 font "helvetica-medium-r-14.0"
@@ -380,7 +380,7 @@ major 4
 minor 1
 release 1
 x 288
-y 163
+y 215
 w 45
 h 16
 font "helvetica-medium-r-14.0"
@@ -400,7 +400,7 @@ major 4
 minor 0
 release 0
 x 216
-y 180
+y 232
 w 174
 h 16
 
@@ -413,7 +413,7 @@ major 4
 minor 7
 release 0
 x 345
-y 180
+y 232
 w 45
 h 16
 controlPv "$(P)$(R)E2:refCoinc"
@@ -437,7 +437,7 @@ major 4
 minor 7
 release 0
 x 288
-y 180
+y 232
 w 45
 h 16
 controlPv "$(P)$(R)E1:refCoinc"
@@ -461,7 +461,7 @@ major 4
 minor 1
 release 1
 x 216
-y 180
+y 232
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -485,7 +485,7 @@ major 4
 minor 0
 release 0
 x 216
-y 200
+y 252
 w 174
 h 16
 
@@ -498,7 +498,7 @@ major 4
 minor 7
 release 0
 x 345
-y 200
+y 252
 w 45
 h 16
 controlPv "$(P)$(R)E2:refJitter"
@@ -521,7 +521,7 @@ major 4
 minor 7
 release 0
 x 288
-y 200
+y 252
 w 45
 h 16
 controlPv "$(P)$(R)E1:refJitter"
@@ -544,7 +544,7 @@ major 4
 minor 1
 release 1
 x 216
-y 200
+y 252
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -568,7 +568,7 @@ major 4
 minor 0
 release 0
 x 216
-y 220
+y 272
 w 174
 h 16
 
@@ -581,7 +581,7 @@ major 4
 minor 7
 release 0
 x 345
-y 220
+y 272
 w 45
 h 16
 controlPv "$(P)$(R)E2:txCoinc"
@@ -605,7 +605,7 @@ major 4
 minor 7
 release 0
 x 288
-y 220
+y 272
 w 45
 h 16
 controlPv "$(P)$(R)E1:txCoinc"
@@ -629,7 +629,7 @@ major 4
 minor 1
 release 1
 x 216
-y 220
+y 272
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -653,7 +653,7 @@ major 4
 minor 0
 release 0
 x 216
-y 240
+y 292
 w 174
 h 16
 
@@ -666,7 +666,7 @@ major 4
 minor 7
 release 0
 x 345
-y 240
+y 292
 w 45
 h 16
 controlPv "$(P)$(R)E2:txJitter"
@@ -689,7 +689,7 @@ major 4
 minor 7
 release 0
 x 288
-y 240
+y 292
 w 45
 h 16
 controlPv "$(P)$(R)E1:txJitter"
@@ -712,7 +712,7 @@ major 4
 minor 1
 release 1
 x 216
-y 240
+y 292
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -735,6 +735,112 @@ endObjectProperties
 
 endGroup
 
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 22
+y 152
+w 400
+h 47
+
+beginGroup
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 297
+y 178
+w 100
+h 21
+fgColor index 14
+onColor index 31
+offColor index 31
+topShadowColor index 30
+botShadowColor index 32
+controlPv "$(P)$(R)MGT:Rx:reset"
+pressValue "3"
+onLabel "Reset Both"
+offLabel "Reset Both"
+3d
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 167
+y 178
+w 100
+h 21
+fgColor index 14
+onColor index 31
+offColor index 31
+topShadowColor index 30
+botShadowColor index 32
+controlPv "$(P)$(R)MGT:Rx:reset"
+pressValue "2"
+onLabel "Reset 2"
+offLabel "Reset 2"
+3d
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 37
+y 178
+w 100
+h 21
+fgColor index 14
+onColor index 31
+offColor index 31
+topShadowColor index 30
+botShadowColor index 32
+controlPv "$(P)$(R)MGT:Rx:reset"
+pressValue "1"
+onLabel "Reset 1"
+offLabel "Reset 1"
+3d
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 22
+y 152
+w 400
+h 24
+font "helvetica-medium-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Reset Receivers"
+}
 endObjectProperties
 
 endGroup
