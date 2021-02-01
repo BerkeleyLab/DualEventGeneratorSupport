@@ -344,7 +344,44 @@ to FPGA for round trip latency measurement.&nbsp; Writing to this record
             start request.&nbsp; These requests initiate event generator
             2 sequence 1 if enabled, otherwise event generator 2
             sequence 0 if enabled, otherwise they are ignored.</td>
-        </tr>
+        </tr><tr>
+  <td style="text-align: center;">MGT:Tx:realign<br>
+  </td>
+  <td style="text-align: center;">0x1F03<br>
+  </td>
+  <td style="text-align: center;">longout<br>
+  </td>
+  <td style="vertical-align: top;">Writing,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            in order, 1, 10, 100, forces the high speed serial transmitter to reset and undergo reaalignment.<br>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">MGT:Rx:reset<br>
+  </td>
+  <td style="text-align: center;">0x1F04<br>
+  </td>
+  <td style="text-align: center;">longout<br>
+  </td>
+  <td style="vertical-align: top;">Bitmap of high speed serial receivers (least significant bit corresponds to the first event generator) to reset.<br>
+  </td>
+</tr>
+
       </tbody>
     </table>
     <br>
