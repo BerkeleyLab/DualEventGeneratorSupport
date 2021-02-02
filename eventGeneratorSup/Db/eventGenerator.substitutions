@@ -66,7 +66,7 @@ file "perGenericLO.template"
  { \$(P),\$(R),\$(PORT),   "FPGA:reboot", 0x1F00, "Write 1, 100, 10000 to force reboot" }
  { \$(P),\$(R),\$(PORT),"swapoutTrigger", 0x1F02, "Trigger swapout cycle with given offset" }
  { \$(P),\$(R),\$(PORT),"MGT:Tx:realign", 0x1F03, "Write 1, 10, 100 for MGT reset/resync" }
- { \$(P),\$(R),\$(PORT),  "MGT:Rx:reset", 0x1F04, "Bitmap of receivers to reset" }
+ { \$(P),\$(R),\$(PORT),"MGT:Rx:bitslide", 0x1F04, "Bitmap of receivers to slide" }
 }
 
 file "perSysmonAI.template"

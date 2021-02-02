@@ -368,17 +368,20 @@ to FPGA for round trip latency measurement.&nbsp; Writing to this record
 
 
 
-            in order, 1, 10, 100, forces the high speed serial transmitter to reset and undergo reaalignment.<br>
+            in order, 1, 10, 100, forces the high speed serial transmitter to reset and undergo realignment.<br>
   </td>
 </tr>
 <tr>
-  <td style="text-align: center;">MGT:Rx:reset<br>
+  <td style="text-align: center;">MGT:Rx:bitslide<br>
   </td>
   <td style="text-align: center;">0x1F04<br>
   </td>
   <td style="text-align: center;">longout<br>
   </td>
-  <td style="vertical-align: top;">Bitmap of high speed serial receivers (least significant bit corresponds to the first event generator) to reset.<br>
+  <td style="vertical-align: top;">Bitmap of high speed serial receivers
+ (least significant bit corresponds to the first event generator) to 
+send a bit-slide request.&nbsp; This should trigger a receiver 
+realignment operation.<br>
   </td>
 </tr>
 

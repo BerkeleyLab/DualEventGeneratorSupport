@@ -281,10 +281,10 @@ onColor index 31
 offColor index 31
 topShadowColor index 30
 botShadowColor index 32
-controlPv "$(P)$(R)MGT:Rx:reset"
+controlPv "$(P)$(R)MGT:Rx:bitslide"
 pressValue "3"
-onLabel "Reset Both"
-offLabel "Reset Both"
+onLabel "Slide Both"
+offLabel "Slide Both"
 3d
 font "helvetica-bold-r-14.0"
 endObjectProperties
@@ -304,10 +304,10 @@ onColor index 31
 offColor index 31
 topShadowColor index 30
 botShadowColor index 32
-controlPv "$(P)$(R)MGT:Rx:reset"
+controlPv "$(P)$(R)MGT:Rx:bitslide"
 pressValue "2"
-onLabel "Reset 2"
-offLabel "Reset 2"
+onLabel "Slide 2"
+offLabel "Slide 2"
 3d
 font "helvetica-bold-r-14.0"
 endObjectProperties
@@ -327,10 +327,10 @@ onColor index 31
 offColor index 31
 topShadowColor index 30
 botShadowColor index 32
-controlPv "$(P)$(R)MGT:Rx:reset"
+controlPv "$(P)$(R)MGT:Rx:bitslide"
 pressValue "1"
-onLabel "Reset 1"
-offLabel "Reset 1"
+onLabel "Slide 1"
+offLabel "Slide 1"
 3d
 font "helvetica-bold-r-14.0"
 endObjectProperties
@@ -351,7 +351,7 @@ fgColor index 14
 bgColor index 19
 useDisplayBg
 value {
-  "Reset Receivers"
+  "Receiver Bit-slip"
 }
 endObjectProperties
 

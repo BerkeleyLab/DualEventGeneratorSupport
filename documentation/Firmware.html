@@ -580,7 +580,10 @@ while a sequence is being displayed.</li><li>Bit 8 &nbsp; — Enable messages sh
 <li>Bit 12 — Enable log messages for each microBlaze I<sup>2</sup>C operation.<br>
 </li><li>Bit 16 — Force the LCD display out of warning mode (like
         pressing and holding Display button).</li><li>Bit 20 — Show the transceiver alignment.</li>
-<li>Bit 21 — Force the high speed serial receivers to slip one bit.&nbsp; This should cause receiver realignment.<br>
+<li>Bit 21 — Show receiver realignment reset operations.&nbsp; 
+Realignment can result in hundreds of reset operations so it is possible
+ for messages to be lost because the buffer between the processors has 
+filled up.<br>
 </li>
 
   <li>Bit 24 — Dump the LCD screen contents to the console serial
