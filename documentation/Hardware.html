@@ -22,6 +22,15 @@ frequencies in use.&nbsp; The generators are locked to a common base and
  ensure coincidence between the two frequency domains.&nbsp; The FPGA can also act as a stratum 1 NTP server.<br>
     <p></p>
     <h1>Hardware</h1>
+<p>As shown in the following figure the dual event generator is based on
+ a Marble FPGA carrier board and two EVIO FMC cards.&nbsp; An optional 
+GPS receiver PMOD card can be used to provide the time reference.&nbsp; 
+The system is enclosed in a 3U rack-mount chassis.<br>
+  <br>
+</p>
+<p><img moz-do-not-send="true" src="ChassisBlockDiagram.png" alt="" style=" width: 587px; height: 882px;"><br>
+</p>
+
     
 <h2>Front Panel</h2>
 <img src="FrontPanel.png" alt="" style=" width: 1129px; height: 312px;">
@@ -42,8 +51,11 @@ frequencies in use.&nbsp; The generators are locked to a common base and
         <div style="margin-left: 40px;"><span style="font-family:
             monospace;">cu -s 115200 -l /dev/ttyUSB2</span><br>
         </div><div style="margin-left: 40px;"> </div>
-      </li><li>Up to three fiber I/O cartridges per event domain, each with 12 LC50 fiber connectors.<br>
+      </li><li>BNC connectors carrying diagnostic signals.<br>
 </li>
+<li>Up to three fiber I/O cartridges per event domain, each with 12 LC50 fiber connectors.<br>
+</li>
+
 </ol>
 
 
