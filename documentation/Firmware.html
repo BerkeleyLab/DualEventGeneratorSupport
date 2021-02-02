@@ -573,10 +573,16 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
         updates.</li><li>Bit 6 &nbsp; — Display the memories for both sequences of both event
  generators.&nbsp; Note that FPGA response to IOC requests is inhibited 
 while a sequence is being displayed.</li><li>Bit 8 &nbsp; — Enable messages showing operation of the PLL
-        synchronization state machine.</li><li>Bit 12 — Enable log messages for each microBlaze I<sup>2</sup>C operation.<br>
-</li><li>Bit 16 — Force the LCD display out of warning mode (like
-        pressing and holding Display button).</li><li>Bit 20 — Show the transceiver alignment.<br>
+        synchronization state machine.</li>
+<li>Bit 9 &nbsp; — Show FMC I<sup>2</sup>C I/O operations.</li>
+<li>Bit 10 — Show FMC I<sup>2</sup>C I/O operations at the AXI register level.<br>
 </li>
+<li>Bit 12 — Enable log messages for each microBlaze I<sup>2</sup>C operation.<br>
+</li><li>Bit 16 — Force the LCD display out of warning mode (like
+        pressing and holding Display button).</li><li>Bit 20 — Show the transceiver alignment.</li>
+<li>Bit 21 — Force the high speed serial receivers to slip one bit.&nbsp; This should cause receiver realignment.<br>
+</li>
+
   <li>Bit 24 — Dump the LCD screen contents to the console serial
         line as an ASCII portable bitmap.&nbsp; Takes over a minute to
         complete during which time no other display or console operations take place.</li>
