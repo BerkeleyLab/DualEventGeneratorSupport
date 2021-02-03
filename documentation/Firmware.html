@@ -303,14 +303,46 @@ of the tile (MGTREFCLK0_115) and the reference clock from the second FMC
 <h2>Distributed Data Bus</h2>
 
     
-<p>A 50% (approximately) duty cycle waveform is place on the least
-      significant bit of the distributed data bus.&nbsp; The rising edge
-      of this signal is coincident with the heartbeat event, or where
-      the heartbeat event would have occurred if the heartbeat event is
-      preempted by a sequence pattern event.&nbsp; A 100 kHz 50% duty cycle waveform is placed on the next-to-least
-      significant bit of the distributed data bus for use by the round-trip latency measurement firmware.<br>
-<br>
+<p>As described in the following table, three of the distributed data bus bits are used by the event generator firmware.<br>
 </p>
+<table style="text-align: left; width: 640px; margin-left: 40px;" cellspacing="2" cellpadding="2" border="1">
+  <tbody>
+    <tr>
+      <td style="text-align: center;"><span style="font-weight: bold;">Bit</span><br>
+      </td>
+      <td style="text-align: center;"><span style="font-weight: bold;">Description</span><span style="font-weight: bold;"><br>
+        </span></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">0<span style="font-weight: bold;"><br>
+        </span></td>
+      <td style=" text-align: left;">50% duty cycle waveform.&nbsp; Rising edge is coincident with heartbeat event, or where
+      the heartbeat event would have occurred had it not been preempted by a sequence pattern event.<br>
+        <span style="font-weight: bold;"></span></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">1<br>
+      </td>
+      <td style="text-align: left;">100 kHz 50% duty cycle waveform for use by the round-trip latency measurement firmware.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">2<br>
+      </td>
+      <td style="text-align: left;">State of the diagnostic input.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">3–7<br>
+      </td>
+      <td style="text-align: left;">Unassigned.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p style="margin-left: 40px;">
+  <br>
+</p>
+
 
 <h1>Time Providers</h1>
 
