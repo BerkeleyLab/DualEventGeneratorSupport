@@ -73,6 +73,8 @@ record(ai, "$(P)$(R)E$(E):latency") {
     field(EOFF, "0")
     field(LOPR, "0")
     field(HOPR, "1000")
+    field(LOLO, "1")
+    field(LLSV, "MAJOR")
 }
 record(fanout, "$(P)$(R)E$(E):diagOut:rc_") {
     field(DESC, "Push EVG $(E) diag out on (re)connect)")
