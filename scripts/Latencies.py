@@ -35,7 +35,7 @@ class EVG:
             time.sleep(0.01)
             self.latency.get_timevars()
         passCount = 0
-        while self.latency.severity != 0:
+        while self.latency.severity == 3:  # SEVR=INVALID
             self.loopbackPROC.put(1)
             passCount += 1
             if passCount > 1000:
