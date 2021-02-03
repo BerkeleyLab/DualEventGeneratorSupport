@@ -45,20 +45,29 @@ The system is enclosed in a 3U rack-mount chassis.<br>
     
 <ol>
 <li>RJ-45 1000Base-T Ethernet.</li>
-<li>USB console serial port and JTAG interface.&nbsp; The four ports of the USB/Serial adapter are assigned as follows:<br>
-&nbsp;&nbsp;&nbsp; A – JTAG<br>
-&nbsp;&nbsp;&nbsp; B – RTS/DTR assert the LPC_ISPn and ISP_RSTn lines, respectively.<br>
-&nbsp;&nbsp;&nbsp; C – FPGA console serial port.<br>
-&nbsp;&nbsp;&nbsp; D – Microcontroller console serial port.<br>
-The serial ports are set to 115200-8N1.&nbsp; To view messages sent to the
-        FPGA serial port the following command can be used on a Linux or OS X
-        machine (the name of the USB tty may differ):<span style="font-family:
-            monospace;"><br>
-&nbsp;&nbsp;&nbsp; cu -s 115200 -l /dev/ttyUSB2</span></li>
+<li>USB console serial port and JTAG interface<span style="font-family:
+            monospace;"></span></li>
 <li>BNC connectors carrying diagnostic signals.<br>
 </li>
 <li>Up to three fiber I/O cartridges per event domain, each with 12 LC50 fiber connectors.</li>
 </ol>
+<p>The four ports of the USB/Serial adapter are assigned as follows:<br>
+
+&nbsp;&nbsp;&nbsp; A – JTAG<br>
+
+&nbsp;&nbsp;&nbsp; B – RTS/DTR assert the LPC_ISPn and ISP_RSTn lines, respectively.<br>
+
+&nbsp;&nbsp;&nbsp; C – FPGA console serial port.<br>
+
+&nbsp;&nbsp;&nbsp; D – Microcontroller console serial port.<br>
+
+The console serial ports are set to 115200-8N1.&nbsp; To view messages sent to the
+        FPGA serial port the following command can be used on a Linux or OS X
+        machine (the name of the USB tty may differ):<span style="font-family:
+            monospace;"><br>
+&nbsp;&nbsp;&nbsp; cu -s 115200 -l /dev/ttyUSB2<br>
+    <br>
+  </span></p>
 <ol>
 
 </ol>
@@ -66,8 +75,6 @@ The serial ports are set to 115200-8N1.&nbsp; To view messages sent to the
 
 
     
-<h3><br>
-<span style="color: rgb(0, 0, 0);"></span></h3>
 <h3><span style="color: rgb(0, 0, 0);">Front Panel Controls</span></h3>
 
 
