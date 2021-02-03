@@ -480,10 +480,12 @@ format "float"
 font "helvetica-medium-r-14.0"
 fontAlign "right"
 fgColor index 14
+fgAlarm
 bgColor index 2
 autoHeight
 precision 1
 nullColor index 7
+useAlarmBorder
 newPos
 objType "monitors"
 endObjectProperties
@@ -503,10 +505,12 @@ format "float"
 font "helvetica-medium-r-14.0"
 fontAlign "right"
 fgColor index 14
+fgAlarm
 bgColor index 2
 autoHeight
 precision 1
 nullColor index 7
+useAlarmBorder
 newPos
 objType "monitors"
 endObjectProperties
