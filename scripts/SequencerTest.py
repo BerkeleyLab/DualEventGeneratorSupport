@@ -66,13 +66,14 @@ def parseSequence(delayEventPairs):
         seq.append(127)
     return seq
 
+
 parser = argparse.ArgumentParser(description='Demonstrate sequencer operation.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-c', '--cycles', type=int, default=0, help='Number of "sequence 1" cycles for EVG 1, number of "sequence 0" cycles for EVG 2')
 parser.add_argument('-e', '--evg', type=int, default=1, choices=(1,2), help='Event generator to use')
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
 parser.add_argument('-s', '--swapout', type=int, default=0, help='Swapout trigger offset')
 parser.add_argument('-0', '--seq0', default='9999999,10,9999999,11,29999999,12,9999999,127', help='Sequence 0')
-parser.add_argument('-1', '--seq1', default='9999999,10,9999999,11,9999999,12,9999999,13,9999999,68,50,70,1,127', help='Sequence 1')
+parser.add_argument('-1', '--seq1', default='0,10,1826573,12,3,18,0,20,1,24,0,26,0,28,57762643,39,641919,126,3,38,8067,50,2,56,2499941,68,40,70,0,127', help='Sequence 1')
 args = parser.parse_args()
 
 pattern0 = parseSequence(args.seq0)
