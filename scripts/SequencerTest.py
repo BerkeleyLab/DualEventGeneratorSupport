@@ -72,7 +72,7 @@ parser.add_argument('-e', '--evg', type=int, default=1, choices=(1,2), help='Eve
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
 parser.add_argument('-s', '--swapout', type=int, default=0, help='Swapout trigger offset')
 parser.add_argument('-0', '--seq0', default='9999999,10,9999999,11,29999999,12,9999999,127', help='Sequence 0')
-parser.add_argument('-1', '--seq1', default='9999999,10,9999999,11,9999999,12,9999999,13,9999999,38,9999999,127', help='Sequence 0')
+parser.add_argument('-1', '--seq1', default='9999999,10,9999999,11,9999999,12,9999999,13,9999999,68,50,70,1,127', help='Sequence 1')
 args = parser.parse_args()
 
 pattern0 = parseSequence(args.seq0)
