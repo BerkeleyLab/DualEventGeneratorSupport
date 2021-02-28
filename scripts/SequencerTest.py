@@ -80,22 +80,25 @@ pattern1 = parseSequence(args.seq1)
 
 seqStatus = epics.PV(args.prefix + 'E%d:seqStatus' % (args.evg))
 seq0 = epics.PV(args.prefix + "E%d:SEQ0" % (args.evg))
+seq1 = epics.PV(args.prefix + "E%d:SEQ1" % (args.evg))
 seq0enable = epics.PV(args.prefix + "E%d:SEQ0:enable" % (args.evg))
+seq1enable = epics.PV(args.prefix + "E%d:SEQ1:enable" % (args.evg))
 if args.evg == 1:
-    seq1 = epics.PV(args.prefix + "E%d:SEQ1" % (args.evg))
-    seq1enable = epics.PV(args.prefix + "E%d:SEQ1:enable" % (args.evg))
     seq1enable.put(0, wait=True)
     while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq1.put(pattern1, wait=True)
 else:
     swapoutTrigger = epics.PV(args.prefix + "swapoutTrigger")
     seq0enable.put(0, wait=True)
+    seq1enable.put(0, wait=True)
     while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq0.put(pattern0, wait=True)
+    seq1.put(pattern1, wait=True)
     seq0enable.put(1, wait=True)
 oldSequenceNumber = (seqStatus.get() >> 8) & 0xFF
 seqStatus.add_callback(seqStatusCallback)
 
+next = 0.0;
 if args.cycles > 0:
     while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq0Count = seqCount[0]
@@ -107,8 +110,11 @@ if args.cycles > 0:
                 print("Missed sequence!", file=sys.stderr)
                 seq0Count = seqCount[0]
         else:
-            time.sleep(0.6)
-            swapoutTrigger.put(1, wait=True)
+            if (args.cycles % 10) == 0: seq1enable.put(1)
+            pause = next - time.time()
+            if pause > 0: time.sleep(pause)
+            next = time.time() + 1.4
+            swapoutTrigger.put(1)
             awaitSequenceCompletion()
         args.cycles -= 1
 sys.exit(0)
