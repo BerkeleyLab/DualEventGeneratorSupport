@@ -20,25 +20,15 @@ timing signals on an optical fiber using a protocol compatible with that
 project requires two event generators, one for each of the RF 
 frequencies in use.&nbsp; The generators are locked to a common base and
  ensure coincidence between the two frequency domains.&nbsp; The FPGA can also act as a stratum 1 NTP server.<br>
-    <p></p>
-    <h1>Hardware</h1>
-<p>As shown in the following figure the dual event generator is based on
- a Marble FPGA carrier board and two EVIO FMC cards.&nbsp; An optional 
-GPS receiver PMOD card can be used to provide the time reference.&nbsp; 
-The system is enclosed in a 4U rack-mount chassis.<br>
-  <br>
-</p>
-<p style="margin-left: 40px;"><img moz-do-not-send="true" src="ChassisBlockDiagram.png" alt="" style=" width: 587px; height: 882px;"><br>
-</p>
-
-    
+    <p></p><br>
 <h2>Front Panel</h2>
-<img src="FrontPanel.png" alt="" style=" width: 1129px; height: 312px;">
-<h3><span style="color: rgb(0, 0, 0);">Front Panel Connectors</span></h3>
+<img moz-do-not-send="true" src="EVGfront.png" alt="" style=" width: 1024px; height: 378px;"><br>
+
+<h3><span style="color: rgb(0, 0, 0);">Front Panel Components</span></h3>
 
 
     
-<p>There are several components on the event generator front panel.<br>
+<p>There are several connectors on the event generator front panel.<br>
     </p>
 
 
@@ -50,24 +40,9 @@ The system is enclosed in a 4U rack-mount chassis.<br>
 <li>BNC connectors carrying diagnostic signals.<br>
 </li>
 <li>Up to three fiber I/O cartridges per event domain, each with 12 LC50 fiber connectors.</li>
-</ol>
-<p>The four ports of the USB/Serial adapter are assigned as follows:<br>
-
-&nbsp;&nbsp;&nbsp; A – JTAG<br>
-
-&nbsp;&nbsp;&nbsp; B – RTS/DTR assert the LPC_ISPn and ISP_RSTn lines, respectively.<br>
-
-&nbsp;&nbsp;&nbsp; C – FPGA console serial port.<br>
-
-&nbsp;&nbsp;&nbsp; D – Microcontroller console serial port.<br>
-
-The console serial ports are set to 115200-8N1.&nbsp; To view messages sent to the
-        FPGA console the following command can be used on a Linux or OS X
-        machine (the name of the USB tty may differ):<span style="font-family:
-            monospace;"><br>
-&nbsp;&nbsp;&nbsp; cu -s 115200 -l /dev/ttyUSB2<br>
-    <br>
-  </span></p>
+</ol><span style="font-family:
+            monospace;"></span><span style="font-family:
+            monospace;"></span>
 <ol>
 
 </ol>
@@ -75,7 +50,7 @@ The console serial ports are set to 115200-8N1.&nbsp; To view messages sent to t
 
 
     
-<h3><span style="color: rgb(0, 0, 0);">Front Panel Controls</span></h3>
+
 
 
 <h4>“Display” button</h4>
@@ -112,14 +87,165 @@ Ethernet MAC address and IPv4 address are set to default values
 (AA:4C:42:4E:4C:04 and 192.168.1.129/24, respectively).<br>
 </p>
 
-<h3><span style="color: rgb(0, 0, 0);"><a name="FrontPanelDisplay"></a>Front Panel Display</span></h3>
+<h4><span style="color: rgb(0, 0, 0);"><a name="FrontPanelDisplay"></a>Front Panel Display</span></h4>
 
-
-    
-<h2><span style="color: rgb(0, 0, 0);"></span></h2>
 
 
     
+
+<span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the image below.<br>
+  <br>
+</span>
+<div style="margin-left: 80px;"><img src="Display.png" alt="" style=" width: 320px; height: 240px;"></div>
+<ol>
+<li>The top few lines of the display show the status of the event 
+sequence pattern generators.&nbsp; The green indicator to the right of 
+the 'TRG:' text blinks when an event sequence is triggered.&nbsp; The
+ value to the right of the 'SEQ:' text shows the number (0/1) 
+of the currently or previously active sequence.&nbsp; The 'HW:' line 
+shows the status of the hardware trigger inputs with trigger input 1 at 
+the left side of the row of indicators and trigger input 6 at the 
+right.&nbsp; A green block indicates the presence of light at the 
+trigger input.<br>
+</li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
+      </li><li>The 'Temperature' region shows a bar indicator of the 
+temperature of the FPGA and the warmest receiver and transmitter module on each of the FMC cards.6<br>
+</li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
+ network address is normally shown as white text on a black background.&nbsp;
+ A network address shown as black text on a white background indicates 
+the the unit is in “recovery” mode.<br>
+  </li><li>The bottom line of the display shows the date and time (UTC).<br>
+  </li>
+</ol>
+
+<h4>Special displays</h4>
+
+
+    
+    
+<ul>
+<li>Black text on a red background – event generator is reporting a fatal
+        error condition.&nbsp;&nbsp; The only exit from this state is a reset or power cycle.<br>
+</li><li>Black text on a yellow background – event generator is reporting a warning
+        condition.&nbsp; Pressing and holding the “Display” button for one second will exit this state.</li></ul>
+<p><br>
+</p>
+<ul>
+
+</ul>
+
+
+
+
+
+    
+<h2>Rear Panel</h2><img moz-do-not-send="true" src="EVGback.png" alt="" style=" width: 1024px; height: 400px;">
+
+
+
+
+    
+<p>There following components are present on the event generator rear panel.<br>
+    </p>
+
+
+
+    
+<ol>
+<li>Connectors for 12V power adapters.</li>
+  <li>Holder for 3A slow-blow fuse.<br>
+  </li>
+<li>On/Off switch.</li>
+<li>Power supply test points<br>
+</li>
+
+
+
+  
+<li>Isolated SMA connector for antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
+
+<li>Broadcomm "Versatile Link" fiber receivers for hardware event 
+triggers.&nbsp; Only the first six connectors of each group of eight 
+are used.&nbsp; Event triggers are generated upon loss of light.<br>
+</li>
+
+<li>Isolated BNC inputs for timing reference signals.&nbsp; Inputs 
+are LVTTL compatible, medium impedance (475Ω plus series LED).&nbsp; 
+Logic 1 threshold is about 1.8V and maximum input voltage is 5.0V.<br>
+</li>
+</ol>
+<br>
+
+
+
+    
+<h3><span style="color: rgb(0, 0, 0);"></span></h3>
+
+<h2><br>
+</h2>
+<h1>Hardware</h1>
+
+<p>As shown in the following figure the dual event generator is based on
+ a Marble FPGA carrier board and two EVIO FMC cards.&nbsp; An optional 
+GPS receiver PMOD card can be used to provide the time reference.&nbsp; 
+The system is enclosed in a 4U rack-mount chassis.<br>
+  <br>
+</p>
+
+<img moz-do-not-send="true" src="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/ChassisBlockDiagram.png" alt="" style=" width: 587px; height: 882px;">
+<h2><br>
+</h2>
+<h2>FPGA Card</h2>
+
+
+    <p>The FPGA carrier card is a 'Marble' developed by the LBNL
+      Accelerator Technology Group.&nbsp; The following block diagram
+      shows the salient features of this board.</p>
+    <img src="MarbleBlockDiagram.png" alt="" style=" width: 763px; height: 534px;">
+    <ul>
+      <li>Open Hardware (OHWR) dual-LPC-FMC carrier based on a Kintex-7 (XC7K160TFFG676-2)<br>
+</li>
+      
+      <li>Power entry&nbsp; through barrel-style connector (CUI
+        PJ-102AH) or Ethernet (PoE).</li>
+      <li>1000BaseT Ethernet on 8P8C "RJ45" connector.</li>
+      <li>Eight FPGA GTX transceivers, up to 12.5 Gb/s, connected to QSFP
+        slots and FMC connectors.<br>
+</li>
+      <li>Two FMC connectors.&nbsp; LPC superset, with multiple high speed serial lanes.<br>
+</li>
+      <li>SO-DIMM SDRAM connector, unused in this application.<br>
+</li>
+      <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these drives the <a href="#FrontPanelDisplay">front panel display</a> and the other is used to connect the optional <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD">GPS receiver</a>.</li>
+      <li>16 MB SPI flash memory for FPGA and application bootstrap.<br>
+      </li>
+    </ul>
+    <p><br>
+    </p>
+    <blockquote>
+      <p> </p>
+    </blockquote>
+    <h2>FMC Cards</h2>
+    Each FMC card provides a reference clock to the FPGA gigabit
+    transceiver block and to an FPGA clock input, six hardware trigger inputs driven by fiber to copper converts on another 
+board, and one optically coupled,
+    TTL level auxiliary input.&nbsp;
+    Each card also provides one non-isolated, TTL level, diagnostic
+    input and two non-isolated, LVTTL level, diagnostic 
+outputs capable of driving 50Ω loads.&nbsp;&nbsp; The auxiliary input of the first card is
+    used to provide a pulse-per-second signal to the FPGA and the
+    auxiliary input of the second card is used to provide a power line
+    monitor signal to the FPGA.&nbsp;&nbsp; Up to three 12-channel 
+Firefly transceivers can be installed to provide event stream 
+outputs.&nbsp; The first channel of the first transceiver is typically 
+used to carry the reference clock signal to the card.&nbsp; A 40×40 
+crosspoint switch allows for flexible routing of event streams and 
+reference clocks between the Firefly modules and the FMC connector.<br>
+<br>
+In addition to their use in the dual event generator the FMC cards are also used in the event fanout modules.<br>
+    <br>
+<h2>Front Panel Display<br>
+</h2>
 <p>The Marble PMOD1 connector connects to the front panel Display
       and Reset/Recovery push buttons and drives a 240×320
       display equipped with a Sitronix ST7789V controller configured for
@@ -127,8 +253,10 @@ Ethernet MAC address and IPv4 address are set to default values
       shown in the following table.<br>
     </p>
 
+
     
 <table style="text-align: left; width: 500px; margin-left: 40px;" cellspacing="2" cellpadding="2" border="1">
+
 
       <tbody>
         <tr>
@@ -210,135 +338,29 @@ Ethernet MAC address and IPv4 address are set to default values
       </tbody>
     
 </table>
+
 <br>
-<span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the image below.<br>
-  <br>
-</span>
-<div style="margin-left: 80px;"><img src="Display.png" alt="" style=" width: 320px; height: 240px;"></div>
-<ol>
-<li>The top few lines of the display show the status of the event 
-sequence pattern generators.&nbsp; The green indicator to the right of 
-the 'TRG:' text blinks when an event sequence is triggered.&nbsp; The
- value to the right of the 'SEQ:' text shows the number (0/1) 
-of the currently or previously active sequence.&nbsp; The 'HW:' line 
-shows the status of the hardware trigger inputs with trigger input 1 at 
-the left side of the row of indicators and trigger input 6 at the 
-right.&nbsp; A green block indicates the presence of light at the 
-trigger input.<br>
-</li><li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
-      </li><li>The 'Temperature' region shows a bar indicator of the 
-temperature of the FPGA and the warmest receiver and transmitter module on each of the FMC cards.6<br>
-</li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
- network address is normally shown as white text on a black background.&nbsp;
- A network address shown as black text on a white background indicates 
-the the unit is in “recovery” mode.<br>
-  </li><li>The bottom line of the display shows the date and time (UTC).<br>
-  </li>
-</ol>
-
-<h4>Special displays</h4>
+<h2>USB FTDI Serial Ports</h2>
+The four ports of the USB/Serial adapter are assigned as follows:<br>
 
 
-    
-    
-<ul>
-<li>Black text on a red background – event generator is reporting a fatal
-        error condition.&nbsp;&nbsp; The only exit from this state is a reset or power cycle.<br>
-</li><li>Black text on a yellow background – event generator is reporting a warning
-        condition.&nbsp; Pressing and holding the “Display” button for one second will exit this state.<br>
-</li>
-</ul>
+&nbsp;&nbsp;&nbsp; A – JTAG<br>
 
 
+&nbsp;&nbsp;&nbsp; B – RTS/DTR assert the LPC_ISPn and ISP_RSTn lines, respectively.<br>
 
 
-    
-<h2>Rear Panel Components</h2>
+&nbsp;&nbsp;&nbsp; C – FPGA console serial port.<br>
 
 
+&nbsp;&nbsp;&nbsp; D – Microcontroller console serial port.<br>
 
 
-    
-<p>There following components are present on the event generator rear panel.<br>
-    </p>
-
-
-
-    
-<ol>
-<li>Connectors for 12V power adapters.</li>
-  <li>Holder for 3A slow-blow fuse.<br>
-  </li>
-<li>On/Off switch.</li>
-<li>Diagnostic I/O BNC connectors.&nbsp; LVTTL, non-isolated.<br>
-</li>
-
-  
-<li>Isolated SMA connector for connecting an antenna to the optional <a href="#GPS_PMOD">GPS receiver</a>.</li>
-
-<li>Broadcomm "Versatile Link" fiber receivers for hardware event 
-triggers.&nbsp; Only the first six connectors of each group of eight 
-are used.&nbsp; Event triggers are generated upon loss of light.<br>
-</li>
-
-<li>Isolated BNC connectors carrying LVTTL level timing reference signals.&nbsp; Inputs 
-are medium impedance (475Ω plus series LED).&nbsp; Logic 1 threshold is about 1.8V and maximum input voltage is 5.0V.<br>
-</li>
-</ol>
-<img src="RearPanel.png" alt="" style=" width: 1181px; height: 333px;">
-
-
-    
-<h3><span style="color: rgb(0, 0, 0);"></span></h3>
-
-<h2>FPGA Card</h2>
-
-    <p>The FPGA carrier card is a 'Marble' developed by the LBNL
-      Accelerator Technology Group.&nbsp; The following block diagram
-      shows the salient features of this board.</p>
-    <img src="MarbleBlockDiagram.png" alt="" style=" width: 763px; height: 534px;">
-    <ul>
-      <li>Open Hardware (OHWR) dual-LPC-FMC carrier based on a Kintex-7 (XC7K160TFFG676-2)<br>
-</li>
-      
-      <li>Power entry&nbsp; through barrel-style connector (CUI
-        PJ-102AH) or Ethernet (PoE).</li>
-      <li>1000BaseT Ethernet on 8P8C "RJ45" connector.</li>
-      <li>Eight FPGA GTX transceivers, up to 12.5 Gb/s, connected to QSFP
-        slots and FMC connectors.<br>
-</li>
-      <li>Two FMC connectors.&nbsp; LPC superset, with multiple high speed serial lanes.<br>
-</li>
-      <li>SO-DIMM SDRAM connector, unused in this application.<br>
-</li>
-      <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these drives the <a href="#FrontPanelDisplay">front panel display</a> and the other is used to connect the optional <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD">GPS receiver</a>.</li>
-      <li>16 MB SPI flash memory for FPGA and application bootstrap.<br>
-      </li>
-    </ul>
-    <p><br>
-    </p>
-    <blockquote>
-      <p> </p>
-    </blockquote>
-    <h2>FMC Cards</h2>
-    Each FMC card provides a reference clock to the FPGA gigabit
-    transceiver block and to an FPGA clock input, six hardware trigger inputs driven by fiber to copper converts on another 
-board, and one optically coupled,
-    TTL level auxiliary input.&nbsp;
-    Each card also provides one non-isolated, TTL level, diagnostic
-    input and two non-isolated, LVTTL level, diagnostic 
-outputs capable of driving 50Ω loads.&nbsp;&nbsp; The auxiliary input of the first card is
-    used to provide a pulse-per-second signal to the FPGA and the
-    auxiliary input of the second card is used to provide a power line
-    monitor signal to the FPGA.&nbsp;&nbsp; Up to three 12-channel 
-Firefly transceivers can be installed to provide event stream 
-outputs.&nbsp; The first channel of the first transceiver is typically 
-used to carry the reference clock signal to the card.&nbsp; A 40×40 
-crosspoint switch allows for flexible routing of event streams and 
-reference clocks between the Firefly modules and the FMC connector.<br>
-<br>
-In addition to their use in the dual event generator the FMC cards are also used in the event fanout modules.<br>
-    <br><br>
+The console serial ports are set to 115200-8N1.&nbsp; To view messages sent to the
+        FPGA console the following command can be used on a Linux or OS X
+        machine (the name of the USB tty may differ):<span style="font-family:
+            monospace;"><br>
+&nbsp;&nbsp;&nbsp; cu -s 115200 -l /dev/ttyUSB2</span><br>
 <h2></h2>
     <p> </p>
   
