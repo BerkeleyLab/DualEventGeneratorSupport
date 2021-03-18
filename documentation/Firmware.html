@@ -186,20 +186,24 @@ If changes are made to any of these parameters the createVerilogIDX.sh script mu
     link.&nbsp; These reference clocks drive an FPGA transceiver
     reference PLL and a sampling D flip-flop as shown in the following
     figure.&nbsp; The rising edge of the sampled signals indicates the
-    phase of the signal relative to the sampling clock.&nbsp; The
+    phase of the signal relative to the sampling clock.&nbsp; The 
+sampled values are used to update a histogram whose number of bins is 
+the number of sample clock cycles in the coincidence interval.&nbsp; The
     sampling of both the event generator transceiver reference and PLL
     output provides an accurate measurement of the phase of the signals
     relative to the sampling clock and by extension, relative to each
     other.&nbsp; Thus the phase at which the PLL has locked its output
-    relative to its input can be determined as can the point where the PLL output clocks align most closely.<br>
+    relative to its input can be determined as can the point where the 
+PLL output clocks align most closely.<br>
+<br>
 
     
-<blockquote><img src="DualEventGeneratorCoincidenceSampling.svg" alt="" style=" width: 965px; height: 680px;"><br>
-    </blockquote>
+<img moz-do-not-send="true" src="Coincidence.svg" alt="" style=" width: 768px; height: 503px;">
 
     <br>
 
-    There are two levels of event system clock alignment.&nbsp; The
+    <br>
+There are two levels of event system clock alignment.&nbsp; The
     first is the alignment of the transceiver clock output relative to
     the transceiver reference.&nbsp; Each transceiver output clock
     drives all the logic in its event generator firmware.&nbsp; The
@@ -582,12 +586,8 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
         powered up.&nbsp; If the optional <span style="font-weight: bold;">-b</span>
         argument is present the 'DEVG_B.bin' file will be used, otherwise the 'DEVG_A.bin' file will be used.<br>
 </dd><dt><br>
-        <span style="font-weight: bold;">debug [-s] [<span style="font-style: italic;">n</span>]</span></dt><dd>The
- debugging flags are set to the specified value, if one is
-        given.&nbsp; Note that many of these can slow down the response 
-of the event generator to requests from the EPICS IOC so be cautious 
-when setting these.<br>
-</dd>
+        <span style="font-weight: bold;">debug [-s] [<span style="font-style: italic;">n</span>]</span></dt><dd>The debugging flags are set to the specified value, if one is
+        given.&nbsp; The bits are</dd>
 </dl>
 
     
