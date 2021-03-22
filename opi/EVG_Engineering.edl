@@ -1127,7 +1127,7 @@ x 184
 y 130
 w 61
 h 10
-controlPv "$(P)$(R)E2:EVGIOstatus_"
+controlPv "$(P)$(R)E2:EVIOstatus_"
 lineColor index 14
 onColor index 15
 offColor index 3
@@ -1222,7 +1222,7 @@ x 114
 y 130
 w 61
 h 10
-controlPv "$(P)$(R)E1:EVGIOstatus_"
+controlPv "$(P)$(R)E1:EVIOstatus_"
 lineColor index 14
 onColor index 15
 offColor index 3
