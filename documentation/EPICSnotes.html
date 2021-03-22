@@ -798,8 +798,18 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
             clock frequency.<span style="font-style: italic;"></span></td>
         </tr>
         <tr>
+  <td style="text-align: center;">EVG:aligned<br>
+  </td>
+  <td style="text-align: center;">0x211A<br>
+  </td>
+  <td style="text-align: center;">bi<br>
+  </td>
+  <td style="vertical-align: middle; text-align: left;">Both event generators are aligned to both RF references.<br>
+  </td>
+</tr>
+<tr>
           <td style="text-align: center;">INJ:injCycleStatus</td>
-          <td style="text-align: center;">0x211A </td>
+          <td style="text-align: center;">0x211B </td>
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Injection cycle start requests
             enabled/disabled (1/0).<br>
@@ -807,7 +817,7 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
         </tr>
         <tr>
   <td style="text-align: center;">INJ:injCycleAlign</td>
-  <td style="text-align: center;">0x221A<br>
+  <td style="text-align: center;">0x221B<br>
   </td>
   <td style="text-align: center;">longin<br>
   </td>
@@ -821,7 +831,7 @@ unsynchronized/synchronized with the heartbeat.&nbsp; Bits 11:0 are the injectio
 <tr>
           <td style="text-align: center;">TOD:PPSvalid<br>
           </td>
-          <td style="text-align: center;">0x221B<br>
+          <td style="text-align: center;">0x221C<br>
           </td>
           <td style="text-align: center;">bi<br>
           </td>
@@ -831,10 +841,10 @@ unsynchronized/synchronized with the heartbeat.&nbsp; Bits 11:0 are the injectio
         </tr><tr>
   <td style="text-align: center;">E1:EVIOstatus_<br>
   </td>
-  <td style="text-align: center;">0x211C</td>
+  <td style="text-align: center;">0x211D</td>
   <td style="text-align: center;">longin<br>
   </td>
-  <td style="vertical-align: top;">Event generator 1 EVGIO raw 
+  <td style="vertical-align: top;">Event generator 1 EVIO raw 
 status.&nbsp; The least significant bit is the state of the 
 diagnostic input.&nbsp; Bits 8 through 13 are the state of hardware 
 trigger inputs 1 through 6 (1/0, light/no light).<br>
@@ -842,56 +852,18 @@ trigger inputs 1 through 6 (1/0, light/no light).<br>
 </tr>
 <tr>
   <td style="text-align: center;">E2:EVIOstatus_</td>
-  <td style="text-align: center;">0x221C</td>
+  <td style="text-align: center;">0x221D</td>
   <td style="text-align: center;">longin<br>
   </td>
-  <td style="vertical-align: top;">Event generator 2 EVGIO raw status.</td>
+  <td style="vertical-align: top;">Event generator 2 EVIO raw status.</td>
 </tr>
 
       </tbody>
     </table>
     <br>
-The EVGIO raw status records forward link to mbbiDirect records which 
-make the individual bits available.&nbsp; The bit fields of these 
-records are:<br>
-<br>
-<table style="text-align: left; width: 400px; margin-left: 40px;" cellspacing="2" cellpadding="2" border="1">
-  <tbody>
-    <tr>
-      <td style="text-align: center;"><span style="font-weight: bold;">mbbiDirect Field</span><br>
-      </td>
-      <td style="vertical-align: middle; text-align: center;"><span style="font-weight: bold;">Description</span><br>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">B0<br>
-      </td>
-      <td style="text-align: left;">Diagnostic input<br>
-</td>
-    </tr>
-    
-    <tr>
-      <td style="text-align: center;">B4<br>
-      </td>
-      <td style="text-align: left;">Diagnostic output 0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">B5<br>
-      </td>
-      <td style="text-align: left;">Diagnostic output 1<br>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">B9:B8<br>
-      </td>
-      <td style="text-align: left;">Diagnostic output multiplexer selection </td>
-    </tr>
-    
-    
-    
-  </tbody>
-</table>
-<br>
+The EVIO raw status records forward link to mbbiDirect records with names without the trailing underscore which 
+make the individual bits available.<br>
+<br><br>
 <h2><a name="SequencerStatus"></a>Sequencer Status Input Records<br>
     </h2>
 

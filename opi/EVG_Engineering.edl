@@ -41,199 +41,6 @@ value {
 }
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 29
-y 30
-w 175
-h 79
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 29
-y 45
-w 120
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Sequence Active"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 29
-y 61
-w 120
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Seq 1"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 29
-y 77
-w 120
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Seq 1 Enabled"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 29
-y 93
-w 120
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Seq 0 Enabled"
-}
-endObjectProperties
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 155
-y 47
-w 20
-h 60
-controlPv "$(P)$(R)E1:seqStatus"
-lineColor index 14
-onColor index 15
-offColor index 3
-lineWidth 2
-numBits 4
-endObjectProperties
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 184
-y 47
-w 20
-h 60
-controlPv "$(P)$(R)E2:seqStatus"
-lineColor index 14
-onColor index 15
-offColor index 3
-lineWidth 2
-numBits 4
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 155
-y 30
-w 20
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "1"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 184
-y 30
-w 20
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "2"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 29
-y 30
-w 120
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "EVG"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
 # (Related Display)
 object relatedDisplayClass
 beginObjectProperties
@@ -452,132 +259,6 @@ useDisplayBg
 value {
   "EVG 1 refClk"
 }
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 77
-y 158
-w 110
-h 36
-
-beginGroup
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 77
-y 178
-w 110
-h 16
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 77
-y 178
-w 90
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "60 Hz Valid"
-}
-endObjectProperties
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 173
-y 178
-w 14
-h 14
-controlPv "$(P)$(R)INJ:injCycleAlign"
-lineColor index 14
-onColor index 15
-offColor index 3
-numBits 1
-shift 15
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 77
-y 158
-w 110
-h 16
-
-beginGroup
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 77
-y 158
-w 90
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "PPS Valid"
-}
-endObjectProperties
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 173
-y 158
-w 14
-h 14
-controlPv "$(P)$(R)TOD:PPSvalid"
-lineColor index 14
-onColor index 15
-offColor index 3
-numBits 1
 endObjectProperties
 
 endGroup
@@ -1098,7 +779,7 @@ major 4
 minor 0
 release 0
 x 18
-y 118
+y 144
 w 218
 h 25
 
@@ -1111,7 +792,7 @@ major 4
 minor 0
 release 0
 x 184
-y 118
+y 144
 w 52
 h 22
 
@@ -1124,7 +805,7 @@ major 4
 minor 0
 release 0
 x 184
-y 130
+y 156
 w 61
 h 10
 controlPv "$(P)$(R)E2:EVIOstatus_"
@@ -1142,7 +823,7 @@ major 4
 minor 1
 release 1
 x 185
-y 118
+y 144
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1162,7 +843,7 @@ major 4
 minor 1
 release 1
 x 205
-y 118
+y 144
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1182,7 +863,7 @@ major 4
 minor 1
 release 1
 x 225
-y 118
+y 144
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1206,7 +887,7 @@ major 4
 minor 0
 release 0
 x 114
-y 118
+y 144
 w 52
 h 22
 
@@ -1219,7 +900,7 @@ major 4
 minor 0
 release 0
 x 114
-y 130
+y 156
 w 61
 h 10
 controlPv "$(P)$(R)E1:EVIOstatus_"
@@ -1237,7 +918,7 @@ major 4
 minor 1
 release 1
 x 115
-y 118
+y 144
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1257,7 +938,7 @@ major 4
 minor 1
 release 1
 x 135
-y 118
+y 144
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1277,7 +958,7 @@ major 4
 minor 1
 release 1
 x 155
-y 118
+y 144
 w 11
 h 12
 font "helvetica-medium-r-10.0"
@@ -1301,7 +982,7 @@ major 4
 minor 1
 release 1
 x 18
-y 127
+y 153
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -1311,6 +992,379 @@ bgColor index 19
 useDisplayBg
 value {
   "Hw Trig"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 77
+y 184
+w 110
+h 36
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 77
+y 184
+w 110
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 77
+y 184
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "PPS Valid"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 173
+y 184
+w 14
+h 14
+controlPv "$(P)$(R)TOD:PPSvalid"
+lineColor index 14
+onColor index 15
+offColor index 3
+numBits 1
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 77
+y 204
+w 110
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 77
+y 204
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "60 Hz Valid"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 173
+y 204
+w 14
+h 14
+controlPv "$(P)$(R)INJ:injCycleAlign"
+lineColor index 14
+onColor index 15
+offColor index 3
+numBits 1
+shift 15
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 29
+y 30
+w 175
+h 99
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 76
+y 113
+w 110
+h 16
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 76
+y 113
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Aligned"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 172
+y 113
+w 14
+h 14
+controlPv "$(P)$(R)EVG:aligned"
+lineColor index 14
+onColor index 15
+offColor index 3
+numBits 1
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 29
+y 45
+w 120
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Sequence Active"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 29
+y 61
+w 120
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Seq 1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 29
+y 77
+w 120
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Seq 1 Enabled"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 29
+y 93
+w 120
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Seq 0 Enabled"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 155
+y 47
+w 20
+h 60
+controlPv "$(P)$(R)E1:seqStatus"
+lineColor index 14
+onColor index 15
+offColor index 3
+lineWidth 2
+numBits 4
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 184
+y 47
+w 20
+h 60
+controlPv "$(P)$(R)E2:seqStatus"
+lineColor index 14
+onColor index 15
+offColor index 3
+lineWidth 2
+numBits 4
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 155
+y 30
+w 20
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 184
+y 30
+w 20
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "2"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 29
+y 30
+w 120
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "EVG"
 }
 endObjectProperties
 

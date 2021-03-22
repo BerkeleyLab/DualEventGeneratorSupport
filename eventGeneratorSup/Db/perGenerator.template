@@ -23,10 +23,10 @@ record(calc, "$(P)$(R)E$(E):seqFinishes") {
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
 }
 
-record(longin, "$(P)$(R)E$(E):EVGIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVGIOstatus") }
-record(mbbiDirect, "$(P)$(R)E$(E):EVGIOstatus") {
-    field(DESC, "Bits of $(P)$(R)E$(E):EVGIOstatus_")
-    field(INP,  "$(P)$(R)E$(E):EVGIOstatus_ NPP")
+record(longin, "$(P)$(R)E$(E):EVIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVIOstatus") }
+record(mbbiDirect, "$(P)$(R)E$(E):EVIOstatus") {
+    field(DESC, "Bits of $(P)$(R)E$(E):EVIOstatus_")
+    field(INP,  "$(P)$(R)E$(E):EVIOstatus_ NPP")
 }
 
 record(mbbo, "$(P)$(R)E$(E):diagOut") {
