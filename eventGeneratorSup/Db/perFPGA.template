@@ -92,15 +92,15 @@ record(longin, "$(P)$(R)CmdFailedCount") {
     field(DESC, "Commands never acknowledged")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0xF005, 0)")
-    field(FLNK, "$(P)$(R)SeqConnectCount")
+    field(FLNK, "$(P)$(R)StatConnCount")
 }
-record(longin, "$(P)$(R)SeqConnectCount") {
+record(longin, "$(P)$(R)StatConnCount") {
     field(DESC, "Sequencer status connection count")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0xF006, 0)")
-    field(FLNK, "$(P)$(R)SeqReceivedCount")
+    field(FLNK, "$(P)$(R)StatRecvCount")
 }
-record(longin, "$(P)$(R)SeqReceivedCount") {
+record(longin, "$(P)$(R)StatRecvCount") {
     field(DESC, "Sequencer status packets received")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0xF007, 0)")
