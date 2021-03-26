@@ -30,7 +30,7 @@ record(calcout, "$(P)$(R)reconnChk_") {
 record(fanout, "$(P)$(R)reconnA_") {
     field(PINI, "YES")
     field(LNK1, "$(P)$(R)reconnX_")
-    field(LNK2, "$(P)$(R)INJ:extraDelay")
+    field(LNK2, "$(P)$(R)INJ:extendInterval")
     field(FLNK, "$(P)$(R)clrPowerup_")
 }
 record(event, "$(P)$(R)reconnX_") {
@@ -61,13 +61,25 @@ record(ao, "$(P)$(R)INJ:extendInterval") {
     field(PREC, "4")
     field(EGU,  "s")
     field(LINR, "SLOPE")
-    field(EOFF, "0");
-    field(ESLO, "0.001");
+    field(EOFF, "0")
+    field(ESLO, "0.001")
     field(LOPR, "0")
     field(HOPR, "20")
     field(DRVL, "0")
     field(DRVH, "20")
     info(autosaveFields_pass0, "VAL")
+}
+record(longin, "$(P)$(R)INJ:injCycleCSR") {
+    field(FLNK, "$(P)$(R)INJ:injCycleStatus")
+}
+record(mbbi, "$(P)$(R)INJ:injCycleStatus") {
+    field(DTYP, "Raw Soft Channel")
+    field(INP,  "$(P)$(R)INJ:injCycleCSR NPP MS")
+    field(NOBT, "1")
+    field(ZRVL, "0")
+    field(ZRST, "Disabled")
+    field(ONVL, "1")
+    field(ONST, "Enabled")
 }
 
 #
