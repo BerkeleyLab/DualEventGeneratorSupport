@@ -53,6 +53,12 @@ record(bo, "$(P)$(R)INJ:injCycleEnable") {
     field(OUT,  "@asyn($(PORT), 0x1F01, 0)")
     field(ZNAM, "Disable")
     field(ONAM, "Enable")
+    field(FLNK, "$(P)$(R)INJ:forcerbk_")
+}
+record(seq, "$(P)$(R)INJ:forcerbk_") {
+    field(DESC, "Force status readback")
+    field(LNK1, "$(P)$(R)sysmonTrig_.PROC")
+    field(DOL1, "0")
 }
 record(ao, "$(P)$(R)INJ:extendInterval") {
     field(DESC, "Extend injection cycle interval")

@@ -329,8 +329,9 @@ to FPGA for round trip latency measurement.&nbsp; Writing to this record
           </td>
           <td style="text-align: left;">Enable/Disable (1/0) injection
             cycle start requests.&nbsp; These requests initiate event
-            generator 1 sequence 1 if enabled, otherwise event generator
-            1 sequence 0 if enabled, otherwise they are ignored.<br>
+            generator 1 sequence 1 if that sequence is enabled.&nbsp; 
+FLNK field to INJ::forcerbk_ which in turn causes sysmonTrig_ to 
+process.<br>
           </td>
         </tr>
         <tr>
