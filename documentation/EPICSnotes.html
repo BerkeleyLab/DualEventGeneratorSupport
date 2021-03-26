@@ -818,11 +818,12 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
   </td>
 </tr>
 <tr>
-          <td style="text-align: center;">INJ:injCycleStatus</td>
+          <td style="text-align: center;">INJ:injCycleCSR</td>
           <td style="text-align: center;">0x211B </td>
           <td style="text-align: center;">longin</td>
-          <td style="text-align: left;">Injection cycle start requests
-            enabled/disabled (1/0).<br>
+          <td style="text-align: left;">Injection cycle control/status 
+register.&nbsp; The status of the least significant bit (0/1, 
+disabled/enabled) is tracked by the INJ:injCycleStatus record.<br>
           </td>
         </tr>
         <tr>
