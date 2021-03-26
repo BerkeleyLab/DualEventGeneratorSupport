@@ -72,7 +72,7 @@ record(ao, "$(P)$(R)INJ:extendInterval") {
 record(longin, "$(P)$(R)INJ:injCycleCSR") {
     field(FLNK, "$(P)$(R)INJ:injCycleStatus")
 }
-record(mbbi, "$(P)$(R)INJ:injCycleStatus") {
+record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(DTYP, "Raw Soft Channel")
     field(INP,  "$(P)$(R)INJ:injCycleCSR NPP MS")
     field(NOBT, "1")

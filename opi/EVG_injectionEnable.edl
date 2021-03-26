@@ -142,7 +142,7 @@ offLabel "Single Shot"
 3d
 useEnumNumeric
 font "helvetica-medium-r-18.0"
-visPv "$(P)$(R)INJ:injCycleStatus"
+visPv "$(P)$(R)INJ:injCycleEnabled"
 visMin "0"
 visMax "1"
 endObjectProperties

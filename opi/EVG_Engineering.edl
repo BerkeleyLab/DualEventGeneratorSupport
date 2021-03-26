@@ -1109,12 +1109,12 @@ x 173
 y 204
 w 14
 h 14
-controlPv "$(P)$(R)INJ:injCycleAlign"
+controlPv "$(P)$(R)INJ:injCycleCSR"
 lineColor index 14
 onColor index 15
 offColor index 3
 numBits 1
-shift 15
+shift 31
 endObjectProperties
 
 endGroup

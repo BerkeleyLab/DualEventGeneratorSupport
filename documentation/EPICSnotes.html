@@ -823,22 +823,13 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
           <td style="text-align: center;">longin</td>
           <td style="text-align: left;">Injection cycle control/status 
 register.&nbsp; The status of the least significant bit (0/1, 
-disabled/enabled) is tracked by the INJ:injCycleStatus record.<br>
+disabled/enabled) is tracked by the INJ:injCycleEnabled record.&nbsp; Bit 31 is 0/1 when the hardware 60 Hz 
+power line marker is invalid/valid.&nbsp; Bit 30 is 0/1 when the 
+booster/accumulator bucket alignment coincidence marker is 
+unsynchronized/synchronized with the heartbeat.&nbsp; Bits 23:8 are the injection cycle time, in milliseconds, minus two.
           </td>
         </tr>
-        <tr>
-  <td style="text-align: center;">INJ:injCycleAlign</td>
-  <td style="text-align: center;">0x221B<br>
-  </td>
-  <td style="text-align: center;">longin<br>
-  </td>
-  <td style="vertical-align: middle; text-align: left;">Injection cycle 
-alignment status.&nbsp; Bit 15 is 0/1 when the hardware&nbsp; 60 Hz 
-power line marker is invalid/valid.&nbsp; Bit 14 is 0/1 when the 
-booster/accumulator bucket alignment coincidence marker is 
-unsynchronized/synchronized with the heartbeat.&nbsp; Bits 11:0 are the injection cycle time, in milliseconds, minus two.<br>
-  </td>
-</tr>
+        
 <tr>
           <td style="text-align: center;">TOD:PPSvalid<br>
           </td>
