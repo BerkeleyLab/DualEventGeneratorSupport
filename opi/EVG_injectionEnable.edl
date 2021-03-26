@@ -4,7 +4,7 @@ major 4
 minor 0
 release 1
 x 284
-y 282
+y 304
 w 300
 h 170
 font "helvetica-medium-r-18.0"
@@ -65,7 +65,7 @@ x 222
 y 61
 w 20
 h 20
-controlPv "$(P)$(R)INJ:injCycleStatus"
+controlPv "$(P)$(R)INJ:injCycleEnabled"
 lineColor index 14
 onColor index 15
 offColor index 3
