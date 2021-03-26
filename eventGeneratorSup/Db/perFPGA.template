@@ -30,6 +30,7 @@ record(calcout, "$(P)$(R)reconnChk_") {
 record(fanout, "$(P)$(R)reconnA_") {
     field(PINI, "YES")
     field(LNK1, "$(P)$(R)reconnX_")
+    field(LNK2, "$(P)$(R)INJ:extraDelay")
     field(FLNK, "$(P)$(R)clrPowerup_")
 }
 record(event, "$(P)$(R)reconnX_") {
@@ -52,6 +53,21 @@ record(bo, "$(P)$(R)INJ:injCycleEnable") {
     field(OUT,  "@asyn($(PORT), 0x1F01, 0)")
     field(ZNAM, "Disable")
     field(ONAM, "Enable")
+}
+record(ao, "$(P)$(R)INJ:extendInterval") {
+    field(DESC, "Extend injection cycle interval")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT), 0x1F05, 0)")
+    field(PREC, "4")
+    field(EGU,  "s")
+    field(LINR, "SLOPE")
+    field(EOFF, "0");
+    field(ESLO, "0.001");
+    field(LOPR, "0")
+    field(HOPR, "20")
+    field(DRVL, "0")
+    field(DRVH, "20")
+    info(autosaveFields_pass0, "VAL")
 }
 
 #
