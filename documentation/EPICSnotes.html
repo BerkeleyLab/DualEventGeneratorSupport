@@ -1009,13 +1009,12 @@ transmitted to the IOC.&nbsp; The
     name in the eventGeneratorConfigure command and <span style="font-style: italic;">xxx</span> is a numeric value as
     described in the following table.<br>
     &nbsp; <br>
-    <table style=" text-align: left; margin-left: auto; margin-right:
-      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span style="font-weight: bold;">Name</span><br>
+          <td style="text-align: center;"><span style="font-weight: bold;">Name</span><br>
           </td>
-          <th style="text-align: center;" align="center" valign="middle">ASYN<br>
+          <th style="text-align: center;">ASYN<br>
             Subaddress<br>
           </th>
           <th style="vertical-align: middle; text-align: center;">Description<br>
@@ -1024,20 +1023,20 @@ transmitted to the IOC.&nbsp; The
         <tr>
           <td align="center" valign="middle">Cmd<i>x</i>RetryCount<br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0xF00<i>x</i><br>
+          <td style="text-align: center;">0xF00<i>x</i><br>
           </td>
-          <td align="left" valign="middle">Number of commands sent to
+          <td style="text-align: left;">Number of commands sent to
             the FPGA that were acknowledged after <i>x</i> retries,
             where <i>x</i> ranges from 0 to 4, inclusive.&nbsp;
             Typically configured with SCAN="10 second". </td>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span style="font-style: italic;"><span style="font-style:
+          <td style="text-align: center;"><span style="font-style: italic;"><span style="font-style:
                 italic;"></span></span>CmdFailedCount<span style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: center;" align="center" valign="middle">0xF005<span style="font-style: italic;"></span><br>
+          <td style="text-align: center;">0xF005<span style="font-style: italic;"></span><br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Number
+          <td style="text-align: left;">Number
 
 
 
@@ -1052,15 +1051,15 @@ transmitted to the IOC.&nbsp; The
             second". </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">SeqConnectCount<br>
+          <td style="text-align: center;">StatConnCount<br>
           </td>
-          <td align="center" valign="middle">0xF006<span style="font-style: italic;"></span></td>
-          <td align="left" valign="middle">Number of sequence status
+          <td style="text-align: center;">0xF006<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">Number of sequence status
             subscription successes.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle"><span style="caret-color:
+          <td style="text-align: center;"><span style="caret-color:
               rgba(0, 0, 0, 0.870588); color: rgba(0, 0, 0, 0.870588);
               font-family: &quot;Source Sans Pro&quot;, sans-serif;
               font-size: 16px; font-style: normal; font-variant-caps:
@@ -1070,11 +1069,27 @@ transmitted to the IOC.&nbsp; The
               word-spacing: 0px; -webkit-text-size-adjust: auto;
               -webkit-text-stroke-width: 0px; background-color: rgb(251,
               239, 231); text-decoration: none; display: inline
-              !important; float: none;"><span class="Apple-converted-space"></span></span>SeqMissedCount</td>
-          <td align="center" valign="middle">0xF007<span style="font-style: italic;"></span></td>
-          <td align="left" valign="middle">Number of sequence status
-            monitoring packets dropped.</td>
-        </tr>
+              !important; float: none;"><span class="Apple-converted-space"></span></span>StatRecvCount</td>
+          <td style="text-align: center;">0xF007<span style="font-style: italic;"></span></td>
+          <td style="text-align: left;">Number of sequence status
+            monitoring packets received.</td>
+        </tr><tr>
+  <td style="text-align: center;"><span style="caret-color:
+              rgba(0, 0, 0, 0.870588); color: rgba(0, 0, 0, 0.870588);
+              font-family: &quot;Source Sans Pro&quot;, sans-serif;
+              font-size: 16px; font-style: normal; font-variant-caps:
+              normal; font-weight: normal; letter-spacing: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-size-adjust: auto;
+              -webkit-text-stroke-width: 0px; background-color: rgb(251,
+              239, 231); text-decoration: none; display: inline
+              !important; float: none;"><span class="Apple-converted-space"></span></span>StatMissedCount</td>
+  <td style="text-align: center;">0xF008<span style="font-style: italic;"></span></td>
+  <td style="text-align: left;">Number of sequence status
+            monitoring packets lost in transit.</td>
+</tr>
+
       </tbody>
     </table>
     <br>
@@ -1110,5 +1125,6 @@ transmitted to the IOC.&nbsp; The
     <h2></h2>
     <p> </p>
   
+
 
 </body></html>
