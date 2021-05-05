@@ -98,7 +98,7 @@ else:
 oldSequenceNumber = (seqStatus.get() >> 8) & 0xFF
 seqStatus.add_callback(seqStatusCallback)
 
-next = 0.0;
+next = 0.0
 if args.cycles > 0:
     while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq0Count = seqCount[0]
