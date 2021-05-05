@@ -140,7 +140,7 @@ record(longin, "$(P)$(R)StatRecvCount") {
     field(INP,  "@asyn($(PORT), 0xF007, 0)")
     field(FLNK, "$(P)$(R)SeqMissedCount")
 }
-record(longin, "$(P)$(R)StatMissedCount") {
+record(longin, "$(P)$(R)SeqMissedCount") {
     field(DESC, "Sequencer status packets dropped")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0xF008, 0)")
