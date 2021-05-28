@@ -19,107 +19,107 @@ both event generator status publisher and event system server.<br>
       shared between the FPGA software and firmware.</p>
 
     
-<table cellspacing="2" cellpadding="2" border="1" width="80%">
+<table width="80%" cellspacing="2" cellpadding="2" border="1">
 
       <tbody>
         <tr>
-          <td align="center" valign="middle">Parameter<br>
+          <td valign="middle" align="center">Parameter<br>
           </td>
-          <td align="center" valign="middle">Value<br>
+          <td valign="middle" align="center">Value<br>
           </td>
-          <td align="center" valign="middle">Description<br>
+          <td valign="middle" align="center">Description<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_MINIMUM_INJECTION_CYCLE_MS<br>
+          <td valign="middle" align="left">CFG_MINIMUM_INJECTION_CYCLE_MS<br>
           </td>
-          <td align="center" valign="middle">990<br>
+          <td valign="middle" align="center">990<br>
           </td>
-          <td align="left" valign="middle">The lower limit on the time,
+          <td valign="middle" align="left">The lower limit on the time,
             in milliseconds between injection cycle requests.&nbsp; The
             injection cycle time is specified by the first line of the<a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_MAXIMUM_INJECTION_CYCLE_MS<br>
+          <td valign="middle" align="left">CFG_MAXIMUM_INJECTION_CYCLE_MS<br>
           </td>
-          <td align="center" valign="middle">2010<br>
+          <td valign="middle" align="center">2010<br>
           </td>
-          <td align="left" valign="middle">The upper limit on the time,
+          <td valign="middle" align="left">The upper limit on the time,
             in milliseconds between injection cycle requests.</td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_HARDWARE_TRIGGER_COUNT<br>
+          <td valign="middle" align="left">CFG_HARDWARE_TRIGGER_COUNT<br>
           </td>
-          <td align="center" valign="middle">6<br>
+          <td valign="middle" align="center">6<br>
           </td>
-          <td align="left" valign="middle">The number of hardware
+          <td valign="middle" align="left">The number of hardware
             triggers.<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_DIAGNOSTIC_INPUT_COUNT<br>
+          <td valign="middle" align="left">CFG_DIAGNOSTIC_INPUT_COUNT<br>
           </td>
-          <td align="center" valign="middle">1<br>
+          <td valign="middle" align="center">1<br>
           </td>
-          <td align="left" valign="middle">The number of diagnostic
+          <td valign="middle" align="left">The number of diagnostic
             inputs.<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_DIAGNOSTIC_OUTPUT_COUNT<br>
+          <td valign="middle" align="left">CFG_DIAGNOSTIC_OUTPUT_COUNT<br>
           </td>
-          <td align="center" valign="middle">1<br>
+          <td valign="middle" align="center">1<br>
           </td>
-          <td align="left" valign="middle">The number of diagnostic
+          <td valign="middle" align="left">The number of diagnostic
             outputs.</td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_SEQUENCE_RAM_CAPACITY<br>
+          <td valign="middle" align="left">CFG_SEQUENCE_RAM_CAPACITY<br>
           </td>
-          <td align="center" valign="middle">1024<br>
+          <td valign="middle" align="center">1024<br>
           </td>
-          <td align="left" valign="middle">The size of the event
+          <td valign="middle" align="left">The size of the event
             sequence RAM.&nbsp; Long intervals between events consume
             more than one entry so the actual number of events in a
             sequence may be less than this value.<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_EVG1_CLK_PER_RF_COINCIDENCE<br>
+          <td valign="middle" align="left">CFG_EVG1_CLK_PER_RF_COINCIDENCE<br>
           </td>
-          <td align="center" valign="middle">608<br>
+          <td valign="middle" align="center">608<br>
           </td>
-          <td align="left" valign="middle">The number of cycles of the
+          <td valign="middle" align="left">The number of cycles of the
             first RF reference clock to return to the same phase offset
             relative to the second RF reference clock.<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_EVG2_CLK_PER_RF_COINCIDENCE<br>
+          <td valign="middle" align="left">CFG_EVG2_CLK_PER_RF_COINCIDENCE<br>
           </td>
-          <td align="center" valign="middle">609<br>
+          <td valign="middle" align="center">609<br>
           </td>
-          <td align="left" valign="middle">The number of cycles of the
+          <td valign="middle" align="left">The number of cycles of the
             second RF reference clock to return to the same phase offset
             relative to the first RF reference clock.</td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_EVG1_CLK_PER_HEARTBEAT<br>
+          <td valign="middle" align="left">CFG_EVG1_CLK_PER_HEARTBEAT<br>
           </td>
-          <td align="center" valign="middle">121296000<br>
+          <td valign="middle" align="center">121296000<br>
           </td>
-          <td align="left" valign="middle">The number of cycles of the
+          <td valign="middle" align="left">The number of cycles of the
             first RF reference clock between heartbeat events on the
             first event generator link.<br>
           </td>
         </tr>
         <tr>
-          <td align="left" valign="middle">CFG_EVG2_CLK_PER_HEARTBEAT<br>
+          <td valign="middle" align="left">CFG_EVG2_CLK_PER_HEARTBEAT<br>
           </td>
-          <td align="center" valign="middle">124640000<br>
+          <td valign="middle" align="center">124640000<br>
           </td>
-          <td align="left" valign="middle">The number of cycles of the
+          <td valign="middle" align="left">The number of cycles of the
             second RF reference clock between heartbeat events on the
             second event generator link.</td>
         </tr>
@@ -410,9 +410,9 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
 
       <tbody>
         <tr>
-          <td align="center" valign="top"><b>Name</b><br>
+          <td valign="top" align="center"><b>Name</b><br>
           </td>
-          <td align="center" valign="top"><b>Description</b><br>
+          <td valign="top" align="center"><b>Description</b><br>
           </td>
         </tr>
         <tr>
@@ -459,15 +459,15 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;" align="center" valign="middle">FMC1_EEPROM.bin<br>
+          <td style="vertical-align: top;" valign="middle" align="center">FMC1_EEPROM.bin<br>
           </td>
-          <td style="vertical-align: top;" align="left" valign="middle">The
+          <td style="vertical-align: top;" valign="middle" align="left">The
             IPMI EEPROM of the card installed in the first FMC slot.<br>
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;" align="center" valign="middle">FMC2_EEPROM.bin</td>
-          <td style="vertical-align: top;" align="left" valign="middle">The
+          <td style="vertical-align: top;" valign="middle" align="center">FMC2_EEPROM.bin</td>
+          <td style="vertical-align: top;" valign="middle" align="left">The
             IPMI EEPROM of the card installed in the second FMC slot.</td>
         </tr>
       </tbody>
@@ -624,8 +624,8 @@ while a sequence is being displayed.</li>
 <li>Bit 13 — Enable log message for each EVIO I<sup>2</sup>C operation.</li>
 <li>Bit 14 — Enable log messages for each EVIO I<sup>2</sup>C register access.</li>
 <li>Bit 15 — Scan the I<sup>2</sup>C buses and report the devices attached to each.</li>
-<li>Bit 16 — Force the LCD display out of warning mode (like
-        pressing and holding Display button).</li>
+<li>Bit 16 — Simulate a press and release of the front panel Display button).&nbsp; Clears automatically.<br>
+</li>
 
 
   <li>Bit 24 — Dump the LCD screen contents to the console serial
