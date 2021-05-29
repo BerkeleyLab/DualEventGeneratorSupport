@@ -68,10 +68,11 @@ frequencies in use.&nbsp; The generators are locked to a common base and
         enables the display for another twenty minutes.</li><li>If the display is showing a warning message pressing and holding 
 this button for one second will clear the warning message and restore 
 the display to its current page.</li>
-  <li>If the application supports more than one page of information each momentary press cycles to the next display page.</li>
+  <li>Each momentary press cycles to the next display page.</li>
 <li>Holding 
 this button down then pressing the “Reboot/Recovery” button 
-will cause the DEVG_B.bin file to be used in place of the default DEVG_A.bin file.</li>
+for&nbsp; ore than one second, as described below, will cause the 
+DEVG_B.bin file to be used in place of the default DEVG_A.bin file.</li>
 
 </ol>
 
@@ -81,19 +82,20 @@ will cause the DEVG_B.bin file to be used in place of the default DEVG_A.bin fil
 
     
 <p>Pressing this button for more than one second causes the FPGA to 
-perform a power-on reset.&nbsp; If the switch is held down during a 
-power-up operation the FPGA will enter “recovery” mode where the 
+perform a power-on reset.&nbsp; If this switch is held down while the 
+FPGA is starting up after a power cycle or reset the FPGA will enter 
+“recovery” mode where the 
 Ethernet MAC address and IPv4 address are set to default values 
 (AA:4C:42:4E:4C:04 and 192.168.1.129/24, respectively).<br>
 </p>
 
-<h4><span style="color: rgb(0, 0, 0);"><a name="FrontPanelDisplay"></a>Front Panel Display</span></h4>
+<h4><span style="color: rgb(0, 0, 0);"><a name="FrontPanelDisplay"></a>Front Panel Display</span></h4>&nbsp;
 
 
 
     
 
-<span style="color: rgb(0, 0, 0);">During normal operation the front panel display contains information as      shown in the image below.<br>
+<span style="color: rgb(0, 0, 0);">On startup the front panel display contains information as      shown in the image below.<br>
   <br>
 </span>
 <div style="margin-left: 80px;"><img src="Display.png" alt="" style=" width: 320px; height: 240px;"></div>
@@ -120,9 +122,20 @@ temperature of the FPGA and the warmest receiver and transmitter module on each 
  network address is normally shown as white text on a black background.&nbsp;
  A network address shown as black text on a white background indicates 
 the the unit is in “recovery” mode.<br>
-  </li><li>The bottom line of the display shows the date and time (UTC).<br>
+  </li><li>The bottom line of the display shows the date and time (UTC).</li></ol>
+<p>Pressing and releasing the “Display” button will cycle to the next display in the sequence.&nbsp; The displays are:<br>
+</p>
+<ul>
+  <li>The startup display showing information as described above.<br>
   </li>
+  <li>The event codes being emitted by event generator 1.</li>
+  <li>The event codes being emitted by event generator 2.<br>
+  </li>
+</ul>
+<ol>
+
 </ol>
+
 
 <h4>Special displays</h4>
 
@@ -370,6 +383,7 @@ The console serial ports are set to 115200-8N1.&nbsp; To view messages sent to t
 <h2></h2>
     <p> </p>
   
+
 
 
 
