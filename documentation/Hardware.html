@@ -84,7 +84,7 @@ DEVG_B.bin file to be used in place of the default DEVG_A.bin file.</li>
 <p>Pressing this button for more than one second causes the FPGA to 
 perform a power-on reset.&nbsp; If this switch is held down while the 
 FPGA is starting up after a power cycle or reset the FPGA will enter 
-“recovery” mode in which the 
+“recovery” mode where the 
 Ethernet MAC address and IPv4 address are set to default values 
 (AA:4C:42:4E:4C:04 and 192.168.1.129/24, respectively).<br>
 </p>
@@ -109,19 +109,21 @@ shows the status of the hardware trigger inputs with trigger input 1 at
 the left side of the row of indicators and trigger input 6 at the 
 right.&nbsp; A green block indicates the presence of light at the 
 trigger input.</li>
-<li>The fifth line of the display shows the word 'ALIGNED' to indicate 
+<li>The fifth line of the display shows the frequencies, in MHz, of the input reference clocks.</li>
+<li>The sixth line of the display shows the word 'ALIGNED' to indicate 
 that both event generators are emitting heartbeat events aligned to the 
 point at which the RF references are in coincidence and shows the word 
 'MISALIGNED' if RF coincidence can not be measured or the coincidence 
 point has shifted.<br>
 </li>
+
 <li>The 'Markers' region at the lower left side of the display shows the status of the timing marker inputs.<br>
       </li><li>The 'Temperature' region shows a bar indicator of the 
 temperature of the FPGA and the warmest receiver and transmitter module on each of the FMC cards.<br>
 </li><li>The penultimate line of the display shows the IPv4 network address of the event generator.&nbsp; The
  network address is normally shown as white text on a black background.&nbsp;
  A network address shown as black text on a white background indicates 
-that the unit is in “recovery” mode.<br>
+th the unit is in “recovery” mode.<br>
   </li><li>The bottom line of the display shows the date and time (UTC).</li></ol>
 <p>Pressing and releasing the “Display” button will cycle to the next page in the sequence.&nbsp; The page contents are:<br>
 </p>
