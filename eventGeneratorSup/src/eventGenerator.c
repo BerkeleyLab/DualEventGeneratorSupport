@@ -398,9 +398,9 @@ uint32DigitalRead(void *pvt, asynUser *pasynUser, epicsUInt32 *value,
     asynStatus status;
     epicsInt32 v = 0;
 
-    if ((status = int32Read(pvt, pasynUser, &v)) != asynSuccess)
-        return status;
-    *value = v & mask;
+    if ((status = int32Read(pvt, pasynUser, &v)) == asynSuccess) {
+        *value = v & mask;
+    }
     return status;
 }
 static asynUInt32Digital uint32DigitalMethods = { uint32DigitalWrite,
