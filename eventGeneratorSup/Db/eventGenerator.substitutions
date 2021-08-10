@@ -88,7 +88,7 @@ file "perSysmonAI.template"
  { \$(P),\$(R),\$(PORT),      "E1:Tx1:Vcc", 0x2107,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 supply voltage" }
  { \$(P),\$(R),\$(PORT),     "E1:Tx1:temp", 0x2407,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 temperature" }
  { \$(P),\$(R),\$(PORT),      "E1:Rx1:Vcc", 0x2108,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 1 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Rx1:temp", 0x2408,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx1:temp", 0x2408,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 1 temperature" }
 
  { \$(P),\$(R),\$(PORT),      "E1:Tx2:Vcc", 0x2109,        "V",         1e-4,      0,    4,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 supply voltage" }
  { \$(P),\$(R),\$(PORT),     "E1:Tx2:temp", 0x2409,"degrees C",            1,      0,    4,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 temperature" }
