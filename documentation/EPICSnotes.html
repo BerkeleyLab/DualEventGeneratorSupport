@@ -110,7 +110,7 @@ injection cycle is not held off indefinitely.<br>
           </td>
           <td style="text-align: center;" align="center">0x3000<br>
           </td>
-          <td style="text-align: left;" align="left" valign="middle">Event
+          <td style="text-align: left;" valign="middle" align="left">Event
 
 
 
@@ -136,7 +136,7 @@ injection cycle is not held off indefinitely.<br>
         <tr>
           <td style="text-align: center;" align="center">E1:SEQ1</td>
           <td style="text-align: center;" align="center">0x3001</td>
-          <td style="text-align: left;" align="left" valign="middle">Event
+          <td style="text-align: left;" valign="middle" align="left">Event
 
 
 
@@ -159,18 +159,18 @@ injection cycle is not held off indefinitely.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="top">E2:SEQ0</td>
-          <td align="center" valign="top">0x3002<br>
+          <td valign="top" align="center">E2:SEQ0</td>
+          <td valign="top" align="center">0x3002<br>
           </td>
-          <td align="left" valign="middle">Event generator 2, sequence
+          <td valign="middle" align="left">Event generator 2, sequence
             0.&nbsp; This is the sequence used for AR/SR swapout.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="top">E2:SEQ1</td>
-          <td align="center" valign="top">0x3003<br>
+          <td valign="top" align="center">E2:SEQ1</td>
+          <td valign="top" align="center">0x3003<br>
           </td>
-          <td align="left" valign="middle">Event generator 2, sequence
+          <td valign="middle" align="left">Event generator 2, sequence
             1.&nbsp; This sequence is not normally used.<br>
           </td>
         </tr>
@@ -827,19 +827,22 @@ register.&nbsp; The status of the least significant bit (0/1,
 disabled/enabled) is tracked by the INJ:injCycleEnabled record.&nbsp; Bit 31 is 0/1 when the hardware 60 Hz 
 power line marker is invalid/valid.&nbsp; Bit 30 is 0/1 when the 
 booster/accumulator bucket alignment coincidence marker is 
-unsynchronized/synchronized with the heartbeat.&nbsp; Bits 23:8 are the injection cycle time, in milliseconds, minus two.
-          </td>
+unsynchronized/synchronized with the heartbeat.&nbsp; Bits 23:8 are the injection cycle time, in milliseconds, minus two. <br>
+</td>
         </tr>
         
 <tr>
-          <td style="text-align: center;">TOD:PPSvalid<br>
+          <td style="text-align: center;">TOD:Status<br>
           </td>
           <td style="text-align: center;">0x221C<br>
           </td>
-          <td style="text-align: center;">bi<br>
+          <td style="text-align: center;">longin<br>
           </td>
-          <td style="text-align: left;">Is hardware pulse per second
-            signal present?<br>
+          <td style="text-align: left;">Status of time of day 
+source.&nbsp; Bit 1 is 0/1 when the time of day seconds value is 
+invalid/valid.&nbsp; Bit 0 is 0/1 when the pulse per second signal is 
+invalid/valid.&nbsp; The state of the time of day state machine is in 
+the upper 16 bits.6<br>
           </td>
         </tr><tr>
   <td style="text-align: center;">E1:EVIOstatus_<br>
@@ -888,42 +891,42 @@ transmitted to the IOC.&nbsp; The
       auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
       <tbody>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle"><span style="font-weight: bold;">Bit</span><br>
+          <td style="text-align: center;" valign="middle" align="center"><span style="font-weight: bold;">Bit</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
         </tr>
         <tr>
-          <td style="text-align: center;" align="center" valign="middle">0</td>
-          <td style="text-align: left;" align="left" valign="middle">Set
+          <td style="text-align: center;" valign="middle" align="center">0</td>
+          <td style="text-align: left;" valign="middle" align="left">Set
             when sequence 0 (the default sequence), is enabled.<br>
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: middle; text-align: center;" align="center" valign="middle">1</td>
-          <td style="text-align: left;" align="left" valign="middle">Set
+          <td style="vertical-align: middle; text-align: center;" valign="middle" align="center">1</td>
+          <td style="text-align: left;" valign="middle" align="left">Set
             when sequence 1 is enabled.&nbsp; This sequence is
             automatically disabled after it has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">2<br>
+          <td valign="middle" align="center">2<br>
           </td>
-          <td align="left" valign="middle">The currently active, or most
+          <td valign="middle" align="left">The currently active, or most
             recently completed, sequence.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">3<br>
+          <td valign="middle" align="center">3<br>
           </td>
-          <td align="left" valign="middle">Set when event generator is
+          <td valign="middle" align="left">Set when event generator is
             emitting a sequence.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">4<br>
+          <td valign="middle" align="center">4<br>
           </td>
-          <td align="left" valign="middle"><a name="PrecompletionStatus"></a>Set
+          <td valign="middle" align="left"><a name="PrecompletionStatus"></a>Set
 
             when event generator begins emitting a sequence.&nbsp;
             Cleared when event generator emits the event code specified
@@ -932,25 +935,25 @@ transmitted to the IOC.&nbsp; The
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">15–8<br>
+          <td valign="middle" align="center">15–8<br>
           </td>
-          <td align="left" valign="middle">Incremented each time a
+          <td valign="middle" align="left">Incremented each time a
             sequence is triggered.&nbsp; Can be used to unambiguously
             detect that a sequence has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">23–16<br>
+          <td valign="middle" align="center">23–16<br>
           </td>
-          <td align="left" valign="middle">Incremented each time a
+          <td valign="middle" align="left">Incremented each time a
             sequence is trigger request is ignored because it arrived
             while a sequence was already active.&nbsp; Can be used to
             unambiguously detect sequence overruns. </td>
         </tr>
         <tr>
-          <td align="center" valign="middle">28–24<br>
+          <td valign="middle" align="center">28–24<br>
           </td>
-          <td align="left" valign="middle">The number of bits in the
+          <td valign="middle" align="left">The number of bits in the
             sequence generator memory address.<br>
           </td>
         </tr>
@@ -1021,7 +1024,7 @@ transmitted to the IOC.&nbsp; The
           </th>
         </tr>
         <tr>
-          <td align="center" valign="middle">Cmd<i>x</i>RetryCount<br>
+          <td valign="middle" align="center">Cmd<i>x</i>RetryCount<br>
           </td>
           <td style="text-align: center;">0xF00<i>x</i><br>
           </td>
@@ -1125,6 +1128,7 @@ transmitted to the IOC.&nbsp; The
     <h2></h2>
     <p> </p>
   
+
 
 
 </body></html>

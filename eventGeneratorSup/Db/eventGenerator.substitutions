@@ -136,6 +136,7 @@ file "perSysmonLI.template"
  { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x2117, "counts", "EVG2 refClk sampled by EVG 1 refClk" }
  { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x2118, "counts", "EVG2 txClk sampled by EVG 1 refClk" }
  { \$(P),\$(R),\$(PORT),    "INJ:injCycleCSR", 0x201B,       "", "Injection sequence CSR" }
+ { \$(P),\$(R),\$(PORT),         "TOD:Status", 0x201C,       "", "TOD valid 1:Seconds 0:PPS" }
  { \$(P),\$(R),\$(PORT),    "E1:EVIOstatus_",  0x211D,       "", "EVG 1 raw status" }
  { \$(P),\$(R),\$(PORT),    "E2:EVIOstatus_",  0x221D,       "", "EVG 2 raw status" }
 }
@@ -144,5 +145,4 @@ file "perSysmonBI.template"
 { pattern
 {     P     R,    PORT,          NAME,          A,        ZNAM,      ONAM,       ZSV,        OSV,         DESC }
  { \$(P),\$(R),\$(PORT), "EVG:aligned",    0x211A,"Misaligned", "Aligned",   "MAJOR", "NO_ALARM", "Are generators aligned" }
- { \$(P),\$(R),\$(PORT), "TOD:PPSvalid",   0x221C,   "Invalid",   "Valid",   "MAJOR", "NO_ALARM", "Is PPS signal valid" }
 }
