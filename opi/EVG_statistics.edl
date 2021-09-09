@@ -167,9 +167,9 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 19
+x 9
 y 70
-w 180
+w 190
 h 187
 
 beginGroup
@@ -662,9 +662,9 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 19
+x 9
 y 240
-w 180
+w 190
 h 17
 
 beginGroup
@@ -699,9 +699,9 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 19
+x 9
 y 240
-w 90
+w 100
 h 17
 font "helvetica-medium-r-14.0"
 fontAlign "right"
