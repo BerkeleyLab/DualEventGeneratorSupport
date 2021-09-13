@@ -44,8 +44,10 @@ present an internal 60 Hz clock is used instead to ensure that the
 injection cycle is not held off indefinitely.<br>
     <br>
     The second event generator, EVG2, drives the ALS accumulator and
-    storage rings and their associated transport lines.&nbsp; Sequences
-    are triggered by the timing IOC when a swap operation is desired.<br>
+    storage rings and their associated transport lines.&nbsp; Sequence 
+trigger requests from the IOC are delayed until the next coincidence 
+between the accumulator and storage rings and then further delayed by 
+the value of the <a moz-do-not-send="true" href="#swapoutTrigger">swapoutTrigger</a> record.<br>
     <br>
     <p></p>
     <h1>Database Development</h1>
@@ -335,18 +337,19 @@ process.<br>
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">swapoutTrigger<br>
+          <td style="text-align: center;"><a name="swapoutTrigger"></a>swapoutTrigger<br>
           </td>
           <td style="text-align: center;">0x1F02<br>
           </td>
           <td style="text-align: center;">longout<br>
           </td>
           <td style="text-align: left;">Generate a swapout cycle
-            start request.&nbsp; These requests initiate event generator
+            start request.&nbsp; These requests initiate an event 
+generator
             2 sequence 1 if enabled, otherwise event generator 2
-            sequence 0 if enabled, otherwise they are ignored.&nbsp; 
-This record is a longout rather than a binary-out in case it turns out 
-that different styles of swapout are needed.<br>
+            sequence 0 if enabled, otherwise they are ignored.&nbsp; The
+ sequence is delayed until the next AR/SR coincidence and then further 
+by the number of event generator 2 clocks specified by this record.<br>
 </td>
         </tr><tr>
   <td style="text-align: center;">MGT:Tx:realign<br>
@@ -1128,6 +1131,7 @@ transmitted to the IOC.&nbsp; The
     <h2></h2>
     <p> </p>
   
+
 
 
 
