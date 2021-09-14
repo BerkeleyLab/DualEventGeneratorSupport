@@ -139,6 +139,7 @@ file "perSysmonLI.template"
  { \$(P),\$(R),\$(PORT),         "TOD:Status", 0x201C,       "", "TOD valid 1:Seconds 0:PPS" }
  { \$(P),\$(R),\$(PORT),    "E1:EVIOstatus_",  0x211D,       "", "EVG 1 raw status" }
  { \$(P),\$(R),\$(PORT),    "E2:EVIOstatus_",  0x221D,       "", "EVG 2 raw status" }
+ { \$(P),\$(R),\$(PORT),    "swapoutstatus_",  0x201E,       "", "Swapout control status register" }
 }
 
 file "perSysmonBI.template"
