@@ -12,7 +12,7 @@ include $(TOP)/configure/CONFIG
 # databases, templates, substitutions like this
 DB += shadowEVG.db
 DB_INSTALLS += $(ASYN)/db/asynRecord.db
-DB_INSTALLS += $(AUTOSAVE)/asApp/Db/save_restoreStatus.db
+DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 DB_INSTALLS += $(IOCEXIT)/db/iocExit.db
 
 #----------------------------------------------------
