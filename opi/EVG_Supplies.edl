@@ -6,7 +6,7 @@ release 1
 x 400
 y 244
 w 350
-h 310
+h 130
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
