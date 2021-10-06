@@ -98,6 +98,26 @@ endGroup
 
 endObjectProperties
 
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 4
+w 450
+h 28
+font "helvetica-medium-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "$(P)$(R) Firefly Modules"
+}
+endObjectProperties
+
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -105,9 +125,9 @@ major 4
 minor 0
 release 0
 x 0
-y 4
-w 450
-h 297
+y 54
+w 435
+h 247
 
 beginGroup
 
@@ -138,6 +158,7 @@ controlPv "$(P)$(R)E2:Rx1:lowPower"
 lineColor index 14
 onColor index 20
 offColor index 3
+endian "little"
 numBits 12
 endObjectProperties
 
@@ -253,6 +274,7 @@ controlPv "$(P)$(R)E2:Rx2:lowPower"
 lineColor index 14
 onColor index 20
 offColor index 3
+endian "little"
 numBits 12
 endObjectProperties
 
@@ -914,6 +936,7 @@ controlPv "$(P)$(R)E2:Rx3:lowPower"
 lineColor index 14
 onColor index 20
 offColor index 3
+endian "little"
 numBits 12
 endObjectProperties
 
@@ -1009,9 +1032,9 @@ major 4
 minor 0
 release 0
 x 0
-y 4
-w 450
-h 167
+y 54
+w 435
+h 117
 
 beginGroup
 
@@ -1042,6 +1065,7 @@ controlPv "$(P)$(R)E1:Rx1:lowPower"
 lineColor index 14
 onColor index 20
 offColor index 3
+endian "little"
 numBits 12
 endObjectProperties
 
@@ -1157,6 +1181,7 @@ controlPv "$(P)$(R)E1:Rx2:lowPower"
 lineColor index 14
 onColor index 20
 offColor index 3
+endian "little"
 numBits 12
 endObjectProperties
 
@@ -1272,6 +1297,7 @@ controlPv "$(P)$(R)E1:Rx3:lowPower"
 lineColor index 14
 onColor index 20
 offColor index 3
+endian "little"
 numBits 12
 endObjectProperties
 
@@ -1904,26 +1930,6 @@ endObjectProperties
 
 endGroup
 
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 0
-y 4
-w 450
-h 28
-font "helvetica-medium-r-18.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "$(P)$(R) Firefly Modules"
-}
 endObjectProperties
 
 endGroup
