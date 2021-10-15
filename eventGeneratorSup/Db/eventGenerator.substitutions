@@ -86,34 +86,34 @@ file "perSysmonAI.template"
  { \$(P),\$(R),\$(PORT),      "Marble:Vin", 0x2206,        "V",       5.0e-4,      0,    3,    0,    20,     11,  11.25,  12.75,     13, MAJOR, MINOR, MINOR, MAJOR, "Board supply voltage" }
 
  { \$(P),\$(R),\$(PORT),      "E1:Tx1:Vcc", 0x2107,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Tx1:temp", 0x2407,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Tx1:temp", 0x2407,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 temperature" }
  { \$(P),\$(R),\$(PORT),      "E1:Rx1:Vcc", 0x2108,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 1 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Rx1:temp", 0x2408,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx1:temp", 0x2408,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 1 temperature" }
 
  { \$(P),\$(R),\$(PORT),      "E1:Tx2:Vcc", 0x2109,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Tx2:temp", 0x2409,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Tx2:temp", 0x2409,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 2 temperature" }
  { \$(P),\$(R),\$(PORT),      "E1:Rx2:Vcc", 0x210A,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 2 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Rx2:temp", 0x240A,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 2 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx2:temp", 0x240A,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 2 temperature" }
 
  { \$(P),\$(R),\$(PORT),      "E1:Tx3:Vcc", 0x210B,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 3 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Tx3:temp", 0x240B,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 3 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Tx3:temp", 0x240B,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 3 temperature" }
  { \$(P),\$(R),\$(PORT),      "E1:Rx3:Vcc", 0x210C,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 3 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E1:Rx3:temp", 0x240C,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 3 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E1:Rx3:temp", 0x240C,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Rx 3 temperature" }
 
  { \$(P),\$(R),\$(PORT),      "E2:Tx1:Vcc", 0x210D,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 1 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E2:Tx1:temp", 0x240D,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E2:Tx1:temp", 0x240D,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 1 temperature" }
  { \$(P),\$(R),\$(PORT),      "E2:Rx1:Vcc", 0x210E,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E2:Rx1:temp", 0x240E,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E2:Rx1:temp", 0x240E,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 1 temperature" }
 
  { \$(P),\$(R),\$(PORT),      "E2:Tx2:Vcc", 0x210F,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 2 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E2:Tx2:temp", 0x240F,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 2 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E2:Tx2:temp", 0x240F,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 2 temperature" }
  { \$(P),\$(R),\$(PORT),      "E2:Rx2:Vcc", 0x2110,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 2 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E2:Rx2:temp", 0x2410,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 2 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E2:Rx2:temp", 0x2410,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 2 temperature" }
 
  { \$(P),\$(R),\$(PORT),      "E2:Tx3:Vcc", 0x2111,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 3 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E2:Tx3:temp", 0x2411,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 3 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E2:Tx3:temp", 0x2411,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Tx 3 temperature" }
  { \$(P),\$(R),\$(PORT),      "E2:Rx3:Vcc", 0x2112,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 3 supply voltage" }
- { \$(P),\$(R),\$(PORT),     "E2:Rx3:temp", 0x2412,"degrees C",            1,      0,    1,    0,   100,      0,      0,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 3 temperature" }
+ { \$(P),\$(R),\$(PORT),     "E2:Rx3:temp", 0x2412,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 3 temperature" }
 
 
  { \$(P),\$(R),\$(PORT),        "U28:temp", 0x2317,"degrees C",          0.5,      0,    1,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U28 temperature" }
