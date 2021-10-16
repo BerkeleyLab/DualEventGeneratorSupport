@@ -194,7 +194,7 @@ bgColor index 3
 controlColor index 14
 indicatorColor index 7
 font "helvetica-medium-r-12.0"
-controlPv "$(P)$(R)E12:loopback"
+controlPv "$(P)$(R)E2:loopback"
 controlLabelType "pvName"
 readLabelType "pvName"
 increment 1
