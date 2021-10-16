@@ -53,6 +53,10 @@ record(longout, "$(P)$(R)E$(E):loopback") {
     field(DESC, "EVG $(E) loopback channel")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT), 0x150$(I), 0)")
+    field(LOPR, "1")
+    field(HOPR, "36")
+    field(DRVL, "1")
+    field(DRVH, "36")
     info(autosaveFields_pass0, "VAL")
     field(FLNK, "$(P)$(R)E$(E):latencyRb_")
 }

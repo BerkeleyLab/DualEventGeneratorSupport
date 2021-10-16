@@ -58,15 +58,16 @@ botShadowColor index 32
 font "helvetica-bold-r-14.0"
 buttonLabel "More..."
 numPvs 4
-numDsps 7
+numDsps 8
 displayFileName {
   0 "EVG_Supplies.edl"
   1 "EVG_Firefly.edl"
   2 "EVG_triggers.edl"
   3 "EVG_triggers.edl"
   4 "EVG_injectionEnable.edl"
-  5 "EVG_resets.edl"
-  6 "EVG_statistics.edl"
+  5 "EVG_loopback.edl"
+  6 "EVG_resets.edl"
+  7 "EVG_statistics.edl"
 }
 menuLabel {
   0 "Power Supplies"
@@ -74,8 +75,9 @@ menuLabel {
   2 "Generator 1 Triggers"
   3 "Generator 2 Triggers"
   4 "Injection Enable"
-  5 "Resets"
-  6 "Statistics"
+  5 "Loopback"
+  6 "Resets"
+  7 "Statistics"
 }
 symbols {
   0 "E=1"
