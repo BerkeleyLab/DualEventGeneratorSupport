@@ -116,16 +116,16 @@ file "perSysmonAI.template"
  { \$(P),\$(R),\$(PORT),     "E2:Rx3:temp", 0x2412,"degrees C",            1,      0,    1,    0,   100,      0,      0,     72,     78, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 Rx 3 temperature" }
 
 
- { \$(P),\$(R),\$(PORT),        "U28:temp", 0x2317,"degrees C",          0.5,      0,    1,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U28 temperature" }
- { \$(P),\$(R),\$(PORT),        "U29:temp", 0x2417,"degrees C",          0.5,      0,    1,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U29 temperature" }
+ { \$(P),\$(R),\$(PORT),        "U28:temp", 0x231B,"degrees C",          0.5,      0,    1,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U28 temperature" }
+ { \$(P),\$(R),\$(PORT),        "U29:temp", 0x241B,"degrees C",          0.5,      0,    1,    0,   100,      2,      5,     65,     70, MAJOR, MINOR, MINOR, MAJOR, "Marble U29 temperature" }
 
 
- { \$(P),\$(R),\$(PORT),    "E1:refJitter", 0x2218,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 refClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),     "E1:txJitter", 0x2219,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 txClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),    "E1:frequency", 0x201A,      "MHz",         1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
- { \$(P),\$(R),\$(PORT),    "E2:refJitter", 0x221B,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 refClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),     "E2:txJitter", 0x221C,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 txClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),    "E2:frequency", 0x201D,      "MHz",         1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
+ { \$(P),\$(R),\$(PORT),    "E1:refJitter", 0x221C,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 refClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),     "E1:txJitter", 0x221D,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 txClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E1:frequency", 0x201E,      "MHz",         1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 reference clock rate" }
+ { \$(P),\$(R),\$(PORT),    "E2:refJitter", 0x221F,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 refClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),     "E2:txJitter", 0x2220,       "ps",       13.167,      0,    1,    0,  1000,     -1,     -1,    180,    250, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 txClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),    "E2:frequency", 0x2021,      "MHz",         1e-6,      0,    6,    0,   200,    123,    124,    126,    127, MAJOR, MINOR, MINOR, MAJOR, "EVG 2 reference clock rate" }
 }
 
 file "perSysmonLI.template"
@@ -139,20 +139,26 @@ file "perSysmonLI.template"
  { \$(P),\$(R),\$(PORT)     "E2:Rx1:lowPower", 0x2115,       "", "Receivers with low power (bitmap)" }
  { \$(P),\$(R),\$(PORT)     "E2:Rx2:lowPower", 0x2215,       "", "Receivers with low power (bitmap)" }
  { \$(P),\$(R),\$(PORT)     "E2:Rx3:lowPower", 0x2116,       "", "Receivers with low power (bitmap)" }
+ { \$(P),\$(R),\$(PORT)     "E1:Rx1:enabled",  0x2117,       "", "Enabled receivers (bitmap)" }
+ { \$(P),\$(R),\$(PORT)     "E1:Rx2:enabled",  0x2217,       "", "Enabled receivers (bitmap)" }
+ { \$(P),\$(R),\$(PORT)     "E1:Rx3:enabled",  0x2118,       "", "Enabled receivers (bitmap)" }
+ { \$(P),\$(R),\$(PORT)     "E2:Rx1:enabled",  0x2119,       "", "Enabled receivers (bitmap)" }
+ { \$(P),\$(R),\$(PORT)     "E2:Rx2:enabled",  0x2219,       "", "Enabled receivers (bitmap)" }
+ { \$(P),\$(R),\$(PORT)     "E2:Rx3:enabled",  0x211A,       "", "Enabled receivers (bitmap)" }
 
- { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x2118, "counts", "EVG 1 refClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x2119, "counts", "EVG1 txClk sampled by EVG 2 refClk" }
- { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x211B, "counts", "EVG2 refClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x211C, "counts", "EVG2 txClk sampled by EVG 1 refClk" }
- { \$(P),\$(R),\$(PORT),    "INJ:injCycleCSR", 0x201F,       "", "Injection sequence CSR" }
- { \$(P),\$(R),\$(PORT),         "TOD:Status", 0x2020,       "", "TOD valid 1:Seconds 0:PPS" }
- { \$(P),\$(R),\$(PORT),    "E1:EVIOstatus_",  0x2121,       "", "EVG 1 raw status" }
- { \$(P),\$(R),\$(PORT),    "E2:EVIOstatus_",  0x2221,       "", "EVG 2 raw status" }
- { \$(P),\$(R),\$(PORT),    "swapoutstatus_",  0x2022,       "", "Swapout control status register" }
+ { \$(P),\$(R),\$(PORT),        "E1:refCoinc", 0x211C, "counts", "EVG 1 refClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),         "E1:txCoinc", 0x211D, "counts", "EVG1 txClk sampled by EVG 2 refClk" }
+ { \$(P),\$(R),\$(PORT),        "E2:refCoinc", 0x211F, "counts", "EVG2 refClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),         "E2:txCoinc", 0x2120, "counts", "EVG2 txClk sampled by EVG 1 refClk" }
+ { \$(P),\$(R),\$(PORT),    "INJ:injCycleCSR", 0x2023,       "", "Injection sequence CSR" }
+ { \$(P),\$(R),\$(PORT),         "TOD:Status", 0x2024,       "", "TOD valid 1:Seconds 0:PPS" }
+ { \$(P),\$(R),\$(PORT),    "E1:EVIOstatus_",  0x2125,       "", "EVG 1 raw status" }
+ { \$(P),\$(R),\$(PORT),    "E2:EVIOstatus_",  0x2225,       "", "EVG 2 raw status" }
+ { \$(P),\$(R),\$(PORT),    "swapoutstatus_",  0x2026,       "", "Swapout control status register" }
 }
 
 file "perSysmonBI.template"
 { pattern
 {     P     R,    PORT,          NAME,          A,        ZNAM,      ONAM,       ZSV,        OSV,         DESC }
- { \$(P),\$(R),\$(PORT), "EVG:aligned",    0x211E,"Misaligned", "Aligned",   "MAJOR", "NO_ALARM", "Are generators aligned" }
+ { \$(P),\$(R),\$(PORT), "EVG:aligned",    0x2122,"Misaligned", "Aligned",   "MAJOR", "NO_ALARM", "Are generators aligned" }
 }
