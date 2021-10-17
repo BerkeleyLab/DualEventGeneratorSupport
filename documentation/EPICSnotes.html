@@ -690,28 +690,28 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
 </tr>
 <tr>
           <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Tx<span style="font-style: italic;">y</span>:Vcc</td>
-          <td style="text-align: center;">0x2107,...</td>
+          <td style="text-align: center;">0x2107,09,...</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">EVG <span style="font-style: italic;">x</span>(1,2) transmitter <span style="font-style: italic;">y</span>(1,2,3) supply voltage.<span style="font-style: italic;"></span><br>
 </td>
         </tr>
         <tr>
           <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Tx<span style="font-style: italic;">y</span>:temp</td>
-          <td style="text-align: center;">0x2407,...</td>
+          <td style="text-align: center;">0x2407,09,...</td>
           <td style="text-align: center;">ai</td>
           <td style="text-align: left;">EVG <span style="font-style: italic;">x</span>(1,2) transmitter <span style="font-style: italic;">y</span>(1,2,3) temperature.<span style="font-style: italic;"></span><br>
 </td>
         </tr>
         <tr>
   <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Rx<span style="font-style: italic;">y</span>:Vcc</td>
-  <td style="text-align: center;">0x2108,...</td>
+  <td style="text-align: center;">0x2108,0A,...</td>
   <td style="text-align: center;">ai<br>
   </td>
   <td style="text-align: left;">EVG <span style="font-style: italic;">x</span>(1,2) receiver <span style="font-style: italic;">y</span>(1,2,3) supply voltage.</td>
 </tr>
 <tr>
   <td style="text-align: center;">E<span style="font-style: italic;">x</span>:Rx<span style="font-style: italic;">y</span>:temp</td>
-  <td style="text-align: center;">0x2408,...</td>
+  <td style="text-align: center;">0x2408,0A,...</td>
   <td style="text-align: center;">ai<br>
   </td>
   <td style="text-align: left;"><span style="font-style: italic;"></span>EVG <span style="font-style: italic;">x</span>(1,2) receiver <span style="font-style: italic;">y</span>(1,2,3) temperature.<span style="font-style: italic;"></span></td>
@@ -1146,7 +1146,7 @@ transmitted to the IOC.&nbsp; The
     <br>
     <h2>IOC Startup Script</h2>
     Communication with a dual event generator IOC is configured at IOC
-    startup with the eventGeneratorConfigure command.&nbsp; Arguments
+    startup with an eventGeneratorConfigure command.&nbsp; Arguments
     must appear in the order shown below.<br>
     <ol>
       <li>The ASYN port name.&nbsp; The value is arbitrary, but the
