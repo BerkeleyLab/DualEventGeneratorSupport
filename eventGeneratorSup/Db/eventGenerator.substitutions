@@ -160,5 +160,5 @@ file "perSysmonLI.template"
 file "perSysmonBI.template"
 { pattern
 {     P     R,    PORT,          NAME,          A,        ZNAM,      ONAM,       ZSV,        OSV,         DESC }
- { \$(P),\$(R),\$(PORT), "EVG:aligned",    0x2122,"Misaligned", "Aligned",   "MAJOR", "NO_ALARM", "Are generators aligned" }
+ { \$(P),\$(R),\$(PORT), "EVG:aligned",    0x2120,"Misaligned", "Aligned",   "MAJOR", "NO_ALARM", "Are generators aligned" }
 }
