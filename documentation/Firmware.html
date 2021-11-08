@@ -758,14 +758,16 @@ latencies within the FPGA.<br>
     <br>
 
     
-<h2 style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+<h1 style=" caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
       font-family: -webkit-standard; font-style: normal;
       font-variant-caps: normal; letter-spacing: normal; orphans: auto;
       text-align: start; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;
       text-decoration: none;">Support Scripts<br>
-    </h2>
+
+    </h1>
+
 
     
 <dl style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
@@ -783,6 +785,82 @@ latencies within the FPGA.<br>
 
 
           [-a IP_name_or_address]<br>
-        </span></dt><dd>Connect to the console port of the FPGA.</dd>
+        </span></dt><dd>Connect to the console port of the FPGA.</dd></dl>
+<h1>Building</h1>
+<h2>Firmware</h2>
+<ol>
+  <li>Change directories to &lt;TOP&gt;/DualEventGeneratorMarble.srcs/sources_1/hdl/.</li>
+  <li>Run the startVivado.sh script to start the correct version of Vivado.</li>
+  <li>Click the 'Generate Bitstream' action in the Project Manager pane.</li>
+  <li>It is necessary to export the hardware only if the µBlaze address 
+map has changed.&nbsp; To export use the File→Export→Export Hardware... 
+menu item to pop up the Export Hardware Platform window.</li>
+  <ol>
+    <li>Check that the 'Fixed' platform type is selected then click Next.</li>
+    <li>Check that the 'Pre-synthesis' output is selected (i.e. do not export the bitstream) then click Next.</li>
+    <li>Confirm that the export is going to &lt;TOP&gt;/DualEventGeneratorMarble.xsa then click Next.</li>
+    <li>A window may pop up warning that the exported file already exists.&nbsp; If so, just confirm that you want to overwrite it.</li>
+    <li>Check that the options are as desired then click Finish.</li>
+  </ol>
+</ol>
+<h2>Software</h2>
+<p>It is necessary to run Vitis only when a new hardware specification has been written by Vivado.&nbsp; If this is the case:<br>
+</p>
+<ol>
+  <li>Change directories to &lt;TOP&gt;/Workspace/Processor0/scripts.</li>
+  <li>Run the startVitis.sh script to start the correct version of Vitis.&nbsp; You can also start Vitis from Vivado using the Tools→Launch Vitis IDE menu item.<br>
+  </li>
+  <li>Confirm that the workspace is set to &lt; TOP&gt;/Workspace then click Launch.</li>
+  <li>Right-click on the DualEventGeneratorMarblePlatform in the Explorer pane and select Update Hardware Specification.</li>
+  <li>Confirm that the Hardware Specification File is  &lt;TOP&gt;/DualEventGeneratorMarble.xsa then click Ok.</li>
+  <li>Click Ok in the window that pops up announcing the completion of the update.</li>
+  <li>Use the Project→Build All menu item to build the support libraries and application.</li>
+  <li>Continue with the following steps used when any changes have been made to the application source.</li>
+</ol>
+<p>To build after making changes to the application source:<br>
+</p>
+<ol>
+  <li>Change directories to &lt;TOP&gt;/Workspace/Processor0/scripts.</li>
+  <li>Run the startVitis.sh script with the argument 'bash' to start a 
+shell with the correct version of the Vitis tools on the shell 
+application search path.</li>
+  <li>Run make.&nbsp; This should be done even if the Vitis Build All 
+operation described above has completed since the Makefile in the 
+&lt;TOP&gt;/Workspace/Processor0/scripts contains rules and actions for 
+ensuring the the software build date is correct and to build the final 
+output bitfile (download.bit).</li>
+</ol>
+<h2>Support Scripts</h2>
+<p>The &lt;TOP&gt;/Workspace/Processor0/scripts directory contains some other useful scripts:<br>
+</p>
+<ul>
+  <li>programFlash.sh&nbsp; – program Marble flash memory from a downloadable bitfile.</li>
+  <li>pushImage.sh – copy download.bit, programFlash.sh, and 
+DefaultSequence.csv to the dual event generator EPICS support module 
+&lt;SUPTOP&gt;/head/FPGA directory on the controls file server.<br>
+  </li>
+  <li>programEEPROM.sh – program the IPMI EEPROM on a mezzanine card 
+mounted on a Marble.&nbsp; Make sure the write-enable jumper is 
+installed on the card before running this script.<br>
+  </li>
+  <li>create_FMC_EEPROM.sh – create IPMI EEPROM images.&nbsp; This 
+script is a bit of a hack -- the script must be edited to set&nbsp; the 
+desired product name and serial numbers for the EEPROM images.&nbsp; But
+ it's good enough for the occasional time that it's needed.&nbsp; The 
+'fru-dump' program can be used to display the contents of an IPMI EEPROM
+ image.&nbsp; The fru-dump 'b', 'c', and 'p' options cause the board, 
+card, and power requirments, respectively to be displayed.<br>
+  </li>
+</ul>
+
+<dl style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);
+      font-family: -webkit-standard; font-style: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-size-adjust: auto;
+      -webkit-text-stroke-width: 0px; text-decoration: none;">
+
 </dl>
+
 </body></html>
