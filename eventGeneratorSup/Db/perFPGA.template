@@ -63,7 +63,7 @@ record(seq, "$(P)$(R)INJ:forcerbk_") {
 record(ao, "$(P)$(R)INJ:extendInterval") {
     field(DESC, "Extend injection cycle interval")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT), 0x1F05, 0)")
+    field(OUT,  "@asyn($(PORT), 0x1F04, 0)")
     field(PREC, "4")
     field(EGU,  "s")
     field(LINR, "SLOPE")

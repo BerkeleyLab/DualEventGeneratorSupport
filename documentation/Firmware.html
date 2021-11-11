@@ -828,10 +828,28 @@ shell with the correct version of the Vitis tools on the shell
 application search path.</li>
   <li>Run make.&nbsp; This should be done even if the Vitis Build All 
 operation described above has completed since the Makefile in the 
-&lt;TOP&gt;/Workspace/Processor0/scripts contains rules and actions for 
-ensuring the the software build date is correct and to build the final 
-output bitfile (download.bit).</li>
+&lt;TOP&gt;/Workspace/Processor0/scripts directory contains rules and 
+actions for ensuring that the software build date is correct and that 
+the final output file (download.bit) is generated.<br>
+  </li>
 </ol>
+<h2>USB/JTAG</h2>
+<p>To download an image to the FPGA or to run a ChipScope session 
+through the on-board USB/JTAG connection the ftdiJTAG application must 
+be run to create a Xilinx Virtual Cable.&nbsp; If the Marble USB/JTAG is
+ the only FTDI device connected to the computer the command would be:<br>
+&nbsp;&nbsp;&nbsp; <span style="font-family: monospace;">ftdiJTAG -c 30M -g 11<br>
+  </span>If multiple devices are present then the full 
+'vendor:product:serial number' of the desired device must be specified, 
+for example:<br>
+&nbsp;&nbsp;&nbsp; <span style="font-family: monospace;">ftdiJTAG -c 30M -g 11 -d 0403:6011:000004</span></p>
+<p>The '-c 30M' argument forces the JTAG connection to run at its 
+maximum speed of 30 megabits per second.&nbsp; The '-g 11' argument 
+enables the Marble on-board USB/JTAG connection.</p>
+<p>Refer to the ftdiJTAG(1) documentation for complete details including
+ instructions on how to get Vivado to connect to the Xilinx Virtual 
+Cable.<br>
+  <span style="font-family: monospace;"></span></p>
 <h2>Support Scripts</h2>
 <p>The &lt;TOP&gt;/Workspace/Processor0/scripts directory contains some other useful scripts:<br>
 </p>

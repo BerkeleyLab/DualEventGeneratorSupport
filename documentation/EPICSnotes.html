@@ -95,7 +95,7 @@ the value of the <a moz-do-not-send="true" href="#swapoutTrigger">swapoutTrigger
     slots.<br>
     <br>
     <table style=" text-align: left; margin-left: auto; margin-right:
-      auto; width: 90%; height: 78px;" cellspacing="2" cellpadding="2" border="1">
+      auto; width: 90%; height: 78px;" border="1" cellspacing="2" cellpadding="2">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
@@ -112,7 +112,7 @@ the value of the <a moz-do-not-send="true" href="#swapoutTrigger">swapoutTrigger
           </td>
           <td style="text-align: center;" align="center">0x3000<br>
           </td>
-          <td style="text-align: left;" valign="middle" align="left">Event
+          <td style="text-align: left;" align="left" valign="middle">Event
 
 
 
@@ -138,7 +138,7 @@ the value of the <a moz-do-not-send="true" href="#swapoutTrigger">swapoutTrigger
         <tr>
           <td style="text-align: center;" align="center">E1:SEQ1</td>
           <td style="text-align: center;" align="center">0x3001</td>
-          <td style="text-align: left;" valign="middle" align="left">Event
+          <td style="text-align: left;" align="left" valign="middle">Event
 
 
 
@@ -161,18 +161,18 @@ the value of the <a moz-do-not-send="true" href="#swapoutTrigger">swapoutTrigger
           </td>
         </tr>
         <tr>
-          <td valign="top" align="center">E2:SEQ0</td>
-          <td valign="top" align="center">0x3002<br>
+          <td align="center" valign="top">E2:SEQ0</td>
+          <td align="center" valign="top">0x3002<br>
           </td>
-          <td valign="middle" align="left">Event generator 2, sequence
+          <td align="left" valign="middle">Event generator 2, sequence
             0.&nbsp; This is the sequence used for AR/SR swapout.<br>
           </td>
         </tr>
         <tr>
-          <td valign="top" align="center">E2:SEQ1</td>
-          <td valign="top" align="center">0x3003<br>
+          <td align="center" valign="top">E2:SEQ1</td>
+          <td align="center" valign="top">0x3003<br>
           </td>
-          <td valign="middle" align="left">Event generator 2, sequence
+          <td align="left" valign="middle">Event generator 2, sequence
             1.&nbsp; This sequence is not normally used.<br>
           </td>
         </tr>
@@ -193,7 +193,7 @@ the value of the <a moz-do-not-send="true" href="#swapoutTrigger">swapoutTrigger
     command and <span style="font-style: italic;">xxx</span> is a
     numeric value as described in the following table.<br>
     <br>
-    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" border="1" cellspacing="2" cellpadding="2">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
@@ -379,21 +379,9 @@ by the number of event generator 2 clocks specified by this record.<br>
   </td>
 </tr>
 <tr>
-  <td style="text-align: center;">MGT:Rx:bitslide<br>
-  </td>
-  <td style="text-align: center;">0x1F04<br>
-  </td>
-  <td style="text-align: center;">longout<br>
-  </td>
-  <td style="vertical-align: top;">Bitmap of high speed serial receivers
- (least significant bit corresponds to the first event generator) to 
-send a bit-slide request.&nbsp; This should trigger a receiver 
-realignment operation.<br>
-  </td>
-</tr><tr>
   <td style="text-align: center;">INJ:extendInterval<br>
   </td>
-  <td style="text-align: center;">0x1F05<br>
+  <td style="text-align: center;">0x1F04<br>
   </td>
   <td style="text-align: center;">ao<br>
   </td>
@@ -408,7 +396,7 @@ realignment operation.<br>
 The signals present on the diagnostic outputs are controlled by the E<span style="font-style: italic;">x</span>:diagOut records:<br>
 <div style="margin-left: 80px;"><br>
 </div>
-<table style=" text-align: left; width: 600px;" cellspacing="2" cellpadding="2" border="1">
+<table style=" text-align: left; width: 600px;" border="1" cellspacing="2" cellpadding="2">
   <tbody>
     <tr>
       <td style="text-align: center;"><span style="font-weight: bold;">MBBO<br>
@@ -585,7 +573,7 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
     Records are processed by $(P)$(R)sysmonTrig_ processing.&nbsp; All
     temperatures are in degrees Celsius.<br>
     <span style="font-weight: bold;"></span><br>
-    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" border="1" cellspacing="2" cellpadding="2">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
@@ -924,45 +912,45 @@ transmitted to the IOC.&nbsp; The
     table.<br>
     <br>
     <table style=" text-align: left; margin-left: auto; margin-right:
-      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      auto; width: 90%;" border="1" cellspacing="2" cellpadding="2">
       <tbody>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center"><span style="font-weight: bold;">Bit</span><br>
+          <td style="text-align: center;" align="center" valign="middle"><span style="font-weight: bold;">Bit</span><br>
           </td>
           <th style="vertical-align: middle; text-align: center;">Description<br>
           </th>
         </tr>
         <tr>
-          <td style="text-align: center;" valign="middle" align="center">0</td>
-          <td style="text-align: left;" valign="middle" align="left">Set
+          <td style="text-align: center;" align="center" valign="middle">0</td>
+          <td style="text-align: left;" align="left" valign="middle">Set
             when sequence 0 (the default sequence), is enabled.<br>
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: middle; text-align: center;" valign="middle" align="center">1</td>
-          <td style="text-align: left;" valign="middle" align="left">Set
+          <td style="vertical-align: middle; text-align: center;" align="center" valign="middle">1</td>
+          <td style="text-align: left;" align="left" valign="middle">Set
             when sequence 1 is enabled.&nbsp; This sequence is
             automatically disabled after it has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">2<br>
+          <td align="center" valign="middle">2<br>
           </td>
-          <td valign="middle" align="left">The currently active, or most
+          <td align="left" valign="middle">The currently active, or most
             recently completed, sequence.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">3<br>
+          <td align="center" valign="middle">3<br>
           </td>
-          <td valign="middle" align="left">Set when event generator is
+          <td align="left" valign="middle">Set when event generator is
             emitting a sequence.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">4<br>
+          <td align="center" valign="middle">4<br>
           </td>
-          <td valign="middle" align="left"><a name="PrecompletionStatus"></a>Set
+          <td align="left" valign="middle"><a name="PrecompletionStatus"></a>Set
 
             when event generator begins emitting a sequence.&nbsp;
             Cleared when event generator emits the event code specified
@@ -971,25 +959,25 @@ transmitted to the IOC.&nbsp; The
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">15–8<br>
+          <td align="center" valign="middle">15–8<br>
           </td>
-          <td valign="middle" align="left">Incremented each time a
+          <td align="left" valign="middle">Incremented each time a
             sequence is triggered.&nbsp; Can be used to unambiguously
             detect that a sequence has been emitted.<br>
           </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">23–16<br>
+          <td align="center" valign="middle">23–16<br>
           </td>
-          <td valign="middle" align="left">Incremented each time a
+          <td align="left" valign="middle">Incremented each time a
             sequence is trigger request is ignored because it arrived
             while a sequence was already active.&nbsp; Can be used to
             unambiguously detect sequence overruns. </td>
         </tr>
         <tr>
-          <td valign="middle" align="center">28–24<br>
+          <td align="center" valign="middle">28–24<br>
           </td>
-          <td valign="middle" align="left">The number of bits in the
+          <td align="left" valign="middle">The number of bits in the
             sequence generator memory address.<br>
           </td>
         </tr>
@@ -1016,7 +1004,7 @@ transmitted to the IOC.&nbsp; The
     <p>Processed on IOC startup and FPGA reconnect.<br>
     </p>
     <table style=" text-align: left; margin-left: auto; margin-right:
-      auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+      auto; width: 90%;" border="1" cellspacing="2" cellpadding="2">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
@@ -1048,7 +1036,7 @@ transmitted to the IOC.&nbsp; The
     name in the eventGeneratorConfigure command and <span style="font-style: italic;">xxx</span> is a numeric value as
     described in the following table.<br>
     &nbsp; <br>
-    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" cellspacing="2" cellpadding="2" border="1">
+    <table style=" text-align: left; margin-left: auto; margin-right: auto; width: 90%;" border="1" cellspacing="2" cellpadding="2">
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight: bold;">Name</span><br>
@@ -1060,7 +1048,7 @@ transmitted to the IOC.&nbsp; The
           </th>
         </tr>
         <tr>
-          <td valign="middle" align="center">Cmd<i>x</i>RetryCount<br>
+          <td align="center" valign="middle">Cmd<i>x</i>RetryCount<br>
           </td>
           <td style="text-align: center;">0xF00<i>x</i><br>
           </td>

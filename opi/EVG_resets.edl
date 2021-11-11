@@ -6,7 +6,7 @@ release 1
 x 248
 y 270
 w 445
-h 315
+h 265
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -253,112 +253,6 @@ endGroup
 
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 22
-y 151
-w 400
-h 47
-
-beginGroup
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 297
-y 177
-w 100
-h 21
-fgColor index 14
-onColor index 31
-offColor index 31
-topShadowColor index 30
-botShadowColor index 32
-controlPv "$(P)$(R)MGT:Rx:bitslide"
-pressValue "3"
-onLabel "Slide Both"
-offLabel "Slide Both"
-3d
-font "helvetica-bold-r-14.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 167
-y 177
-w 100
-h 21
-fgColor index 14
-onColor index 31
-offColor index 31
-topShadowColor index 30
-botShadowColor index 32
-controlPv "$(P)$(R)MGT:Rx:bitslide"
-pressValue "2"
-onLabel "Slide 2"
-offLabel "Slide 2"
-3d
-font "helvetica-bold-r-14.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 37
-y 177
-w 100
-h 21
-fgColor index 14
-onColor index 31
-offColor index 31
-topShadowColor index 30
-botShadowColor index 32
-controlPv "$(P)$(R)MGT:Rx:bitslide"
-pressValue "1"
-onLabel "Slide 1"
-offLabel "Slide 1"
-3d
-font "helvetica-bold-r-14.0"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 22
-y 151
-w 400
-h 24
-font "helvetica-medium-r-18.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Receiver Bit-slip"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
 # (Message Button)
 object activeMessageButtonClass
 beginObjectProperties
@@ -366,7 +260,7 @@ major 4
 minor 1
 release 0
 x 5
-y 237
+y 184
 w 200
 h 25
 fgColor index 14
@@ -389,7 +283,7 @@ major 4
 minor 0
 release 0
 x 216
-y 211
+y 158
 w 221
 h 93
 
@@ -402,7 +296,7 @@ major 4
 minor 1
 release 1
 x 397
-y 238
+y 185
 w 40
 h 16
 font "helvetica-medium-r-14.0"
@@ -421,7 +315,7 @@ major 4
 minor 1
 release 1
 x 397
-y 278
+y 225
 w 40
 h 16
 font "helvetica-medium-r-14.0"
@@ -440,7 +334,7 @@ major 4
 minor 0
 release 0
 x 216
-y 288
+y 235
 w 174
 h 16
 
@@ -453,7 +347,7 @@ major 4
 minor 7
 release 0
 x 345
-y 288
+y 235
 w 45
 h 16
 controlPv "$(P)$(R)E2:txJitter"
@@ -476,7 +370,7 @@ major 4
 minor 7
 release 0
 x 288
-y 288
+y 235
 w 45
 h 16
 controlPv "$(P)$(R)E1:txJitter"
@@ -499,7 +393,7 @@ major 4
 minor 1
 release 1
 x 216
-y 288
+y 235
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -523,7 +417,7 @@ major 4
 minor 0
 release 0
 x 216
-y 268
+y 215
 w 174
 h 16
 
@@ -536,7 +430,7 @@ major 4
 minor 7
 release 0
 x 345
-y 268
+y 215
 w 45
 h 16
 controlPv "$(P)$(R)E2:txCoinc"
@@ -560,7 +454,7 @@ major 4
 minor 7
 release 0
 x 288
-y 268
+y 215
 w 45
 h 16
 controlPv "$(P)$(R)E1:txCoinc"
@@ -584,7 +478,7 @@ major 4
 minor 1
 release 1
 x 216
-y 268
+y 215
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -608,7 +502,7 @@ major 4
 minor 0
 release 0
 x 216
-y 248
+y 195
 w 174
 h 16
 
@@ -621,7 +515,7 @@ major 4
 minor 7
 release 0
 x 345
-y 248
+y 195
 w 45
 h 16
 controlPv "$(P)$(R)E2:refJitter"
@@ -644,7 +538,7 @@ major 4
 minor 7
 release 0
 x 288
-y 248
+y 195
 w 45
 h 16
 controlPv "$(P)$(R)E1:refJitter"
@@ -667,7 +561,7 @@ major 4
 minor 1
 release 1
 x 216
-y 248
+y 195
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -691,7 +585,7 @@ major 4
 minor 0
 release 0
 x 216
-y 228
+y 175
 w 174
 h 16
 
@@ -704,7 +598,7 @@ major 4
 minor 7
 release 0
 x 345
-y 228
+y 175
 w 45
 h 16
 controlPv "$(P)$(R)E2:refCoinc"
@@ -728,7 +622,7 @@ major 4
 minor 7
 release 0
 x 288
-y 228
+y 175
 w 45
 h 16
 controlPv "$(P)$(R)E1:refCoinc"
@@ -752,7 +646,7 @@ major 4
 minor 1
 release 1
 x 216
-y 228
+y 175
 w 65
 h 16
 font "helvetica-medium-r-14.0"
@@ -776,7 +670,7 @@ major 4
 minor 1
 release 1
 x 345
-y 211
+y 158
 w 45
 h 16
 font "helvetica-medium-r-14.0"
@@ -796,7 +690,7 @@ major 4
 minor 1
 release 1
 x 288
-y 211
+y 158
 w 45
 h 16
 font "helvetica-medium-r-14.0"
