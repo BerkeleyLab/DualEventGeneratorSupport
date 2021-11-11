@@ -381,7 +381,7 @@ by the number of event generator 2 clocks specified by this record.<br>
 <tr>
   <td style="text-align: center;">INJ:extendInterval<br>
   </td>
-  <td style="text-align: center;">0x1F04<br>
+  <td style="text-align: center;">0x1F046<br>
   </td>
   <td style="text-align: center;">ao<br>
   </td>
@@ -456,7 +456,10 @@ Processing the E<span style="font-style: italic;">x</span>:loopback record force
 once every 10 seconds.&nbsp; The value is the round trip time, in ns, 
 for a ping request from the event generator to the event receiver 
 selected by the crosspoint switches in the event generator and the 
-fanout modules.&nbsp; There are also internal helper records, E<span style="font-style: italic;">x</span>:latencyRb_, which should not be accessed by clients.<br>
+fanout modules.&nbsp; There are also internal helper records, E<span style="font-style: italic;">x</span>:latencyRb_,
+ which are not intended to be accessed by clients.&nbsp; The value for a
+ given receiver will vary depending on the amount of buffering in the 
+transceivers.<br>
 <h2>Hardware Triggers</h2>
     <p>These records set the event code to be emitted when a hardware
       trigger input makes the transition from light to no light (1→0).&nbsp; Record name "E<i>e</i>:HW:<i>c</i>"
@@ -717,7 +720,7 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
   </td>
   <td style="text-align: center;">longin<br>
   </td>
-  <td style="text-align: left;">Bitmap of enabled EVG <span style="font-style: italic;">x</span>(1,2) receivers <span style="font-style: italic;">y</span>(1,2,3).&nbsp; Bit 0 corresponds to the first fiber pair on the cassette<span style="font-style: italic;"></span><span style="font-style: italic;"></span><span style="font-style: italic;"></span><br>
+  <td style="text-align: left;">Bitmap of enabled EVG <span style="font-style: italic;">x</span>(1,2) receivers <span style="font-style: italic;">y</span>(1,2,3).&nbsp; Bit 0 corresponds to the first fiber pair on the cassette and bit 11 to the last.<span style="font-style: italic;"></span><span style="font-style: italic;"></span><span style="font-style: italic;"></span><br>
   </td>
 </tr>
 <tr>
@@ -727,7 +730,7 @@ fanout modules.&nbsp; There are also internal helper records, E<span style="font
   </td>
   <td style="text-align: center;">longin<br>
   </td>
-  <td style="text-align: left;">Bitmap of EVG <span style="font-style: italic;">x</span>(1,2) receivers <span style="font-style: italic;">y</span>(1,2,3) with low input power.&nbsp; Valid only when receiver is enabled.<br>
+  <td style="text-align: left;">Bitmap of EVG <span style="font-style: italic;">x</span>(1,2) receivers <span style="font-style: italic;">y</span>(1,2,3) with low input power.&nbsp; Note that the status for each receiver is valid only when that receiver is enabled.<br>
   </td>
 </tr>
 

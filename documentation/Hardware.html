@@ -279,7 +279,7 @@ In addition to their use in the dual event generator the FMC cards are also used
 
 
     
-<table style=" text-align: left; width: 600px;" cellspacing="2" cellpadding="2" border="1">
+<table style=" text-align: left; width: 600px;" border="1" cellspacing="2" cellpadding="2">
 
 
       <tbody>
@@ -371,7 +371,8 @@ The four ports of the USB/Serial adapter are assigned as follows:<br>
 &nbsp;&nbsp;&nbsp; A – JTAG<br>
 
 
-&nbsp;&nbsp;&nbsp; B – RTS/DTR drive the LPC_ISPn and ISP_RSTn lines, respectively.<br>
+&nbsp;&nbsp;&nbsp; B – RTS/DTR drive the LPC_ISPn and ISP_RSTn lines, 
+respectively.&nbsp; The latter line resets the microcontroller when low.<br>
 
 
 &nbsp;&nbsp;&nbsp; C – FPGA console serial port.<br>
@@ -380,11 +381,9 @@ The four ports of the USB/Serial adapter are assigned as follows:<br>
 &nbsp;&nbsp;&nbsp; D – Microcontroller console serial port.<br>
 
 
-The console serial ports are set to 115200-8N1.&nbsp; To view messages sent to the
-        FPGA console the following command can be used on a Linux or OS X
-        machine (the name of the USB tty may differ):<span style="font-family:
-            monospace;"><br>
-&nbsp;&nbsp;&nbsp; cu -s 115200 -l /dev/ttyUSB2</span><br>
+The console serial ports are set to 115200-8N1.&nbsp; Use a terminal 
+emulator of your choice to communicate with the FPGA or microcontroller.<span style="font-family:
+            monospace;"></span><br>
 <h2></h2>
     <p> </p>
   
