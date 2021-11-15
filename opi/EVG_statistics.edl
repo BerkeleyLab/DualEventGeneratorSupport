@@ -48,7 +48,7 @@ major 4
 minor 0
 release 0
 x 18
-y 23
+y 43
 w 212
 h 21
 
@@ -61,7 +61,7 @@ major 4
 minor 7
 release 0
 x 90
-y 25
+y 45
 w 140
 h 16
 controlPv "$(P)$(R)softwareBuildDate"
@@ -84,7 +84,7 @@ major 4
 minor 1
 release 1
 x 18
-y 23
+y 43
 w 65
 h 21
 font "helvetica-medium-r-14.0"
@@ -108,7 +108,7 @@ major 4
 minor 0
 release 0
 x 18
-y 43
+y 23
 w 212
 h 21
 
@@ -121,7 +121,7 @@ major 4
 minor 7
 release 0
 x 90
-y 45
+y 25
 w 140
 h 16
 controlPv "$(P)$(R)firmwareBuildDate"
@@ -144,7 +144,7 @@ major 4
 minor 1
 release 1
 x 18
-y 43
+y 23
 w 65
 h 21
 font "helvetica-medium-r-14.0"
