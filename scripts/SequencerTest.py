@@ -110,10 +110,9 @@ if args.cycles > 0:
                 print("Missed sequence!", file=sys.stderr)
                 seq0Count = seqCount[0]
         else:
-            if (args.cycles % 10) == 0: seq1enable.put(1)
             pause = next - time.time()
             if pause > 0: time.sleep(pause)
-            next = time.time() + 1.4
+            next = time.time() + 2.0
             swapoutTrigger.put(1)
             awaitSequenceCompletion()
         args.cycles -= 1
