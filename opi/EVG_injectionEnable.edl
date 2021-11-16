@@ -38,7 +38,7 @@ bgColor index 19
 useDisplayBg
 value {
   "$(P)$(R)"
-  "Injection Cycles"
+  "Injector Cycles"
 }
 endObjectProperties
 

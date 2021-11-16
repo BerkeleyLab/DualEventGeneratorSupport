@@ -74,7 +74,7 @@ menuLabel {
   1 "Firefly Status"
   2 "Generator 1 Triggers"
   3 "Generator 2 Triggers"
-  4 "Injection Enable"
+  4 "Injector Enable"
   5 "Loopback"
   6 "Resets"
   7 "Statistics"
