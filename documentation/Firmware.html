@@ -37,7 +37,7 @@ both event generator status publisher and event system server.<br>
           </td>
           <td align="left" valign="middle">The lower limit on the time,
             in milliseconds between injection cycle requests.&nbsp; The
-            injection cycle time is specified by the first line of the<a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#DefaultSequenceCSV"> DefaultSequence.csv</a> file.<br>
+            injection cycle time is specified by the first line of the<a href="Hardware.html#DefaultSequenceCSV" moz-do-not-send="true"> DefaultSequence.csv</a> file.<br>
           </td>
         </tr>
         <tr>
@@ -361,7 +361,7 @@ per second' marker is asserted.&nbsp; At startup, and whenever the pulse
  per second marker resumes after an interruption, the event generator 
 obtains the number of POSIX seconds from the selected time 
 provider.&nbsp; The event generator can use either of two possible time 
-providers, namely an <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#cmdTOD">NTP server</a> on the network or a <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD">GPS receiver card</a>.<br>
+providers, namely an <a href="Hardware.html#cmdTOD" moz-do-not-send="true">NTP server</a> on the network or a <a href="Hardware.html#GPS_PMOD" moz-do-not-send="true">GPS receiver card</a>.<br>
 </p>
 
 
@@ -370,7 +370,7 @@ providers, namely an <a href="file:///Users/wenorum%201/xildev/src/dualEventGene
 </h2>
 
 
-A Digilent <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/DataSheets/pmodgps-gms-u1lp_rm.pdf">GPS PMOD card</a> can be 
+A Digilent <a href="DataSheets/pmodgps-gms-u1lp_rm.pdf" moz-do-not-send="true">GPS PMOD card</a> can be 
 used to supply the time of day and pulse per second references required 
 by the dual event generator.&nbsp; Connect the PMOD card to the ‘odd’ 
 side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
@@ -454,7 +454,7 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
             generated even if network or IOC issues prevent requests
             from reaching the FPGA.&nbsp; A line with a third column
             containing an asterisk (*) marks this event as the one that
-            will clear bit 4 of the <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/EPICSnotes.html#PreCompletion">sequencer status</a>.<br>
+            will clear bit 4 of the <a href="EPICSnotes.html#PreCompletion" moz-do-not-send="true">sequencer status</a>.<br>
           </td>
         </tr>
         <tr>
@@ -529,7 +529,7 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
         AA:4C:42:4E:4C:04, and the NTP server address to 0.0.0.0.<span class="Apple-converted-space"></span><br>
       </li><li>Connect the chassis to a 192.168.1.0/24 network and run the<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#scriptCONSOLE">console.py</a><span class="Apple-converted-space">&nbsp;</span>script from a host
         on that same network.<br>
-      </li><li>Use the<span class="Apple-converted-space">&nbsp;</span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdMAC">mac</a><span class="Apple-converted-space">,</span><span class="Apple-converted-space"> </span><a href="https://controls.als.lbl.gov/alscg/bunchcurrentmonitor/documentation/Firmware.html#cmdNET">net</a><span class="Apple-converted-space">, and <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#cmdTOD">tod</a> </span>commands to set the
+      </li><li>Use the<span class="Apple-converted-space">&nbsp;</span><a href="#cmdMAC" moz-do-not-send="true">mac</a><span class="Apple-converted-space">,</span><span class="Apple-converted-space"> </span><a href="#cmdNET" moz-do-not-send="true">net</a><span class="Apple-converted-space">, and <a href="#cmdTOD" moz-do-not-send="true">tod</a> </span>commands to set the
         Ethernet,&nbsp; IPv4 addresses, and&nbsp; NTP server address, respectively.<br>
 </li><li>Reboot or power cycle the system.</li>
 </ol>
