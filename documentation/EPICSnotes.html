@@ -974,10 +974,13 @@ transmitted to the IOC.&nbsp; The
           </td>
           <td align="left" valign="middle"><a name="PrecompletionStatus"></a>Set
 
+
             when event generator begins emitting a sequence.&nbsp;
-            Cleared when event generator emits the event code specified
+            Cleared when the last event in the sequence has been 
+emitted, or for EVG1, when the event generator emits the event code 
+specified
             by the <a href="Firmware.html#DefaultSequenceCSV">default
-              sequence .csv</a> file or when end of sequence is reached.<br>
+              sequence .csv</a> file.<br>
           </td>
         </tr>
         <tr>

@@ -373,7 +373,7 @@ card.<br>
 time by incrementing the number of POSIX seconds each time the 'pulse 
 per second' marker is asserted.&nbsp; At startup, and whenever the pulse
  per second marker resumes after an interruption, the event generator 
-obtains the number of POSIX seconds from the selected time 
+obtains the current number of POSIX seconds from the selected time 
 provider.&nbsp; The event generator can use either of two possible time 
 providers, namely an <a href="Hardware.html#cmdTOD" moz-do-not-send="true">NTP server</a> on the network or a <a href="Hardware.html#GPS_PMOD" moz-do-not-send="true">GPS receiver card</a>.<br>
 </p>
@@ -510,7 +510,7 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
         full area available so the resulting downloaded file will
         contain the uploaded file followed by some number of extra
         values.</li><li>An IPMI EEPROM can be written only when the 'Write Enable'
-        jumper is in place on the FMC cards</li>
+        jumper is in place on the FMC card.</li>
 </ul>
 
 
