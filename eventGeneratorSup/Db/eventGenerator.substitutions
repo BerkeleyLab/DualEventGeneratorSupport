@@ -161,3 +161,10 @@ file "perSysmonBI.template"
 {     P     R,    PORT,          NAME,          A,        ZNAM,      ONAM,       ZSV,        OSV,         DESC }
  { \$(P),\$(R),\$(PORT), "EVG:aligned",    0x2120,"Misaligned", "Aligned",   "MAJOR", "NO_ALARM", "Are generators aligned" }
 }
+
+file "perSysmonFan.template"
+{ pattern
+{     P     R,    PORT,  N,     A, }
+ { \$(P),\$(R),\$(PORT), 1, 0x2325 }
+ { \$(P),\$(R),\$(PORT), 2, 0x2425 }
+}

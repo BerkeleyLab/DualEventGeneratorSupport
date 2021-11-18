@@ -219,7 +219,7 @@ The system is enclosed in a 4U rack-mount chassis.<br>
 <img moz-do-not-send="true" src="ChassisBlockDiagram.png" alt="" style=" width: 587px; height: 882px;">
 <h2><br>
 </h2>
-<h2>FPGA Card</h2>
+<h2><a name="FPGA_Card"></a>FPGA Card</h2>
 
 
     <p>The FPGA carrier card is a 'Marble' developed by the LBNL
@@ -240,7 +240,7 @@ The system is enclosed in a 4U rack-mount chassis.<br>
 </li>
       <li>SO-DIMM SDRAM connector, unused in this application.<br>
 </li>
-      <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these drives the <a href="#FrontPanelDisplay">front panel display</a> and the other is used to connect the optional <a href="file:///Users/wenorum%201/xildev/src/dualEventGeneratorSup/documentation/Hardware.html#GPS_PMOD">GPS receiver</a>.</li>
+      <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these drives the digilent and the other is used to connect the optional <a href="#FPGA_Card" moz-do-not-send="true">GPS receiver</a>.</li>
       <li>16 MB SPI flash memory for FPGA and application bootstrap.<br>
       </li>
     </ul>
@@ -268,9 +268,19 @@ reference clocks between the Firefly modules and the FMC connector.<br>
 <br>
 In addition to their use in the dual event generator the FMC cards are also used in the event fanout modules.<br>
     <br>
+<h2>GPS Receiver</h2>
+<p>A Digilent GPS receiver module can be connected to the Marble PMOD2 
+(J13) connector to provide the absolute time of day and the 
+pulse-per-second marker required for event generator operation.&nbsp; An
+ SMA connector must be soldered to the module and connected through the 
+rear panel isolated SMA&nbsp; connector to an external antenna.<br>
+  <img moz-do-not-send="true" src="Digilent_PMODGPS.png" alt="" style=" width: 369px; height: 324px;"><br>
+</p>
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><br>
+
 <h2>Front Panel Display<br>
 </h2>
-<p>The Marble PMOD1 connector connects to the front panel Display
+<p>The Marble PMOD1 (J12) connector connects to the front panel Display
       and Reset/Recovery push buttons and drives a 240×320
       display equipped with a Sitronix ST7789V controller configured for
       4-line serial operation.&nbsp; The connector pin assignments are
