@@ -3,7 +3,14 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>DEVG_Firmware</title></head><body>
 <h1>Firmware</h1>
 
-<p>To keep the FPGA as responsive as possible to EPICS IOC requests the 
+<p><font size="+2">NOTE: To allow testing at the ALS the dual event 
+generator FPGA software has been compiled with a set of parameters 
+different than those <a href="#ConfigurationParameters" moz-do-not-send="true">described in this document</a> and the entire facility is run from EVG1.&nbsp; To use at the ALS-U the definitions in the config.h header file must be
+ restored to their ALS-U values and the application rebuilt.&nbsp;&nbsp; </font><font size="+2">The values used for testing at the ALS are:<br>
+&nbsp;&nbsp;&nbsp; CFG_EVG1_CLK_PER_HEARTBEAT &nbsp;&nbsp;&nbsp; &nbsp; 124640000<br>
+&nbsp;&nbsp;&nbsp; </font><font size="+2">CFG_EVG1_CLK_PER_BR_AR_ALIGNMENT 10250<br>
+</font></p>
+<p><font size="+2"></font>To keep the FPGA as responsive as possible to EPICS IOC requests the 
 firmware provides two µBlaze processors.&nbsp; The first is used for 
 console and display updates and for reading and writing the non-volatile
  memory.&nbsp; The second is used for EPICS communication, encompassing 
@@ -11,15 +18,16 @@ both event generator status publisher and event system server.<br>
 </p>
 
 
+
     
 <h2><a name="ConfigurationParameters"></a>Configuration Parameters</h2>
 
     
-<p>The following table summarizes the configuration parameters
+<p>The following table describes some the configuration parameters
       shared between the FPGA software and firmware.</p>
 
     
-<table cellspacing="2" cellpadding="2" border="1" width="80%">
+<table style=" width: 80%;" cellspacing="2" cellpadding="2" border="1">
 
       <tbody>
         <tr>
@@ -122,7 +130,14 @@ both event generator status publisher and event system server.<br>
           <td align="left" valign="middle">The number of cycles of the
             second RF reference clock between heartbeat events on the
             second event generator link.</td>
-        </tr>
+        </tr><tr>
+  <td style="vertical-align: middle; text-align: left;">CFG_EVG1_CLK_PER_BR_AR_ALIGNMENT<br>
+  </td>
+  <td style="vertical-align: middle; text-align: center;">46208</td>
+  <td style="vertical-align: middle; text-align: left;">&nbsp;Number of clocks between booster and accumulator ring coincidence -- clock tree (N/E)<br>
+  </td>
+</tr>
+
       </tbody>
     
 </table>
@@ -884,5 +899,6 @@ card, and power requirments, respectively to be displayed.<br>
       -webkit-text-stroke-width: 0px; text-decoration: none;">
 
 </dl>
+
 
 </body></html>
