@@ -2,7 +2,7 @@
 
 #
 # Measure latencies on all channels
-# FIXME: Needs some mechanism for specifying presence of fanout modules
+# FIXME: Populate fanout topology and actually *use* it.
 #
 
 from __future__ import print_function
@@ -10,6 +10,16 @@ import argparse
 import epics
 import sys
 import time
+
+# Fanout module topology
+# Tuple of dictionaries, one per event generator frequency domain
+#   Key is event generator channel
+#   Value is record name prefix for corresponding fanout
+# FIXME: What about multiple fanout levels?
+fanoutModules = ( { } ,
+                  { }
+                )
+print(fanoutModules)
 
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
@@ -52,14 +62,14 @@ class EVG:
             self.loopback.put(self.initialLoopback, wait=True)
         self.initialLoopback = -1
 
-evgs = []
 for e in (1, 2):
-    evgs.append(EVG(args.prefix, e))
-for channel in range(1, 37):
-    print('%2d:' % (channel), end='')
-    for evg in evgs:
-        l = evg.getLatencyForChannel(channel)
-        print('%7.1f' % (l), end='')
-    print('')
-for evg in evgs:
+    evg= EVG(args.prefix, e)
+    fanoutDict = fanoutModules[e-1]
+    for channel in range(1, 37):
+        if channel in fanoutDict:
+            # FIXME Here's where the EVF should be scanned
+            print(fanoutDict[channel])
+        else:
+            l = evg.getLatencyForChannel(channel)
+            print('%2d: %6.1f' % (channel, l))
     evg.restore()
