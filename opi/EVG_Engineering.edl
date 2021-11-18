@@ -47,8 +47,8 @@ beginObjectProperties
 major 4
 minor 4
 release 0
-x 455
-y 206
+x 256
+y 207
 w 80
 h 25
 fgColor index 14
@@ -1437,23 +1437,10 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 280
-y 194
-w 128
+x 392
+y 192
+w 130
 h 36
-
-beginGroup
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 280
-y 214
-w 128
-h 16
 
 beginGroup
 
@@ -1463,8 +1450,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 377
-y 214
+x 491
+y 212
 w 31
 h 16
 font "helvetica-medium-r-14.0"
@@ -1483,8 +1470,8 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 323
-y 214
+x 435
+y 212
 w 50
 h 16
 controlPv "$(P)$(R)fan2:speed"
@@ -1510,8 +1497,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 280
-y 214
+x 392
+y 212
 w 40
 h 16
 font "helvetica-medium-r-14.0"
@@ -1523,31 +1510,14 @@ value {
 }
 endObjectProperties
 
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 280
-y 194
-w 128
-h 16
-
-beginGroup
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
 release 1
-x 377
-y 194
+x 491
+y 192
 w 31
 h 16
 font "helvetica-medium-r-14.0"
@@ -1566,8 +1536,8 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 323
-y 194
+x 435
+y 192
 w 50
 h 16
 controlPv "$(P)$(R)fan1:speed"
@@ -1593,8 +1563,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 280
-y 194
+x 392
+y 192
 w 40
 h 16
 font "helvetica-medium-r-14.0"
@@ -1604,10 +1574,6 @@ useDisplayBg
 value {
   "Fan 1"
 }
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
 endGroup
