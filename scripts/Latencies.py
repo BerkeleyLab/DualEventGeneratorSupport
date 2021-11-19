@@ -17,7 +17,7 @@ import time
 #   Value is record name prefix for corresponding fanout
 # FIXME: What about multiple fanout levels?
 fanoutModules = ( { },
-                  { 12 : "FOO" } )
+                  { } )
 
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
