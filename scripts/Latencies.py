@@ -60,19 +60,23 @@ class EVG:
             self.loopback.put(self.initialLoopback, wait=True)
         self.initialLoopback = -1
 
-def show(evg, channel):
+def show(evg, channel, evfString=None):
     global args
     l = evg.getLatencyForChannel(channel)
     if l != 0 or not args.short:
-        print('%2d: %6.1f' % (channel, l))
+        print('%2d: ' % (channel), end='')
+        if evfString != None:
+            print('%s' % (evfString), end='')
+        print('%6.1f' % (l))
 
 for e in (1, 2):
     evg = EVG(args.prefix, e)
     fanoutDict = fanoutModules[e-1]
     for channel in range(1, 37):
         if channel in fanoutDict:
-            # FIXME Here's where the EVF should be scanned
-            print(fanoutDict[channel])
+            for evfChannel in range(1, 37):
+                # FIXME: Here's where the EVF loopback should be set
+                show(evg, channel, "%2d: " % (evfChannel))
         else:
             show(evg, channel)
     evg.restore()
