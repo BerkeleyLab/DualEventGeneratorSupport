@@ -21,8 +21,8 @@ fanoutModules = ( { },
 
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
-parser.add_argument('-s', '--short', action='store_true', help='Show only non-zero latencies.')
 parser.add_argument('-v', '--verbose', action='store_true', help='Enable some additional diagnostic messages.')
+parser.add_argument('-z', '--zero', action='store_true', help='Show invalid (0) readbacks.')
 args = parser.parse_args()
 
 class EVG:
@@ -64,7 +64,7 @@ class EVG:
 def show(evg, channel, evfString="   "):
     global args
     l = evg.getLatencyForChannel(channel)
-    if l != 0 or not args.short:
+    if l != 0 or args.zero:
         print('%2d: %s%7.1f' % (channel, evfString, l))
 
 for e in (1, 2):
