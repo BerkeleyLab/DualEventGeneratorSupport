@@ -17,12 +17,10 @@ import time
 #   Value is record name prefix for corresponding fanout
 # FIXME: What about multiple fanout levels?
 fanoutModules = ( { } ,
-                  { }
-                )
-print(fanoutModules)
-
+                  { } )
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
+parser.add_argument('-s', '--short', action='store_true', help='Show only non-zero latencies.')
 parser.add_argument('-v', '--verbose', action='store_true', help='Enable some additional diagnostic messages.')
 args = parser.parse_args()
 
@@ -62,14 +60,19 @@ class EVG:
             self.loopback.put(self.initialLoopback, wait=True)
         self.initialLoopback = -1
 
+def show(evg, channel):
+    global args
+    l = evg.getLatencyForChannel(channel)
+    if l != 0 or not args.short:
+        print('%2d: %6.1f' % (channel, l))
+
 for e in (1, 2):
-    evg= EVG(args.prefix, e)
+    evg = EVG(args.prefix, e)
     fanoutDict = fanoutModules[e-1]
     for channel in range(1, 37):
         if channel in fanoutDict:
             # FIXME Here's where the EVF should be scanned
             print(fanoutDict[channel])
         else:
-            l = evg.getLatencyForChannel(channel)
-            print('%2d: %6.1f' % (channel, l))
+            show(evg, channel)
     evg.restore()
