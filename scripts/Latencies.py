@@ -28,6 +28,7 @@ args = parser.parse_args()
 class EVG:
     def __init__(self, prefix, evg):
         self.initialLoopback = -1
+        self.evgNumber = evg
         self.latency = epics.PV(args.prefix + 'E%d:latency'%(evg),form='time',auto_monitor=True)
         self.loopback = epics.PV(args.prefix + 'E%d:loopback'%(evg),form='time',auto_monitor=True)
         self.loopbackPROC = epics.PV(args.prefix + 'E%d:loopback.PROC'%(evg))
@@ -61,11 +62,14 @@ class EVG:
             self.loopback.put(self.initialLoopback, wait=True)
         self.initialLoopback = -1
 
+    def getNumber(self):
+        return self.evgNumber
+
 def show(evg, channel, evfString="   "):
     global args
     l = evg.getLatencyForChannel(channel)
     if l != 0 or args.zero:
-        print('%2d: %s%7.1f' % (channel, evfString, l))
+        print('EVG%d %2d: %s%7.1f' % (evg.getNumber(), channel, evfString, l))
 
 for e in (1, 2):
     evg = EVG(args.prefix, e)
