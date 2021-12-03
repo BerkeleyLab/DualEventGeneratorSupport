@@ -309,7 +309,7 @@ card.<br>
         event request occur simultaneously the heartbeat event request
         is ignored.</li><li>Pulse-per-second event requests are delayed to the first
         available event code slot following sequence pattern or
-        heart6beat events.</li><li>Hardware triggered event requests are delayed to the first
+        heartbeat events.</li><li>Hardware triggered event requests are delayed to the first
         available event code slot following sequence pattern,
         heartbeat, or pulse-per-second events.&nbsp; If multiple hardware triggers are present the lowest numbered input takes
         precedence.</li><li>Software triggered event requests are delayed to the first
@@ -317,8 +317,7 @@ card.<br>
         heartbeat, pulse-per-second, or hardware triggered events.</li><li>Time-of-day (POSIX seconds) events are delayed to the first
         available event code slot following all other event
         requests.&nbsp; This has no effect on the operation of the
-        timing system as long as all 32 time-of-day events arrive by the
-        time of the next pulse-per-second event.<br>
+        timing system as long as all 32 time-of-day events arrive before the next pulse-per-second event.<br>
       </li>
 </ul>
 
@@ -328,7 +327,7 @@ card.<br>
     
 <p>As described in the following table, three of the distributed data bus bits are used by the event generator firmware.<br>
 </p>
-<table style="text-align: left; width: 640px; margin-left: 40px;" cellspacing="2" cellpadding="2" border="1">
+<table style=" text-align: left; width: 640px;" cellspacing="2" cellpadding="2" border="1">
   <tbody>
     <tr>
       <td style="text-align: center;"><span style="font-weight: bold;">&nbsp;Bit </span><br>
@@ -339,7 +338,7 @@ card.<br>
     <tr>
       <td style="text-align: center;">0<span style="font-weight: bold;"><br>
         </span></td>
-      <td style=" text-align: left;">Square wave.&nbsp; Rising edge is coincident with heartbeat event, or where
+      <td style="text-align: left;">Square wave.&nbsp; Rising edge is coincident with heartbeat event, or where
       the heartbeat event would have occurred had it not been preempted by a sequence pattern event.<br>
         <span style="font-weight: bold;"></span></td>
     </tr>
@@ -355,7 +354,15 @@ card.<br>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center;">3-7<br>
+  <td style="text-align: center;">3<br>
+  </td>
+  <td style="text-align: left;">Toggles at each assertion of the 
+pulse-per-second marker. The corresponding PPS event (125) will be 
+delayed from this when preempted by a sequence or heartbeat event.<br>
+  </td>
+</tr>
+<tr>
+      <td style="text-align: center;">4-7<br>
       </td>
       <td style="text-align: left;">Unassigned.<br>
       </td>
