@@ -23,18 +23,19 @@ consoleSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 consoleSock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 consoleSock.sendto(b'\1', (address, consolePort))
 
-forceFlush = True
 def fetchFromFPGA():
-    global forceFlush
+    haveTimeout = False
     while (True): 
-        flush = False
-        msg = consoleSock.recv(2048).decode('utf-8')
-        sys.stdout.write(msg)
-        if (forceFlush):
-            forceFlush = False
-            flush = True
-        if ('\n' in msg): flush = True
-        if (flush): sys.stdout.flush()
+        try:
+            msg = consoleSock.recv(2048).decode('utf-8')
+            sys.stdout.write(msg)
+            if (haveTimeout == False):
+                consoleSock.settimeout(0.2)
+                haveTimeout = True
+        except socket.timeout:
+            sys.stdout.flush()
+            consoleSock.settimeout(None)
+            haveTimeout = False
 
 t = threading.Thread(target=fetchFromFPGA)
 t.daemon = True
@@ -61,4 +62,3 @@ while (True):
             termios.tcsetattr(fd, termios.TCSADRAIN, ttySettings)
             sys.exit(0)
     consoleSock.sendto(c.encode('utf-8'), (address, consolePort))
-    forceFlush = True
