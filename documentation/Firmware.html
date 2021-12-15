@@ -634,8 +634,10 @@ side of the Marble Mini PMOD2 connector (pins 1, 3, 5, 7, 9, 11) and set
 <li>Bit 4 &nbsp; — Enable messages showing GPS receiver sentences.</li>
 <li>Bit 5 &nbsp; — Enable messages showing sequence memory
         updates.</li><li>Bit 6 &nbsp; — Display the memories for both sequences of both event
- generators.&nbsp; Note that FPGA response to IOC requests is inhibited 
-while a sequence is being displayed.</li>
+ generators.</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FPGA response to IOC requests is inhibited 
+while a sequence is being displayed – don't do this during operations.</li>
+
 <li>Bit 7 &nbsp; — Show the control/status register for each transceiver after a change of the reset control bits.<br>
 </li>
 <li>Bit 8 &nbsp; — Enable messages showing operation of the PLL receiver synchronization state machine.</li>
