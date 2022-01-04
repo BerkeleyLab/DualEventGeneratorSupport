@@ -62,7 +62,6 @@ class EVG:
     def restore(self):
         if self.initialLoopback >= 0:
             self.loopback.put(self.initialLoopback, wait=True)
-        self.initialLoopback = -1
 
     def getNumber(self):
         return self.evgNumber
