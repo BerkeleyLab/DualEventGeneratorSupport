@@ -21,7 +21,7 @@ fanoutModules = ( { },
 
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-c', '--cycles', type=int, default=1, help='Number of acquisition cycles')
-parser.add_argument('-i', '--interval', type=int, default=5, help='Seconds between of acquisition cycles')
+parser.add_argument('-i', '--interval', type=float, default=5.0, help='Seconds between of acquisition cycles')
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
 parser.add_argument('-v', '--verbose', action='store_true', help='Enable some additional diagnostic messages.')
 parser.add_argument('-z', '--zero', action='store_true', help='Show invalid (0) readbacks.')
