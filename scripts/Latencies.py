@@ -76,18 +76,23 @@ def show(evg, channel, evfString="   "):
 evgs = []
 for e in (1, 2):
     evgs.append(EVG(args.prefix, e))
-while True:
-    for e in (1, 2):
-        evg = evgs[e-1]
-        fanoutDict = fanoutModules[e-1]
-        for channel in range(1, 37):
-            if channel in fanoutDict:
-                for evfChannel in range(1, 37):
-                    # FIXME: Here's where the EVF loopback should be set
-                    show(evg, channel, "%2d:" % (evfChannel))
-            else:
-                show(evg, channel)
-        evg.restore()
-    args.cycles -= 1
-    if (args.cycles <= 0): break
-    time.sleep(args.interval)
+try:
+    while True:
+        for e in (1, 2):
+            evg = evgs[e-1]
+            fanoutDict = fanoutModules[e-1]
+            for channel in range(1, 37):
+                if channel in fanoutDict:
+                    for evfChannel in range(1, 37):
+                        # FIXME: Here's where the EVF loopback should be set
+                        show(evg, channel, "%2d:" % (evfChannel))
+                else:
+                    show(evg, channel)
+            evg.restore()
+        args.cycles -= 1
+        if (args.cycles <= 0): break
+        time.sleep(args.interval)
+except BaseException:
+    evg.restore()
+    sys.exit(1)
+
