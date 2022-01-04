@@ -20,6 +20,8 @@ fanoutModules = ( { },
                   { } )
 
 parser = argparse.ArgumentParser(description='Measure latencies on all channels.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('-c', '--cycles', type=int, default=1, help='Number of acquisition cycles')
+parser.add_argument('-i', '--interval', type=int, default=5, help='Seconds between of acquisition cycles')
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
 parser.add_argument('-v', '--verbose', action='store_true', help='Enable some additional diagnostic messages.')
 parser.add_argument('-z', '--zero', action='store_true', help='Show invalid (0) readbacks.')
@@ -71,14 +73,21 @@ def show(evg, channel, evfString="   "):
     if l != 0 or args.zero:
         print('EVG%d %2d: %s%7.1f' % (evg.getNumber(), channel, evfString, l))
 
+evgs = []
 for e in (1, 2):
-    evg = EVG(args.prefix, e)
-    fanoutDict = fanoutModules[e-1]
-    for channel in range(1, 37):
-        if channel in fanoutDict:
-            for evfChannel in range(1, 37):
-                # FIXME: Here's where the EVF loopback should be set
-                show(evg, channel, "%2d:" % (evfChannel))
-        else:
-            show(evg, channel)
-    evg.restore()
+    evgs.append(EVG(args.prefix, e))
+while True:
+    for e in (1, 2):
+        evg = evgs[e-1]
+        fanoutDict = fanoutModules[e-1]
+        for channel in range(1, 37):
+            if channel in fanoutDict:
+                for evfChannel in range(1, 37):
+                    # FIXME: Here's where the EVF loopback should be set
+                    show(evg, channel, "%2d:" % (evfChannel))
+            else:
+                show(evg, channel)
+        evg.restore()
+    args.cycles -= 1
+    if (args.cycles <= 0): break
+    time.sleep(args.interval)
