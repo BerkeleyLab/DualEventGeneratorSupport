@@ -234,7 +234,7 @@ The system is enclosed in a 4U rack-mount chassis.<br>
       <li>SO-DIMM SDRAM connector, unused in this application.<br>
 </li>
       <li>Two dual-row (12 pin) 3.3V PMOD connectors.&nbsp; One of these
- drives the digilent and the other is used to connect the optional <a href="#FPGA_Card" moz-do-not-send="true">GPS receiver</a>.</li>
+ drives the display and the other is used to connect the optional <a href="#FPGA_Card" moz-do-not-send="true">GPS receiver</a>.</li>
       <li>16 MB SPI flash memory for FPGA and application bootstrap.<br>
       </li>
     </ul>
@@ -263,8 +263,8 @@ reference clocks between the Firefly modules and the FMC connector.<br>
 In addition to their use in the dual event generator the FMC cards are also used in the event fanout modules.<br>
     <br>
 <h2>GPS Receiver</h2>
-<p>A Digilent GPS receiver module can be connected to the Marble PMOD2 
-(J13) connector to provide the absolute time of day and the 
+<p>A Digilent GPS receiver module can be connected to the Marble PMOD1 
+(J12) connector to provide the absolute time of day and the 
 pulse-per-second marker required for event generator operation.&nbsp; An
  SMA connector must be soldered to the module and connected through the 
 rear panel isolated SMA&nbsp; connector to an external antenna.<br>
@@ -274,7 +274,7 @@ rear panel isolated SMA&nbsp; connector to an external antenna.<br>
 
 <h2>Front Panel Display<br>
 </h2>
-<p>The Marble PMOD1 (J12) connector connects to the front panel Display
+<p>The Marble PMOD2 (J13) connector connects to the front panel Display
       and Reset/Recovery push buttons and drives a 240×320
       display equipped with a Sitronix ST7789V controller configured for
       4-line serial operation.&nbsp; The connector pin assignments are
@@ -289,7 +289,7 @@ rear panel isolated SMA&nbsp; connector to an external antenna.<br>
       <tbody>
         <tr>
           <td style="text-align: center;"><span style="font-weight:
-              bold;">PMOD1</span><span style="font-weight: bold;"><br>
+              bold;">PMOD2</span><span style="font-weight: bold;"><br>
             </span><span style="font-weight: bold;">Line</span><br>
           </td>
           <td style="vertical-align: middle; text-align: center;"><span style="font-weight: bold;">ST7789V</span><span style="font-weight: bold;"><br>
