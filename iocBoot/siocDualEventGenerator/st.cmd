@@ -64,7 +64,3 @@ create_monitor_set("autosave.req", 300, "")
 # Update IOC data
 dbl >"/vxboot/PVnames/$(IOC)"
 epicsEnvShow >"/vxboot/PVenv/$(IOC).softioc"
-
-###############################################################################
-# Put FPGA I/O records into simulation mode?
-$(FPGA_SIMM_DISABLE) <st.simm
