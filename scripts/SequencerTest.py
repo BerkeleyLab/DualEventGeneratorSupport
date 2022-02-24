@@ -69,6 +69,7 @@ def parseSequence(delayEventPairs):
 
 parser = argparse.ArgumentParser(description='Demonstrate sequencer operation.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-c', '--cycles', type=int, default=0, help='Number of "sequence 1" cycles for EVG 1, number of "sequence 0" cycles for EVG 2')
+parser.add_argument('-s', '--sparse', type=int, default=0, help='Number of "sequence 0" between "sequence 1" cycles for EVG 1')
 parser.add_argument('-e', '--evg', type=int, default=1, choices=(1,2), help='Event generator to use')
 parser.add_argument('-p', '--prefix', default='EVG:', help='Record name prefix')
 parser.add_argument('-0', '--seq0', default='0,10,1816948,12,3,18,0,20,1,24,0,26,0,28,57764862,39,649328,38,661,50,2,56,2499991,70,0,127', help='Sequence 0')
@@ -99,12 +100,18 @@ oldSequenceNumber = (seqStatus.get() >> 8) & 0xFF
 seqStatus.add_callback(seqStatusCallback)
 
 next = 0.0
+sparseCount = 0
 if args.cycles > 0:
     while (seqStatus.get() & 0x8): time.sleep(0.1)
     seq0Count = seqCount[0]
     while args.cycles > 0:
         if args.evg == 1:
-            seq1enable.put(1)
+            if (sparseCount >= args.sparse):
+                seq1enable.put(1)
+                sparseCount = 0
+            else:
+                seq0Count += 1
+                sparseCount += 1
             awaitSequenceCompletion()
             if seqCount[0] != seq0Count:
                 print("Missed sequence!", file=sys.stderr)
