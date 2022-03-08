@@ -45,6 +45,7 @@ class EVG:
             passCount += 1
             if passCount > 1000:
                 print("Timed out waiting for updated data.", file=sys.stderr)
+                return 0
             time.sleep(0.01)
             self.latency.get_timevars()
         passCount = 0
