@@ -335,7 +335,7 @@ card.<br>
 <h2>Distributed Data Bus</h2>
 
     
-<p>As described in the following table, three of the distributed data bus bits are used by the event generator firmware.<br>
+<p>As described in the following table, four of the distributed data bus bits are used by the event generator firmware.<br>
 </p>
 <table style=" text-align: left; width: 640px;" cellspacing="2" cellpadding="2" border="1">
   <tbody>
@@ -348,8 +348,9 @@ card.<br>
     <tr>
       <td style="text-align: center;">0<span style="font-weight: bold;"><br>
         </span></td>
-      <td style="text-align: left;">Square wave.&nbsp; Rising edge is coincident with heartbeat event, or where
-      the heartbeat event would have occurred had it not been preempted by a sequence pattern event.<br>
+      <td style="text-align: left;">Square wave.&nbsp; Rising edge is 
+coincident with heartbeat event, or where a heartbeat event would have 
+occurred had it not been preempted by a sequence pattern event.<br>
         <span style="font-weight: bold;"></span></td>
     </tr>
     <tr>
@@ -367,7 +368,7 @@ card.<br>
   <td style="text-align: center;">3<br>
   </td>
   <td style="text-align: left;">Toggles at each assertion of the 
-pulse-per-second marker. The corresponding PPS event (125) will be 
+pulse-per-second hardware input line. The corresponding PPS event (125) will be 
 delayed from this when preempted by a sequence or heartbeat event.<br>
   </td>
 </tr>
