@@ -143,38 +143,46 @@ both event generator status publisher and event system server.<br>
 
     <br>
 
-    The relationships between the per-generator parameters can be
+    <br>
+The relationships between the per-generator parameters can be
     summarized as:<br>
 
+
     
-<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF1</mtext></msub><mo>×</mo><mtext>CFG_EVG1_CLK_PER_RF_COINCIDENCE<br>
+<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><mtext>CFG_EVG1_CLK_PER_RF_COINCIDENCE</mtext><mo>÷</mo><msub><mtext>F</mtext><mtext>RF1</mtext></msub></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
+
+            = 
+            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE} \div \text{F}_\text{RF1} </annotation></semantics></math><br>
+    </blockquote>
+
+
+    
+<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext><mo>÷</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub></mrow><annotation encoding="TeX">\text{T}_\text{coincidence} =
+            
+            \text{CFG_EVG2_CLK_PER_RF_COINCIDENCE} \div \text{F}_\text{RF2}</annotation></semantics></math><br>
+    </blockquote>
+
+
+    
+<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>heartbeat1</mtext></msub><mo>=</mo><mtext>CFG_EVG1_CLK_PER_HEARTBEAT</mtext><mo>÷</mo><msub><mtext>F</mtext><mtext>RF1</mtext></msub></mrow><annotation encoding="TeX">\text{T}_\text{heartbeat1}
+
+            =
+            \text{CFG_EVG1_CLK_PER_HEARTBEAT} \div \text{F}_\text{RF1}</annotation></semantics></math><br>
+    </blockquote>
+
+
+    
+<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>heartbeat2</mtext></msub><mo>=</mo><mtext>CFG_EVG2_CLK_PER_HEARTBEAT</mtext><mo>÷</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub></mrow><annotation encoding="TeX">\text{T}_\text{heartbeat2}
+
+            =
+            \text{CFG_EVG2_CLK_PER_HEARTBEAT} \div \text{F}_\text{RF2}</annotation></semantics></math><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext><msub><mtext></mtext><mtext></mtext></msub><mo></mo> <br>
+
             </mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
 
             = \text{F}_\text{RF1} \times
             \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
     </blockquote>
 
-    
-<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>coincidence</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_COINCIDENCE</mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence} =
-            \text{F}_\text{RF1} \times
-            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
-    </blockquote>
-
-    
-<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>heartbeat1</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF1</mtext></msub><mo>×</mo><mtext>CFG_EVG1_CLK_PER_HEARTBEAT<br>
-            </mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
-
-            = \text{F}_\text{RF1} \times
-            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
-    </blockquote>
-
-    
-<blockquote><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>T</mtext><mtext>heartbeat2</mtext></msub><mo>=</mo><msub><mtext>F</mtext><mtext>RF2</mtext></msub><mo>×</mo><mtext>CFG_EVG2_CLK_PER_RF_HEARTBEAT<br>
-            </mtext></mrow><annotation encoding="TeX">\text{T}_\text{coincidence}
-
-            = \text{F}_\text{RF1} \times
-            \text{CFG_EVG1_CLK_PER_RF_COINCIDENCE}</annotation></semantics></math><br>
-    </blockquote>
 
     where
     <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext>F</mtext><mtext>RF1</mtext></msub><annotation encoding="TeX">\text{F}_\text{RF1}</annotation></semantics></math>
@@ -186,6 +194,7 @@ both event generator status publisher and event system server.<br>
     heartbeat intervals are are not the same. At the nominal storage 
 ring RF of 500.392263 MHz the heartbeat interval for event generator 1 
 is about 971 ms and for event generator 2 about 996 ms.<br>
+
 
 <br>
 
