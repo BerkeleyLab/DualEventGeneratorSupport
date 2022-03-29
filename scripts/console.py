@@ -13,7 +13,7 @@ if ((len(sys.argv) == 2) and (sys.argv[1][0] != '-')):
     address = sys.argv[1]
 else:
     parser = argparse.ArgumentParser(description='Communicate with FPGA console.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-a', '--address', default='131.243.196.245', help='Target IP name or address')
+    parser.add_argument('-a', '--address', default='131.243.93.169', help='Target IP name or address')
     args = parser.parse_args()
     address = args.address
 
