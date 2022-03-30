@@ -453,13 +453,13 @@ side of the Marble PMOD1 connector (J12 pins 1, 3, 5, 7, 9, 11) and set
           </td>
         </tr>
         <tr>
-          <td style="text-align: center; vertical-align: middle;">DEVG_A.bin<br>
+          <td style="text-align: center; vertical-align: middle;">DEVG_A.bit<br>
           </td>
           <td style="vertical-align: top;">Primary FPGA bootstrap.<br>
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">DEVG_B.bin<br>
+          <td style="text-align: center;">DEVG_B.bit<br>
           </td>
           <td style="text-align: left;">Secondary FPGA bootstrap. Used
             if the primary bootstrap file is missing or damaged.<br>
@@ -524,7 +524,7 @@ side of the Marble PMOD1 connector (J12 pins 1, 3, 5, 7, 9, 11) and set
     
 <ul>
 <li>The files must be transferred in 'binary' mode.</li><li>Don't attempt simultaneous transfers from multiple clients.</li><li>The very basic filesystem emulation does not record the sizes
-        of the '.bin' files.&nbsp; Downloading these from the FPGA will transfer the
+        of the '.bin' or '.bit' files.&nbsp; Downloading these from the FPGA will transfer the
         full area available so the resulting downloaded file will
         contain the uploaded file followed by some number of extra
         values.</li><li>An IPMI EEPROM can be written only when the 'Write Enable'
@@ -621,7 +621,7 @@ side of the Marble PMOD1 connector (J12 pins 1, 3, 5, 7, 9, 11) and set
       caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">
 <dt><span style="font-weight: bold;">boot</span><span style="font-weight: bold;"> [-b]</span></dt><dd>The FPGA prompts for confirmation and then restarts as if
         powered up.&nbsp; If the optional <span style="font-weight: bold;">-b</span>
-        argument is present the 'DEVG_B.bin' file will be used, otherwise the 'DEVG_A.bin' file will be used.<br>
+        argument is present the 'DEVG_B.bit' file will be used, otherwise the 'DEVG_A.bit' file will be used.<br>
 </dd><dt><br>
         <span style="font-weight: bold;">debug [-s] [<span style="font-style: italic;">n</span>]</span></dt><dd>The debugging flags are set to the specified value, if one is
         given.&nbsp; The bits are</dd>
