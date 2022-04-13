@@ -19,13 +19,11 @@ eventGenerator_DBD += base.dbd
 eventGenerator_DBD += eventGeneratorSup.dbd
 eventGenerator_DBD += drvAsynIPPort.dbd
 eventGenerator_DBD += asyn.dbd
-eventGenerator_DBD += asSupport.dbd
 eventGenerator_DBD += iocExit.dbd
 
 # Add all the support libraries needed by this IOC
 eventGenerator_LIBS += eventGeneratorSup
 eventGenerator_LIBS += asyn
-eventGenerator_LIBS += autosave
 eventGenerator_LIBS += iocExit
 eventGenerator_LIBS += seq
 
