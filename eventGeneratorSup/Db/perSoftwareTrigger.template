@@ -1,6 +1,5 @@
 record(longout, "$(P)$(R)E$(E):SW:$(T)") {
     field(DESC, "Event to send for software trigger $(T)")
-    info(autosaveFields_pass0, "VAL")
 }
 record(longout, "$(P)$(R)E$(E):SW:$(T):trig") {
     field(DESC, "Event software trigger $(T)")
