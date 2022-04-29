@@ -71,7 +71,7 @@ file "perGenericLO.template"
 file "perSysmonAI.template"
 { pattern
 {     P     R,    PORT,               NAME,     A,         EGU,         ESLO,   EOFF, PREC, LOPR,  HOPR,   LOLO,    LOW,   HIGH,   HIHI,  LLSV,   LSV,   HSV,  HHSV,       DESC }
- { \$(P),\$(R),\$(PORT),       "FPGA:temp", 0x2101,"degrees C", 7.6900832e-3,-273.15,    1,    0,   100,      5,     10,     55,     65, MAJOR, MINOR, MINOR, MAJOR, "FPGA internal temperature" }
+ { \$(P),\$(R),\$(PORT),       "FPGA:temp", 0x2101,"degrees C", 7.6900832e-3,-273.15,    1,    0,   100,      5,     10,     60,     68, MAJOR, MINOR, MINOR, MAJOR, "FPGA internal temperature" }
  { \$(P),\$(R),\$(PORT),   "FPGA:VccINT:V", 0x2201,        "V",  45.77636e-6,      0,    3,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccINT voltage" }
  { \$(P),\$(R),\$(PORT),   "FPGA:VccAUX:V", 0x2102,        "V",  45.77636e-6,      0,    3,    0,     5,   1.70,   1.75,   1.85,   1.90, MAJOR, MINOR, MINOR, MAJOR, "FPGA VccAUX voltage" }
  { \$(P),\$(R),\$(PORT),  "FPGA:VccBRAM:V", 0x2202,        "V",  45.77636e-6,      0,    3,    0,     5,   0.90,   0.95,   1.05,   1.10, MAJOR, MINOR, MINOR, MAJOR, "FPGA Vcc BRAM voltage" }
