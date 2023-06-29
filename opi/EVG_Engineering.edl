@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 373
-y 160
+x 2087
+y 458
 w 560
-h 240
+h 266
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -48,7 +48,7 @@ major 4
 minor 4
 release 0
 x 256
-y 207
+y 227
 w 80
 h 25
 fgColor index 14
@@ -120,8 +120,8 @@ minor 1
 release 1
 x 491
 y 172
-w 30
-h 16
+w 21
+h 14
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -204,8 +204,8 @@ minor 1
 release 1
 x 491
 y 152
-w 30
-h 16
+w 21
+h 14
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -754,7 +754,7 @@ major 4
 minor 0
 release 0
 x 72
-y 178
+y 198
 w 115
 h 56
 
@@ -767,7 +767,7 @@ major 4
 minor 0
 release 0
 x 77
-y 218
+y 238
 w 110
 h 16
 
@@ -780,7 +780,7 @@ major 4
 minor 1
 release 1
 x 77
-y 218
+y 238
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -800,7 +800,7 @@ major 4
 minor 0
 release 0
 x 173
-y 218
+y 238
 w 14
 h 14
 controlPv "$(P)$(R)INJ:injCycleCSR"
@@ -822,7 +822,7 @@ major 4
 minor 0
 release 0
 x 77
-y 198
+y 218
 w 110
 h 16
 
@@ -835,7 +835,7 @@ major 4
 minor 1
 release 1
 x 77
-y 198
+y 218
 w 90
 h 16
 font "helvetica-medium-r-14.0"
@@ -855,7 +855,7 @@ major 4
 minor 0
 release 0
 x 173
-y 198
+y 218
 w 14
 h 14
 controlPv "$(P)$(R)TOD:Status"
@@ -876,7 +876,7 @@ major 4
 minor 0
 release 0
 x 72
-y 178
+y 198
 w 115
 h 16
 
@@ -889,7 +889,7 @@ major 4
 minor 1
 release 1
 x 72
-y 178
+y 198
 w 95
 h 16
 font "helvetica-medium-r-14.0"
@@ -909,7 +909,7 @@ major 4
 minor 0
 release 0
 x 173
-y 178
+y 198
 w 14
 h 14
 controlPv "$(P)$(R)TOD:Status"
@@ -1452,8 +1452,8 @@ minor 1
 release 1
 x 491
 y 212
-w 31
-h 16
+w 21
+h 14
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -1518,8 +1518,8 @@ minor 1
 release 1
 x 491
 y 192
-w 31
-h 16
+w 21
+h 14
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -1574,6 +1574,153 @@ useDisplayBg
 value {
   "Fan 1"
 }
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 163
+w 178
+h 25
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 18
+y 172
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Diag In"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 185
+y 163
+w 11
+h 22
+
+beginGroup
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 185
+y 175
+w 10
+h 10
+controlPv "$(P)$(R)E2:EVIOstatus_"
+lineColor index 14
+onColor index 15
+offColor index 3
+endian "little"
+numBits 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 185
+y 163
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 114
+y 163
+w 10
+h 22
+
+beginGroup
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 114
+y 175
+w 10
+h 10
+controlPv "$(P)$(R)E1:EVIOstatus_"
+lineColor index 14
+onColor index 15
+offColor index 3
+endian "little"
+numBits 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 116
+y 163
+w 8
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+endGroup
+
 endObjectProperties
 
 endGroup
