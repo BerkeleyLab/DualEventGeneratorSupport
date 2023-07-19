@@ -11,7 +11,10 @@ include $(TOP)/configure/CONFIG
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
 DB_INSTALLS += $(ASYN)/db/asynRecord.db
+
+ifneq ($(IOCEXIT),)
 DB_INSTALLS += $(IOCEXIT)/db/iocExit.db
+endif
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
