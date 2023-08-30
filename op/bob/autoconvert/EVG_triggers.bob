@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2023-08-30 13:34:26 by lrusso-->
+<display version="2.0.0">
+  <name>EVG triggers</name>
+  <x>339</x>
+  <y>446</y>
+  <width>300</width>
+  <height>350</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>$(P)$(R)</text>
+    <y>1</y>
+    <width>300</width>
+    <height>28</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Event Generator $(E) Triggers</text>
+    <y>30</y>
+    <width>300</width>
+    <height>21</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Software</text>
+    <x>173</x>
+    <y>56</y>
+    <width>75</width>
+    <height>21</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Hardware</text>
+    <x>56</x>
+    <y>56</y>
+    <width>78</width>
+    <height>21</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 0</name>
+    <x>34</x>
+    <y>89</y>
+    <width>235</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>0</value>
+          <description>Trigger</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)E$(E):SW:1:trig</pv_name>
+      <text>Trigger</text>
+      <x>160</x>
+      <y>5</y>
+      <width>70</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):SW:1</pv_name>
+      <x>111</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):HW:1</pv_name>
+      <x>37</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>5</x>
+      <y>7</y>
+      <width>15</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Code</text>
+    <x>71</x>
+    <y>77</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Code</text>
+    <x>145</x>
+    <y>77</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 1</name>
+    <x>34</x>
+    <y>119</y>
+    <width>235</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>0</value>
+          <description>Trigger</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)E$(E):SW:2:trig</pv_name>
+      <text>Trigger</text>
+      <x>160</x>
+      <y>5</y>
+      <width>70</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):SW:2</pv_name>
+      <x>111</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):HW:2</pv_name>
+      <x>37</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>2</text>
+      <x>5</x>
+      <y>7</y>
+      <width>15</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 2</name>
+    <x>34</x>
+    <y>149</y>
+    <width>235</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>0</value>
+          <description>Trigger</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)E$(E):SW:3:trig</pv_name>
+      <text>Trigger</text>
+      <x>160</x>
+      <y>5</y>
+      <width>70</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):SW:3</pv_name>
+      <x>111</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):HW:3</pv_name>
+      <x>37</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>3</text>
+      <x>5</x>
+      <y>7</y>
+      <width>15</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 3</name>
+    <x>34</x>
+    <y>179</y>
+    <width>235</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>0</value>
+          <description>Trigger</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)E$(E):SW:4:trig</pv_name>
+      <text>Trigger</text>
+      <x>160</x>
+      <y>5</y>
+      <width>70</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):SW:4</pv_name>
+      <x>111</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):HW:4</pv_name>
+      <x>37</x>
+      <y>7</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>5</x>
+      <y>7</y>
+      <width>15</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 4</name>
+    <x>31</x>
+    <y>281</y>
+    <width>230</width>
+    <height>60</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="combo" version="2.0.0">
+      <name>EDM activeMenuButtonClass</name>
+      <pv_name>$(P)$(R)E$(E):diagOut</pv_name>
+      <x>5</x>
+      <y>30</y>
+      <width>220</width>
+      <height>28</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Diagnostic Outputs</text>
+      <x>5</x>
+      <y>5</y>
+      <width>220</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 5</name>
+    <x>34</x>
+    <y>209</y>
+    <width>82</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):HW:5</pv_name>
+      <x>37</x>
+      <y>5</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>5</text>
+      <x>5</x>
+      <y>5</y>
+      <width>15</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 6</name>
+    <x>34</x>
+    <y>239</y>
+    <width>82</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textentry" version="3.0.0">
+      <name>EDM activeXTextDspClass</name>
+      <pv_name>$(P)$(R)E$(E):HW:6</pv_name>
+      <x>37</x>
+      <y>5</y>
+      <width>40</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="cyan-31" red="0" green="224" blue="224">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>6</text>
+      <x>5</x>
+      <y>5</y>
+      <width>15</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+</display>

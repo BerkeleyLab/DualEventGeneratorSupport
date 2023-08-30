@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2023-08-30 13:34:26 by lrusso-->
+<display version="2.0.0">
+  <name>EVG statistics</name>
+  <x>720</x>
+  <y>134</y>
+  <width>250</width>
+  <height>260</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>$(P)$(R)</text>
+    <y>1</y>
+    <width>250</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 0</name>
+    <x>13</x>
+    <y>38</y>
+    <width>222</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)softwareBuildDate</pv_name>
+      <x>77</x>
+      <y>7</y>
+      <width>140</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Software</text>
+      <x>5</x>
+      <y>5</y>
+      <width>65</width>
+      <height>21</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 1</name>
+    <x>13</x>
+    <y>18</y>
+    <width>222</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)firmwareBuildDate</pv_name>
+      <x>77</x>
+      <y>7</y>
+      <width>140</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Firmware</text>
+      <x>5</x>
+      <y>5</y>
+      <width>65</width>
+      <height>21</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 2</name>
+    <y>65</y>
+    <width>210</width>
+    <height>197</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 3</name>
+      <x>10</x>
+      <y>170</y>
+      <width>200</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)SeqMissedCount</pv_name>
+        <x>115</x>
+        <y>5</y>
+        <width>80</width>
+        <height>16</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>Status Missed</text>
+        <x>5</x>
+        <y>5</y>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 4</name>
+      <x>20</x>
+      <y>150</y>
+      <width>190</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)StatRecvCount</pv_name>
+        <x>105</x>
+        <y>5</y>
+        <width>80</width>
+        <height>16</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>Status Received</text>
+        <x>-14</x>
+        <y>5</y>
+        <width>109</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 5</name>
+      <x>58</x>
+      <y>110</y>
+      <width>152</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)CmdFailedCount</pv_name>
+        <x>67</x>
+        <y>5</y>
+        <width>80</width>
+        <height>16</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>Failures</text>
+        <x>5</x>
+        <y>5</y>
+        <width>60</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 6</name>
+      <x>58</x>
+      <y>88</y>
+      <width>152</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)Cmd4RetryCount</pv_name>
+        <x>67</x>
+        <y>5</y>
+        <width>80</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>4 retries</text>
+        <x>5</x>
+        <y>5</y>
+        <width>60</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 7</name>
+      <x>58</x>
+      <y>66</y>
+      <width>152</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)Cmd3RetryCount</pv_name>
+        <x>67</x>
+        <y>5</y>
+        <width>80</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>3 retries</text>
+        <x>5</x>
+        <y>5</y>
+        <width>60</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 8</name>
+      <x>58</x>
+      <y>44</y>
+      <width>152</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)Cmd2RetryCount</pv_name>
+        <x>67</x>
+        <y>5</y>
+        <width>80</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>2 retries</text>
+        <x>5</x>
+        <y>5</y>
+        <width>60</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 9</name>
+      <x>58</x>
+      <y>22</y>
+      <width>152</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)Cmd1RetryCount</pv_name>
+        <x>67</x>
+        <y>5</y>
+        <width>80</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>1 retry</text>
+        <x>5</x>
+        <y>5</y>
+        <width>60</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 10</name>
+      <x>58</x>
+      <width>152</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)Cmd0RetryCount</pv_name>
+        <x>67</x>
+        <y>5</y>
+        <width>80</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>0 retries</text>
+        <x>5</x>
+        <y>5</y>
+        <width>60</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 11</name>
+      <y>130</y>
+      <width>210</width>
+      <height>27</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>EDM activeXTextDspClass:noedit</name>
+        <pv_name>$(P)$(R)StatConnCount</pv_name>
+        <x>125</x>
+        <y>5</y>
+        <width>80</width>
+        <height>16</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>Status Subscribe</text>
+        <x>5</x>
+        <y>5</y>
+        <width>110</width>
+        <height>17</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+  </widget>
+</display>
