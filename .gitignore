@@ -1,0 +1,17 @@
+bin/
+db/
+dbd/
+lib/
+include/
+O.*/
+envPaths
+*.pyc
+nbproject
+*.conf
+*.obj
+*tags
+PVenv/*
+!PVenv/README.md
+PVnames/*
+!PVnames/README.md
+configure/RELEASE.local
