@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eu
+
+SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
 prefix="EVG:"
 bob="EVG_Engineering.bob"
@@ -13,4 +17,4 @@ done
 P=`echo "$prefix" | sed -ne '/\(.\).*/s//\1/p'`
 R=`echo "$prefix" | sed -ne '/.\(.*\)/s//\1/p'`
 
-phoebus -resource file:$(pwd)/autoconvert/${bob}?"P=${P}&R=${R}"
+phoebus -resource file:${SCRIPTPATH}/autoconvert/${bob}?"P=${P}&R=${R}"
