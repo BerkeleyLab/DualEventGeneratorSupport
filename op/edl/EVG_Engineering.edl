@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 2087
-y 458
-w 560
-h 266
+x 1160
+y 364
+w 533
+h 304
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -48,7 +48,7 @@ major 4
 minor 4
 release 0
 x 256
-y 227
+y 270
 w 80
 h 25
 fgColor index 14
@@ -120,8 +120,8 @@ minor 1
 release 1
 x 491
 y 172
-w 21
-h 14
+w 30
+h 17
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -204,8 +204,8 @@ minor 1
 release 1
 x 491
 y 152
-w 21
-h 14
+w 30
+h 17
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -1452,8 +1452,8 @@ minor 1
 release 1
 x 491
 y 212
-w 21
-h 14
+w 33
+h 17
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -1518,8 +1518,8 @@ minor 1
 release 1
 x 491
 y 192
-w 21
-h 14
+w 33
+h 17
 font "helvetica-medium-r-14.0"
 fgColor index 14
 bgColor index 19
@@ -1721,6 +1721,155 @@ endObjectProperties
 
 endGroup
 
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 392
+y 231
+w 132
+h 36
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 392
+y 250
+w 40
+h 15
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Fan 4"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 392
+y 231
+w 40
+h 15
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Fan 3"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 491
+y 250
+w 33
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "RPM"
+}
+autoSize
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 435
+y 231
+w 50
+h 17
+controlPv "$(P)$(R)fan3:speed"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+limitsFromDb
+precision 3
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 491
+y 231
+w 33
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "RPM"
+}
+autoSize
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 435
+y 250
+w 50
+h 17
+controlPv "$(P)$(R)fan4:speed"
+format "float"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+fgAlarm
+bgColor index 2
+autoHeight
+limitsFromDb
+precision 3
+nullColor index 7
+useHexPrefix
+useAlarmBorder
+newPos
+objType "monitors"
 endObjectProperties
 
 endGroup
