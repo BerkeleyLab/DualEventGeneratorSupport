@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2023-09-15 10:49:46 by lrusso-->
+<!--Saved on 2023-09-15 13:28:53 by lrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
-  <x>2087</x>
-  <y>458</y>
-  <width>560</width>
-  <height>266</height>
+  <x>1160</x>
+  <y>364</y>
+  <width>533</width>
+  <height>304</height>
   <background_color>
     <color name="GLOBAL canvas" red="200" green="200" blue="200">
     </color>
@@ -87,7 +87,7 @@
     </actions>
     <text>More...</text>
     <x>256</x>
-    <y>227</y>
+    <y>270</y>
     <width>80</width>
     <height>25</height>
     <font>
@@ -123,12 +123,8 @@
         <text>MHz</text>
         <x>188</x>
         <y>5</y>
-        <width>21</width>
-        <height>14</height>
-        <font>
-          <font family="Liberation Sans" style="REGULAR" size="12.0">
-          </font>
-        </font>
+        <width>30</width>
+        <height>17</height>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
@@ -188,12 +184,8 @@
         <text>MHz</text>
         <x>188</x>
         <y>5</y>
-        <width>21</width>
-        <height>14</height>
-        <font>
-          <font family="Liberation Sans" style="REGULAR" size="12.0">
-          </font>
-        </font>
+        <width>30</width>
+        <height>17</height>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
@@ -1248,12 +1240,8 @@
       <text>RPM</text>
       <x>104</x>
       <y>25</y>
-      <width>21</width>
-      <height>14</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
+      <width>33</width>
+      <height>17</height>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1305,12 +1293,8 @@
       <text>RPM</text>
       <x>104</x>
       <y>5</y>
-      <width>21</width>
-      <height>14</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
+      <width>33</width>
+      <height>17</height>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1491,6 +1475,129 @@
         <horizontal_alignment>1</horizontal_alignment>
         <vertical_alignment>1</vertical_alignment>
       </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 23</name>
+    <x>387</x>
+    <y>226</y>
+    <width>142</width>
+    <height>46</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Fan 4</text>
+      <x>5</x>
+      <y>24</y>
+      <width>40</width>
+      <height>15</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Fan 3</text>
+      <x>5</x>
+      <y>5</y>
+      <width>40</width>
+      <height>15</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>RPM</text>
+      <x>104</x>
+      <y>24</y>
+      <width>33</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)fan3:speed</pv_name>
+      <x>48</x>
+      <y>5</y>
+      <width>50</width>
+      <height>17</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>RPM</text>
+      <x>104</x>
+      <y>5</y>
+      <width>33</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)fan4:speed</pv_name>
+      <x>48</x>
+      <y>24</y>
+      <width>50</width>
+      <height>17</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
 </display>
