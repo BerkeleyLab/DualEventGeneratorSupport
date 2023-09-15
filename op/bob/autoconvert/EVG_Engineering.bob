@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2023-08-30 13:34:25 by lrusso-->
+<!--Saved on 2023-09-15 10:49:46 by lrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
-  <x>373</x>
-  <y>160</y>
+  <x>2087</x>
+  <y>458</y>
   <width>560</width>
-  <height>240</height>
+  <height>266</height>
   <background_color>
     <color name="GLOBAL canvas" red="200" green="200" blue="200">
     </color>
@@ -87,7 +87,7 @@
     </actions>
     <text>More...</text>
     <x>256</x>
-    <y>207</y>
+    <y>227</y>
     <width>80</width>
     <height>25</height>
     <font>
@@ -123,8 +123,12 @@
         <text>MHz</text>
         <x>188</x>
         <y>5</y>
-        <width>30</width>
-        <height>16</height>
+        <width>21</width>
+        <height>14</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="12.0">
+          </font>
+        </font>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
@@ -184,8 +188,12 @@
         <text>MHz</text>
         <x>188</x>
         <y>5</y>
-        <width>30</width>
-        <height>16</height>
+        <width>21</width>
+        <height>14</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="12.0">
+          </font>
+        </font>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
@@ -691,7 +699,7 @@
   <widget type="group" version="2.0.0">
     <name>EDM Group 8</name>
     <x>67</x>
-    <y>173</y>
+    <y>193</y>
     <width>125</width>
     <height>66</height>
     <style>3</style>
@@ -1240,8 +1248,12 @@
       <text>RPM</text>
       <x>104</x>
       <y>25</y>
-      <width>31</width>
-      <height>16</height>
+      <width>21</width>
+      <height>14</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1293,8 +1305,12 @@
       <text>RPM</text>
       <x>104</x>
       <y>5</y>
-      <width>31</width>
-      <height>16</height>
+      <width>21</width>
+      <height>14</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1340,6 +1356,141 @@
         </color>
       </background_color>
       <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 20</name>
+    <x>13</x>
+    <y>158</y>
+    <width>188</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Diag In</text>
+      <x>5</x>
+      <y>14</y>
+      <width>90</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 21</name>
+      <x>167</x>
+      <width>21</width>
+      <height>32</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="byte_monitor" version="2.0.0">
+        <name>EDM ByteClass</name>
+        <pv_name>$(P)$(R)E2:EVIOstatus_</pv_name>
+        <x>5</x>
+        <y>17</y>
+        <width>10</width>
+        <height>10</height>
+        <numBits>1</numBits>
+        <bitReverse>true</bitReverse>
+        <horizontal>false</horizontal>
+        <square>true</square>
+        <off_color>
+          <color name="GLOBAL canvas" red="200" green="200" blue="200">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+          </color>
+        </on_color>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>1</text>
+        <x>5</x>
+        <y>5</y>
+        <width>11</width>
+        <height>12</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 22</name>
+      <x>96</x>
+      <width>20</width>
+      <height>32</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="byte_monitor" version="2.0.0">
+        <name>EDM ByteClass</name>
+        <pv_name>$(P)$(R)E1:EVIOstatus_</pv_name>
+        <x>5</x>
+        <y>17</y>
+        <width>10</width>
+        <height>10</height>
+        <numBits>1</numBits>
+        <bitReverse>true</bitReverse>
+        <horizontal>false</horizontal>
+        <square>true</square>
+        <off_color>
+          <color name="GLOBAL canvas" red="200" green="200" blue="200">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+          </color>
+        </on_color>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>1</text>
+        <x>7</x>
+        <y>5</y>
+        <width>8</width>
+        <height>12</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
     </widget>
   </widget>
 </display>
