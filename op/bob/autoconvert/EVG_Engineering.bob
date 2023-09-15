@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2023-09-15 13:28:53 by lrusso-->
+<!--Saved on 2023-09-15 13:39:26 by lrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
   <x>1160</x>
@@ -102,6 +102,7 @@
       <color name="cyan-31" red="0" green="224" blue="224">
       </color>
     </background_color>
+    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="group" version="2.0.0">
     <name>EDM Group 0</name>
@@ -123,8 +124,8 @@
         <text>MHz</text>
         <x>188</x>
         <y>5</y>
-        <width>30</width>
-        <height>17</height>
+        <width>29</width>
+        <height>16</height>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
@@ -184,8 +185,8 @@
         <text>MHz</text>
         <x>188</x>
         <y>5</y>
-        <width>30</width>
-        <height>17</height>
+        <width>29</width>
+        <height>16</height>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
@@ -1240,8 +1241,8 @@
       <text>RPM</text>
       <x>104</x>
       <y>25</y>
-      <width>33</width>
-      <height>17</height>
+      <width>32</width>
+      <height>16</height>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1293,8 +1294,8 @@
       <text>RPM</text>
       <x>104</x>
       <y>5</y>
-      <width>33</width>
-      <height>17</height>
+      <width>32</width>
+      <height>16</height>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1492,10 +1493,6 @@
       <y>24</y>
       <width>40</width>
       <height>15</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1513,10 +1510,6 @@
       <y>5</y>
       <width>40</width>
       <height>15</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
@@ -1532,7 +1525,7 @@
       <text>RPM</text>
       <x>104</x>
       <y>24</y>
-      <width>33</width>
+      <width>32</width>
       <height>16</height>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
@@ -1568,7 +1561,7 @@
       <text>RPM</text>
       <x>104</x>
       <y>5</y>
-      <width>33</width>
+      <width>32</width>
       <height>16</height>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
