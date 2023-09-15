@@ -1,0 +1,1725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2023-08-30 13:34:25 by lrusso-->
+<display version="2.0.0">
+  <name>EVG Firefly</name>
+  <x>400</x>
+  <y>244</y>
+  <width>450</width>
+  <height>310</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>$(P)$(R) Firefly Modules</text>
+    <y>4</y>
+    <width>450</width>
+    <height>28</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 0</name>
+    <x>-5</x>
+    <y>279</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Rx3:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Rx3:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 2 Rx 3</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 1</name>
+    <x>-5</x>
+    <y>259</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Tx3:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Tx3:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 2 Tx 3</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 2</name>
+    <x>-5</x>
+    <y>239</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Rx2:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Rx2:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 2 Rx 2</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 3</name>
+    <x>-5</x>
+    <y>219</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Tx2:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Tx2:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 2 Tx 2</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 4</name>
+    <x>-5</x>
+    <y>199</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Rx1:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Rx1:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 2 Rx 1</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 5</name>
+    <x>-5</x>
+    <y>179</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Tx1:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E2:Tx1:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 2 Tx 1</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 6</name>
+    <x>-5</x>
+    <y>149</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Rx3:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Rx3:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 1 Rx 3</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 7</name>
+    <x>-5</x>
+    <y>129</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Tx3:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Tx3:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 1 Tx 3</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 8</name>
+    <x>-5</x>
+    <y>109</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Rx2:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Rx2:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 1 Rx 2</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 9</name>
+    <x>-5</x>
+    <y>89</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Tx2:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Tx2:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 1 Tx 2</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 10</name>
+    <x>-5</x>
+    <y>69</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Rx1:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Rx1:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 1 Rx 1</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 11</name>
+    <x>-5</x>
+    <y>49</y>
+    <width>286</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Tx1:temp</pv_name>
+      <x>211</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)E1:Tx1:Vcc</pv_name>
+      <x>131</x>
+      <y>5</y>
+      <width>70</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>EVG 1 Tx 1</text>
+      <x>5</x>
+      <y>5</y>
+      <width>120</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Vcc</text>
+    <x>126</x>
+    <y>34</y>
+    <width>70</width>
+    <height>16</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Degrees C</text>
+    <x>206</x>
+    <y>34</y>
+    <width>70</width>
+    <height>16</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Enabled
+Low Optical Power</text>
+    <x>310</x>
+    <y>32</y>
+    <width>106</width>
+    <height>28</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 12</name>
+    <x>285</x>
+    <y>54</y>
+    <width>155</width>
+    <height>44</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E1:Rx1:enabled</pv_name>
+      <x>5</x>
+      <y>17</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <x>137</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>6</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>42</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <x>93</x>
+      <y>5</y>
+      <width>6</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E1:Rx1:lowPower</pv_name>
+      <x>5</x>
+      <y>28</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 13</name>
+    <x>285</x>
+    <y>94</y>
+    <width>155</width>
+    <height>44</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E1:Rx2:enabled</pv_name>
+      <x>5</x>
+      <y>17</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <x>137</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>6</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>42</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <x>93</x>
+      <y>5</y>
+      <width>6</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E1:Rx2:lowPower</pv_name>
+      <x>5</x>
+      <y>28</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 14</name>
+    <x>285</x>
+    <y>134</y>
+    <width>155</width>
+    <height>44</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E1:Rx3:enabled</pv_name>
+      <x>5</x>
+      <y>17</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <x>137</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>6</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>42</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <x>93</x>
+      <y>5</y>
+      <width>6</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E1:Rx3:lowPower</pv_name>
+      <x>5</x>
+      <y>28</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 15</name>
+    <x>285</x>
+    <y>184</y>
+    <width>155</width>
+    <height>44</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E2:Rx1:enabled</pv_name>
+      <x>5</x>
+      <y>17</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <x>137</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>6</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>42</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <x>93</x>
+      <y>5</y>
+      <width>6</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E2:Rx1:lowPower</pv_name>
+      <x>5</x>
+      <y>28</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 16</name>
+    <x>285</x>
+    <y>224</y>
+    <width>155</width>
+    <height>44</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E2:Rx2:enabled</pv_name>
+      <x>5</x>
+      <y>17</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <x>137</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>6</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>42</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <x>93</x>
+      <y>5</y>
+      <width>6</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E2:Rx2:lowPower</pv_name>
+      <x>5</x>
+      <y>28</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 17</name>
+    <x>285</x>
+    <y>264</y>
+    <width>155</width>
+    <height>44</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E2:Rx3:enabled</pv_name>
+      <x>5</x>
+      <y>17</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <x>137</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <x>6</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <x>42</x>
+      <y>5</y>
+      <width>12</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <x>93</x>
+      <y>5</y>
+      <width>6</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="byte_monitor" version="2.0.0">
+      <name>EDM ByteClass</name>
+      <pv_name>$(P)$(R)E2:Rx3:lowPower</pv_name>
+      <x>5</x>
+      <y>28</y>
+      <width>145</width>
+      <height>11</height>
+      <numBits>12</numBits>
+      <bitReverse>true</bitReverse>
+      <square>true</square>
+      <off_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+    </widget>
+  </widget>
+</display>
