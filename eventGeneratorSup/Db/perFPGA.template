@@ -14,6 +14,18 @@ record(bi, "$(P)$(R)sysmonTrig_") {
 }
 
 #
+# Get 32-bit Git Hash ID
+#
+
+record(longin, "$(P)$(R)gitID") {
+    field(DESC, "32-bit Git ID")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x0002, 1)")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+}
+
+#
 # Push values to FPGA on reconnection.
 # Monitor the status of a periodically-scanned readback to
 # detect reconnection or FPGA power up.

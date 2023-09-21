@@ -509,10 +509,10 @@ octetRead(void *pvt, asynUser *pasynUser, char *data, size_t maxchars, size_t *n
         return status;
     switch (address) {
     case EVG_PROTOCOL_CMD_HI_LONGIN |
-         EVG_PROTOCOL_CMD_LONGIN_LO_GENERIC | 
+         EVG_PROTOCOL_CMD_LONGIN_LO_GENERIC |
          EVG_PROTOCOL_CMD_LONGIN_IDX_FIRMWARE_BUILD_DATE: break;
     case EVG_PROTOCOL_CMD_HI_LONGIN |
-         EVG_PROTOCOL_CMD_LONGIN_LO_GENERIC | 
+         EVG_PROTOCOL_CMD_LONGIN_LO_GENERIC |
          EVG_PROTOCOL_CMD_LONGIN_IDX_SOFTWARE_BUILD_DATE: break;
     default:
         epicsSnprintf(pasynUser->errorMessage, pasynUser->errorMessageSize,
