@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2023-08-30 13:34:26 by lrusso-->
+<!--Saved on 2023-09-21 15:01:50 by lrusso-->
 <display version="2.0.0">
   <name>EVG statistics</name>
-  <x>720</x>
-  <y>134</y>
-  <width>250</width>
-  <height>260</height>
+  <x>908</x>
+  <y>585</y>
+  <width>223</width>
+  <height>294</height>
   <background_color>
     <color name="GLOBAL canvas" red="200" green="200" blue="200">
     </color>
@@ -35,7 +35,7 @@
   <widget type="group" version="2.0.0">
     <name>EDM Group 0</name>
     <x>13</x>
-    <y>38</y>
+    <y>65</y>
     <width>222</width>
     <height>31</height>
     <style>3</style>
@@ -81,7 +81,7 @@
   <widget type="group" version="2.0.0">
     <name>EDM Group 1</name>
     <x>13</x>
-    <y>18</y>
+    <y>45</y>
     <width>222</width>
     <height>31</height>
     <style>3</style>
@@ -126,7 +126,7 @@
   </widget>
   <widget type="group" version="2.0.0">
     <name>EDM Group 2</name>
-    <y>65</y>
+    <y>92</y>
     <width>210</width>
     <height>197</height>
     <style>3</style>
@@ -545,5 +545,43 @@
         <vertical_alignment>1</vertical_alignment>
       </widget>
     </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM activeXTextDspClass_noedit</name>
+    <pv_name>$(P)$(R)gitID</pv_name>
+    <x>90</x>
+    <y>32</y>
+    <width>140</width>
+    <height>17</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <format>4</format>
+    <show_units>false</show_units>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Git ID</text>
+    <x>18</x>
+    <y>30</y>
+    <width>65</width>
+    <height>21</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
   </widget>
 </display>
