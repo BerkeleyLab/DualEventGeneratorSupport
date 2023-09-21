@@ -167,4 +167,6 @@ file "perSysmonFan.template"
 {     P     R,    PORT,  N,     A, }
  { \$(P),\$(R),\$(PORT), 1, 0x2325 }
  { \$(P),\$(R),\$(PORT), 2, 0x2425 }
+ { \$(P),\$(R),\$(PORT), 3, 0x2326 }
+ { \$(P),\$(R),\$(PORT), 4, 0x2426 }
 }
