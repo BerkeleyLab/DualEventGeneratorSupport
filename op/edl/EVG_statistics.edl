@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 720
-y 134
-w 250
-h 260
+x 908
+y 585
+w 223
+h 294
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -48,7 +48,7 @@ major 4
 minor 0
 release 0
 x 18
-y 43
+y 70
 w 212
 h 21
 
@@ -61,7 +61,7 @@ major 4
 minor 7
 release 0
 x 90
-y 45
+y 72
 w 140
 h 16
 controlPv "$(P)$(R)softwareBuildDate"
@@ -84,7 +84,7 @@ major 4
 minor 1
 release 1
 x 18
-y 43
+y 70
 w 65
 h 21
 font "helvetica-medium-r-14.0"
@@ -108,7 +108,7 @@ major 4
 minor 0
 release 0
 x 18
-y 23
+y 50
 w 212
 h 21
 
@@ -121,7 +121,7 @@ major 4
 minor 7
 release 0
 x 90
-y 25
+y 52
 w 140
 h 16
 controlPv "$(P)$(R)firmwareBuildDate"
@@ -144,7 +144,7 @@ major 4
 minor 1
 release 1
 x 18
-y 23
+y 50
 w 65
 h 21
 font "helvetica-medium-r-14.0"
@@ -168,7 +168,7 @@ major 4
 minor 0
 release 0
 x 5
-y 70
+y 97
 w 200
 h 187
 
@@ -181,7 +181,7 @@ major 4
 minor 0
 release 0
 x 15
-y 240
+y 267
 w 190
 h 17
 
@@ -194,7 +194,7 @@ major 4
 minor 7
 release 0
 x 125
-y 240
+y 267
 w 80
 h 16
 controlPv "$(P)$(R)SeqMissedCount"
@@ -218,7 +218,7 @@ major 4
 minor 1
 release 1
 x 15
-y 240
+y 267
 w 100
 h 17
 font "helvetica-medium-r-14.0"
@@ -242,7 +242,7 @@ major 4
 minor 0
 release 0
 x 25
-y 220
+y 247
 w 180
 h 17
 
@@ -255,7 +255,7 @@ major 4
 minor 7
 release 0
 x 125
-y 220
+y 247
 w 80
 h 16
 controlPv "$(P)$(R)StatRecvCount"
@@ -279,7 +279,7 @@ major 4
 minor 1
 release 1
 x 6
-y 220
+y 247
 w 109
 h 17
 font "helvetica-medium-r-14.0"
@@ -303,7 +303,7 @@ major 4
 minor 0
 release 0
 x 63
-y 180
+y 207
 w 142
 h 17
 
@@ -316,7 +316,7 @@ major 4
 minor 7
 release 0
 x 125
-y 180
+y 207
 w 80
 h 16
 controlPv "$(P)$(R)CmdFailedCount"
@@ -340,7 +340,7 @@ major 4
 minor 1
 release 1
 x 63
-y 180
+y 207
 w 60
 h 17
 font "helvetica-medium-r-14.0"
@@ -363,7 +363,7 @@ major 4
 minor 0
 release 0
 x 63
-y 158
+y 185
 w 142
 h 17
 
@@ -376,7 +376,7 @@ major 4
 minor 7
 release 0
 x 125
-y 158
+y 185
 w 80
 h 17
 controlPv "$(P)$(R)Cmd4RetryCount"
@@ -400,7 +400,7 @@ major 4
 minor 1
 release 1
 x 63
-y 158
+y 185
 w 60
 h 17
 font "helvetica-medium-r-14.0"
@@ -423,7 +423,7 @@ major 4
 minor 0
 release 0
 x 63
-y 136
+y 163
 w 142
 h 17
 
@@ -436,7 +436,7 @@ major 4
 minor 7
 release 0
 x 125
-y 136
+y 163
 w 80
 h 17
 controlPv "$(P)$(R)Cmd3RetryCount"
@@ -460,7 +460,7 @@ major 4
 minor 1
 release 1
 x 63
-y 136
+y 163
 w 60
 h 17
 font "helvetica-medium-r-14.0"
@@ -483,7 +483,7 @@ major 4
 minor 0
 release 0
 x 63
-y 114
+y 141
 w 142
 h 17
 
@@ -496,7 +496,7 @@ major 4
 minor 7
 release 0
 x 125
-y 114
+y 141
 w 80
 h 17
 controlPv "$(P)$(R)Cmd2RetryCount"
@@ -520,7 +520,7 @@ major 4
 minor 1
 release 1
 x 63
-y 114
+y 141
 w 60
 h 17
 font "helvetica-medium-r-14.0"
@@ -543,7 +543,7 @@ major 4
 minor 0
 release 0
 x 63
-y 92
+y 119
 w 142
 h 17
 
@@ -556,7 +556,7 @@ major 4
 minor 7
 release 0
 x 125
-y 92
+y 119
 w 80
 h 17
 controlPv "$(P)$(R)Cmd1RetryCount"
@@ -580,7 +580,7 @@ major 4
 minor 1
 release 1
 x 63
-y 92
+y 119
 w 60
 h 17
 font "helvetica-medium-r-14.0"
@@ -603,7 +603,7 @@ major 4
 minor 0
 release 0
 x 63
-y 70
+y 97
 w 142
 h 17
 
@@ -616,7 +616,7 @@ major 4
 minor 7
 release 0
 x 125
-y 70
+y 97
 w 80
 h 17
 controlPv "$(P)$(R)Cmd0RetryCount"
@@ -640,7 +640,7 @@ major 4
 minor 1
 release 1
 x 63
-y 70
+y 97
 w 60
 h 17
 font "helvetica-medium-r-14.0"
@@ -663,7 +663,7 @@ major 4
 minor 0
 release 0
 x 5
-y 200
+y 227
 w 200
 h 17
 
@@ -676,7 +676,7 @@ major 4
 minor 7
 release 0
 x 125
-y 200
+y 227
 w 80
 h 16
 controlPv "$(P)$(R)StatConnCount"
@@ -700,7 +700,7 @@ major 4
 minor 1
 release 1
 x 5
-y 200
+y 227
 w 110
 h 17
 font "helvetica-medium-r-14.0"
@@ -719,5 +719,49 @@ endObjectProperties
 
 endGroup
 
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 90
+y 32
+w 140
+h 17
+controlPv "$(P)$(R)gitID"
+format "hex"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 7
+useHexPrefix
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 18
+y 30
+w 65
+h 21
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Git ID"
+}
 endObjectProperties
 
