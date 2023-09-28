@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 400
-y 244
-w 350
-h 130
+x 628
+y 452
+w 323
+h 124
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -91,95 +91,6 @@ bgColor index 19
 useDisplayBg
 value {
   "Volts"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 309
-y 132
-w 276
-h 16
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 515
-y 132
-w 70
-h 16
-controlPv "$(P)$(R)E1:Tx1:temp"
-format "float"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-fgAlarm
-bgColor index 2
-autoHeight
-precision 3
-nullColor index 7
-useHexPrefix
-useAlarmBorder
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 435
-y 132
-w 70
-h 16
-controlPv "$(P)$(R)E1:Tx1:Vcc"
-format "float"
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-fgAlarm
-bgColor index 2
-autoHeight
-precision 3
-nullColor index 7
-useHexPrefix
-useAlarmBorder
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 309
-y 132
-w 120
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "EVG 1 Tx 1"
 }
 endObjectProperties
 
