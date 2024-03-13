@@ -4,7 +4,18 @@ record(longin, "$(P)$(R)E$(E):seqStatus") {
     field(INP,  "@asyn($(PORT), 0x010$(I), 1)")
     field(SCAN, "I/O Intr")
     field(TSE,  "-2")
-    field(FLNK, "$(P)$(R)E$(E):seqStarts")
+    field(FLNK, "$(P)$(R)E$(E):seqFanout_")
+}
+record(fanout, "$(P)$(R)E$(E):seqFanout_") {
+    field(DESC, "EVG $(E) fanout seqStatus")
+    field(LNK0, "$(P)$(R)E$(E):seqStarts")
+    field(LNK1, "$(P)$(R)E$(E):seq0Enabled")
+    field(LNK2, "$(P)$(R)E$(E):seq1Enabled")
+    field(LNK3, "$(P)$(R)E$(E):seqSelected")
+    field(LNK4, "$(P)$(R)E$(E):seqActive")
+    field(LNK5, "$(P)$(R)E$(E):seqBusy")
+    field(LNK6, "$(P)$(R)E$(E):seqRequestsAccepted")
+    field(LNK7, "$(P)$(R)E$(E):seqRequestsIgnored")
 }
 record(calc, "$(P)$(R)E$(E):seqStarts") {
     field(DESC, "EVG $(E) injection sequences started")
@@ -20,6 +31,55 @@ record(calc, "$(P)$(R)E$(E):seqFinishes") {
     field(INPB, "0x10")
     field(INPC, "$(P)$(R)E$(E):seqStarts NPP MS")
     field(CALC, "J:=(A&B)#0;(!J&K)?C:VAL;K:=J")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seq0Enabled") {
+    field(DESC, "EVG $(E) sequence 0 enabled")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0x01")
+    field(CALC, "(A&B)#0")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seq1Enabled") {
+    field(DESC, "EVG $(E) sequence 1 enabled")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0x02")
+    field(CALC, "(A&B)#0")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seqSelected") {
+    field(DESC, "EVG $(E) sequence selected")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0x04")
+    field(CALC, "(A&B)#0")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seqActive") {
+    field(DESC, "EVG $(E) sequencer active")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0x08")
+    field(CALC, "(A&B)#0")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seqBusy") {
+    field(DESC, "EVG $(E) sequencer busy")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0x10")
+    field(CALC, "(A&B)#0")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seqRequestsAccepted") {
+    field(DESC, "EVG $(E) sequencer requests accepted")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0xFF00")
+    field(CALC, "(A&B)>>8")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+}
+record(calc, "$(P)$(R)E$(E):seqRequestsIgnored") {
+    field(DESC, "EVG $(E) sequencer requests ignored")
+    field(INPA, "$(P)$(R)E$(E):seqStatus NPP MS")
+    field(INPB, "0xFF0000")
+    field(CALC, "(A&B)>>16")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
 }
 
