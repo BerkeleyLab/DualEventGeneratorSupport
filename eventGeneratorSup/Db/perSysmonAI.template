@@ -19,4 +19,5 @@ record(ai, "$(P)$(R)$(NAME)") {
     field(LSV,  "$(LSV)")
     field(HSV,  "$(HSV)")
     field(HHSV, "$(HHSV)")
+    info(archive,"VerySlow")
 }

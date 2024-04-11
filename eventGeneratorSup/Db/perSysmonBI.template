@@ -8,4 +8,5 @@ record(bi, "$(P)$(R)$(NAME)") {
     field(ONAM, "$(ONAM)")
     field(ZSV,  "$(ZSV)")
     field(OSV,  "$(OSV)")
+    info(archive,"VerySlow")
 }

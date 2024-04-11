@@ -5,4 +5,5 @@ record(longin, "$(P)$(R)$(NAME)") {
     field(EGU,  "$(EGU)")
     field(SCAN, "I/O Intr")
     field(TSE,  "-2")
+    info(archive,"VerySlow")
 }

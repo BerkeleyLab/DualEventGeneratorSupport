@@ -11,4 +11,5 @@ record(ai, "$(P)$(R)fan$(N):speed") {
     field(LLSV, "MAJOR")
     field(SCAN, "I/O Intr")
     field(TSE,  "-2")
+    info(archive,"VerySlow")
 }
