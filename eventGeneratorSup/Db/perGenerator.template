@@ -5,6 +5,7 @@ record(longin, "$(P)$(R)E$(E):seqStatus") {
     field(SCAN, "I/O Intr")
     field(TSE,  "-2")
     field(FLNK, "$(P)$(R)E$(E):seqFanout_")
+    info(archive, "VeryFastControlled")
 }
 record(fanout, "$(P)$(R)E$(E):seqFanout_") {
     field(DESC, "EVG $(E) fanout seqStatus")
@@ -16,6 +17,7 @@ record(fanout, "$(P)$(R)E$(E):seqFanout_") {
     field(LNK5, "$(P)$(R)E$(E):seqBusy")
     field(LNK6, "$(P)$(R)E$(E):seqRequestsAccepted")
     field(LNK7, "$(P)$(R)E$(E):seqRequestsIgnored")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqStarts") {
     field(DESC, "EVG $(E) injection sequences started")
@@ -24,6 +26,7 @@ record(calc, "$(P)$(R)E$(E):seqStarts") {
     field(CALC, "J:=(A&B)#0;VAL+(J&!K);K:=J")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
     field(FLNK, "$(P)$(R)E$(E):seqFinishes")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqFinishes") {
     field(DESC, "EVG $(E) injection sequences completed")
@@ -32,6 +35,7 @@ record(calc, "$(P)$(R)E$(E):seqFinishes") {
     field(INPC, "$(P)$(R)E$(E):seqStarts NPP MS")
     field(CALC, "J:=(A&B)#0;(!J&K)?C:VAL;K:=J")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seq0Enabled") {
     field(DESC, "EVG $(E) sequence 0 enabled")
@@ -39,6 +43,7 @@ record(calc, "$(P)$(R)E$(E):seq0Enabled") {
     field(INPB, "0x01")
     field(CALC, "(A&B)#0")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seq1Enabled") {
     field(DESC, "EVG $(E) sequence 1 enabled")
@@ -46,6 +51,7 @@ record(calc, "$(P)$(R)E$(E):seq1Enabled") {
     field(INPB, "0x02")
     field(CALC, "(A&B)#0")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqSelected") {
     field(DESC, "EVG $(E) sequence selected")
@@ -53,6 +59,7 @@ record(calc, "$(P)$(R)E$(E):seqSelected") {
     field(INPB, "0x04")
     field(CALC, "(A&B)#0")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqActive") {
     field(DESC, "EVG $(E) sequencer active")
@@ -60,6 +67,7 @@ record(calc, "$(P)$(R)E$(E):seqActive") {
     field(INPB, "0x08")
     field(CALC, "(A&B)#0")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqBusy") {
     field(DESC, "EVG $(E) sequencer busy")
@@ -67,6 +75,7 @@ record(calc, "$(P)$(R)E$(E):seqBusy") {
     field(INPB, "0x10")
     field(CALC, "(A&B)#0")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqRequestsAccepted") {
     field(DESC, "EVG $(E) sequencer requests accepted")
@@ -74,6 +83,7 @@ record(calc, "$(P)$(R)E$(E):seqRequestsAccepted") {
     field(INPB, "0xFF00")
     field(CALC, "(A&B)>>8")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 record(calc, "$(P)$(R)E$(E):seqRequestsIgnored") {
     field(DESC, "EVG $(E) sequencer requests ignored")
@@ -81,6 +91,7 @@ record(calc, "$(P)$(R)E$(E):seqRequestsIgnored") {
     field(INPB, "0xFF0000")
     field(CALC, "(A&B)>>16")
     field(TSEL, "$(P)$(R)E$(E):seqStatus.TIME")
+    info(archive, "VeryFastControlled")
 }
 
 record(longin, "$(P)$(R)E$(E):EVIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVIOstatus") }
