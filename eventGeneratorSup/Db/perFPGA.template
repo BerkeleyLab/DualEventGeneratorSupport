@@ -85,6 +85,7 @@ record(ao, "$(P)$(R)INJ:extendInterval") {
     field(HOPR, "20")
     field(DRVL, "0")
     field(DRVH, "20")
+    info(autosaveFields_pass0, "VAL")
 }
 record(longin, "$(P)$(R)INJ:injCycleCSR") {
     field(FLNK, "$(P)$(R)INJ:injCycleEnabled")

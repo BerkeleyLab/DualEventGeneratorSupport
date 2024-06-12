@@ -118,6 +118,7 @@ record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(FVST, "{Heartbeat, TxClk}")
     field(SXVL, "0x300")
     field(SXST, "{Alt Heartbeat, TxClk}")
+    info(autosaveFields_pass0, "VAL")
 }
 record(longout, "$(P)$(R)E$(E):loopback") {
     field(DESC, "EVG $(E) loopback channel")
@@ -127,6 +128,7 @@ record(longout, "$(P)$(R)E$(E):loopback") {
     field(HOPR, "36")
     field(DRVL, "1")
     field(DRVH, "36")
+    info(autosaveFields_pass0, "VAL")
     field(FLNK, "$(P)$(R)E$(E):latencyRb_")
 }
 record(seq, "$(P)$(R)E$(E):latencyRb_") {
