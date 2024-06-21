@@ -583,7 +583,7 @@ subscriberThread(void *arg)
     size_t ntrans;
     epicsUInt32 pkNumber = 0;
     int subscriptionAttempt;
-    epicsTimeStamp now, whenSubscribed, pkTime;
+    epicsTimeStamp now, whenSubscribed, pkTime[EVG_PROTOCOL_EVG_COUNT];
     asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
     enum readState {rsUnknown, rsGood, rsBad} readState = rsUnknown;
     extern volatile int interruptAccept;
@@ -645,18 +645,20 @@ subscriberThread(void *arg)
             if ((status == asynTimeout) && (subscriptionAttempt < 2)) {
                 continue;
             }
-            if (status == asynSuccess) {
-                pkTime.secPastEpoch = pk.posixSeconds-POSIX_TIME_AT_EPICS_EPOCH;
-                pkTime.nsec = pk.ntpFraction / 4.294967296;
-            }
-            else {
-                pkTime = now;
+            for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
+                if (status == asynSuccess) {
+                    pkTime[i].secPastEpoch = pk.posixSeconds[i]-POSIX_TIME_AT_EPICS_EPOCH;
+                    pkTime[i].nsec = pk.ntpFraction[i] / 4.294967296;
+                }
+                else {
+                    pkTime[i] = now;
+                }
             }
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 asynInt32Interrupt *int32Interrupt = interrupts[i];
                 asynUser *pasynUser = int32Interrupt->pasynUser;
                 pasynUser->auxStatus = status;
-                pasynUser->timestamp = pkTime;
+                pasynUser->timestamp = pkTime[i];
                 int32Interrupt->callback(int32Interrupt->userPvt,
                                               pasynUser, pk.sequencerStatus[i]);
             }
