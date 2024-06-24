@@ -23,6 +23,7 @@
 # the CONFIG_SITE file.
 
 ASYN       = /usr/local/epics/R3.15.4/modules/soft/synApps_6_1/support/asyn-R4-36
+AUTOSAVE   = /usr/local/epics/R3.15.4/modules/soft/synApps_6_1/support/autosave-R5-10
 IOCEXIT    = /usr/local/epics/R3.15.4/modules/soft/iocExit/iocExit-2-0
 SNCSEQ     = /usr/local/epics/R3.15.4/modules/soft/synApps_6_1/support/seq-2-2-6
 EPICS_BASE = /usr/local/epics/R3.15.4/base

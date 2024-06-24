@@ -2,4 +2,5 @@ record(longout, "$(P)$(R)E$(E):HW:$(T)") {
     field(DESC, "Event to send for hardware trigger $(T)")
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT), $(A), 1)")
+    info(autosaveFields_pass0, "VAL")
 }
