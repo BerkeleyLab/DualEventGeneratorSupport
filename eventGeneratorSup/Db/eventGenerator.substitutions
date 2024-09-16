@@ -81,7 +81,7 @@ file "perSysmonAI.template"
  { \$(P),\$(R),\$(PORT),        "FMC2:I12", 0x2305,        "I",       5.0e-4,      0     3,    0,    20,   -0.2,   -0.1,    1.0,    1.5, MAJOR, MINOR, MINOR, MAJOR, "FMC1 supply current" }
  { \$(P),\$(R),\$(PORT),        "FMC2:V12", 0x2205,        "V",       5.0e-4,      0,    3,    0,    20,     11,  11.25,  12.75,     13, MAJOR, MINOR, MINOR, MAJOR, "FMC1 supply voltage" }
 # FIXME: Next board revision will fix the polarity of the reading
- { \$(P),\$(R),\$(PORT),      "Marble:Iin", 0x2306,        "I",-4.4117647e-4,      0     3,    0,    20,   -2.5,   -2.3,    2.3,    2.5, MAJOR, MINOR, MINOR, MAJOR, "Board supply current" }
+ { \$(P),\$(R),\$(PORT),      "Marble:Iin", 0x2306,        "I",-4.4117647e-4,      0     3,    0,    20,   -3.2,   -3.0,    3.0,    3.2, MAJOR, MINOR, MINOR, MAJOR, "Board supply current" }
  { \$(P),\$(R),\$(PORT),      "Marble:Vin", 0x2206,        "V",       5.0e-4,      0,    3,    0,    20,     11,  11.25,  12.75,     13, MAJOR, MINOR, MINOR, MAJOR, "Board supply voltage" }
 
  { \$(P),\$(R),\$(PORT),      "E1:Tx1:Vcc", 0x2107,        "V",         1e-4,      0,    3,    0,     5,   3.10,   3.20,   3.40,   3.50, MAJOR, MINOR, MINOR, MAJOR, "EVG 1 Tx 1 supply voltage" }
