@@ -115,9 +115,15 @@ record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(FRVL, "0x100")
     field(FRST, "{RefClk, TxClk}")
     field(FVVL, "0x200")
-    field(FVST, "{Heartbeat, TxClk}")
+    field(FVST, "{HB, TxClk}")
     field(SXVL, "0x300")
-    field(SXST, "{Alt Heartbeat, TxClk}")
+    field(SXST, "{Alt HB, TxClk}")
+    field(SVVL, "0x400")
+    field(SVST, "{HB, BR/AR align or AROC}")
+    field(EIVL, "0x500")
+    field(EIST, "{HB, BR/AR align or SROC}")
+    field(NIVL, "0x600")
+    field(NIST, "{HB, BR/AR or AR/SR coinc}")
     info(autosaveFields_pass0, "VAL")
 }
 record(longout, "$(P)$(R)E$(E):loopback") {
