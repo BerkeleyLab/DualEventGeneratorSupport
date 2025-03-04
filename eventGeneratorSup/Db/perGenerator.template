@@ -124,6 +124,8 @@ record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(EIST, "{HB, BR/AR align or SROC}")
     field(NIVL, "0x600")
     field(NIST, "{HB, BR/AR or AR/SR coin}")
+    field(TEVL, "0x700")
+    field(TEST, "{F1/F2 align, F1/F2 coin}")
     info(autosaveFields_pass0, "VAL")
 }
 record(longout, "$(P)$(R)E$(E):loopback") {
