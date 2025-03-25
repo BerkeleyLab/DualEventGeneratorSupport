@@ -100,6 +100,31 @@ record(mbbiDirect, "$(P)$(R)E$(E):EVIOstatus") {
     field(INP,  "$(P)$(R)E$(E):EVIOstatus_ NPP")
 }
 
+record(longin, "$(P)$(R)E$(E):MGTstatus_") { field(FLNK, "$(P)$(R)E$(E):MGTstatus") }
+record(mbbiDirect, "$(P)$(R)E$(E):MGTstatus") {
+    field(DESC, "Bits of $(P)$(R)E$(E):MGTstatus_")
+    field(INP,  "$(P)$(R)E$(E):MGTstatus_ NPP")
+    field(FLNK, "$(P)$(R)E$(E):MGTfanout_")
+    info(archive, "VeryFastControlled")
+}
+
+record(fanout, "$(P)$(R)E$(E):MGTfanout_") {
+    field(DESC, "EVG $(E) fanout MGTstatus")
+    field(LNK0, "$(P)$(R)E$(E):MGTLossOfLock")
+    info(archive, "VeryFastControlled")
+}
+
+record(bi, "$(P)$(R)E$(E):MGTLossOfLock") {
+    field(DESC, "MGT Loss of Lock")
+    field(INP,  "$(P)$(R)E$(E):MGTstatus.B4 NPP")
+    field(SCAN, "Passive")
+    field(ZNAM, "Locked")
+    field(ONAM, "Unlocked")
+    field(ZSV,  "0")
+    field(OSV,  "1")
+    info(archive,"VeryFastControlled")
+}
+
 record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(DESC, "EVG $(E) diagnostic output control")
     field(DTYP, "asynUInt32Digital")
