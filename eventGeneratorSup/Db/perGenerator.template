@@ -100,6 +100,31 @@ record(mbbiDirect, "$(P)$(R)E$(E):EVIOstatus") {
     field(INP,  "$(P)$(R)E$(E):EVIOstatus_ NPP")
 }
 
+record(longin, "$(P)$(R)E$(E):MGTstatus_") { field(FLNK, "$(P)$(R)E$(E):MGTstatus") }
+record(mbbiDirect, "$(P)$(R)E$(E):MGTstatus") {
+    field(DESC, "Bits of $(P)$(R)E$(E):MGTstatus_")
+    field(INP,  "$(P)$(R)E$(E):MGTstatus_ NPP")
+    field(FLNK, "$(P)$(R)E$(E):MGTfanout_")
+    info(archive, "VeryFastControlled")
+}
+
+record(fanout, "$(P)$(R)E$(E):MGTfanout_") {
+    field(DESC, "EVG $(E) fanout MGTstatus")
+    field(LNK0, "$(P)$(R)E$(E):MGTLossOfLock")
+    info(archive, "VeryFastControlled")
+}
+
+record(bi, "$(P)$(R)E$(E):MGTLossOfLock") {
+    field(DESC, "MGT Loss of Lock")
+    field(INP,  "$(P)$(R)E$(E):MGTstatus.B4 NPP")
+    field(SCAN, "Passive")
+    field(ZNAM, "Locked")
+    field(ONAM, "Unlocked")
+    field(ZSV,  "0")
+    field(OSV,  "1")
+    info(archive,"VeryFastControlled")
+}
+
 record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(DESC, "EVG $(E) diagnostic output control")
     field(DTYP, "asynUInt32Digital")
@@ -115,9 +140,17 @@ record(mbbo, "$(P)$(R)E$(E):diagOut") {
     field(FRVL, "0x100")
     field(FRST, "{RefClk, TxClk}")
     field(FVVL, "0x200")
-    field(FVST, "{Heartbeat, TxClk}")
+    field(FVST, "{HB, TxClk}")
     field(SXVL, "0x300")
-    field(SXST, "{Alt Heartbeat, TxClk}")
+    field(SXST, "{Alt HB, TxClk}")
+    field(SVVL, "0x400")
+    field(SVST, "{HB, BR/AR align or AROC}")
+    field(EIVL, "0x500")
+    field(EIST, "{HB, BR/AR align or SROC}")
+    field(NIVL, "0x600")
+    field(NIST, "{HB, BR/AR or AR/SR coin}")
+    field(TEVL, "0x700")
+    field(TEST, "{F1/F2 align, F1/F2 coin}")
     info(autosaveFields_pass0, "VAL")
 }
 record(longout, "$(P)$(R)E$(E):loopback") {
