@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 655
-y 236
+x 659
+y 300
 w 535
 h 329
 font "helvetica-medium-r-18.0"
@@ -265,235 +265,6 @@ endObjectProperties
 
 endGroup
 
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 18
-y 140
-w 218
-h 25
-
-beginGroup
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 184
-y 140
-w 52
-h 22
-
-beginGroup
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 184
-y 152
-w 61
-h 10
-controlPv "$(P)$(R)E2:EVIOstatus_"
-lineColor index 14
-onColor index 15
-offColor index 3
-endian "little"
-numBits 6
-shift 8
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 185
-y 140
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "1"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 205
-y 140
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "3"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 225
-y 140
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "5"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 114
-y 140
-w 52
-h 22
-
-beginGroup
-
-# (Byte)
-object ByteClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 114
-y 152
-w 61
-h 10
-controlPv "$(P)$(R)E1:EVIOstatus_"
-lineColor index 14
-onColor index 15
-offColor index 3
-endian "little"
-numBits 6
-shift 8
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 115
-y 140
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "1"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 135
-y 140
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "3"
-}
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 155
-y 140
-w 11
-h 12
-font "helvetica-medium-r-10.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "5"
-}
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 18
-y 149
-w 90
-h 16
-font "helvetica-medium-r-14.0"
-fontAlign "right"
-fgColor index 14
-bgColor index 19
-useDisplayBg
-value {
-  "Hw Trig"
-}
 endObjectProperties
 
 endGroup
@@ -1586,7 +1357,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 18
+x 2
 y 163
 w 178
 h 25
@@ -1599,7 +1370,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 18
+x 2
 y 172
 w 90
 h 16
@@ -1619,7 +1390,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 185
+x 169
 y 163
 w 11
 h 22
@@ -1632,7 +1403,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 185
+x 169
 y 175
 w 10
 h 10
@@ -1650,7 +1421,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 185
+x 169
 y 163
 w 11
 h 12
@@ -1674,7 +1445,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 114
+x 98
 y 163
 w 10
 h 22
@@ -1687,7 +1458,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 114
+x 98
 y 175
 w 10
 h 10
@@ -1705,7 +1476,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 116
+x 100
 y 163
 w 8
 h 12
@@ -1882,7 +1653,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 18
+x 2
 y 190
 w 228
 h 25
@@ -1895,7 +1666,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 184
+x 168
 y 190
 w 62
 h 22
@@ -1908,7 +1679,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 235
+x 219
 y 190
 w 11
 h 12
@@ -1928,7 +1699,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 185
+x 169
 y 190
 w 11
 h 12
@@ -1948,7 +1719,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 210
+x 194
 y 190
 w 11
 h 12
@@ -1968,7 +1739,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 184
+x 168
 y 202
 w 61
 h 10
@@ -1990,7 +1761,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 114
+x 98
 y 190
 w 62
 h 22
@@ -2003,7 +1774,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 114
+x 98
 y 202
 w 61
 h 10
@@ -2021,7 +1792,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 115
+x 99
 y 190
 w 11
 h 12
@@ -2041,7 +1812,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 140
+x 124
 y 190
 w 11
 h 12
@@ -2061,7 +1832,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 165
+x 149
 y 190
 w 11
 h 12
@@ -2085,7 +1856,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 18
+x 2
 y 199
 w 90
 h 16
@@ -2101,5 +1872,223 @@ endObjectProperties
 
 endGroup
 
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 2
+y 149
+w 90
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Hw Trig"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 98
+y 152
+w 81
+h 10
+controlPv "$(P)$(R)E1:EVIOstatus_"
+lineColor index 14
+onColor index 15
+offColor index 3
+endian "little"
+numBits 8
+shift 8
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 99
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 119
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "3"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 139
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "5"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 187
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 207
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "3"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 227
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "5"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 186
+y 152
+w 81
+h 10
+controlPv "$(P)$(R)E2:EVIOstatus_"
+lineColor index 14
+onColor index 15
+offColor index 3
+endian "little"
+numBits 8
+shift 8
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 158
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "7"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 246
+y 140
+w 11
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "7"
+}
 endObjectProperties
 
