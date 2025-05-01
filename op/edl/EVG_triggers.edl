@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 339
-y 446
-w 300
-h 350
+x 341
+y 343
+w 288
+h 413
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-bold-r-14.0"
@@ -69,8 +69,8 @@ minor 1
 release 1
 x 173
 y 56
-w 75
-h 21
+w 73
+h 22
 font "helvetica-medium-r-18.0"
 fgColor index 14
 bgColor index 19
@@ -89,8 +89,8 @@ minor 1
 release 1
 x 56
 y 56
-w 78
-h 21
+w 80
+h 22
 font "helvetica-medium-r-18.0"
 fgColor index 14
 bgColor index 19
@@ -580,7 +580,7 @@ major 4
 minor 0
 release 0
 x 36
-y 286
+y 345
 w 220
 h 50
 
@@ -593,7 +593,7 @@ major 4
 minor 0
 release 0
 x 36
-y 311
+y 370
 w 220
 h 28
 fgColor index 14
@@ -612,7 +612,7 @@ major 4
 minor 1
 release 1
 x 36
-y 286
+y 345
 w 220
 h 21
 font "helvetica-medium-r-18.0"
@@ -745,6 +745,128 @@ useDisplayBg
 value {
   "6"
 }
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 39
+y 274
+w 72
+h 22
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 39
+y 274
+w 15
+h 21
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "7"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 71
+y 274
+w 40
+h 22
+controlPv "$(P)$(R)E$(E):HW:7"
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 31
+editable
+autoHeight
+limitsFromDb
+nullColor index 7
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 39
+y 305
+w 72
+h 22
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 39
+y 305
+w 15
+h 21
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "8"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 71
+y 305
+w 40
+h 22
+controlPv "$(P)$(R)E$(E):HW:8"
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 31
+editable
+autoHeight
+limitsFromDb
+nullColor index 7
+useHexPrefix
+newPos
+objType "controls"
 endObjectProperties
 
 endGroup
