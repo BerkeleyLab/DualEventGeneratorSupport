@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-04-30 10:17:43 by lrusso-->
+<!--Saved on 2025-05-12 15:57:08 by lrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
-  <x>659</x>
-  <y>300</y>
+  <x>661</x>
+  <y>330</y>
   <width>535</width>
   <height>329</height>
   <background_color>
@@ -1006,121 +1006,6 @@
   </widget>
   <widget type="group" version="2.0.0">
     <name>EDM Group 16</name>
-    <x>387</x>
-    <y>187</y>
-    <width>140</width>
-    <height>46</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>RPM</text>
-      <x>104</x>
-      <y>25</y>
-      <width>33</width>
-      <height>17</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <auto_size>true</auto_size>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>EDM activeXTextDspClass:noedit</name>
-      <pv_name>$(P)$(R)fan2:speed</pv_name>
-      <x>48</x>
-      <y>25</y>
-      <width>50</width>
-      <height>16</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="grey-2" red="218" green="218" blue="218">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>Fan 2</text>
-      <x>5</x>
-      <y>25</y>
-      <width>40</width>
-      <height>16</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>RPM</text>
-      <x>104</x>
-      <y>5</y>
-      <width>33</width>
-      <height>17</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <auto_size>true</auto_size>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>EDM activeXTextDspClass:noedit</name>
-      <pv_name>$(P)$(R)fan1:speed</pv_name>
-      <x>48</x>
-      <y>5</y>
-      <width>50</width>
-      <height>16</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="grey-2" red="218" green="218" blue="218">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>Fan 1</text>
-      <x>5</x>
-      <y>5</y>
-      <width>40</width>
-      <height>16</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>EDM Group 17</name>
     <x>-3</x>
     <y>158</y>
     <width>188</width>
@@ -1146,7 +1031,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
     <widget type="group" version="2.0.0">
-      <name>EDM Group 18</name>
+      <name>EDM Group 17</name>
       <x>167</x>
       <width>21</width>
       <height>32</height>
@@ -1200,7 +1085,7 @@
       </widget>
     </widget>
     <widget type="group" version="2.0.0">
-      <name>EDM Group 19</name>
+      <name>EDM Group 18</name>
       <x>96</x>
       <width>20</width>
       <height>32</height>
@@ -1255,130 +1140,7 @@
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
-    <name>EDM Group 20</name>
-    <x>387</x>
-    <y>226</y>
-    <width>142</width>
-    <height>46</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>Fan 4</text>
-      <x>5</x>
-      <y>24</y>
-      <width>40</width>
-      <height>15</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>Fan 3</text>
-      <x>5</x>
-      <y>5</y>
-      <width>40</width>
-      <height>15</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>RPM</text>
-      <x>104</x>
-      <y>24</y>
-      <width>33</width>
-      <height>17</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <auto_size>true</auto_size>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>EDM activeXTextDspClass:noedit</name>
-      <pv_name>$(P)$(R)fan3:speed</pv_name>
-      <x>48</x>
-      <y>5</y>
-      <width>50</width>
-      <height>17</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="grey-2" red="218" green="218" blue="218">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>RPM</text>
-      <x>104</x>
-      <y>5</y>
-      <width>33</width>
-      <height>17</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <auto_size>true</auto_size>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>EDM activeXTextDspClass:noedit</name>
-      <pv_name>$(P)$(R)fan4:speed</pv_name>
-      <x>48</x>
-      <y>24</y>
-      <width>50</width>
-      <height>17</height>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="grey-2" red="218" green="218" blue="218">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>EDM Group 21</name>
+    <name>EDM Group 19</name>
     <x>-3</x>
     <y>185</y>
     <width>238</width>
@@ -1386,7 +1148,7 @@
     <style>3</style>
     <transparent>true</transparent>
     <widget type="group" version="2.0.0">
-      <name>EDM Group 22</name>
+      <name>EDM Group 20</name>
       <x>166</x>
       <width>72</width>
       <height>32</height>
@@ -1483,7 +1245,7 @@
       </widget>
     </widget>
     <widget type="group" version="2.0.0">
-      <name>EDM Group 23</name>
+      <name>EDM Group 21</name>
       <x>96</x>
       <width>72</width>
       <height>32</height>
@@ -1836,6 +1598,125 @@
       </color>
     </background_color>
     <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 22</name>
+    <x>387</x>
+    <y>187</y>
+    <width>142</width>
+    <height>27</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Fan 1</text>
+      <x>5</x>
+      <y>5</y>
+      <width>40</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P)$(R)fan1:speed</pv_name>
+      <x>48</x>
+      <y>5</y>
+      <width>50</width>
+      <height>16</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>RPM</text>
+      <x>104</x>
+      <y>5</y>
+      <width>33</width>
+      <height>17</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="green-19" red="0" green="128" blue="0">
+        </color>
+      </background_color>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Fan 2</text>
+    <x>392</x>
+    <y>213</y>
+    <width>40</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>RPM</text>
+    <x>491</x>
+    <y>213</y>
+    <width>33</width>
+    <height>17</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM activeXTextDspClass_noedit</name>
+    <pv_name>$(P)$(R)fan3:speed</pv_name>
+    <x>435</x>
+    <y>213</y>
+    <width>50</width>
+    <height>17</height>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-2" red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
 </display>
