@@ -100,6 +100,28 @@ record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(ONST, "Enabled")
 }
 
+record(longout, "$(P)$(R)INJ:alignSel") {
+    field(DESC, "Injection alignment selection")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "1")
+    field(DRVL, "0")
+    field(DRVH, "1")
+    field(OUT,  "@asyn($(PORT), 0x1600, 0)")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(longout, "$(P)$(R)INJ:hbSel") {
+    field(DESC, "Injection heartbeat selection")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "1")
+    field(DRVL, "0")
+    field(DRVH, "1")
+    field(OUT,  "@asyn($(PORT), 0x1601, 0)")
+    info(autosaveFields_pass0, "VAL")
+}
+
 #
 # I/O statistics
 #
