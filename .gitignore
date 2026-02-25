@@ -49,3 +49,5 @@ auto_positions.sav*
 *.local
 *.mk
 *.swp
+*.orig
+*tags
