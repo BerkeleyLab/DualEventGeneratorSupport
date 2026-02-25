@@ -100,26 +100,96 @@ record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(ONST, "Enabled")
 }
 
-record(longout, "$(P)$(R)INJ:alignSel") {
+record(mbbo, "$(P)$(R)INJ:alignSel") {
+    field(DESC, "Injection alignment selection")
+    field(ZRVL, "0")
+    field(ZRST, "Normal")
+    field(ONVL, "1")
+    field(ONST, "Alternative")
+    field(FLNK, "$(P)$(R)INJ:alignSel_")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(longout, "$(P)$(R)INJ:alignSel_") {
     field(DESC, "Injection alignment selection")
     field(DTYP, "asynInt32")
+    field(DOL,  "$(P)$(R)INJ:alignSel NPP")
+    field(OMSL, "closed_loop")
     field(LOPR, "0")
     field(HOPR, "1")
     field(DRVL, "0")
     field(DRVH, "1")
     field(OUT,  "@asyn($(PORT), 0x1600, 0)")
+}
+
+record(longin, "$(P)$(R)INJ:Alignstatus_") {
+    field(FLNK, "$(P)$(R)INJ:alignStatusFanout_")
+}
+
+record(fanout, "$(P)$(R)INJ:alignStatusFanout_") {
+    field(DESC, "Injection alignment readback fanout")
+    field(LNK0, "$(P)$(R)INJ:alignSelRBVCalc_")
+    field(LNK1, "$(P)$(R)INJ:hbSelRBVCalc_")
+}
+
+record(calc, "$(P)$(R)INJ:alignSelRBVCalc_") {
+    field(DESC, "Injection alignment selection calc")
+    field(INPA, "$(P)$(R)INJ:Alignstatus_ NPP MS")
+    field(INPB, "0xF000")
+    field(CALC, "(A&B)>>12")
+    field(TSEL, "$(P)$(R)INJ:Alignstatus_.TIME")
+    field(FLNK, "$(P)$(R)INJ:alignSelRBV")
+}
+
+record(calc, "$(P)$(R)INJ:hbSelRBVCalc_") {
+    field(DESC, "Injection heartbeat selection calc")
+    field(INPA, "$(P)$(R)INJ:Alignstatus_ NPP MS")
+    field(INPB, "0xF0000")
+    field(CALC, "(A&B)>>16")
+    field(TSEL, "$(P)$(R)INJ:Alignstatus_.TIME")
+    field(FLNK, "$(P)$(R)INJ:hbSelRBV")
+}
+
+record(mbbi, "$(P)$(R)INJ:alignSelRBV")
+{
+    field(DESC, "Injection selection readback")
+    field(INP,  "$(P)$(R)INJ:alignSelRBVCalc_ NPP")
+    field(ZRVL, "0")
+    field(ZRST, "Normal")
+    field(ONVL, "1")
+    field(ONST, "Alternative")
+}
+
+record(mbbi, "$(P)$(R)INJ:hbSelRBV")
+{
+    field(DESC, "Injection heartbeat readback")
+    field(INP,  "$(P)$(R)INJ:hbSelRBVCalc_ NPP")
+    field(ZRVL, "0")
+    field(ZRST, "Normal")
+    field(ONVL, "1")
+    field(ONST, "Alternative")
+}
+
+record(mbbo, "$(P)$(R)INJ:hbSel") {
+    field(DESC, "Injection heartbeat selection")
+    field(ZRVL, "0")
+    field(ZRST, "Normal")
+    field(ONVL, "1")
+    field(ONST, "Alternative")
+    field(FLNK, "$(P)$(R)INJ:hbSel_")
     info(autosaveFields_pass0, "VAL")
 }
 
-record(longout, "$(P)$(R)INJ:hbSel") {
+record(longout, "$(P)$(R)INJ:hbSel_") {
     field(DESC, "Injection heartbeat selection")
     field(DTYP, "asynInt32")
+    field(DOL,  "$(P)$(R)INJ:hbSel NPP")
+    field(OMSL, "closed_loop")
     field(LOPR, "0")
     field(HOPR, "1")
     field(DRVL, "0")
     field(DRVH, "1")
     field(OUT,  "@asyn($(PORT), 0x1601, 0)")
-    info(autosaveFields_pass0, "VAL")
 }
 
 #
