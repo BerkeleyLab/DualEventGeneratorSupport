@@ -24,7 +24,6 @@
 
 ASYN       = /usr/local/epics/R7.0.7/modules/soft/synApps/support/asyn-R4-42
 AUTOSAVE   = /usr/local/epics/R7.0.7/modules/soft/synApps/support/autosave-R5-10-2
-IOCEXIT    = /usr/local/epics/R7.0.7/modules/soft/iocExit/iocExit-2-0
 SNCSEQ     = /usr/local/epics/R7.0.7/modules/soft/synApps/support/seq-2-2-9
 EPICS_BASE = /usr/local/epics/R7.0.7/base
 

@@ -27,11 +27,6 @@ eventGenerator_LIBS += asyn
 eventGenerator_LIBS += autosave
 eventGenerator_LIBS += seq
 
-ifneq ($(IOCEXIT),)
-    eventGenerator_DBD += iocExit.dbd
-    eventGenerator_LIBS += iocExit
-endif
-
 # eventGenerator_registerRecordDeviceDriver.cpp derives from eventGenerator.dbd
 eventGenerator_SRCS += eventGenerator_registerRecordDeviceDriver.cpp
 
