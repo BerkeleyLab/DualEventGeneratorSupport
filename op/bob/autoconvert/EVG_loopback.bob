@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-04-10 17:12:13 by lrusso-->
+<!--Saved on 2026-02-27 11:07:22 by lrusso-->
 <display version="2.0.0">
   <name>EVG loopback</name>
   <x>787</x>
@@ -32,7 +32,7 @@
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 0</name>
     <x>19</x>
     <y>30</y>
@@ -63,7 +63,7 @@
       <show_low>false</show_low>
       <show_lolo>false</show_lolo>
     </widget>
-    <widget type="group" version="2.0.0">
+    <widget type="group" version="3.0.0">
       <name>EDM Group 1</name>
       <x>262</x>
       <width>147</width>
@@ -127,7 +127,7 @@
       </widget>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 2</name>
     <x>19</x>
     <y>166</y>
@@ -158,7 +158,7 @@
       <show_low>false</show_low>
       <show_lolo>false</show_lolo>
     </widget>
-    <widget type="group" version="2.0.0">
+    <widget type="group" version="3.0.0">
       <name>EDM Group 3</name>
       <x>262</x>
       <width>147</width>

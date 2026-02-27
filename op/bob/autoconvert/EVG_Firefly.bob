@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-04-10 17:12:13 by lrusso-->
+<!--Saved on 2026-02-27 11:07:22 by lrusso-->
 <display version="2.0.0">
   <name>EVG Firefly</name>
   <x>400</x>
@@ -32,7 +32,7 @@
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 0</name>
     <x>-5</x>
     <y>279</y>
@@ -97,7 +97,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 1</name>
     <x>-5</x>
     <y>259</y>
@@ -162,7 +162,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 2</name>
     <x>-5</x>
     <y>239</y>
@@ -227,7 +227,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 3</name>
     <x>-5</x>
     <y>219</y>
@@ -292,7 +292,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 4</name>
     <x>-5</x>
     <y>199</y>
@@ -357,7 +357,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 5</name>
     <x>-5</x>
     <y>179</y>
@@ -422,7 +422,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 6</name>
     <x>-5</x>
     <y>149</y>
@@ -487,7 +487,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 7</name>
     <x>-5</x>
     <y>129</y>
@@ -552,7 +552,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 8</name>
     <x>-5</x>
     <y>109</y>
@@ -617,7 +617,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 9</name>
     <x>-5</x>
     <y>89</y>
@@ -682,7 +682,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 10</name>
     <x>-5</x>
     <y>69</y>
@@ -747,7 +747,7 @@
       <vertical_alignment>1</vertical_alignment>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 11</name>
     <x>-5</x>
     <y>49</y>
@@ -870,7 +870,7 @@ Low Optical Power</text>
     </background_color>
     <auto_size>true</auto_size>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 12</name>
     <x>285</x>
     <y>54</y>
@@ -1012,7 +1012,7 @@ Low Optical Power</text>
       </foreground_color>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 13</name>
     <x>285</x>
     <y>94</y>
@@ -1154,7 +1154,7 @@ Low Optical Power</text>
       </foreground_color>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 14</name>
     <x>285</x>
     <y>134</y>
@@ -1296,7 +1296,7 @@ Low Optical Power</text>
       </foreground_color>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 15</name>
     <x>285</x>
     <y>184</y>
@@ -1438,7 +1438,7 @@ Low Optical Power</text>
       </foreground_color>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 16</name>
     <x>285</x>
     <y>224</y>
@@ -1580,7 +1580,7 @@ Low Optical Power</text>
       </foreground_color>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
+  <widget type="group" version="3.0.0">
     <name>EDM Group 17</name>
     <x>285</x>
     <y>264</y>
