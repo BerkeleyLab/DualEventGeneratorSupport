@@ -160,8 +160,8 @@ file "perSysmonLI.template"
  { \$(P),\$(R),\$(PORT),    "swapoutstatus_",  0x2024,       "", "Swapout control status register" }
  { \$(P),\$(R),\$(PORT),     "E1:MGTstatus_",  0x2027,       "", "EVG 1 raw MGT status" }
  { \$(P),\$(R),\$(PORT),     "E2:MGTstatus_",  0x2028,       "", "EVG 2 raw MGT status" }
- { \$(P),\$(R),\$(PORT), "INJ:Alignstatus_",   0x2029,       "", "Injection align status" }
- { \$(P),\$(R),\$(PORT), "swapoutAlignstatus_", 0x202A,      "", "Swapout align status" }
+ { \$(P),\$(R),\$(PORT), "INJ:AlignstatusSlow_", 0x2029,     "", "Injection align status" }
+ { \$(P),\$(R),\$(PORT), "swapoutAlignstatusSlow_", 0x202A,  "", "Swapout align status" }
 }
 
 file "perSysmonBI.template"
