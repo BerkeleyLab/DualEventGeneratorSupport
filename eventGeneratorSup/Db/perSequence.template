@@ -1,5 +1,5 @@
 record (waveform, "$(P)$(R)E$(E):SEQ$(S)") {
-    field(DESC, "Generator $(E) sequence $(S) gap:event pairs")
+    field(DESC, "Generator $(E) sequence $(S) gap:event:category tuple")
     field(DTYP, "asynInt32ArrayOut")
     field(INP,  "@asyn($(PORT), 0x30$(A), 1)")
     field(NELM, "2048")
