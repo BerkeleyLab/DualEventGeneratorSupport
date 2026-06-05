@@ -628,7 +628,7 @@ subscriberThread(void *arg)
     int subscriptionAttempt;
     epicsTimeStamp now, whenSubscribed, pkTime[EVG_PROTOCOL_EVG_COUNT];
     asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
-    asynInt32Interrupt *interruptsCatDelay[EVG_PROTOCOL_EVG_COUNT][EVG_PROTOCOL_EVG_CAT_DELAY_COUNT];
+    asynInt32Interrupt *interruptsCatDelay[EVG_PROTOCOL_EVG_COUNT*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT];
     enum readState {rsUnknown, rsGood, rsBad} readState = rsUnknown;
     extern volatile int interruptAccept;
 
@@ -729,7 +729,7 @@ subscriberThread(void *arg)
             // Sequencer category delay records
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 for (j = 0 ; j < EVG_PROTOCOL_EVG_CAT_DELAY_COUNT ; j++) {
-                    asynInt32Interrupt *int32Interrupt = *interruptsCatDelay[i];
+                    asynInt32Interrupt *int32Interrupt = interruptsCatDelay[i*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT+j];
                     asynUser *pasynUser = int32Interrupt->pasynUser;
                     pasynUser->auxStatus = status;
                     pasynUser->timestamp = pkTime[i];
