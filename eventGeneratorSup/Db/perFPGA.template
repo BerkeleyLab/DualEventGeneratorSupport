@@ -198,6 +198,16 @@ record(mbbi, "$(P)$(R)INJ:hbSelRBV")
     field(ONST, "Alternative")
 }
 
+record(longout, "$(P)$(R)INJ:arBucket") {
+    field(DESC, "Injection AR bucket selection")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "304")
+    field(DRVL, "0")
+    field(DRVH, "304")
+    field(OUT,  "@asyn($(PORT), 0x1800, 0)")
+}
+
 #
 # I/O statistics
 #
