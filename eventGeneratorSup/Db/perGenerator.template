@@ -94,6 +94,39 @@ record(calc, "$(P)$(R)E$(E):seqRequestsIgnored") {
     info(archive, "VeryFastControlled")
 }
 
+record(longin, "$(P)$(R)E$(E):seqCatDelay0") {
+    field(DESC, "EVG $(E) seq category delay 0")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x050$(I), 1)")
+    field(SCAN, "I/O Intr")
+    field(TSE,  "-2")
+    info(archive, "VeryFastControlled")
+}
+record(longin, "$(P)$(R)E$(E):seqCatDelay1") {
+    field(DESC, "EVG $(E) seq category delay 1")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x051$(I), 1)")
+    field(SCAN, "I/O Intr")
+    field(TSE,  "-2")
+    info(archive, "VeryFastControlled")
+}
+record(longin, "$(P)$(R)E$(E):seqCatDelay2") {
+    field(DESC, "EVG $(E) seq category delay 2")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x052$(I), 1)")
+    field(SCAN, "I/O Intr")
+    field(TSE,  "-2")
+    info(archive, "VeryFastControlled")
+}
+record(longin, "$(P)$(R)E$(E):seqCatDelay3") {
+    field(DESC, "EVG $(E) seq category delay 3")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x053$(I), 1)")
+    field(SCAN, "I/O Intr")
+    field(TSE,  "-2")
+    info(archive, "VeryFastControlled")
+}
+
 record(longin, "$(P)$(R)E$(E):EVIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVIOstatus") }
 record(mbbiDirect, "$(P)$(R)E$(E):EVIOstatus") {
     field(DESC, "Bits of $(P)$(R)E$(E):EVIOstatus_")

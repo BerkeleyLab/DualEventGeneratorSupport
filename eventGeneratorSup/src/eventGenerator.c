@@ -425,7 +425,7 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
     &&  (aLo == EVG_PROTOCOL_CMD_WAVEFORM_LO_SEQUENCE)) {
         int nSend = 1;
         int pkNumber = 0;
-        if ((n < 2) || (n % 2)) {
+        if ((n < 3) || (n % 3)) {
             epicsSnprintf(pasynUser->errorMessage,
                                pasynUser->errorMessageSize, "Invalid table size");
             return asynError;
@@ -434,13 +434,16 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
         while (n) {
             uint32_t delay = *value++;
             int code = *value++ & 0xFF;
-            n -= 2;
+            int category = *value++ & 0xFF;
+            n -= 3;
             if (delay < EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT) {
                 pdpvt->commandPacket.args[nSend++] = (delay << 8) | code;
+                pdpvt->commandPacket.args[nSend++] = category;
             }
             else {
                 pdpvt->commandPacket.args[nSend++] = code |
                            (EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT << 8);
+                pdpvt->commandPacket.args[nSend++] = category;
                 pdpvt->commandPacket.args[nSend++] = delay;
             }
             if (code == EVG_PROTOCOL_WAVEFORM_END_OF_TABLE_EVENT_CODE) {
@@ -455,6 +458,7 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
             if ((n == 0)
              || (nSend == EVG_PROTOCOL_ARG_CAPACITY)
              || ((nSend == (EVG_PROTOCOL_ARG_CAPACITY-1))
+
               && (*value >= EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT))) {
                 pdpvt->commandPacket.args[0] = pkNumber;
                 status = cmdWriteRead(pdpvt, pasynUser, nSend, &replyCount);
@@ -552,8 +556,10 @@ findSequencerStatusInterrupts(drvPvt *pdpvt, asynInt32Interrupt **interrupts)
     ELLLIST *pclientList;
     interruptNode *pnode;
     int foundMap = 0;
+
     pasynManager->interruptStart(pdpvt->asynInterfaces.int32InterruptPvt, &pclientList);
     pnode = (interruptNode *)ellFirst(pclientList);
+
     while (pnode) {
         asynInt32Interrupt *int32Interrupt = pnode->drvPvt;
         pnode = (interruptNode *)ellNext(&pnode->node);
@@ -568,8 +574,45 @@ findSequencerStatusInterrupts(drvPvt *pdpvt, asynInt32Interrupt **interrupts)
             }
         }
     }
+
     pasynManager->interruptEnd(pdpvt->asynInterfaces.int32InterruptPvt);
+
     return (foundMap == ((1 << EVG_PROTOCOL_EVG_COUNT) - 1));
+}
+
+/*
+ * Find the interrupt callback handles for the sequencer cat delay records
+ */
+static int
+findSequencerCatDelayInterrupts(drvPvt *pdpvt, asynInt32Interrupt **interrupts)
+{
+    ELLLIST *pclientList;
+    interruptNode *pnode;
+    int foundMap = 0;
+
+    pasynManager->interruptStart(pdpvt->asynInterfaces.int32InterruptPvt, &pclientList);
+    pnode = (interruptNode *)ellFirst(pclientList);
+
+    while (pnode) {
+        asynInt32Interrupt *int32Interrupt = pnode->drvPvt;
+        pnode = (interruptNode *)ellNext(&pnode->node);
+        int a = int32Interrupt->addr;
+        if ((a & (EVG_PROTOCOL_CMD_MASK_HI | EVG_PROTOCOL_CMD_MASK_LO)) ==
+                                      (EVG_PROTOCOL_CMD_HI_LONGIN |
+                                       EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_CAT_DELAY)) {
+            unsigned int evgIdx = (a & EVG_PROTOCOL_CMD_MASK_IDX) & 0xF;
+            unsigned int catDelayIdx = ((a & EVG_PROTOCOL_CMD_MASK_IDX) & 0xF0) >> 4;
+            if (evgIdx < EVG_PROTOCOL_EVG_COUNT &&
+                    catDelayIdx < EVG_PROTOCOL_EVG_CAT_DELAY_COUNT) {
+                interrupts[evgIdx*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT + catDelayIdx] = int32Interrupt;
+                foundMap |= (1 << (evgIdx*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT + catDelayIdx));
+            }
+        }
+    }
+
+    pasynManager->interruptEnd(pdpvt->asynInterfaces.int32InterruptPvt);
+
+    return (foundMap == ((1 << EVG_PROTOCOL_EVG_COUNT*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT) - 1));
 }
 
 /*
@@ -585,24 +628,35 @@ subscriberThread(void *arg)
     int subscriptionAttempt;
     epicsTimeStamp now, whenSubscribed, pkTime[EVG_PROTOCOL_EVG_COUNT];
     asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
+    asynInt32Interrupt *interruptsCatDelay[EVG_PROTOCOL_EVG_COUNT*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT];
     enum readState {rsUnknown, rsGood, rsBad} readState = rsUnknown;
     extern volatile int interruptAccept;
 
     while (!interruptAccept) epicsThreadSleep(1.0);
+
     if (!findSequencerStatusInterrupts(pdpvt, interrupts)) {
         errlogPrintf("==== FATAL ==== Can't find sequencer status records\n");
         return;
     }
+
+    if (!findSequencerCatDelayInterrupts(pdpvt, interruptsCatDelay)) {
+        errlogPrintf("==== FATAL ==== Can't find sequencer category delay records\n");
+        return;
+    }
+
     for (;;) {
         pdpvt->seqLink.isCommunicating = 0;
         subscriptionAttempt = 0;
+
         for (;;) {
             if (shutdown) return;
             status = pasynCommonSyncIO->connectDevice(
                                                 pdpvt->seqLink.pasynUserCommon);
             if (status == asynSuccess)
                 break;
+
             if (shutdown) return;
+
             asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
                     "%s: Can't connect device: %s.  "
                     "This may be the result of an IOC shutdown, a network "
@@ -611,12 +665,15 @@ subscriberThread(void *arg)
                                   pdpvt->seqLink.pasynUserCommon->errorMessage);
             epicsThreadSleep(10.0);
         }
+
         for (;;) {
             struct evgStatusPacket pk;
             int eomReason;
-            int i;
+            int i, j;
+
             if (shutdown) return;
             epicsTimeGetCurrent(&now);
+
             if (!pdpvt->seqLink.isCommunicating
              || (epicsTimeDiffInSeconds(&now, &whenSubscribed) >=
                                         SEQUENCER_STATUS_RESUBSCRIBE_SECONDS)) {
@@ -634,17 +691,21 @@ subscriberThread(void *arg)
                 }
                 subscriptionAttempt++;
             }
+
             status = pasynOctetSyncIO->read(pdpvt->seqLink.pasynUserOctet,
                (char *)&pk, sizeof(pk),
                subscriptionAttempt ? 0.5 : SEQUENCER_STATUS_RESUBSCRIBE_SECONDS,
                &ntrans, &eomReason);
+
             if ((status == asynSuccess)
              && ((ntrans != sizeof(pk)) || (pk.magic != EVG_PROTOCOL_MAGIC))) {
                 continue;
             }
+
             if ((status == asynTimeout) && (subscriptionAttempt < 2)) {
                 continue;
             }
+
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 if (status == asynSuccess) {
                     pkTime[i].secPastEpoch = pk.posixSeconds[i]-POSIX_TIME_AT_EPICS_EPOCH;
@@ -654,6 +715,8 @@ subscriberThread(void *arg)
                     pkTime[i] = now;
                 }
             }
+
+            // Sequencer status records
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 asynInt32Interrupt *int32Interrupt = interrupts[i];
                 asynUser *pasynUser = int32Interrupt->pasynUser;
@@ -662,6 +725,19 @@ subscriberThread(void *arg)
                 int32Interrupt->callback(int32Interrupt->userPvt,
                                               pasynUser, pk.sequencerStatus[i]);
             }
+
+            // Sequencer category delay records
+            for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
+                for (j = 0 ; j < EVG_PROTOCOL_EVG_CAT_DELAY_COUNT ; j++) {
+                    asynInt32Interrupt *int32Interrupt = interruptsCatDelay[i*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT+j];
+                    asynUser *pasynUser = int32Interrupt->pasynUser;
+                    pasynUser->auxStatus = status;
+                    pasynUser->timestamp = pkTime[i];
+                    int32Interrupt->callback(int32Interrupt->userPvt,
+                            pasynUser, pk.sequencerCatDelay[i][j]);
+                }
+            }
+
             if (status == asynSuccess) {
                 int missed;
                 if (readState == rsBad) {
