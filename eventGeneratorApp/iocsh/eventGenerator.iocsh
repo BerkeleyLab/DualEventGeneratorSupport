@@ -1,0 +1,13 @@
+###############################################################################
+# Set up ASYN ports
+# Port name, IP address, priority
+eventGeneratorConfigure("$(PORT)", "$(IP)", 0)
+asynSetTraceIOMask("$(PORT)_CMD",-1,0x4)
+asynSetTraceMask("$(PORT)_CMD",-1,0x1)
+asynSetTraceIOMask("$(PORT)_SEQ",-1,0x4)
+asynSetTraceMask("$(PORT)_SEQ",-1,0x1)
+
+##############################################################################
+# Load additional records
+dbLoadRecords("$(TOP)/db/asynRecord.db","P=$(P),R=$(R)asynCMD,PORT=$(PORT)_CMD,ADDR=0,OMAX=0,IMAX=0")
+dbLoadRecords("$(TOP)/db/asynRecord.db","P=$(P),R=$(R)asynSEQ,PORT=$(PORT)_SEQ,ADDR=0,OMAX=0,IMAX=0")
