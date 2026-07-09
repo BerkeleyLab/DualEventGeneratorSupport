@@ -33,7 +33,7 @@ iocshLoad("$(IOCSH_TOP)/autosave.iocsh", "AS_TOP=$(AUTOSAVE_PATH),IOCNAME=$(IOCN
 # Declare addresss of each instance
 # ONE LINE HERE FOR EACH INSTANCE
 
-epicsEnvSet("T", "$(DUAL_TIMING_IOC_TEST=)")
+epicsEnvSet("T", "$(DUAL_TIMING_IOC_TEST=test)")
 epicsEnvSet("IP", "$(IP=192.168.1.146)")
 epicsEnvSet("P", "$(T)$(P=EVG:)")
 epicsEnvSet("R", "$(R=)")
@@ -42,7 +42,7 @@ epicsEnvSet("PORT", "$(PORT=$(P)$(R))")
 ##############################################################################
 # Configure instances and load databases
 # ONE LINE HERE FOR EACH INSTANCE
-iocshLoad("$(IOCSH_LOCAL_TOP)/eventGenerator.iocsh", "PORT=$(PORT),P=$(P),R=$(R)")
+iocshLoad("$(IOCSH_LOCAL_TOP)/eventGenerator.iocsh", "PORT=$(PORT),P=$(P),R=$(R),IP=$(IP)")
 
 ###############################################################################
 # Start IOC
