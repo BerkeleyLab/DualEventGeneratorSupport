@@ -7,6 +7,10 @@ asynSetTraceMask("$(PORT)_CMD",-1,0x1)
 asynSetTraceIOMask("$(PORT)_SEQ",-1,0x4)
 asynSetTraceMask("$(PORT)_SEQ",-1,0x1)
 
+###############################################################################
+# Load record instances
+dbLoadRecords("$(TOP)/db/eventGenerator.db", "P=$(P), R=$(R), PORT=$(PORT)")
+
 ##############################################################################
 # Load additional records
 dbLoadRecords("$(TOP)/db/asynRecord.db","P=$(P),R=$(R)asynCMD,PORT=$(PORT)_CMD,ADDR=0,OMAX=0,IMAX=0")
