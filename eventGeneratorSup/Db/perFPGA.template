@@ -202,9 +202,9 @@ record(longout, "$(P)$(R)INJ:arBucket") {
     field(DESC, "Injection AR bucket selection")
     field(DTYP, "asynInt32")
     field(LOPR, "0")
-    field(HOPR, "304")
+    field(HOPR, "303")
     field(DRVL, "0")
-    field(DRVH, "304")
+    field(DRVH, "303")
     field(OUT,  "@asyn($(PORT), 0x1800, 0)")
 }
 
