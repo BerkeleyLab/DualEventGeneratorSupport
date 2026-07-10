@@ -198,7 +198,7 @@ record(mbbi, "$(P)$(R)INJ:hbSelRBV")
     field(ONST, "Alternative")
 }
 
-record(longout, "$(P)$(R)INJ:arBucket") {
+record(longout, "$(P)$(R)INJ:tgtARBucket") {
     field(DESC, "Injection AR bucket selection")
     field(DTYP, "asynInt32")
     field(LOPR, "0")
