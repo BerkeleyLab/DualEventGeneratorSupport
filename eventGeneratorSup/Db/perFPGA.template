@@ -208,6 +208,33 @@ record(longout, "$(P)$(R)INJ:arBucket") {
     field(OUT,  "@asyn($(PORT), 0x1800, 0)")
 }
 
+record(longin, "$(P)$(R)E$(E):seqStatus2") {
+    field(FLNK, "$(P)$(R)E$(E):seqFanout2_")
+}
+
+record(fanout, "$(P)$(R)E$(E):seqFanout2_") {
+    field(DESC, "EVG $(E) fanout seqStatus2")
+    field(LNK0, "$(P)$(R)E$(E):seqTgtBRBucket")
+    field(LNK1, "$(P)$(R)E$(E):seqTgtAlignCount")
+    info(archive, "VeryFastControlled")
+}
+record(calc, "$(P)$(R)E$(E):seqTgtBRBucket") {
+    field(DESC, "EVG $(E) target BR bucket")
+    field(INPA, "$(P)$(R)E$(E):seqStatus2 NPP MS")
+    field(INPB, "0xFFFF")
+    field(CALC, "(A&B)")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus2.TIME")
+    info(archive, "VeryFastControlled")
+}
+record(calc, "$(P)$(R)E$(E):seqTgtAlignCount") {
+    field(DESC, "EVG $(E) target align count")
+    field(INPA, "$(P)$(R)E$(E):seqStatus2 NPP MS")
+    field(INPB, "0xFFFF0000")
+    field(CALC, "(A&B)>>16")
+    field(TSEL, "$(P)$(R)E$(E):seqStatus2.TIME")
+    info(archive, "VeryFastControlled")
+}
+
 #
 # I/O statistics
 #

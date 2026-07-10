@@ -127,6 +127,15 @@ record(longin, "$(P)$(R)E$(E):seqCatDelay3") {
     info(archive, "VeryFastControlled")
 }
 
+record(longin, "$(P)$(R)E$(E):seqStatus2") {
+    field(DESC, "EVG $(E) sequencer CSR 2")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x060$(I), 1)")
+    field(SCAN, "I/O Intr")
+    field(TSE,  "-2")
+    info(archive, "VeryFastControlled")
+}
+
 record(longin, "$(P)$(R)E$(E):EVIOstatus_") { field(FLNK, "$(P)$(R)E$(E):EVIOstatus") }
 record(mbbiDirect, "$(P)$(R)E$(E):EVIOstatus") {
     field(DESC, "Bits of $(P)$(R)E$(E):EVIOstatus_")
