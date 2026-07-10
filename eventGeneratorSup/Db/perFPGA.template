@@ -208,30 +208,34 @@ record(longout, "$(P)$(R)INJ:arBucket") {
     field(OUT,  "@asyn($(PORT), 0x1800, 0)")
 }
 
-record(longin, "$(P)$(R)E$(E):seqStatus2") {
-    field(FLNK, "$(P)$(R)E$(E):seqFanout2_")
+#
+# Specific records for sequencer 1 (injector)
+#
+
+record(longin, "$(P)$(R)E1:seqStatus2") {
+    field(FLNK, "$(P)$(R)INJ:seqFanout2_")
 }
 
-record(fanout, "$(P)$(R)E$(E):seqFanout2_") {
-    field(DESC, "EVG $(E) fanout seqStatus2")
-    field(LNK0, "$(P)$(R)E$(E):seqTgtBRBucket")
-    field(LNK1, "$(P)$(R)E$(E):seqTgtAlignCount")
+record(fanout, "$(P)$(R)INJ:seqFanout2_") {
+    field(DESC, "EVG 1 fanout seqStatus2")
+    field(LNK0, "$(P)$(R)INJ:tgtBRBucket")
+    field(LNK1, "$(P)$(R)INJ:tgtAlignCount")
     info(archive, "VeryFastControlled")
 }
-record(calc, "$(P)$(R)E$(E):seqTgtBRBucket") {
-    field(DESC, "EVG $(E) target BR bucket")
-    field(INPA, "$(P)$(R)E$(E):seqStatus2 NPP MS")
+record(calc, "$(P)$(R)INJ:tgtBRBucket") {
+    field(DESC, "EVG 1 target BR bucket")
+    field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
     field(INPB, "0xFFFF")
     field(CALC, "(A&B)")
-    field(TSEL, "$(P)$(R)E$(E):seqStatus2.TIME")
+    field(TSEL, "$(P)$(R)E1:seqStatus2.TIME")
     info(archive, "VeryFastControlled")
 }
-record(calc, "$(P)$(R)E$(E):seqTgtAlignCount") {
-    field(DESC, "EVG $(E) target align count")
-    field(INPA, "$(P)$(R)E$(E):seqStatus2 NPP MS")
+record(calc, "$(P)$(R)INJ:tgtAlignCount") {
+    field(DESC, "EVG 1 target align count")
+    field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
     field(INPB, "0xFFFF0000")
     field(CALC, "(A&B)>>16")
-    field(TSEL, "$(P)$(R)E$(E):seqStatus2.TIME")
+    field(TSEL, "$(P)$(R)E1:seqStatus2.TIME")
     info(archive, "VeryFastControlled")
 }
 
