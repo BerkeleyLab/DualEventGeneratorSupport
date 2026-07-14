@@ -88,8 +88,15 @@ record(ao, "$(P)$(R)INJ:extendInterval") {
     info(autosaveFields_pass0, "VAL")
 }
 record(longin, "$(P)$(R)INJ:injCycleCSR") {
-    field(FLNK, "$(P)$(R)INJ:injCycleEnabled")
+    field(FLNK, "$(P)$(R)INJ:injCycleCSRFanout_")
 }
+
+record(fanout, "$(P)$(R)INJ:injCycleCSRFanout_") {
+    field(DESC, "Injection cycle CSR fanout")
+    field(LNK0, "$(P)$(R)INJ:injCycleEnabled")
+    field(LNK1, "$(P)$(R)INJ:injSyncModeRBKCalc_")
+}
+
 record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(DTYP, "Raw Soft Channel")
     field(INP,  "$(P)$(R)INJ:injCycleCSR NPP MS")
@@ -98,6 +105,25 @@ record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(ZRST, "Disabled")
     field(ONVL, "1")
     field(ONST, "Enabled")
+    info(archive, "VeryFastControlled")
+}
+
+record(calc, "$(P)$(R)INJ:injSyncModeRBKCalc_") {
+    field(DESC, "Injection cycle sync mode calc")
+    field(INPA, "$(P)$(R)INJ:injCycleCSR NPP MS")
+    field(INPB, "0x06")
+    field(CALC, "(A&B)>>1")
+    field(FLNK, "$(P)$(R)INJ:injSyncModeRBK")
+}
+
+record(mbbi, "$(P)$(R)INJ:injSyncModeRBK") {
+    field(DESC, "Injection cycle sync mode readback")
+    field(INP,  "$(P)$(R)INJ:injSyncModeRBKCalc_ NPP")
+    field(ZRVL, "0")
+    field(ZRST, "Normal")
+    field(ONVL, "1")
+    field(ONST, "AR")
+    info(archive, "VeryFastControlled")
 }
 
 record(mbbo, "$(P)$(R)INJ:alignSel") {
