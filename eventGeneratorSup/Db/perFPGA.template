@@ -206,6 +206,29 @@ record(longout, "$(P)$(R)INJ:tgtARBucket") {
     field(DRVL, "0")
     field(DRVH, "303")
     field(OUT,  "@asyn($(PORT), 0x1800, 0)")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(mbbo, "$(P)$(R)INJ:syncMode") {
+    field(DESC, "Injection sync mode")
+    field(ZRVL, "0")
+    field(ZRST, "Normal")
+    field(ONVL, "1")
+    field(ONST, "AR")
+    field(FLNK, "$(P)$(R)INJ:syncMode_")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(longout, "$(P)$(R)INJ:syncMode_") {
+    field(DESC, "Injection sync mode")
+    field(DTYP, "asynInt32")
+    field(DOL,  "$(P)$(R)INJ:syncMode NPP")
+    field(OMSL, "closed_loop")
+    field(LOPR, "0")
+    field(HOPR, "1")
+    field(DRVL, "0")
+    field(DRVH, "1")
+    field(OUT,  "@asyn($(PORT), 0x1900, 0)")
 }
 
 #
