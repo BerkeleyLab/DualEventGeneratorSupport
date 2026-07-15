@@ -120,18 +120,18 @@ record(mbbi, "$(P)$(R)INJ:injSyncModeRBK") {
     field(DESC, "Injection cycle sync mode readback")
     field(INP,  "$(P)$(R)INJ:injSyncModeRBKCalc_ NPP")
     field(ZRVL, "0")
-    field(ZRST, "Normal")
+    field(ZRST, "Sync only")
     field(ONVL, "1")
-    field(ONST, "AR")
+    field(ONST, "Sync + RF coinc")
     info(archive, "VeryFastControlled")
 }
 
 record(mbbo, "$(P)$(R)INJ:alignSel") {
     field(DESC, "Injection alignment selection")
     field(ZRVL, "0")
-    field(ZRST, "Normal")
+    field(ZRST, "ALSU BR/AR")
     field(ONVL, "1")
-    field(ONST, "Alternative")
+    field(ONST, "ALS BR/SR")
     field(FLNK, "$(P)$(R)INJ:alignSel_")
     info(autosaveFields_pass0, "VAL")
 }
@@ -152,9 +152,9 @@ record(longout, "$(P)$(R)INJ:alignSel_") {
 record(mbbo, "$(P)$(R)INJ:hbSel") {
     field(DESC, "Injection heartbeat selection")
     field(ZRVL, "0")
-    field(ZRST, "Normal")
+    field(ZRST, "ALSU 126e6")
     field(ONVL, "1")
-    field(ONST, "Alternative")
+    field(ONST, "ALS 124e6")
     field(FLNK, "$(P)$(R)INJ:hbSel_")
     info(autosaveFields_pass0, "VAL")
 }
@@ -204,24 +204,22 @@ record(calc, "$(P)$(R)INJ:hbSelRBVCalc_") {
     field(FLNK, "$(P)$(R)INJ:hbSelRBV")
 }
 
-record(mbbi, "$(P)$(R)INJ:alignSelRBV")
-{
+record(mbbi, "$(P)$(R)INJ:alignSelRBV") {
     field(DESC, "Injection selection readback")
     field(INP,  "$(P)$(R)INJ:alignSelRBVCalc_ NPP")
     field(ZRVL, "0")
-    field(ZRST, "Normal")
+    field(ZRST, "ALSU BR/AR")
     field(ONVL, "1")
-    field(ONST, "Alternative")
+    field(ONST, "ALS BR/SR")
 }
 
-record(mbbi, "$(P)$(R)INJ:hbSelRBV")
-{
+record(mbbi, "$(P)$(R)INJ:hbSelRBV") {
     field(DESC, "Injection heartbeat readback")
     field(INP,  "$(P)$(R)INJ:hbSelRBVCalc_ NPP")
     field(ZRVL, "0")
-    field(ZRST, "Normal")
+    field(ZRST, "ALSU 126e6")
     field(ONVL, "1")
-    field(ONST, "Alternative")
+    field(ONST, "ALS 124e6")
 }
 
 record(longout, "$(P)$(R)INJ:tgtARBucket") {
@@ -238,9 +236,9 @@ record(longout, "$(P)$(R)INJ:tgtARBucket") {
 record(mbbo, "$(P)$(R)INJ:syncMode") {
     field(DESC, "Injection sync mode")
     field(ZRVL, "0")
-    field(ZRST, "Normal")
+    field(ZRST, "Sync only")
     field(ONVL, "1")
-    field(ONST, "AR")
+    field(ONST, "Sync + RF coinc")
     field(FLNK, "$(P)$(R)INJ:syncMode_")
     info(autosaveFields_pass0, "VAL")
 }
@@ -352,4 +350,5 @@ record(fanout, "$(P)$(R)INJfpga:rc_") {
     field(EVNT, "RECON")
     field(LNK1, "$(P)$(R)INJ:alignSel")
     field(LNK2, "$(P)$(R)INJ:hbSel")
+    field(LNK3, "$(P)$(R)INJ:syncMode")
 }
