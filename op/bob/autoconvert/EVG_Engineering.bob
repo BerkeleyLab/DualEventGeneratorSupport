@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-07-10 16:52:19 by lrusso-->
+<!--Saved on 2026-07-14 14:40:57 by lucasrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
   <x>2</x>
@@ -1981,6 +1981,72 @@
       </background_color>
       <show_units>false</show_units>
       <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>EDM Group 23_1</name>
+    <y>361</y>
+    <width>319</width>
+    <height>36</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit_2</name>
+      <pv_name>$(P)$(R)INJ:injSyncModeRBK</pv_name>
+      <x>230</x>
+      <y>5</y>
+      <width>84</width>
+      <height>25</height>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-2" red="218" green="218" blue="218">
+        </color>
+      </background_color>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="group" version="3.0.0">
+      <name>EDM Group 24_1</name>
+      <width>227</width>
+      <height>36</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass_4</name>
+        <text>Inj. Sync Mode</text>
+        <x>5</x>
+        <height>36</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="combo" version="2.0.0">
+        <name>EDM activeMenuButtonClass_1</name>
+        <pv_name>$(P)$(R)INJ:syncMode</pv_name>
+        <x>115</x>
+        <y>5</y>
+        <width>107</width>
+        <height>25</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="cyan-31" red="0" green="224" blue="224">
+          </color>
+        </background_color>
+        <border_alarm_sensitive>false</border_alarm_sensitive>
+      </widget>
     </widget>
   </widget>
 </display>
