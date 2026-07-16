@@ -224,13 +224,30 @@ record(mbbi, "$(P)$(R)INJ:hbSelRBV") {
 
 record(longout, "$(P)$(R)INJ:tgtARBucket") {
     field(DESC, "Injection AR bucket selection")
-    field(DTYP, "asynInt32")
     field(LOPR, "1")
     field(HOPR, "304")
     field(DRVL, "1")
     field(DRVH, "304")
-    field(OUT,  "@asyn($(PORT), 0x1800, 0)")
+    field(FLNK, "$(P)$(R)INJ:tgtARBucketCalc_")
     info(autosaveFields_pass0, "VAL")
+}
+
+record(calcout, "$(P)$(R)INJ:tgtARBucketCalc_") {
+    field(DESC, "Calc AR index from bucket")
+    field(INPA, "$(P)$(R)INJ:tgtARBucket NPP")
+    field(CALC, "A-1")
+    field(OOPT, "Every Time")
+    field(OUT,  "$(P)$(R)INJ:tgtARIdx_")
+}
+
+record(longout, "$(P)$(R)INJ:tgtARIdx_") {
+    field(DESC, "Injection AR index selection")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "303")
+    field(DRVL, "0")
+    field(DRVH, "303")
+    field(OUT,  "@asyn($(PORT), 0x1800, 0)")
 }
 
 record(mbbo, "$(P)$(R)INJ:syncMode") {
@@ -273,7 +290,7 @@ record(calc, "$(P)$(R)INJ:tgtBRBucket") {
     field(DESC, "EVG 1 target BR bucket")
     field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
     field(INPB, "0xFFFF")
-    field(CALC, "(A&B)")
+    field(CALC, "(A&B)+1")
     field(TSEL, "$(P)$(R)E1:seqStatus2.TIME")
     info(archive, "VeryFastControlled")
 }
