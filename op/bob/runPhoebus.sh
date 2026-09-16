@@ -17,4 +17,4 @@ done
 P=`echo "$prefix" | sed -ne '/\(.\).*/s//\1/p'`
 R=`echo "$prefix" | sed -ne '/.\(.*\)/s//\1/p'`
 
-phoebus -resource file:${SCRIPTPATH}/autoconvert/${bob}?"P=${P}&R=${R}"
+phoebus -resource file:${SCRIPTPATH}/${bob}?"P=${P}&R=${R}"
