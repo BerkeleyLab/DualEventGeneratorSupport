@@ -282,11 +282,11 @@ record(longin, "$(P)$(R)E1:seqStatus2") {
 
 record(fanout, "$(P)$(R)INJ:seqFanout2_") {
     field(DESC, "EVG 1 fanout seqStatus2")
-    field(LNK0, "$(P)$(R)INJ:tgtBRBucket")
-    field(LNK1, "$(P)$(R)INJ:tgtAlignCount")
+    field(LNK0, "$(P)$(R)INJ:stBRBucket")
+    field(LNK1, "$(P)$(R)INJ:stAlignCount")
     info(archive, "VeryFastControlled")
 }
-record(calc, "$(P)$(R)INJ:tgtBRBucket") {
+record(calc, "$(P)$(R)INJ:stBRBucket") {
     field(DESC, "EVG 1 target BR bucket")
     field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
     field(INPB, "0xFFFF")
@@ -294,7 +294,7 @@ record(calc, "$(P)$(R)INJ:tgtBRBucket") {
     field(TSEL, "$(P)$(R)E1:seqStatus2.TIME")
     info(archive, "VeryFastControlled")
 }
-record(calc, "$(P)$(R)INJ:tgtAlignCount") {
+record(calc, "$(P)$(R)INJ:stAlignCount") {
     field(DESC, "EVG 1 target align count")
     field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
     field(INPB, "0xFFFF0000")
