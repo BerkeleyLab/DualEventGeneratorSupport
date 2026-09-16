@@ -1,0 +1,2 @@
+#!/bin/sh
+screen -q -d -m -D -R -S DualEventGenerator -c ./screenrc -L ./st.screen

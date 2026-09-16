@@ -88,8 +88,15 @@ record(ao, "$(P)$(R)INJ:extendInterval") {
     info(autosaveFields_pass0, "VAL")
 }
 record(longin, "$(P)$(R)INJ:injCycleCSR") {
-    field(FLNK, "$(P)$(R)INJ:injCycleEnabled")
+    field(FLNK, "$(P)$(R)INJ:injCycleCSRFanout_")
 }
+
+record(fanout, "$(P)$(R)INJ:injCycleCSRFanout_") {
+    field(DESC, "Injection cycle CSR fanout")
+    field(LNK0, "$(P)$(R)INJ:injCycleEnabled")
+    field(LNK1, "$(P)$(R)INJ:injSyncModeRBKCalc_")
+}
+
 record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(DTYP, "Raw Soft Channel")
     field(INP,  "$(P)$(R)INJ:injCycleCSR NPP MS")
@@ -98,6 +105,202 @@ record(mbbi, "$(P)$(R)INJ:injCycleEnabled") {
     field(ZRST, "Disabled")
     field(ONVL, "1")
     field(ONST, "Enabled")
+    info(archive, "VeryFastControlled")
+}
+
+record(calc, "$(P)$(R)INJ:injSyncModeRBKCalc_") {
+    field(DESC, "Injection cycle sync mode calc")
+    field(INPA, "$(P)$(R)INJ:injCycleCSR NPP MS")
+    field(INPB, "0x06")
+    field(CALC, "(A&B)>>1")
+    field(FLNK, "$(P)$(R)INJ:injSyncModeRBK")
+}
+
+record(mbbi, "$(P)$(R)INJ:injSyncModeRBK") {
+    field(DESC, "Injection cycle sync mode readback")
+    field(INP,  "$(P)$(R)INJ:injSyncModeRBKCalc_ NPP")
+    field(ZRVL, "0")
+    field(ZRST, "Sync only")
+    field(ONVL, "1")
+    field(ONST, "Sync + RF coinc")
+    info(archive, "VeryFastControlled")
+}
+
+record(mbbo, "$(P)$(R)INJ:alignSel") {
+    field(DESC, "Injection alignment selection")
+    field(ZRVL, "0")
+    field(ZRST, "ALSU BR/AR")
+    field(ONVL, "1")
+    field(ONST, "ALS BR/SR")
+    field(FLNK, "$(P)$(R)INJ:alignSel_")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(longout, "$(P)$(R)INJ:alignSel_") {
+    field(DESC, "Injection alignment selection")
+    field(DTYP, "asynInt32")
+    field(DOL,  "$(P)$(R)INJ:alignSel NPP")
+    field(OMSL, "closed_loop")
+    field(LOPR, "0")
+    field(HOPR, "1")
+    field(DRVL, "0")
+    field(DRVH, "1")
+    field(OUT,  "@asyn($(PORT), 0x1600, 0)")
+    field(FLNK, "$(P)$(R)INJ:alignStatus_")
+}
+
+record(mbbo, "$(P)$(R)INJ:hbSel") {
+    field(DESC, "Injection heartbeat selection")
+    field(ZRVL, "0")
+    field(ZRST, "ALSU 126e6")
+    field(ONVL, "1")
+    field(ONST, "ALS 124e6")
+    field(FLNK, "$(P)$(R)INJ:hbSel_")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(longout, "$(P)$(R)INJ:hbSel_") {
+    field(DESC, "Injection heartbeat selection")
+    field(DTYP, "asynInt32")
+    field(DOL,  "$(P)$(R)INJ:hbSel NPP")
+    field(OMSL, "closed_loop")
+    field(LOPR, "0")
+    field(HOPR, "1")
+    field(DRVL, "0")
+    field(DRVH, "1")
+    field(OUT,  "@asyn($(PORT), 0x1601, 0)")
+    field(FLNK, "$(P)$(R)INJ:alignStatus_")
+}
+
+record(longin, "$(P)$(R)INJ:alignStatus_") {
+    field(DESC, "Injection alignment status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), 0x0300, 1)")
+    field(SCAN, "Passive")
+    field(FLNK, "$(P)$(R)INJ:alignStatusFanout_")
+}
+
+record(fanout, "$(P)$(R)INJ:alignStatusFanout_") {
+    field(DESC, "Injection alignment readback fanout")
+    field(LNK0, "$(P)$(R)INJ:alignSelRBVCalc_")
+    field(LNK1, "$(P)$(R)INJ:hbSelRBVCalc_")
+}
+
+record(calc, "$(P)$(R)INJ:alignSelRBVCalc_") {
+    field(DESC, "Injection alignment selection calc")
+    field(INPA, "$(P)$(R)INJ:alignStatus_ NPP MS")
+    field(INPB, "0xF000")
+    field(CALC, "(A&B)>>12")
+    field(TSEL, "$(P)$(R)INJ:alignStatus_.TIME")
+    field(FLNK, "$(P)$(R)INJ:alignSelRBV")
+}
+
+record(calc, "$(P)$(R)INJ:hbSelRBVCalc_") {
+    field(DESC, "Injection heartbeat selection calc")
+    field(INPA, "$(P)$(R)INJ:alignStatus_ NPP MS")
+    field(INPB, "0xF0000")
+    field(CALC, "(A&B)>>16")
+    field(TSEL, "$(P)$(R)INJ:alignStatus_.TIME")
+    field(FLNK, "$(P)$(R)INJ:hbSelRBV")
+}
+
+record(mbbi, "$(P)$(R)INJ:alignSelRBV") {
+    field(DESC, "Injection selection readback")
+    field(INP,  "$(P)$(R)INJ:alignSelRBVCalc_ NPP")
+    field(ZRVL, "0")
+    field(ZRST, "ALSU BR/AR")
+    field(ONVL, "1")
+    field(ONST, "ALS BR/SR")
+}
+
+record(mbbi, "$(P)$(R)INJ:hbSelRBV") {
+    field(DESC, "Injection heartbeat readback")
+    field(INP,  "$(P)$(R)INJ:hbSelRBVCalc_ NPP")
+    field(ZRVL, "0")
+    field(ZRST, "ALSU 126e6")
+    field(ONVL, "1")
+    field(ONST, "ALS 124e6")
+}
+
+record(longout, "$(P)$(R)INJ:tgtARBucket") {
+    field(DESC, "Injection AR bucket selection")
+    field(LOPR, "1")
+    field(HOPR, "304")
+    field(DRVL, "1")
+    field(DRVH, "304")
+    field(FLNK, "$(P)$(R)INJ:tgtARBucketCalc_")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(calcout, "$(P)$(R)INJ:tgtARBucketCalc_") {
+    field(DESC, "Calc AR index from bucket")
+    field(INPA, "$(P)$(R)INJ:tgtARBucket NPP")
+    field(CALC, "A-1")
+    field(OOPT, "Every Time")
+    field(OUT,  "$(P)$(R)INJ:tgtARIdx_")
+}
+
+record(longout, "$(P)$(R)INJ:tgtARIdx_") {
+    field(DESC, "Injection AR index selection")
+    field(DTYP, "asynInt32")
+    field(LOPR, "0")
+    field(HOPR, "303")
+    field(DRVL, "0")
+    field(DRVH, "303")
+    field(OUT,  "@asyn($(PORT), 0x1800, 0)")
+}
+
+record(mbbo, "$(P)$(R)INJ:syncMode") {
+    field(DESC, "Injection sync mode")
+    field(ZRVL, "0")
+    field(ZRST, "Sync only")
+    field(ONVL, "1")
+    field(ONST, "Sync + RF coinc")
+    field(FLNK, "$(P)$(R)INJ:syncMode_")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(longout, "$(P)$(R)INJ:syncMode_") {
+    field(DESC, "Injection sync mode")
+    field(DTYP, "asynInt32")
+    field(DOL,  "$(P)$(R)INJ:syncMode NPP")
+    field(OMSL, "closed_loop")
+    field(LOPR, "0")
+    field(HOPR, "1")
+    field(DRVL, "0")
+    field(DRVH, "1")
+    field(OUT,  "@asyn($(PORT), 0x1900, 0)")
+}
+
+#
+# Specific records for sequencer 1 (injector)
+#
+
+record(longin, "$(P)$(R)E1:seqStatus2") {
+    field(FLNK, "$(P)$(R)INJ:seqFanout2_")
+}
+
+record(fanout, "$(P)$(R)INJ:seqFanout2_") {
+    field(DESC, "EVG 1 fanout seqStatus2")
+    field(LNK0, "$(P)$(R)INJ:stBRBucket")
+    field(LNK1, "$(P)$(R)INJ:stAlignCount")
+    info(archive, "VeryFastControlled")
+}
+record(calc, "$(P)$(R)INJ:stBRBucket") {
+    field(DESC, "EVG 1 target BR bucket")
+    field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
+    field(INPB, "0xFFFF")
+    field(CALC, "(A&B)+1")
+    field(TSEL, "$(P)$(R)E1:seqStatus2.TIME")
+    info(archive, "VeryFastControlled")
+}
+record(calc, "$(P)$(R)INJ:stAlignCount") {
+    field(DESC, "EVG 1 target align count")
+    field(INPA, "$(P)$(R)E1:seqStatus2 NPP MS")
+    field(INPB, "0xFFFF0000")
+    field(CALC, "(A&B)>>16")
+    field(TSEL, "$(P)$(R)E1:seqStatus2.TIME")
+    info(archive, "VeryFastControlled")
 }
 
 #
@@ -156,4 +359,13 @@ record(longin, "$(P)$(R)SeqMissedCount") {
     field(DESC, "Sequencer status packets dropped")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT), 0xF008, 0)")
+}
+
+record(fanout, "$(P)$(R)INJfpga:rc_") {
+    field(DESC, "Push FPGA records on (re)connect)")
+    field(SCAN, "Event")
+    field(EVNT, "RECON")
+    field(LNK1, "$(P)$(R)INJ:alignSel")
+    field(LNK2, "$(P)$(R)INJ:hbSel")
+    field(LNK3, "$(P)$(R)INJ:syncMode")
 }

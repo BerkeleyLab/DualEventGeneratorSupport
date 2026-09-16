@@ -242,7 +242,7 @@ processMonitorPacket(drvPvt *pdpvt, asynStatus status, int replyArgCount)
     pnode = (interruptNode *)ellFirst(pclientList);
     while (pnode) {
         asynInt32Interrupt *int32Interrupt = pnode->drvPvt;
-        int ahi, alo, idx;
+        unsigned int ahi, alo, idx;
         pnode = (interruptNode *)ellNext(&pnode->node);
         ahi = int32Interrupt->addr & EVG_PROTOCOL_CMD_MASK_HI;
         alo = int32Interrupt->addr & EVG_PROTOCOL_CMD_MASK_LO;
@@ -291,7 +291,8 @@ int32Write(void *pvt, asynUser *pasynUser, epicsInt32 value)
 {
     drvPvt *pdpvt = (drvPvt *)pvt;
     asynStatus status;
-    int address, ahi;
+    int address;
+    unsigned int ahi;
     int replyCount;
 
     if ((status = pasynManager->getAddr(pasynUser, &address)) != asynSuccess)
@@ -315,7 +316,8 @@ int32Read(void *pvt, asynUser *pasynUser, epicsInt32 *value)
 {
     drvPvt *pdpvt = (drvPvt *)pvt;
     asynStatus status;
-    int address, ahi, alo, idx;
+    int address;
+    unsigned int ahi, alo, idx;
     int nRead;
 
     if ((status = pasynManager->getAddr(pasynUser, &address)) != asynSuccess)
@@ -414,18 +416,19 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
 {
     drvPvt *pdpvt = (drvPvt *)pvt;
     asynStatus status;
-    int address, aHi, aLo;
+    int address;
+    unsigned int ahi, alo;
     int replyCount;
 
     if ((status = pasynManager->getAddr(pasynUser, &address)) != asynSuccess)
         return status;
-    aHi = address & EVG_PROTOCOL_CMD_MASK_HI;
-    aLo = address & EVG_PROTOCOL_CMD_MASK_LO;
-    if ((aHi == EVG_PROTOCOL_CMD_HI_WAVEFORM)
-    &&  (aLo == EVG_PROTOCOL_CMD_WAVEFORM_LO_SEQUENCE)) {
+    ahi = address & EVG_PROTOCOL_CMD_MASK_HI;
+    alo = address & EVG_PROTOCOL_CMD_MASK_LO;
+    if ((ahi == EVG_PROTOCOL_CMD_HI_WAVEFORM)
+    &&  (alo == EVG_PROTOCOL_CMD_WAVEFORM_LO_SEQUENCE)) {
         int nSend = 1;
         int pkNumber = 0;
-        if ((n < 2) || (n % 2)) {
+        if ((n < 3) || (n % 3)) {
             epicsSnprintf(pasynUser->errorMessage,
                                pasynUser->errorMessageSize, "Invalid table size");
             return asynError;
@@ -434,13 +437,16 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
         while (n) {
             uint32_t delay = *value++;
             int code = *value++ & 0xFF;
-            n -= 2;
+            int category = *value++ & 0xFF;
+            n -= 3;
             if (delay < EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT) {
                 pdpvt->commandPacket.args[nSend++] = (delay << 8) | code;
+                pdpvt->commandPacket.args[nSend++] = category;
             }
             else {
                 pdpvt->commandPacket.args[nSend++] = code |
                            (EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT << 8);
+                pdpvt->commandPacket.args[nSend++] = category;
                 pdpvt->commandPacket.args[nSend++] = delay;
             }
             if (code == EVG_PROTOCOL_WAVEFORM_END_OF_TABLE_EVENT_CODE) {
@@ -455,6 +461,7 @@ int32ArrayWrite(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n)
             if ((n == 0)
              || (nSend == EVG_PROTOCOL_ARG_CAPACITY)
              || ((nSend == (EVG_PROTOCOL_ARG_CAPACITY-1))
+
               && (*value >= EVG_PROTOCOL_WAVEFORM_SINGLE_WORD_DELAY_LIMIT))) {
                 pdpvt->commandPacket.args[0] = pkNumber;
                 status = cmdWriteRead(pdpvt, pasynUser, nSend, &replyCount);
@@ -478,7 +485,8 @@ static asynStatus
 int32ArrayRead(void *pvt, asynUser *pasynUser, epicsInt32 *value, size_t n, size_t *nIn)
 {
     asynStatus status;
-    int address, ahi;
+    int address;
+    unsigned int ahi;
 
     if ((status = pasynManager->getAddr(pasynUser, &address)) != asynSuccess)
         return status;
@@ -547,29 +555,62 @@ static asynOctet octetMethods = { NULL, octetRead };
  * Find the interrupt callback handles for the sequencer status records
  */
 static int
-findSequencerStatusInterrupts(drvPvt *pdpvt, asynInt32Interrupt **interrupts)
+findSequencerInterrupts(drvPvt *pdpvt, asynInt32Interrupt **interrupts,
+    unsigned int commandLo)
 {
     ELLLIST *pclientList;
     interruptNode *pnode;
     int foundMap = 0;
+    int numExptRecs = 0;
+
     pasynManager->interruptStart(pdpvt->asynInterfaces.int32InterruptPvt, &pclientList);
     pnode = (interruptNode *)ellFirst(pclientList);
+
     while (pnode) {
         asynInt32Interrupt *int32Interrupt = pnode->drvPvt;
         pnode = (interruptNode *)ellNext(&pnode->node);
-        int a = int32Interrupt->addr;
-        if ((a & (EVG_PROTOCOL_CMD_MASK_HI | EVG_PROTOCOL_CMD_MASK_LO)) ==
-                                      (EVG_PROTOCOL_CMD_HI_LONGIN |
-                                       EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS)) {
-            unsigned int idx = a & EVG_PROTOCOL_CMD_MASK_IDX;
-            if (idx < EVG_PROTOCOL_EVG_COUNT) {
-                interrupts[idx] = int32Interrupt;
-                foundMap |= (1 << idx);
+        int addr = int32Interrupt->addr;
+        unsigned int ahi = addr & EVG_PROTOCOL_CMD_MASK_HI;
+        unsigned int alo = addr & EVG_PROTOCOL_CMD_MASK_LO;
+        unsigned int idx = addr & EVG_PROTOCOL_CMD_MASK_IDX;
+
+        if (ahi == EVG_PROTOCOL_CMD_HI_LONGIN) {
+            if (alo == EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS &&
+                alo == commandLo) {
+                if (idx < EVG_PROTOCOL_EVG_COUNT) {
+                    interrupts[idx] = int32Interrupt;
+                    foundMap |= (1 << idx);
+                }
+
+                numExptRecs = EVG_PROTOCOL_EVG_COUNT;
+            }
+            else if (alo == EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_CAT_DELAY &&
+                alo == commandLo) {
+                unsigned int evgIdx = idx & 0xF;
+                unsigned int catDelayIdx = (idx & 0xF0) >> 4;
+                if (evgIdx < EVG_PROTOCOL_EVG_COUNT &&
+                        catDelayIdx < EVG_PROTOCOL_EVG_CAT_DELAY_COUNT) {
+                    interrupts[evgIdx*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT + catDelayIdx] = int32Interrupt;
+                    foundMap |= (1 << (evgIdx*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT + catDelayIdx));
+                }
+
+                numExptRecs = EVG_PROTOCOL_EVG_COUNT*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT;
+            }
+            else if (alo == EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS2 &&
+                alo == commandLo) {
+                if (idx < EVG_PROTOCOL_EVG_COUNT) {
+                    interrupts[idx] = int32Interrupt;
+                    foundMap |= (1 << idx);
+                }
+
+                numExptRecs = EVG_PROTOCOL_EVG_COUNT;
             }
         }
     }
+
     pasynManager->interruptEnd(pdpvt->asynInterfaces.int32InterruptPvt);
-    return (foundMap == ((1 << EVG_PROTOCOL_EVG_COUNT) - 1));
+
+    return (foundMap == ((1 << numExptRecs) - 1));
 }
 
 /*
@@ -585,24 +626,41 @@ subscriberThread(void *arg)
     int subscriptionAttempt;
     epicsTimeStamp now, whenSubscribed, pkTime[EVG_PROTOCOL_EVG_COUNT];
     asynInt32Interrupt *interrupts[EVG_PROTOCOL_EVG_COUNT];
+    asynInt32Interrupt *interrupts2[EVG_PROTOCOL_EVG_COUNT];
+    asynInt32Interrupt *interruptsCatDelay[EVG_PROTOCOL_EVG_COUNT*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT];
     enum readState {rsUnknown, rsGood, rsBad} readState = rsUnknown;
     extern volatile int interruptAccept;
 
     while (!interruptAccept) epicsThreadSleep(1.0);
-    if (!findSequencerStatusInterrupts(pdpvt, interrupts)) {
+
+    if (!findSequencerInterrupts(pdpvt, interrupts, EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS)) {
         errlogPrintf("==== FATAL ==== Can't find sequencer status records\n");
         return;
     }
+
+    if (!findSequencerInterrupts(pdpvt, interruptsCatDelay, EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_CAT_DELAY)) {
+        errlogPrintf("==== FATAL ==== Can't find sequencer category delay records\n");
+        return;
+    }
+
+    if (!findSequencerInterrupts(pdpvt, interrupts2, EVG_PROTOCOL_CMD_LONGIN_LO_SEQ_STATUS2)) {
+        errlogPrintf("==== FATAL ==== Can't find sequencer status 2 delay records\n");
+        return;
+    }
+
     for (;;) {
         pdpvt->seqLink.isCommunicating = 0;
         subscriptionAttempt = 0;
+
         for (;;) {
             if (shutdown) return;
             status = pasynCommonSyncIO->connectDevice(
                                                 pdpvt->seqLink.pasynUserCommon);
             if (status == asynSuccess)
                 break;
+
             if (shutdown) return;
+
             asynPrint(pdpvt->seqLink.pasynUserCommon, ASYN_TRACE_ERROR,
                     "%s: Can't connect device: %s.  "
                     "This may be the result of an IOC shutdown, a network "
@@ -611,12 +669,15 @@ subscriberThread(void *arg)
                                   pdpvt->seqLink.pasynUserCommon->errorMessage);
             epicsThreadSleep(10.0);
         }
+
         for (;;) {
             struct evgStatusPacket pk;
             int eomReason;
-            int i;
+            int i, j;
+
             if (shutdown) return;
             epicsTimeGetCurrent(&now);
+
             if (!pdpvt->seqLink.isCommunicating
              || (epicsTimeDiffInSeconds(&now, &whenSubscribed) >=
                                         SEQUENCER_STATUS_RESUBSCRIBE_SECONDS)) {
@@ -634,17 +695,21 @@ subscriberThread(void *arg)
                 }
                 subscriptionAttempt++;
             }
+
             status = pasynOctetSyncIO->read(pdpvt->seqLink.pasynUserOctet,
                (char *)&pk, sizeof(pk),
                subscriptionAttempt ? 0.5 : SEQUENCER_STATUS_RESUBSCRIBE_SECONDS,
                &ntrans, &eomReason);
+
             if ((status == asynSuccess)
              && ((ntrans != sizeof(pk)) || (pk.magic != EVG_PROTOCOL_MAGIC))) {
                 continue;
             }
+
             if ((status == asynTimeout) && (subscriptionAttempt < 2)) {
                 continue;
             }
+
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 if (status == asynSuccess) {
                     pkTime[i].secPastEpoch = pk.posixSeconds[i]-POSIX_TIME_AT_EPICS_EPOCH;
@@ -654,6 +719,8 @@ subscriberThread(void *arg)
                     pkTime[i] = now;
                 }
             }
+
+            // Sequencer status records
             for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
                 asynInt32Interrupt *int32Interrupt = interrupts[i];
                 asynUser *pasynUser = int32Interrupt->pasynUser;
@@ -662,6 +729,29 @@ subscriberThread(void *arg)
                 int32Interrupt->callback(int32Interrupt->userPvt,
                                               pasynUser, pk.sequencerStatus[i]);
             }
+
+            // Sequencer category delay records
+            for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
+                for (j = 0 ; j < EVG_PROTOCOL_EVG_CAT_DELAY_COUNT ; j++) {
+                    asynInt32Interrupt *int32Interrupt = interruptsCatDelay[i*EVG_PROTOCOL_EVG_CAT_DELAY_COUNT+j];
+                    asynUser *pasynUser = int32Interrupt->pasynUser;
+                    pasynUser->auxStatus = status;
+                    pasynUser->timestamp = pkTime[i];
+                    int32Interrupt->callback(int32Interrupt->userPvt,
+                            pasynUser, pk.sequencerCatDelay[i][j]);
+                }
+            }
+
+            // Sequencer status 2 records
+            for (i = 0 ; i < EVG_PROTOCOL_EVG_COUNT ; i++) {
+                asynInt32Interrupt *int32Interrupt = interrupts2[i];
+                asynUser *pasynUser = int32Interrupt->pasynUser;
+                pasynUser->auxStatus = status;
+                pasynUser->timestamp = pkTime[i];
+                int32Interrupt->callback(int32Interrupt->userPvt,
+                                              pasynUser, pk.sequencerStatus2[i]);
+            }
+
             if (status == asynSuccess) {
                 int missed;
                 if (readState == rsBad) {
