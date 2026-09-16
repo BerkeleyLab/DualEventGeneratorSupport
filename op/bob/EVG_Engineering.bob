@@ -1867,7 +1867,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>EDM activeXTextDspClass_1</name>
-      <pv_name>$(P)$(R)INJ:stARBucket</pv_name>
+      <pv_name>$(P)$(R)INJ:tgtARBucket</pv_name>
       <x>110</x>
       <y>5</y>
       <width>53</width>
