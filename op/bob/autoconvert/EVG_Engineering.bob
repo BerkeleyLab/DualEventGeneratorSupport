@@ -1867,7 +1867,7 @@
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>EDM activeXTextDspClass_1</name>
-      <pv_name>$(P)$(R)INJ:tgtARBucket</pv_name>
+      <pv_name>$(P)$(R)INJ:stARBucket</pv_name>
       <x>110</x>
       <y>5</y>
       <width>53</width>
@@ -1909,7 +1909,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>EDM activeXTextDspClass:noedit_4</name>
-      <pv_name>$(P)$(R)INJ:tgtBRBucket</pv_name>
+      <pv_name>$(P)$(R)INJ:stBRBucket</pv_name>
       <x>110</x>
       <y>5</y>
       <width>53</width>
@@ -1952,7 +1952,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>EDM activeXTextDspClass:noedit_5</name>
-      <pv_name>$(P)$(R)INJ:tgtAlignCount</pv_name>
+      <pv_name>$(P)$(R)INJ:stAlignCount</pv_name>
       <x>110</x>
       <y>5</y>
       <width>53</width>
