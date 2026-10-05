@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-10-05 13:42:41 by lrusso-->
+<!--Saved on 2026-10-05 16:14:46 by lrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
   <x>2</x>
@@ -1131,10 +1131,6 @@
       <transparent>true</transparent>
       <widget type="group" version="3.0.0">
         <name>Group</name>
-        <macros>
-          <DELAY_NAME>Inj.</DELAY_NAME>
-          <DELAY_PV>InjField</DELAY_PV>
-        </macros>
         <y>24</y>
         <width>268</width>
         <height>72</height>
@@ -1293,10 +1289,6 @@
       <transparent>true</transparent>
       <widget type="group" version="3.0.0">
         <name>Group_27</name>
-        <macros>
-          <DELAY_NAME>Inj.</DELAY_NAME>
-          <DELAY_PV>InjField</DELAY_PV>
-        </macros>
         <y>24</y>
         <width>268</width>
         <height>72</height>
@@ -1455,10 +1447,6 @@
       <transparent>true</transparent>
       <widget type="group" version="3.0.0">
         <name>Group_32</name>
-        <macros>
-          <DELAY_NAME>Inj.</DELAY_NAME>
-          <DELAY_PV>InjField</DELAY_PV>
-        </macros>
         <y>24</y>
         <width>268</width>
         <height>72</height>
