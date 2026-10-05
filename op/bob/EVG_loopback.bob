@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-02-27 11:07:22 by lrusso-->
+<!--Saved on 2026-10-05 13:48:31 by lrusso-->
 <display version="2.0.0">
   <name>EVG loopback</name>
   <x>787</x>
   <y>250</y>
-  <width>450</width>
-  <height>300</height>
+  <width>442</width>
+  <height>361</height>
   <background_color>
     <color name="GLOBAL canvas" red="200" green="200" blue="200">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
   <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
+    <name>Banner</name>
     <text>$(P)$(R) Loopback</text>
-    <y>3</y>
-    <width>450</width>
+    <x>2</x>
+    <width>423</width>
     <height>28</height>
     <font>
-      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
       </font>
     </font>
     <foreground_color>
@@ -33,192 +33,234 @@
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>EDM Group 0</name>
-    <x>19</x>
-    <y>30</y>
-    <width>410</width>
-    <height>119</height>
-    <style>3</style>
+    <name>EVG 1 Loopback</name>
+    <macros>
+      <EVG_NUM>1</EVG_NUM>
+    </macros>
+    <x>21</x>
+    <y>36</y>
+    <width>404</width>
+    <height>94</height>
+    <style>2</style>
     <transparent>true</transparent>
-    <widget type="scaledslider" version="2.0.0">
-      <name>EDM activeSliderClass</name>
-      <pv_name>$(P)$(R)E1:loopback</pv_name>
-      <x>5</x>
-      <y>24</y>
-      <height>90</height>
+    <widget type="label" version="2.0.0">
+      <name>Section Title</name>
+      <text>EVG $(EVG_NUM) Loopback</text>
+      <width>400</width>
+      <height>22</height>
+      <font>
+        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+        </font>
+      </font>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
       </foreground_color>
       <background_color>
-        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        <color name="green-19" red="0" green="128" blue="0">
         </color>
       </background_color>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
-      <show_hihi>false</show_hihi>
-      <show_high>false</show_high>
-      <show_low>false</show_low>
-      <show_lolo>false</show_lolo>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
     </widget>
     <widget type="group" version="3.0.0">
-      <name>EDM Group 1</name>
-      <x>262</x>
-      <width>147</width>
-      <height>26</height>
+      <name>EVG 1 Loopback Content</name>
+      <y>24</y>
+      <width>400</width>
+      <height>69</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="label" version="2.0.0">
-        <name>EDM activeXTextClass</name>
-        <text>ns</text>
-        <x>126</x>
-        <y>5</y>
-        <width>16</width>
-        <height>16</height>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
-          </color>
-        </background_color>
-        <auto_size>true</auto_size>
+      <widget type="group" version="3.0.0">
+        <name>Row</name>
+        <width>400</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>Latency</text>
+          <width>90</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Readback</name>
+          <pv_name>$(P)$(R)E$(EVG_NUM):latency</pv_name>
+          <x>96</x>
+          <width>55</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="grey-2" red="218" green="218" blue="218">
+            </color>
+          </background_color>
+          <precision>0</precision>
+          <show_units>false</show_units>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>ns</text>
+          <x>155</x>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
       </widget>
-      <widget type="textupdate" version="2.0.0">
-        <name>EDM activeXTextDspClass:noedit</name>
-        <pv_name>$(P)$(R)E1:latency</pv_name>
-        <x>77</x>
-        <y>5</y>
-        <width>45</width>
-        <height>16</height>
+      <widget type="scaledslider" version="2.0.0">
+        <name>Loopback Slider</name>
+        <pv_name>$(P)$(R)E$(EVG_NUM):loopback</pv_name>
+        <y>27</y>
+        <height>42</height>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
         </foreground_color>
         <background_color>
-          <color name="grey-2" red="218" green="218" blue="218">
+          <color name="GLOBAL canvas" red="200" green="200" blue="200">
           </color>
         </background_color>
-        <precision>0</precision>
-        <show_units>false</show_units>
-        <horizontal_alignment>2</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
-      </widget>
-      <widget type="label" version="2.0.0">
-        <name>EDM activeXTextClass</name>
-        <text>Latency</text>
-        <x>5</x>
-        <y>5</y>
-        <width>65</width>
-        <height>16</height>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
-          </color>
-        </background_color>
-        <horizontal_alignment>2</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
+        <show_hihi>false</show_hihi>
+        <show_high>false</show_high>
+        <show_low>false</show_low>
+        <show_lolo>false</show_lolo>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>EDM Group 2</name>
-    <x>19</x>
-    <y>166</y>
-    <width>410</width>
-    <height>119</height>
-    <style>3</style>
+    <name>EVG 1 Loopback_1</name>
+    <macros>
+      <EVG_NUM>2</EVG_NUM>
+    </macros>
+    <x>21</x>
+    <y>140</y>
+    <width>404</width>
+    <height>94</height>
+    <style>2</style>
     <transparent>true</transparent>
-    <widget type="scaledslider" version="2.0.0">
-      <name>EDM activeSliderClass</name>
-      <pv_name>$(P)$(R)E2:loopback</pv_name>
-      <x>5</x>
-      <y>24</y>
-      <height>90</height>
+    <widget type="label" version="2.0.0">
+      <name>Section Title_1</name>
+      <text>EVG $(EVG_NUM) Loopback</text>
+      <width>400</width>
+      <height>22</height>
+      <font>
+        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+        </font>
+      </font>
       <foreground_color>
         <color name="black-14" red="0" green="0" blue="0">
         </color>
       </foreground_color>
       <background_color>
-        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        <color name="green-19" red="0" green="128" blue="0">
         </color>
       </background_color>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="12.0">
-        </font>
-      </font>
-      <show_hihi>false</show_hihi>
-      <show_high>false</show_high>
-      <show_low>false</show_low>
-      <show_lolo>false</show_lolo>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
     </widget>
     <widget type="group" version="3.0.0">
-      <name>EDM Group 3</name>
-      <x>262</x>
-      <width>147</width>
-      <height>26</height>
+      <name>EVG 1 Loopback Content_1</name>
+      <y>24</y>
+      <width>400</width>
+      <height>69</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="label" version="2.0.0">
-        <name>EDM activeXTextClass</name>
-        <text>ns</text>
-        <x>126</x>
-        <y>5</y>
-        <width>16</width>
-        <height>16</height>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
-          </color>
-        </background_color>
-        <auto_size>true</auto_size>
+      <widget type="group" version="3.0.0">
+        <name>Row_1</name>
+        <width>400</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label_1</name>
+          <text>Latency</text>
+          <width>90</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Readback_1</name>
+          <pv_name>$(P)$(R)E$(EVG_NUM):latency</pv_name>
+          <x>96</x>
+          <width>55</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="grey-2" red="218" green="218" blue="218">
+            </color>
+          </background_color>
+          <precision>0</precision>
+          <show_units>false</show_units>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Label_2</name>
+          <text>ns</text>
+          <x>155</x>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
       </widget>
-      <widget type="textupdate" version="2.0.0">
-        <name>EDM activeXTextDspClass:noedit</name>
-        <pv_name>$(P)$(R)E2:latency</pv_name>
-        <x>77</x>
-        <y>5</y>
-        <width>45</width>
-        <height>16</height>
+      <widget type="scaledslider" version="2.0.0">
+        <name>Loopback Slider_1</name>
+        <pv_name>$(P)$(R)E$(EVG_NUM):loopback</pv_name>
+        <y>27</y>
+        <height>42</height>
         <foreground_color>
           <color name="black-14" red="0" green="0" blue="0">
           </color>
         </foreground_color>
         <background_color>
-          <color name="grey-2" red="218" green="218" blue="218">
+          <color name="GLOBAL canvas" red="200" green="200" blue="200">
           </color>
         </background_color>
-        <precision>0</precision>
-        <show_units>false</show_units>
-        <horizontal_alignment>2</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
-      </widget>
-      <widget type="label" version="2.0.0">
-        <name>EDM activeXTextClass</name>
-        <text>Latency</text>
-        <x>5</x>
-        <y>5</y>
-        <width>65</width>
-        <height>16</height>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
-          </color>
-        </background_color>
-        <horizontal_alignment>2</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
+        <show_hihi>false</show_hihi>
+        <show_high>false</show_high>
+        <show_low>false</show_low>
+        <show_lolo>false</show_lolo>
       </widget>
     </widget>
   </widget>

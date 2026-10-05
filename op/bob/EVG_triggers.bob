@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-02-27 11:07:23 by lrusso-->
 <display version="2.0.0">
   <name>EVG triggers</name>
   <x>341</x>
   <y>343</y>
-  <width>288</width>
-  <height>413</height>
+  <width>380</width>
+  <height>385</height>
   <background_color>
     <color name="GLOBAL canvas" red="200" green="200" blue="200">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
   <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
-    <text>$(P)$(R)</text>
-    <y>1</y>
-    <width>300</width>
+    <name>Banner</name>
+    <text>$(P)$(R) EVG $(E) Triggers</text>
+    <x>2</x>
+    <width>361</width>
     <height>28</height>
     <font>
-      <font family="Liberation Sans" style="REGULAR" size="18.0">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
       </font>
     </font>
     <foreground_color>
@@ -32,547 +31,21 @@
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
-    <text>Event Generator $(E) Triggers</text>
-    <y>30</y>
-    <width>300</width>
-    <height>21</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="18.0">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
-      </color>
-    </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
-    <text>Software</text>
-    <x>173</x>
-    <y>56</y>
-    <width>73</width>
-    <height>22</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="18.0">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
-      </color>
-    </background_color>
-    <auto_size>true</auto_size>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
-    <text>Hardware</text>
-    <x>56</x>
-    <y>56</y>
-    <width>80</width>
-    <height>22</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="18.0">
-      </font>
-    </font>
-    <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
-      </color>
-    </background_color>
-    <auto_size>true</auto_size>
-  </widget>
   <widget type="group" version="3.0.0">
-    <name>EDM Group 0</name>
-    <x>34</x>
-    <y>89</y>
-    <width>235</width>
-    <height>35</height>
-    <style>3</style>
+    <name>Trigger Codes</name>
+    <x>44</x>
+    <y>36</y>
+    <width>292</width>
+    <height>264</height>
+    <style>2</style>
     <transparent>true</transparent>
-    <widget type="action_button" version="3.0.0">
-      <name>EDM activeMessageButtonClass</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>0</value>
-          <description>Trigger</description>
-        </action>
-      </actions>
-      <pv_name>$(P)$(R)E$(E):SW:1:trig</pv_name>
-      <text>Trigger</text>
-      <x>160</x>
-      <y>5</y>
-      <width>70</width>
-      <height>25</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):SW:1</pv_name>
-      <x>111</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:1</pv_name>
-      <x>37</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
     <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>1</text>
-      <x>5</x>
-      <y>7</y>
-      <width>15</width>
-      <height>21</height>
+      <name>Section Title</name>
+      <text>Trigger Event Codes</text>
+      <width>288</width>
+      <height>22</height>
       <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
-    <text>Code</text>
-    <x>71</x>
-    <y>77</y>
-    <width>40</width>
-    <height>16</height>
-    <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
-      </color>
-    </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>EDM activeXTextClass</name>
-    <text>Code</text>
-    <x>145</x>
-    <y>77</y>
-    <width>40</width>
-    <height>16</height>
-    <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
-      </color>
-    </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
-    <vertical_alignment>1</vertical_alignment>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 1</name>
-    <x>34</x>
-    <y>119</y>
-    <width>235</width>
-    <height>35</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="action_button" version="3.0.0">
-      <name>EDM activeMessageButtonClass</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>0</value>
-          <description>Trigger</description>
-        </action>
-      </actions>
-      <pv_name>$(P)$(R)E$(E):SW:2:trig</pv_name>
-      <text>Trigger</text>
-      <x>160</x>
-      <y>5</y>
-      <width>70</width>
-      <height>25</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):SW:2</pv_name>
-      <x>111</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:2</pv_name>
-      <x>37</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>2</text>
-      <x>5</x>
-      <y>7</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 2</name>
-    <x>34</x>
-    <y>149</y>
-    <width>235</width>
-    <height>35</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="action_button" version="3.0.0">
-      <name>EDM activeMessageButtonClass</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>0</value>
-          <description>Trigger</description>
-        </action>
-      </actions>
-      <pv_name>$(P)$(R)E$(E):SW:3:trig</pv_name>
-      <text>Trigger</text>
-      <x>160</x>
-      <y>5</y>
-      <width>70</width>
-      <height>25</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):SW:3</pv_name>
-      <x>111</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:3</pv_name>
-      <x>37</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>3</text>
-      <x>5</x>
-      <y>7</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 3</name>
-    <x>34</x>
-    <y>179</y>
-    <width>235</width>
-    <height>35</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="action_button" version="3.0.0">
-      <name>EDM activeMessageButtonClass</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(pv_name)</pv_name>
-          <value>0</value>
-          <description>Trigger</description>
-        </action>
-      </actions>
-      <pv_name>$(P)$(R)E$(E):SW:4:trig</pv_name>
-      <text>Trigger</text>
-      <x>160</x>
-      <y>5</y>
-      <width>70</width>
-      <height>25</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):SW:4</pv_name>
-      <x>111</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:4</pv_name>
-      <x>37</x>
-      <y>7</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>4</text>
-      <x>5</x>
-      <y>7</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 4</name>
-    <x>31</x>
-    <y>340</y>
-    <width>230</width>
-    <height>60</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="combo" version="2.0.0">
-      <name>EDM activeMenuButtonClass</name>
-      <pv_name>$(P)$(R)E$(E):diagOut</pv_name>
-      <x>5</x>
-      <y>30</y>
-      <width>220</width>
-      <height>28</height>
-      <font>
-        <font family="Liberation Sans" style="BOLD" size="14.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>Diagnostic Outputs</text>
-      <x>5</x>
-      <y>5</y>
-      <width>220</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
         </font>
       </font>
       <foreground_color>
@@ -586,180 +59,556 @@
       <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
     </widget>
+    <widget type="group" version="3.0.0">
+      <name>Trigger Codes Content</name>
+      <y>24</y>
+      <width>288</width>
+      <height>236</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>Label</name>
+        <text>Hardware</text>
+        <x>36</x>
+        <width>80</width>
+        <height>22</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label</name>
+        <text>Software</text>
+        <x>122</x>
+        <width>80</width>
+        <height>22</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="green-19" red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 1</name>
+        <y>25</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>1</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:1</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):SW:1</pv_name>
+          <x>122</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Write Button</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>0</value>
+              <description>Trigger</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)E$(E):SW:1:trig</pv_name>
+          <text>Trigger</text>
+          <x>208</x>
+          <width>80</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="14.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 2</name>
+        <y>52</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>2</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:2</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):SW:2</pv_name>
+          <x>122</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Write Button</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>0</value>
+              <description>Trigger</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)E$(E):SW:2:trig</pv_name>
+          <text>Trigger</text>
+          <x>208</x>
+          <width>80</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="14.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 3</name>
+        <y>79</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>3</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:3</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):SW:3</pv_name>
+          <x>122</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Write Button</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>0</value>
+              <description>Trigger</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)E$(E):SW:3:trig</pv_name>
+          <text>Trigger</text>
+          <x>208</x>
+          <width>80</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="14.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 4</name>
+        <y>106</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>4</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:4</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):SW:4</pv_name>
+          <x>122</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Write Button</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>0</value>
+              <description>Trigger</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)E$(E):SW:4:trig</pv_name>
+          <text>Trigger</text>
+          <x>208</x>
+          <width>80</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="14.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 5</name>
+        <y>133</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>5</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:5</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 6</name>
+        <y>160</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>6</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:6</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 7</name>
+        <y>187</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>7</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:7</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Trigger 8</name>
+        <y>214</y>
+        <width>288</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>Label</name>
+          <text>8</text>
+          <width>30</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="green-19" red="0" green="128" blue="0">
+            </color>
+          </background_color>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+        </widget>
+        <widget type="textentry" version="3.0.0">
+          <name>Setpoint</name>
+          <pv_name>$(P)$(R)E$(E):HW:8</pv_name>
+          <x>36</x>
+          <width>80</width>
+          <height>22</height>
+          <foreground_color>
+            <color name="black-14" red="0" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color name="cyan-31" red="0" green="224" blue="224">
+            </color>
+          </background_color>
+          <show_units>false</show_units>
+        </widget>
+      </widget>
+    </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>EDM Group 5</name>
-    <x>34</x>
-    <y>209</y>
-    <width>82</width>
-    <height>31</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:5</pv_name>
-      <x>37</x>
-      <y>5</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>5</text>
-      <x>5</x>
-      <y>5</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 6</name>
-    <x>34</x>
-    <y>239</y>
-    <width>82</width>
-    <height>31</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:6</pv_name>
-      <x>37</x>
-      <y>5</y>
-      <width>40</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>6</text>
-      <x>5</x>
-      <y>5</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 7</name>
-    <x>34</x>
-    <y>269</y>
-    <width>82</width>
-    <height>32</height>
-    <style>3</style>
+    <name>Diagnostic Outputs</name>
+    <x>44</x>
+    <y>318</y>
+    <width>292</width>
+    <height>50</height>
+    <style>2</style>
     <transparent>true</transparent>
     <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>7</text>
-      <x>5</x>
-      <y>5</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:7</pv_name>
-      <x>37</x>
-      <y>5</y>
-      <width>40</width>
+      <name>Section Title</name>
+      <text>Diagnostic Outputs</text>
+      <width>288</width>
       <height>22</height>
       <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>EDM Group 8</name>
-    <x>34</x>
-    <y>300</y>
-    <width>82</width>
-    <height>32</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>EDM activeXTextClass</name>
-      <text>8</text>
-      <x>5</x>
-      <y>5</y>
-      <width>15</width>
-      <height>21</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
+        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
         </font>
       </font>
       <foreground_color>
@@ -770,29 +619,31 @@
         <color name="green-19" red="0" green="128" blue="0">
         </color>
       </background_color>
-      <horizontal_alignment>2</horizontal_alignment>
+      <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
     </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>EDM activeXTextDspClass</name>
-      <pv_name>$(P)$(R)E$(E):HW:8</pv_name>
-      <x>37</x>
-      <y>5</y>
-      <width>40</width>
+    <widget type="group" version="3.0.0">
+      <name>Diagnostic Outputs Content</name>
+      <y>24</y>
+      <width>288</width>
       <height>22</height>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="18.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="cyan-31" red="0" green="224" blue="224">
-        </color>
-      </background_color>
-      <show_units>false</show_units>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="combo" version="2.0.0">
+        <name>Menu</name>
+        <pv_name>$(P)$(R)E$(E):diagOut</pv_name>
+        <width>288</width>
+        <height>22</height>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="cyan-31" red="0" green="224" blue="224">
+          </color>
+        </background_color>
+        <border_alarm_sensitive>false</border_alarm_sensitive>
+      </widget>
     </widget>
   </widget>
 </display>
