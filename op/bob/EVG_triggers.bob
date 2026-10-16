@@ -3,646 +3,877 @@
   <name>EVG triggers</name>
   <x>341</x>
   <y>343</y>
-  <width>380</width>
-  <height>385</height>
+  <width>420</width>
+  <height>514</height>
   <background_color>
-    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    <color red="236" green="239" blue="244">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>420</width>
+    <height>48</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="30" green="41" blue="59">
+      </color>
+    </background_color>
+  </widget>
   <widget type="label" version="2.0.0">
-    <name>Banner</name>
-    <text>$(P)$(R) EVG $(E) Triggers</text>
-    <x>2</x>
-    <width>361</width>
-    <height>28</height>
+    <name>Header Title</name>
+    <text>EVG $(E) Triggers</text>
+    <x>16</x>
+    <width>388</width>
+    <height>48</height>
     <font>
-      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      <font family="Liberation Sans" style="BOLD" size="20.0">
       </font>
     </font>
     <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
+      <color red="255" green="255" blue="255">
       </color>
     </foreground_color>
     <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
+      <color red="0" green="128" blue="0">
       </color>
     </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Header Prefix</name>
+    <text>$(P)$(R)</text>
+    <x>16</x>
+    <width>388</width>
+    <height>48</height>
+    <font>
+      <font family="Liberation Mono" style="REGULAR" size="13.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="148" green="163" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Trigger Codes</name>
+    <name>Card Slot</name>
     <x>44</x>
-    <y>36</y>
-    <width>292</width>
-    <height>264</height>
-    <style>2</style>
+    <y>64</y>
+    <width>332</width>
+    <height>324</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Trigger Event Codes</text>
-      <width>288</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Trigger Codes Content</name>
-      <y>24</y>
-      <width>288</width>
-      <height>236</height>
+      <name>Trigger Event Codes</name>
+      <width>332</width>
+      <height>324</height>
       <style>3</style>
       <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>332</width>
+        <height>324</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
       <widget type="label" version="2.0.0">
-        <name>Label</name>
-        <text>Hardware</text>
-        <x>36</x>
-        <width>80</width>
+        <name>Card Title</name>
+        <text>Trigger Event Codes</text>
+        <x>28</x>
+        <y>12</y>
+        <width>288</width>
         <height>22</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
-        <horizontal_alignment>1</horizontal_alignment>
         <vertical_alignment>1</vertical_alignment>
       </widget>
-      <widget type="label" version="2.0.0">
-        <name>Label</name>
-        <text>Software</text>
-        <x>122</x>
-        <width>80</width>
-        <height>22</height>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>330</width>
+        <height>1</height>
+        <line_width>0</line_width>
         <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
+          <color red="226" green="232" blue="240">
           </color>
         </background_color>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
       </widget>
       <widget type="group" version="3.0.0">
-        <name>Trigger 1</name>
-        <y>25</y>
-        <width>288</width>
-        <height>22</height>
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>300</width>
+        <height>266</height>
         <style>3</style>
         <transparent>true</transparent>
         <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>1</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:1</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):SW:1</pv_name>
-          <x>122</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>0</value>
-              <description>Trigger</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)E$(E):SW:1:trig</pv_name>
-          <text>Trigger</text>
-          <x>208</x>
-          <width>80</width>
-          <height>22</height>
+          <name>Column Header</name>
+          <text>HARDWARE</text>
+          <x>32</x>
+          <width>84</width>
+          <height>16</height>
           <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+            <font family="Liberation Sans" style="BOLD" size="11.0">
             </font>
           </font>
           <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
+            <color red="100" green="116" blue="139">
             </color>
           </foreground_color>
           <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
+            <color red="0" green="128" blue="0">
             </color>
           </background_color>
-        </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 2</name>
-        <y>52</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>2</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
+          <horizontal_alignment>1</horizontal_alignment>
           <vertical_alignment>1</vertical_alignment>
         </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:2</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):SW:2</pv_name>
-          <x>122</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>0</value>
-              <description>Trigger</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)E$(E):SW:2:trig</pv_name>
-          <text>Trigger</text>
-          <x>208</x>
-          <width>80</width>
-          <height>22</height>
+        <widget type="label" version="2.0.0">
+          <name>Column Header</name>
+          <text>SOFTWARE</text>
+          <x>124</x>
+          <width>84</width>
+          <height>16</height>
           <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+            <font family="Liberation Sans" style="BOLD" size="11.0">
             </font>
           </font>
           <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
+            <color red="100" green="116" blue="139">
             </color>
           </foreground_color>
           <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
+            <color red="0" green="128" blue="0">
             </color>
           </background_color>
-        </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 3</name>
-        <y>79</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>3</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
+          <horizontal_alignment>1</horizontal_alignment>
           <vertical_alignment>1</vertical_alignment>
         </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:3</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):SW:3</pv_name>
-          <x>122</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>0</value>
-              <description>Trigger</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)E$(E):SW:3:trig</pv_name>
-          <text>Trigger</text>
-          <x>208</x>
-          <width>80</width>
-          <height>22</height>
-          <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+        <widget type="group" version="3.0.0">
+          <name>Trigger 1</name>
+          <y>20</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>1</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
             </font>
-          </font>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-        </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 4</name>
-        <y>106</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>4</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:4</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):SW:4</pv_name>
-          <x>122</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-        </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>0</value>
-              <description>Trigger</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)E$(E):SW:4:trig</pv_name>
-          <text>Trigger</text>
-          <x>208</x>
-          <width>80</width>
-          <height>22</height>
-          <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:1</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
             </font>
-          </font>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):SW:1</pv_name>
+            <x>124</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>0</value>
+                <description>Trigger</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)E$(E):SW:1:trig</pv_name>
+            <text>Trigger</text>
+            <x>216</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 5</name>
-        <y>133</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>5</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 2</name>
+          <y>50</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>2</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:2</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):SW:2</pv_name>
+            <x>124</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>0</value>
+                <description>Trigger</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)E$(E):SW:2:trig</pv_name>
+            <text>Trigger</text>
+            <x>216</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+          </widget>
         </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:5</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 3</name>
+          <y>80</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>3</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:3</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):SW:3</pv_name>
+            <x>124</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>0</value>
+                <description>Trigger</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)E$(E):SW:3:trig</pv_name>
+            <text>Trigger</text>
+            <x>216</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 6</name>
-        <y>160</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>6</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 4</name>
+          <y>110</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>4</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:4</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):SW:4</pv_name>
+            <x>124</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>0</value>
+                <description>Trigger</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)E$(E):SW:4:trig</pv_name>
+            <text>Trigger</text>
+            <x>216</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+          </widget>
         </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:6</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 5</name>
+          <y>140</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>5</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:5</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 7</name>
-        <y>187</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>7</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 6</name>
+          <y>170</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>6</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:6</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
         </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:7</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 7</name>
+          <y>200</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>7</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:7</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Trigger 8</name>
-        <y>214</y>
-        <width>288</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>8</text>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textentry" version="3.0.0">
-          <name>Setpoint</name>
-          <pv_name>$(P)$(R)E$(E):HW:8</pv_name>
-          <x>36</x>
-          <width>80</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
+        <widget type="group" version="3.0.0">
+          <name>Trigger 8</name>
+          <y>230</y>
+          <width>300</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>8</text>
+            <width>24</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textentry" version="3.0.0">
+            <name>Setpoint</name>
+            <pv_name>$(P)$(R)E$(E):HW:8</pv_name>
+            <x>32</x>
+            <width>84</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="219" green="234" blue="254">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+          </widget>
         </widget>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Diagnostic Outputs</name>
+    <name>Card Slot</name>
     <x>44</x>
-    <y>318</y>
-    <width>292</width>
-    <height>50</height>
-    <style>2</style>
+    <y>404</y>
+    <width>332</width>
+    <height>94</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Diagnostic Outputs</text>
-      <width>288</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Diagnostic Outputs Content</name>
-      <y>24</y>
-      <width>288</width>
-      <height>22</height>
+      <name>Diagnostic Outputs</name>
+      <width>332</width>
+      <height>94</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="combo" version="2.0.0">
-        <name>Menu</name>
-        <pv_name>$(P)$(R)E$(E):diagOut</pv_name>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>332</width>
+        <height>94</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Diagnostic Outputs</text>
+        <x>28</x>
+        <y>12</y>
         <width>288</width>
         <height>22</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
-        <border_alarm_sensitive>false</border_alarm_sensitive>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>330</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>300</width>
+        <height>36</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="combo" version="2.0.0">
+          <name>Menu</name>
+          <pv_name>$(P)$(R)E$(E):diagOut</pv_name>
+          <width>300</width>
+          <height>24</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="15" green="23" blue="42">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="219" green="234" blue="254">
+            </color>
+          </background_color>
+        </widget>
       </widget>
     </widget>
   </widget>

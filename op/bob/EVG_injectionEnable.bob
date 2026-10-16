@@ -3,212 +3,293 @@
   <name>EVG injectionEnable</name>
   <x>284</x>
   <y>304</y>
-  <width>384</width>
-  <height>133</height>
+  <width>420</width>
+  <height>214</height>
   <background_color>
-    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    <color red="236" green="239" blue="244">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>420</width>
+    <height>48</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="30" green="41" blue="59">
+      </color>
+    </background_color>
+  </widget>
   <widget type="label" version="2.0.0">
-    <name>Banner</name>
-    <text>$(P)$(R) Injector Cycles</text>
-    <x>2</x>
-    <width>365</width>
-    <height>28</height>
+    <name>Header Title</name>
+    <text>Injector Cycles</text>
+    <x>16</x>
+    <width>388</width>
+    <height>48</height>
     <font>
-      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      <font family="Liberation Sans" style="BOLD" size="20.0">
       </font>
     </font>
     <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
+      <color red="255" green="255" blue="255">
       </color>
     </foreground_color>
     <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
+      <color red="0" green="128" blue="0">
       </color>
     </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Header Prefix</name>
+    <text>$(P)$(R)</text>
+    <x>16</x>
+    <width>388</width>
+    <height>48</height>
+    <font>
+      <font family="Liberation Mono" style="REGULAR" size="13.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="148" green="163" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Injector Cycles</name>
-    <x>21</x>
-    <y>36</y>
-    <width>346</width>
-    <height>80</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>22</x>
+    <y>64</y>
+    <width>376</width>
+    <height>134</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Injector Cycle Control</text>
-      <width>342</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Injector Cycles Content</name>
-      <y>24</y>
-      <width>342</width>
-      <height>52</height>
+      <name>Injector Cycle Control</name>
+      <width>376</width>
+      <height>134</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <width>342</width>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>376</width>
+        <height>134</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Injector Cycle Control</text>
+        <x>28</x>
+        <y>12</y>
+        <width>332</width>
         <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Injection Cycles Enabled</text>
-          <width>200</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="byte_monitor" version="2.0.0">
-          <name>LED</name>
-          <pv_name>$(P)$(R)INJ:injCycleEnabled</pv_name>
-          <x>206</x>
-          <y>1</y>
-          <width>20</width>
-          <height>20</height>
-          <numBits>1</numBits>
-          <horizontal>false</horizontal>
-          <square>true</square>
-          <off_color>
-            <color name="GLOBAL canvas" red="200" green="200" blue="200">
-            </color>
-          </off_color>
-          <on_color>
-            <color name="Monitor: NORMAL" red="0" green="255" blue="0">
-            </color>
-          </on_color>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-        </widget>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="30" green="41" blue="59">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>374</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
       </widget>
       <widget type="group" version="3.0.0">
-        <name>Buttons</name>
-        <y>27</y>
-        <width>342</width>
-        <height>25</height>
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>344</width>
+        <height>76</height>
         <style>3</style>
         <transparent>true</transparent>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>1</value>
-              <description>Enable</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)INJ:injCycleEnable</pv_name>
-          <text>Enable</text>
-          <width>110</width>
-          <height>25</height>
-          <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+        <widget type="group" version="3.0.0">
+          <name>Status</name>
+          <width>344</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="byte_monitor" version="2.0.0">
+            <name>Enabled LED</name>
+            <pv_name>$(P)$(R)INJ:injCycleEnabled</pv_name>
+            <y>1</y>
+            <width>22</width>
+            <height>22</height>
+            <numBits>1</numBits>
+            <horizontal>false</horizontal>
+            <off_color>
+              <color red="203" green="213" blue="225">
+              </color>
+            </off_color>
+            <on_color>
+              <color red="34" green="197" blue="94">
+              </color>
+            </on_color>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Injection Cycles Enabled</text>
+            <x>32</x>
+            <width>300</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
             </font>
-          </font>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>0</value>
-              <description>Disable</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)INJ:injCycleEnable</pv_name>
-          <text>Disable</text>
-          <x>116</x>
-          <width>110</width>
-          <height>25</height>
-          <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+        <widget type="group" version="3.0.0">
+          <name>Buttons</name>
+          <y>36</y>
+          <width>344</width>
+          <height>28</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>1</value>
+                <description>Enable</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)INJ:injCycleEnable</pv_name>
+            <text>Enable</text>
+            <width>108</width>
+            <height>28</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
             </font>
-          </font>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-        </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Write Button</name>
-          <actions>
-            <action type="write_pv">
-              <pv_name>$(pv_name)</pv_name>
-              <value>0</value>
-              <description>Single Shot</description>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)INJ:singleShot</pv_name>
-          <text>Single Shot</text>
-          <x>232</x>
-          <width>110</width>
-          <height>25</height>
-          <font>
-            <font family="Liberation Sans" style="BOLD" size="14.0">
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>0</value>
+                <description>Disable</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)INJ:injCycleEnable</pv_name>
+            <text>Disable</text>
+            <x>118</x>
+            <width>108</width>
+            <height>28</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
             </font>
-          </font>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="cyan-31" red="0" green="224" blue="224">
-            </color>
-          </background_color>
-          <rules>
-            <rule name="EDM visibility" prop_id="visible" out_exp="false">
-              <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
-                <value>true</value>
-              </exp>
-              <exp bool_exp="true">
-                <value>false</value>
-              </exp>
-              <pv_name>$(P)$(R)INJ:injCycleEnabled</pv_name>
-            </rule>
-          </rules>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+          </widget>
+          <widget type="action_button" version="3.0.0">
+            <name>Command</name>
+            <actions>
+              <action type="write_pv">
+                <pv_name>$(pv_name)</pv_name>
+                <value>0</value>
+                <description>Single Shot</description>
+              </action>
+            </actions>
+            <pv_name>$(P)$(R)INJ:singleShot</pv_name>
+            <text>Single Shot</text>
+            <x>236</x>
+            <width>108</width>
+            <height>28</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="255" green="255" blue="255">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="37" green="99" blue="235">
+              </color>
+            </background_color>
+            <rules>
+              <rule name="EDM visibility" prop_id="visible" out_exp="false">
+                <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+                  <value>true</value>
+                </exp>
+                <exp bool_exp="true">
+                  <value>false</value>
+                </exp>
+                <pv_name>$(P)$(R)INJ:injCycleEnabled</pv_name>
+              </rule>
+            </rules>
+          </widget>
         </widget>
       </widget>
     </widget>

@@ -3,640 +3,901 @@
   <name>EVG statistics</name>
   <x>908</x>
   <y>585</y>
-  <width>636</width>
-  <height>271</height>
+  <width>692</width>
+  <height>404</height>
   <background_color>
-    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    <color red="236" green="239" blue="244">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>692</width>
+    <height>48</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="30" green="41" blue="59">
+      </color>
+    </background_color>
+  </widget>
   <widget type="label" version="2.0.0">
-    <name>Banner</name>
-    <text>$(P)$(R) Statistics</text>
-    <x>2</x>
-    <width>617</width>
-    <height>28</height>
+    <name>Header Title</name>
+    <text>Statistics</text>
+    <x>16</x>
+    <width>660</width>
+    <height>48</height>
     <font>
-      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      <font family="Liberation Sans" style="BOLD" size="20.0">
       </font>
     </font>
     <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
+      <color red="255" green="255" blue="255">
       </color>
     </foreground_color>
     <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
+      <color red="0" green="128" blue="0">
       </color>
     </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Header Prefix</name>
+    <text>$(P)$(R)</text>
+    <x>16</x>
+    <width>660</width>
+    <height>48</height>
+    <font>
+      <font family="Liberation Mono" style="REGULAR" size="13.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="148" green="163" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Build Info</name>
-    <x>21</x>
-    <y>36</y>
-    <width>290</width>
-    <height>100</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>16</x>
+    <y>64</y>
+    <width>322</width>
+    <height>154</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Build Info</text>
-      <width>286</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Build Info Content</name>
-      <y>24</y>
-      <width>286</width>
-      <height>72</height>
+      <name>Build Info</name>
+      <width>322</width>
+      <height>154</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <width>286</width>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>322</width>
+        <height>154</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Build Info</text>
+        <x>28</x>
+        <y>12</y>
+        <width>278</width>
         <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Firmware</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)firmwareBuildDate</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="30" green="41" blue="59">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>320</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
       </widget>
       <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>25</y>
-        <width>286</width>
-        <height>22</height>
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>290</width>
+        <height>96</height>
         <style>3</style>
         <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Software</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Firmware</name>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Firmware</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)firmwareBuildDate</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)softwareBuildDate</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Software</name>
+          <y>30</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Software</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)softwareBuildDate</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>50</y>
-        <width>286</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Git ID</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)gitID</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <format>4</format>
-          <show_units>false</show_units>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Git ID</name>
+          <y>60</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Git ID</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)gitID</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <format>4</format>
+            <show_units>false</show_units>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Status Messages</name>
-    <x>21</x>
-    <y>154</y>
-    <width>290</width>
-    <height>100</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>16</x>
+    <y>234</y>
+    <width>322</width>
+    <height>154</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Status Messages</text>
-      <width>286</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Status Messages Content</name>
-      <y>24</y>
-      <width>286</width>
-      <height>72</height>
+      <name>Status Messages</name>
+      <width>322</width>
+      <height>154</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <width>286</width>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>322</width>
+        <height>154</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Status Messages</text>
+        <x>28</x>
+        <y>12</y>
+        <width>278</width>
         <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Status Subscribe</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)StatConnCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="30" green="41" blue="59">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>320</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
       </widget>
       <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>25</y>
-        <width>286</width>
-        <height>22</height>
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>290</width>
+        <height>96</height>
         <style>3</style>
         <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Status Received</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Status Subscribe</name>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Status Subscribe</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)StatConnCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)StatRecvCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Status Received</name>
+          <y>30</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Status Received</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)StatRecvCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>50</y>
-        <width>286</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Status Missed</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)SeqMissedCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Status Missed</name>
+          <y>60</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Status Missed</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)SeqMissedCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Command Retries</name>
-    <x>329</x>
-    <y>36</y>
-    <width>290</width>
-    <height>175</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>354</x>
+    <y>64</y>
+    <width>322</width>
+    <height>324</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Command Retries</text>
-      <width>286</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Command Retries Content</name>
-      <y>24</y>
-      <width>286</width>
-      <height>147</height>
+      <name>Command Retries</name>
+      <width>322</width>
+      <height>324</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <width>286</width>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>322</width>
+        <height>324</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Command Retries</text>
+        <x>28</x>
+        <y>12</y>
+        <width>278</width>
         <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>0 retries</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)Cmd0RetryCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="30" green="41" blue="59">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>320</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
       </widget>
       <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>25</y>
-        <width>286</width>
-        <height>22</height>
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>290</width>
+        <height>266</height>
         <style>3</style>
         <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>1 retry</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>0 retries</name>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>0 retries</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)Cmd0RetryCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)Cmd1RetryCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>1 retry</name>
+          <y>30</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>1 retry</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)Cmd1RetryCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>50</y>
-        <width>286</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>2 retries</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>2 retries</name>
+          <y>60</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>2 retries</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)Cmd2RetryCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)Cmd2RetryCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>3 retries</name>
+          <y>90</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>3 retries</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)Cmd3RetryCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>75</y>
-        <width>286</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>3 retries</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>4 retries</name>
+          <y>120</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>4 retries</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)Cmd4RetryCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)Cmd3RetryCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>100</y>
-        <width>286</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>4 retries</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)Cmd4RetryCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>125</y>
-        <width>286</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Failures</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)CmdFailedCount</pv_name>
-          <x>136</x>
-          <width>150</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>Failures</name>
+          <y>150</y>
+          <width>290</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Failures</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)CmdFailedCount</pv_name>
+            <x>138</x>
+            <width>152</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
       </widget>
     </widget>

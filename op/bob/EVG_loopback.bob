@@ -1,266 +1,425 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-10-05 13:48:31 by lrusso-->
 <display version="2.0.0">
   <name>EVG loopback</name>
   <x>787</x>
   <y>250</y>
-  <width>442</width>
-  <height>361</height>
+  <width>464</width>
+  <height>392</height>
   <background_color>
-    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    <color red="236" green="239" blue="244">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>464</width>
+    <height>48</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="30" green="41" blue="59">
+      </color>
+    </background_color>
+  </widget>
   <widget type="label" version="2.0.0">
-    <name>Banner</name>
-    <text>$(P)$(R) Loopback</text>
-    <x>2</x>
-    <width>423</width>
-    <height>28</height>
+    <name>Header Title</name>
+    <text>Loopback</text>
+    <x>16</x>
+    <width>432</width>
+    <height>48</height>
     <font>
-      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      <font family="Liberation Sans" style="BOLD" size="20.0">
       </font>
     </font>
     <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
+      <color red="255" green="255" blue="255">
       </color>
     </foreground_color>
     <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
+      <color red="0" green="128" blue="0">
       </color>
     </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Header Prefix</name>
+    <text>$(P)$(R)</text>
+    <x>16</x>
+    <width>432</width>
+    <height>48</height>
+    <font>
+      <font family="Liberation Mono" style="REGULAR" size="13.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="148" green="163" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>EVG 1 Loopback</name>
-    <macros>
-      <EVG_NUM>1</EVG_NUM>
-    </macros>
-    <x>21</x>
-    <y>36</y>
-    <width>404</width>
-    <height>94</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>16</x>
+    <y>64</y>
+    <width>432</width>
+    <height>148</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>EVG $(EVG_NUM) Loopback</text>
-      <width>400</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>EVG 1 Loopback Content</name>
-      <y>24</y>
-      <width>400</width>
-      <height>69</height>
+      <name>EVG $(EVG_NUM) Loopback</name>
+      <macros>
+        <EVG_NUM>1</EVG_NUM>
+      </macros>
+      <width>432</width>
+      <height>148</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <width>400</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>Latency</text>
-          <width>90</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E$(EVG_NUM):latency</pv_name>
-          <x>96</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <precision>0</precision>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>ns</text>
-          <x>155</x>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>432</width>
+        <height>148</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
       </widget>
-      <widget type="scaledslider" version="2.0.0">
-        <name>Loopback Slider</name>
-        <pv_name>$(P)$(R)E$(EVG_NUM):loopback</pv_name>
-        <y>27</y>
-        <height>42</height>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>EVG $(EVG_NUM) Loopback</text>
+        <x>28</x>
+        <y>12</y>
+        <width>388</width>
+        <height>22</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="GLOBAL canvas" red="200" green="200" blue="200">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
-        <show_hihi>false</show_hihi>
-        <show_high>false</show_high>
-        <show_low>false</show_low>
-        <show_lolo>false</show_lolo>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>430</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>400</width>
+        <height>90</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="group" version="3.0.0">
+          <name>Latency</name>
+          <width>400</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Latency</text>
+            <width>90</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E$(EVG_NUM):latency</pv_name>
+            <x>98</x>
+            <width>80</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <precision>0</precision>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Units</name>
+            <text>ns</text>
+            <x>184</x>
+            <width>30</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="12.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+        </widget>
+        <widget type="scaledslider" version="2.0.0">
+          <name>Loopback Slider</name>
+          <pv_name>$(P)$(R)E$(EVG_NUM):loopback</pv_name>
+          <y>36</y>
+          <width>400</width>
+          <height>42</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="12.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="71" green="85" blue="105">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </background_color>
+          <show_hihi>false</show_hihi>
+          <show_high>false</show_high>
+          <show_low>false</show_low>
+          <show_lolo>false</show_lolo>
+        </widget>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>EVG 1 Loopback_1</name>
-    <macros>
-      <EVG_NUM>2</EVG_NUM>
-    </macros>
-    <x>21</x>
-    <y>140</y>
-    <width>404</width>
-    <height>94</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>16</x>
+    <y>228</y>
+    <width>432</width>
+    <height>148</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title_1</name>
-      <text>EVG $(EVG_NUM) Loopback</text>
-      <width>400</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>EVG 1 Loopback Content_1</name>
-      <y>24</y>
-      <width>400</width>
-      <height>69</height>
+      <name>EVG $(EVG_NUM) Loopback</name>
+      <macros>
+        <EVG_NUM>2</EVG_NUM>
+      </macros>
+      <width>432</width>
+      <height>148</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Row_1</name>
-        <width>400</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label_1</name>
-          <text>Latency</text>
-          <width>90</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback_1</name>
-          <pv_name>$(P)$(R)E$(EVG_NUM):latency</pv_name>
-          <x>96</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <precision>0</precision>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="label" version="2.0.0">
-          <name>Label_2</name>
-          <text>ns</text>
-          <x>155</x>
-          <width>30</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>432</width>
+        <height>148</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
       </widget>
-      <widget type="scaledslider" version="2.0.0">
-        <name>Loopback Slider_1</name>
-        <pv_name>$(P)$(R)E$(EVG_NUM):loopback</pv_name>
-        <y>27</y>
-        <height>42</height>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>EVG $(EVG_NUM) Loopback</text>
+        <x>28</x>
+        <y>12</y>
+        <width>388</width>
+        <height>22</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="GLOBAL canvas" red="200" green="200" blue="200">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
-        <show_hihi>false</show_hihi>
-        <show_high>false</show_high>
-        <show_low>false</show_low>
-        <show_lolo>false</show_lolo>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>430</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>400</width>
+        <height>90</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="group" version="3.0.0">
+          <name>Latency</name>
+          <width>400</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>Latency</text>
+            <width>90</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E$(EVG_NUM):latency</pv_name>
+            <x>98</x>
+            <width>80</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <precision>0</precision>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="label" version="2.0.0">
+            <name>Units</name>
+            <text>ns</text>
+            <x>184</x>
+            <width>30</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="12.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="100" green="116" blue="139">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+        </widget>
+        <widget type="scaledslider" version="2.0.0">
+          <name>Loopback Slider</name>
+          <pv_name>$(P)$(R)E$(EVG_NUM):loopback</pv_name>
+          <y>36</y>
+          <width>400</width>
+          <height>42</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="12.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="71" green="85" blue="105">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </background_color>
+          <show_hihi>false</show_hihi>
+          <show_high>false</show_high>
+          <show_low>false</show_low>
+          <show_lolo>false</show_lolo>
+        </widget>
       </widget>
     </widget>
   </widget>

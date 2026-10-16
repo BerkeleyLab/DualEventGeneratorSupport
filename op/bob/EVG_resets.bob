@@ -3,642 +3,920 @@
   <name>EVG resets</name>
   <x>248</x>
   <y>270</y>
-  <width>568</width>
-  <height>248</height>
+  <width>652</width>
+  <height>406</height>
   <background_color>
-    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    <color red="236" green="239" blue="244">
     </color>
   </background_color>
   <grid_visible>false</grid_visible>
+  <widget type="rectangle" version="2.0.0">
+    <name>Header Bar</name>
+    <width>652</width>
+    <height>48</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color red="30" green="41" blue="59">
+      </color>
+    </background_color>
+  </widget>
   <widget type="label" version="2.0.0">
-    <name>Banner</name>
-    <text>$(P)$(R) Resets</text>
-    <x>2</x>
-    <width>549</width>
-    <height>28</height>
+    <name>Header Title</name>
+    <text>Resets</text>
+    <x>16</x>
+    <width>620</width>
+    <height>48</height>
     <font>
-      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      <font family="Liberation Sans" style="BOLD" size="20.0">
       </font>
     </font>
     <foreground_color>
-      <color name="black-14" red="0" green="0" blue="0">
+      <color red="255" green="255" blue="255">
       </color>
     </foreground_color>
     <background_color>
-      <color name="green-19" red="0" green="128" blue="0">
+      <color red="0" green="128" blue="0">
       </color>
     </background_color>
-    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Header Prefix</name>
+    <text>$(P)$(R)</text>
+    <x>16</x>
+    <width>620</width>
+    <height>48</height>
+    <font>
+      <font family="Liberation Mono" style="REGULAR" size="13.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="148" green="163" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="128" blue="0">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Reboot FPGA</name>
-    <x>21</x>
-    <y>36</y>
-    <width>256</width>
-    <height>53</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>16</x>
+    <y>64</y>
+    <width>302</width>
+    <height>98</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Reboot FPGA</text>
-      <width>252</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Reboot FPGA Content</name>
-      <y>24</y>
-      <width>252</width>
-      <height>25</height>
+      <name>Reboot FPGA</name>
+      <width>302</width>
+      <height>98</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>1</value>
-            <description>Step 1</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)FPGA:reboot</pv_name>
-        <text>Step 1</text>
-        <width>80</width>
-        <height>25</height>
-        <font>
-          <font family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>302</width>
+        <height>98</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
           </color>
-        </foreground_color>
+        </line_color>
         <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
           </color>
         </background_color>
       </widget>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>100</value>
-            <description>Step 2</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)FPGA:reboot</pv_name>
-        <text>Step 2</text>
-        <x>86</x>
-        <width>80</width>
-        <height>25</height>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Reboot FPGA</text>
+        <x>28</x>
+        <y>12</y>
+        <width>258</width>
+        <height>22</height>
         <font>
           <font family="Liberation Sans" style="BOLD" size="14.0">
           </font>
         </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
+          <color red="0" green="128" blue="0">
+          </color>
+        </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>300</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
           </color>
         </background_color>
       </widget>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>10000</value>
-            <description>Step 3</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)FPGA:reboot</pv_name>
-        <text>Step 3</text>
-        <x>172</x>
-        <width>80</width>
-        <height>25</height>
-        <font>
-          <font family="Liberation Sans" style="BOLD" size="14.0">
+      <widget type="group" version="3.0.0">
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>270</width>
+        <height>40</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>1</value>
+              <description>Step 1</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)FPGA:reboot</pv_name>
+          <text>Step 1</text>
+          <width>82</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
           </font>
-        </font>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
-          </color>
-        </background_color>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="220" green="38" blue="38">
+            </color>
+          </background_color>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>100</value>
+              <description>Step 2</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)FPGA:reboot</pv_name>
+          <text>Step 2</text>
+          <x>94</x>
+          <width>82</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="220" green="38" blue="38">
+            </color>
+          </background_color>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>10000</value>
+              <description>Step 3</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)FPGA:reboot</pv_name>
+          <text>Step 3</text>
+          <x>188</x>
+          <width>82</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="220" green="38" blue="38">
+            </color>
+          </background_color>
+        </widget>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Realign Transmitters</name>
-    <x>21</x>
-    <y>107</y>
-    <width>256</width>
-    <height>53</height>
-    <style>2</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Realign Transmitters</text>
-      <width>252</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
-    <widget type="group" version="3.0.0">
-      <name>Realign Transmitters Content</name>
-      <y>24</y>
-      <width>252</width>
-      <height>25</height>
-      <style>3</style>
-      <transparent>true</transparent>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>1</value>
-            <description>Step 1</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)MGT:Tx:realign</pv_name>
-        <text>Step 1</text>
-        <width>80</width>
-        <height>25</height>
-        <font>
-          <font family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
-          </color>
-        </background_color>
-      </widget>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>10</value>
-            <description>Step 2</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)MGT:Tx:realign</pv_name>
-        <text>Step 2</text>
-        <x>86</x>
-        <width>80</width>
-        <height>25</height>
-        <font>
-          <font family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
-          </color>
-        </background_color>
-      </widget>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>100</value>
-            <description>Step 3</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)MGT:Tx:realign</pv_name>
-        <text>Step 3</text>
-        <x>172</x>
-        <width>80</width>
-        <height>25</height>
-        <font>
-          <font family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
-          </color>
-        </foreground_color>
-        <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
-          </color>
-        </background_color>
-      </widget>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>Time Source</name>
-    <x>21</x>
+    <name>Card Slot</name>
+    <x>16</x>
     <y>178</y>
-    <width>256</width>
-    <height>53</height>
-    <style>2</style>
+    <width>302</width>
+    <height>98</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Time Source</text>
-      <width>252</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Time Source Content</name>
-      <y>24</y>
-      <width>252</width>
-      <height>25</height>
+      <name>Realign Transmitters</name>
+      <width>302</width>
+      <height>98</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="action_button" version="3.0.0">
-        <name>Write Button</name>
-        <actions>
-          <action type="write_pv">
-            <pv_name>$(pv_name)</pv_name>
-            <value>1</value>
-            <description>Sync with time source</description>
-          </action>
-        </actions>
-        <pv_name>$(P)$(R)fetchTOD</pv_name>
-        <text>Sync with time source</text>
-        <width>252</width>
-        <height>25</height>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>302</width>
+        <height>98</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Card Title</name>
+        <text>Realign Transmitters</text>
+        <x>28</x>
+        <y>12</y>
+        <width>258</width>
+        <height>22</height>
         <font>
           <font family="Liberation Sans" style="BOLD" size="14.0">
           </font>
         </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="cyan-31" red="0" green="224" blue="224">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>300</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>270</width>
+        <height>40</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>1</value>
+              <description>Step 1</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)MGT:Tx:realign</pv_name>
+          <text>Step 1</text>
+          <width>82</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="37" green="99" blue="235">
+            </color>
+          </background_color>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>10</value>
+              <description>Step 2</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)MGT:Tx:realign</pv_name>
+          <text>Step 2</text>
+          <x>94</x>
+          <width>82</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="37" green="99" blue="235">
+            </color>
+          </background_color>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>100</value>
+              <description>Step 3</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)MGT:Tx:realign</pv_name>
+          <text>Step 3</text>
+          <x>188</x>
+          <width>82</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="37" green="99" blue="235">
+            </color>
+          </background_color>
+        </widget>
       </widget>
     </widget>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Clock Alignment</name>
-    <x>295</x>
-    <y>36</y>
-    <width>256</width>
-    <height>150</height>
-    <style>2</style>
+    <name>Card Slot</name>
+    <x>16</x>
+    <y>292</y>
+    <width>302</width>
+    <height>98</height>
+    <style>3</style>
     <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Section Title</name>
-      <text>Clock Alignment</text>
-      <width>252</width>
-      <height>22</height>
-      <font>
-        <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color name="black-14" red="0" green="0" blue="0">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color name="green-19" red="0" green="128" blue="0">
-        </color>
-      </background_color>
-      <horizontal_alignment>1</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-    </widget>
     <widget type="group" version="3.0.0">
-      <name>Clock Alignment Content</name>
-      <y>24</y>
-      <width>252</width>
-      <height>122</height>
+      <name>Time Source</name>
+      <width>302</width>
+      <height>98</height>
       <style>3</style>
       <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>302</width>
+        <height>98</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
       <widget type="label" version="2.0.0">
-        <name>Label</name>
-        <text>EVG 1</text>
-        <x>136</x>
-        <width>55</width>
+        <name>Card Title</name>
+        <text>Time Source</text>
+        <x>28</x>
+        <y>12</y>
+        <width>258</width>
         <height>22</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
-        <horizontal_alignment>1</horizontal_alignment>
         <vertical_alignment>1</vertical_alignment>
       </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>300</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>270</width>
+        <height>40</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="action_button" version="3.0.0">
+          <name>Command</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(pv_name)</pv_name>
+              <value>1</value>
+              <description>Sync with time source</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(R)fetchTOD</pv_name>
+          <text>Sync with time source</text>
+          <width>270</width>
+          <height>28</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="13.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="37" green="99" blue="235">
+            </color>
+          </background_color>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Card Slot</name>
+    <x>334</x>
+    <y>64</y>
+    <width>302</width>
+    <height>326</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="3.0.0">
+      <name>Clock Alignment</name>
+      <width>302</width>
+      <height>326</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>Card</name>
+        <width>302</width>
+        <height>326</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="214" green="219" blue="226">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </background_color>
+        <corner_width>8</corner_width>
+        <corner_height>8</corner_height>
+      </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Accent</name>
+        <x>16</x>
+        <y>14</y>
+        <width>4</width>
+        <height>18</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="37" green="99" blue="235">
+          </color>
+        </background_color>
+      </widget>
       <widget type="label" version="2.0.0">
-        <name>Label</name>
-        <text>EVG 2</text>
-        <x>197</x>
-        <width>55</width>
+        <name>Card Title</name>
+        <text>Clock Alignment</text>
+        <x>28</x>
+        <y>12</y>
+        <width>258</width>
         <height>22</height>
+        <font>
+          <font family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
         <foreground_color>
-          <color name="black-14" red="0" green="0" blue="0">
+          <color red="30" green="41" blue="59">
           </color>
         </foreground_color>
         <background_color>
-          <color name="green-19" red="0" green="128" blue="0">
+          <color red="0" green="128" blue="0">
           </color>
         </background_color>
-        <horizontal_alignment>1</horizontal_alignment>
         <vertical_alignment>1</vertical_alignment>
       </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>25</y>
-        <width>252</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>refClk Location</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E1:refCoinc</pv_name>
-          <x>136</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E2:refCoinc</pv_name>
-          <x>197</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
+      <widget type="rectangle" version="2.0.0">
+        <name>Separator</name>
+        <x>1</x>
+        <y>42</y>
+        <width>300</width>
+        <height>1</height>
+        <line_width>0</line_width>
+        <background_color>
+          <color red="226" green="232" blue="240">
+          </color>
+        </background_color>
       </widget>
       <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>50</y>
-        <width>252</width>
-        <height>22</height>
+        <name>Content</name>
+        <x>16</x>
+        <y>54</y>
+        <width>270</width>
+        <height>268</height>
         <style>3</style>
         <transparent>true</transparent>
         <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>refClk Jitter (ps)</text>
-          <width>130</width>
-          <height>22</height>
+          <name>Column Header</name>
+          <text>EVG 1</text>
+          <x>138</x>
+          <width>60</width>
+          <height>16</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="11.0">
+            </font>
+          </font>
           <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
+            <color red="100" green="116" blue="139">
             </color>
           </foreground_color>
           <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
+            <color red="0" green="128" blue="0">
             </color>
           </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
+          <horizontal_alignment>1</horizontal_alignment>
           <vertical_alignment>1</vertical_alignment>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E1:refJitter</pv_name>
-          <x>136</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <precision>0</precision>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E2:refJitter</pv_name>
-          <x>197</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <precision>0</precision>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>75</y>
-        <width>252</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
         <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>txClk Location</text>
-          <width>130</width>
-          <height>22</height>
+          <name>Column Header</name>
+          <text>EVG 2</text>
+          <x>206</x>
+          <width>60</width>
+          <height>16</height>
+          <font>
+            <font family="Liberation Sans" style="BOLD" size="11.0">
+            </font>
+          </font>
           <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
+            <color red="100" green="116" blue="139">
             </color>
           </foreground_color>
           <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
+            <color red="0" green="128" blue="0">
             </color>
           </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
+          <horizontal_alignment>1</horizontal_alignment>
           <vertical_alignment>1</vertical_alignment>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E1:txCoinc</pv_name>
-          <x>136</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>refClk Location</name>
+          <y>20</y>
+          <width>270</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>refClk Location</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E1:refCoinc</pv_name>
+            <x>138</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E2:refCoinc</pv_name>
+            <x>206</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E2:txCoinc</pv_name>
-          <x>197</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>refClk Jitter (ps)</name>
+          <y>50</y>
+          <width>270</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>refClk Jitter (ps)</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E1:refJitter</pv_name>
+            <x>138</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <precision>0</precision>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E2:refJitter</pv_name>
+            <x>206</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <precision>0</precision>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-      </widget>
-      <widget type="group" version="3.0.0">
-        <name>Row</name>
-        <y>100</y>
-        <width>252</width>
-        <height>22</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="label" version="2.0.0">
-          <name>Label</name>
-          <text>txClk Jitter (ps)</text>
-          <width>130</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="green-19" red="0" green="128" blue="0">
-            </color>
-          </background_color>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>txClk Location</name>
+          <y>80</y>
+          <width>270</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>txClk Location</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E1:txCoinc</pv_name>
+            <x>138</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E2:txCoinc</pv_name>
+            <x>206</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E1:txJitter</pv_name>
-          <x>136</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <precision>0</precision>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
-        </widget>
-        <widget type="textupdate" version="2.0.0">
-          <name>Readback</name>
-          <pv_name>$(P)$(R)E2:txJitter</pv_name>
-          <x>197</x>
-          <width>55</width>
-          <height>22</height>
-          <foreground_color>
-            <color name="black-14" red="0" green="0" blue="0">
-            </color>
-          </foreground_color>
-          <background_color>
-            <color name="grey-2" red="218" green="218" blue="218">
-            </color>
-          </background_color>
-          <precision>0</precision>
-          <show_units>false</show_units>
-          <horizontal_alignment>2</horizontal_alignment>
-          <vertical_alignment>1</vertical_alignment>
+        <widget type="group" version="3.0.0">
+          <name>txClk Jitter (ps)</name>
+          <y>110</y>
+          <width>270</width>
+          <height>24</height>
+          <style>3</style>
+          <transparent>true</transparent>
+          <widget type="label" version="2.0.0">
+            <name>Label</name>
+            <text>txClk Jitter (ps)</text>
+            <width>130</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Sans" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="71" green="85" blue="105">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="0" green="128" blue="0">
+              </color>
+            </background_color>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E1:txJitter</pv_name>
+            <x>138</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <precision>0</precision>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
+          <widget type="textupdate" version="2.0.0">
+            <name>Readback</name>
+            <pv_name>$(P)$(R)E2:txJitter</pv_name>
+            <x>206</x>
+            <width>60</width>
+            <height>24</height>
+            <font>
+              <font family="Liberation Mono" style="REGULAR" size="13.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="15" green="23" blue="42">
+              </color>
+            </foreground_color>
+            <background_color>
+              <color red="241" green="245" blue="249">
+              </color>
+            </background_color>
+            <precision>0</precision>
+            <show_units>false</show_units>
+            <horizontal_alignment>2</horizontal_alignment>
+            <vertical_alignment>1</vertical_alignment>
+          </widget>
         </widget>
       </widget>
     </widget>
