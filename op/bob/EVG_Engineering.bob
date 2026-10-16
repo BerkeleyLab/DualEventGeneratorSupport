@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2026-10-16 11:35:31 by lrusso-->
 <display version="2.0.0">
   <name>EVG Engineering</name>
   <x>2</x>
@@ -2020,8 +2021,8 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
-          <wrap_words>true</wrap_words>
           <horizontal_alignment>2</horizontal_alignment>
+          <wrap_words>true</wrap_words>
         </widget>
         <widget type="textentry" version="3.0.0">
           <name>Fine Delay</name>
@@ -2041,8 +2042,8 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
-          <wrap_words>true</wrap_words>
           <horizontal_alignment>2</horizontal_alignment>
+          <wrap_words>true</wrap_words>
         </widget>
         <widget type="textupdate" version="2.0.0">
           <name>Delay Readback</name>
@@ -2115,8 +2116,8 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
-          <wrap_words>true</wrap_words>
           <horizontal_alignment>2</horizontal_alignment>
+          <wrap_words>true</wrap_words>
         </widget>
         <widget type="textentry" version="3.0.0">
           <name>Fine Delay</name>
@@ -2136,8 +2137,8 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
-          <wrap_words>true</wrap_words>
           <horizontal_alignment>2</horizontal_alignment>
+          <wrap_words>true</wrap_words>
         </widget>
         <widget type="textupdate" version="2.0.0">
           <name>Delay Readback</name>
@@ -2210,8 +2211,8 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
-          <wrap_words>true</wrap_words>
           <horizontal_alignment>2</horizontal_alignment>
+          <wrap_words>true</wrap_words>
         </widget>
         <widget type="textentry" version="3.0.0">
           <name>Fine Delay</name>
@@ -2231,8 +2232,8 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
-          <wrap_words>true</wrap_words>
           <horizontal_alignment>2</horizontal_alignment>
+          <wrap_words>true</wrap_words>
         </widget>
         <widget type="textupdate" version="2.0.0">
           <name>Delay Readback</name>
@@ -2421,6 +2422,7 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
+          <enabled>false</enabled>
         </widget>
         <widget type="textupdate" version="2.0.0">
           <name>Readback</name>
@@ -2555,6 +2557,7 @@
             <color red="219" green="234" blue="254">
             </color>
           </background_color>
+          <enabled>false</enabled>
         </widget>
         <widget type="textupdate" version="2.0.0">
           <name>Readback</name>
@@ -2644,6 +2647,7 @@
           </background_color>
           <show_units>false</show_units>
           <horizontal_alignment>2</horizontal_alignment>
+          <enabled>false</enabled>
         </widget>
       </widget>
       <widget type="group" version="3.0.0">
